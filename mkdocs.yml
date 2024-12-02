@@ -1,0 +1,128 @@
+site_name: MageObsidian
+theme:
+  logo: ./assets/tool.png
+  favicon: ./assets/tool.png
+  language: en
+  name: material
+  custom_dir: overrides
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - content.code.annotate 
+    - content.code.select
+    - content.code.copy
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - navigation.progress
+    - navigation.footer
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to system preference
+extra_css:
+  - stylesheets/extra.css
+copyright: Jeanmarcos | MageObsidian
+plugins:
+  - awesome-pages
+  - macros
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: es
+          name: Español
+          build: true
+          nav_translations:
+            Introduction: Introducción
+            Key Features: Características Clave
+            Motivation: Motivación
+            Getting started: Primeros pasos
+            Requirements: Requerimientos
+            Installation: Instalación
+            Configuration: Configuración
+            How Contributing?: ¿Cómo contribuir?
+            Components: Componentes
+            Theme: Tema
+            Reference: Referencia
+            Supporting the Project: Apoyando el Proyecto
+            Compatibility Modules: Módulos Compatibles
+nav:
+  - Home: index.md 
+  - Introduction:
+    - Motivation: introduction/index.md
+    - Key Features: introduction/key-features.md
+  - Getting started:
+    - Requirements: getting-started/requirements.md
+    - Installation: getting-started/installation.md
+  - Components:
+    - Overview: components/overview.md
+    - Installation: components/installation.md
+    - Compatibility Modules:
+      - ... | flat | components/modules/*.md
+  - Theme Overview:
+    - theme/index.md
+  # - Reference:
+  #   - reference/index.md
+  - How Contributing?:
+    - support/index.md
+  - Supporting the Project:
+    - support/project.md
+extra:
+  theme_name: "MageObsidian Theme"
+  # gh_theme_url: https://github.com/mage-obsidian/obsidian-docs
+  gh_main_module_url: https://github.com/mage-obsidian/module-modern-frontend
+  gh_main_module_cli_url: https://github.com/mage-obsidian/module-modern-frontend-cli
+  gh_vite_url: https://github.com/mage-obsidian/component-modern-frontend
+  gh_docs_url: https://github.com/mage-obsidian/obsidian-docs
+  components_name: "MageObsidian Components"
+  discord_link: https://discord.gg/d6nHVw8h
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: Español
+      link: /es/
+      lang: es
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: /support/#repositories
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/d6nHVw8h
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
