@@ -1,0 +1,15 @@
+[data-md-color-scheme="slate"] {
+    --md-hue: 225; 
+}
+
+nav.md-tabs .md-tabs__list li:first-child {
+    display: none;
+}
+
+.md-main {
+    margin-bottom: 20px;
+}
+
+.md-select__inner {
+    left: 0;
+}
