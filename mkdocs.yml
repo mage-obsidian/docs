@@ -67,6 +67,9 @@ plugins:
             Reference: Referencia
             Supporting the Project: Apoyando el Proyecto
             Compatibility Modules: Módulos Compatibles
+            Overview: Resumen
+            Home: Inicio
+            Theme Overview: Tema
 nav:
   - Home: index.md 
   - Introduction:
