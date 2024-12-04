@@ -3,14 +3,14 @@
 {% block announce %}
 <div style="background-color: #ffeeba; color: #856404; padding: 15px; border: 1px solid #ffeeba; border-radius: 5px; font-family: Arial, sans-serif; margin-bottom: 20px;">
 {% if config.theme.language == 'es' %}
-  <strong style="font-size: 16px;">⚠️ Obsidian Theme en progreso:</strong>
+  <strong style="font-size: 16px;">⚠️ {{ config.site_name }} en progreso:</strong>
   <p style="margin: 5px 0; font-size: 14px; line-height: 1.5;">
-      <strong>Obsidian Theme</strong> aún está en desarrollo y no está listo para entornos de producción. Se recomienda utilizarlo solo para pruebas y exploración.
+      <strong>{{ config.site_name }}</strong> aún está en desarrollo y no está listo para entornos de producción. Se recomienda utilizarlo solo para pruebas y exploración.
   </p>
 {% else %}
-    <strong style="font-size: 16px;">⚠️ Obsidian Theme in Progress:</strong>
+    <strong style="font-size: 16px;">⚠️ {{ config.site_name }} in Progress:</strong>
     <p style="margin: 5px 0; font-size: 14px; line-height: 1.5;">
-      <strong>Obsidian Theme</strong> is still under development and not ready for production environments. It is recommended for testing and exploration purposes only.
+      <strong>{{ config.site_name }}</strong> is still under development and not ready for production environments. It is recommended for testing and exploration purposes only.
     </p>
 {% endif %}
 
