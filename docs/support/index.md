@@ -10,7 +10,9 @@ Thank you for your interest in contributing to **{{ config.site_name }}**! This 
     - [**Core Module**]({{ config.extra.gh_main_module_url }})
     - [**CLI Tools**]({{ config.extra.gh_main_module_cli_url }})
     - [**Vite Configuration**]({{ config.extra.gh_vite_url }})
+    - [**JS Utils**]({{ config.extra.gh_js_utils_url }})
     - [**Documentation**]({{ config.extra.gh_docs_url }})
+    
 - **Propose improvements:** Share your ideas for new features or enhancements by creating an issue.
 - **Contribute code:** Solve existing issues or add new functionalities via Pull Requests.
 - **Improve documentation:** If you believe the documentation can be clearer or is incomplete, you can contribute by updating it!
@@ -21,10 +23,11 @@ Thank you for your interest in contributing to **{{ config.site_name }}**! This 
 
 ## Repositories
 
-- [**Vite Configuration**](https://github.com/mage-obsidian/component-modern-frontend): Vite setup and integration for the modern Magento frontend.
-- [**Core Components**](https://github.com/mage-obsidian/module-modern-frontend): Essential components for building modern Magento themes.
-- [**CLI Tools**](https://github.com/mage-obsidian/module-modern-frontend-cli): Command-line utilities for setup, configuration, and development.
-- [**Documentation**](https://github.com/mage-obsidian/MagentoModernFrontendDocs): Guides and documentation for **{{ config.site_name }}**.
+- [**Core Module**]({{ config.extra.gh_main_module_url }}): Essential components for building modern Magento themes.
+- [**CLI Tools**]({{ config.extra.gh_main_module_cli_url }}): Command-line utilities for setup, configuration, and development.
+- [**Vite Configuration**]({{ config.extra.gh_vite_url }}): Vite setup and integration for the modern Magento frontend.
+- [**JS Utils**]({{ config.extra.gh_js_utils_url }}): Js Utils
+- [**Documentation**]({{ config.extra.gh_docs_url }}): Guides and documentation for **{{ config.site_name }}**.
 
 ---
 

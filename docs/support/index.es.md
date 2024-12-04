@@ -9,8 +9,9 @@
 - **Reportar errores:** Si encuentras algún problema en nuestros proyectos, no dudes en crear un issue en el repositorio correspondiente en GitHub:
     - [**Módulo Principal**]({{ config.extra.gh_main_module_url }})
     - [**CLI del Módulo Principal**]({{ config.extra.gh_main_module_cli_url }})
-    - [**Componente de Vite**]({{ config.extra.gh_vite_url }})
+    - [**Configuración de Vite**]({{ config.extra.gh_vite_url }})
     - [**Documentación**]({{ config.extra.gh_docs_url }})
+    - [**JS Utils**]({{ config.extra.gh_js_utils_url }})
 
 - **Proponer mejoras:** Comparte tus ideas para nuevas características o mejoras creando un issue.
 - **Contribuir con código:** Resuelve problemas existentes o añade nuevas funcionalidades mediante Pull Requests.
@@ -22,10 +23,11 @@
 
 ## Repositorios
 
-- [**Configuración de Vite**](https://github.com/mage-obsidian/component-modern-frontend): Configuración e integración de Vite para el frontend moderno de Magento.
-- [**Componentes Principales**](https://github.com/mage-obsidian/module-modern-frontend): Componentes esenciales para construir temas modernos en Magento.
-- [**Herramientas CLI**](https://github.com/mage-obsidian/module-modern-frontend-cli): Utilidades de línea de comandos para configuración, desarrollo y despliegue.
-- [**Documentación**](https://github.com/mage-obsidian/MagentoModernFrontendDocs): Guías y documentación completas para **{{ config.site_name }}**.
+- [**Módulo Principal**]({{ config.extra.gh_main_module_url }}): Componentes esenciales para construir temas modernos en Magento.
+- [**CLI del Módulo Principal**]({{ config.extra.gh_main_module_cli_url }}): Utilidades de línea de comandos para configuración, desarrollo y despliegue.
+- [**Configuración de Vite**]({{ config.extra.gh_vite_url }}): Configuración e integración de Vite para el frontend moderno de Magento.
+- [**Documentación**]({{ config.extra.gh_docs_url }}): Guías y documentación completas para **{{ config.site_name }}**.
+- [**JS Utils**]({{ config.extra.gh_js_utils_url }}): Js Utils
 
 ---
 
