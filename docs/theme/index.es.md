@@ -8,6 +8,7 @@
 - Mientras se finalizan algunas características y diseños, este tema está diseñado para redefinir la experiencia del frontend en Magento.
 
 ## Visión
+- **SEO-friendly desde su base:** Diseñado para garantizar tiempos de carga rápidos, URLs limpias, y una estructura que maximiza el rendimiento en motores de búsqueda. El tema aprovecha el soporte de componentes optimizados para generar un frontend ágil y bien estructurado.
 - **Herramientas Modernas:** Utiliza tecnologías como **Vite**, **TailwindCSS**, **Vue.js** y **ESM** para garantizar una experiencia de desarrollo de última generación.
 - **Rompiendo con el Pasado:** Supera las limitaciones de los temas heredados como **Blank** y **Luma**, ofreciendo a los desarrolladores un lienzo limpio para la innovación.
 - **Centrado en el Desarrollador:** Diseñado pensando en los desarrolladores, priorizando la simplicidad, la modularidad y flujos de trabajo que simplifican la personalización del frontend.
@@ -16,6 +17,7 @@
 
 ## ¿Qué Sigue?
 A medida que el desarrollo avance, esta sección se actualizará con:
+
 - Tutoriales y guías para aprovechar los **{{ config.extra.components_name }}** con el tema.
 - Desglose detallado de características y sus casos de uso.
 - Mejores prácticas para la personalización y extensión.
