@@ -1,15 +1,17 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q816Z9WN)
-# Obsidian Documentation
+# MageObsidian Documentation
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-This repository hosts the full documentation for the Magento Modern Frontend project.
+This repository hosts the full documentation for the MageObsidian project.
 
 ## Related Repositories
 
-- [Magento Modern Frontend](https://github.com/mage-obsidian/module-modern-frontend)
-- [Magento Modern Frontend CLI](https://github.com/mage-obsidian/module-modern-frontend-cli)
-- [Magento Modern Frontend Component](https://github.com/mage-obsidian/component-modern-frontend)
+- [MageObsidian Modern Frontend](https://github.com/mage-obsidian/module-modern-frontend)
+- [MageObsidian Modern Frontend CLI](https://github.com/mage-obsidian/module-modern-frontend-cli)
+- [MageObsidian Modern Frontend Component](https://github.com/mage-obsidian/component-modern-frontend)
+- [Docs](https://github.com/mage-obsidian/docs)
+- [JS Utils](https://github.com/mage-obsidian/js-package-utils)
 
 ## Documentation
 
