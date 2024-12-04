@@ -20,10 +20,16 @@ composer require mage-obsidian/component-modern-frontend
 
 ---
 
-## Paso 2: Instalar dependencias con npm
+## Paso 2: Instalar dependencias de Node
 
 Asegúrate de que todas las dependencias necesarias de Node estén instaladas:
 
+### pnpm
+```bash
+pnpm --prefix vite install
+```
+
+### npm
 ```bash
 npm --prefix vite install
 ```
