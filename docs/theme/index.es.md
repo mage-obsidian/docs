@@ -1,10 +1,10 @@
 # Tema
 
-La sección **Tema** establece las bases para **{{ config.extra.theme_name }}**, una reinvención vanguardista del frontend de Magento. Este tema está siendo desarrollado utilizando los **Obsidian Components**, asegurando un enfoque moderno, modular y preparado para el futuro en el diseño frontend de eCommerce. Como el proyecto aún está en sus primeras etapas, esta sección evolucionará a medida que avancen los desarrollos del tema.
+**{{ config.extra.theme_name }}** una reinvención vanguardista del frontend de Magento. Este tema está siendo desarrollado utilizando los **{{ config.extra.components_name }}**, asegurando un enfoque moderno, modular y preparado para el futuro en el diseño frontend de eCommerce. Como el proyecto aún está en sus primeras etapas, esta sección evolucionará a medida que avancen los desarrollos del tema.
 
 ## Estado Actual
 - **{{ config.extra.theme_name }}** está en desarrollo activo y representa una completa ruptura con los temas tradicionales de Magento.
-- Construido sobre la base de los **Obsidian Components**, busca aprovechar todo su potencial para ofrecer un rendimiento, flexibilidad y escalabilidad inigualables.
+- Construido sobre la base de los **{{ config.extra.components_name }}**, busca aprovechar todo su potencial para ofrecer un rendimiento, flexibilidad y escalabilidad inigualables.
 - Mientras se finalizan algunas características y diseños, este tema está diseñado para redefinir la experiencia del frontend en Magento.
 
 ## Visión
@@ -16,11 +16,11 @@ La sección **Tema** establece las bases para **{{ config.extra.theme_name }}**,
 
 ## ¿Qué Sigue?
 A medida que el desarrollo avance, esta sección se actualizará con:
-- Tutoriales y guías para aprovechar los **Obsidian Components** con el tema.
+- Tutoriales y guías para aprovechar los **{{ config.extra.components_name }}** con el tema.
 - Desglose detallado de características y sus casos de uso.
 - Mejores prácticas para la personalización y extensión.
 
 ## Conclusión
-El **{{ config.extra.theme_name }}** no es solo un tema, sino un paso audaz hacia el futuro del ecosistema de Magento. Al construir sobre la sólida base de los **Obsidian Components**, promete ofrecer una experiencia de desarrollo frontend moderna, potente y agradable.
+El **{{ config.extra.theme_name }}** no es solo un tema, sino un paso audaz hacia el futuro del ecosistema de Magento. Al construir sobre la sólida base de los **{{ config.extra.components_name }}**, promete ofrecer una experiencia de desarrollo frontend moderna, potente y agradable.
 
 Mantente atento a las actualizaciones mientras documentamos el progreso de **{{ config.extra.theme_name }}**.
