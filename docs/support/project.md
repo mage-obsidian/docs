@@ -6,6 +6,8 @@
 
 Your financial support can help me dedicate more time to the project's development. You can contribute through the following platforms:
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q816Z9WN)
+
 - **PayPal**: Your support helps fuel continuous development. [Consider making a contribution here](https://paypal.me/JeanmarcosJ).
 
 - **USDT (BEP-20)**:  
