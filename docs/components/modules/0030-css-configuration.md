@@ -12,7 +12,7 @@ This file will be included for each module that defines it, unless explicitly ex
 1. **Import Order**  
     CSS files are loaded based on the **module priority** defined in Magento. The order is determined by the `sequence` configuration in each module’s `module.xml` file. This allows you to control the import order of module CSS. Additionally, all module CSS is loaded **before theme CSS**.
 
-    For more details on configuring the module load order, see the official Magento documentation:  
+    > For more details on configuring the module load order, see the official Magento documentation:  
     [Configuring Component Load Order](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 
     A typical import order might look like this:
