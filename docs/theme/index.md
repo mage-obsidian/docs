@@ -8,6 +8,7 @@
 - While some features and designs are being finalized, this theme is positioned to redefine the Magento frontend experience.
 
 ## Vision
+- **SEO-friendly foundation:** Designed to ensure fast load times, clean URLs, and a structure that maximizes search engine performance. The theme leverages optimized components to deliver a fast and well-structured frontend.
 - **Modern Tooling:** Utilizes technologies like **Vite**, **TailwindCSS**, **Vue.js**, and **ESM** to ensure a cutting-edge development experience.
 - **Breaking Free from the Past:** Moves beyond the constraints of legacy themes such as **Blank** and **Luma**, offering developers a clean slate for innovation.
 - **Developer-Centric:** Designed with developers in mind, prioritizing simplicity, modularity, and workflows that streamline frontend customization.
@@ -16,6 +17,7 @@
 
 ## What’s Next?
 As development progresses, this section will be updated with:
+
 - Tutorials and guides for leveraging **{{ config.extra.components_name }}** with the theme.
 - Detailed breakdowns of features and their use cases.
 - Best practices for customization and extension.
