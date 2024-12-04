@@ -7,11 +7,11 @@
 ## Formas de contribuir
 
 - **Reportar errores:** Si encuentras algún problema en nuestros proyectos, no dudes en crear un issue en el repositorio correspondiente en GitHub:
-    - [**Módulo Principal**]({{ config.extra.gh_main_module_url }})
-    - [**CLI del Módulo Principal**]({{ config.extra.gh_main_module_cli_url }})
-    - [**Configuración de Vite**]({{ config.extra.gh_vite_url }})
-    - [**Documentación**]({{ config.extra.gh_docs_url }})
-    - [**JS Utils**]({{ config.extra.gh_js_utils_url }})
+     - [**Módulo Principal**]({{ config.extra.gh_main_module_url }})
+     - [**CLI del Módulo Principal**]({{ config.extra.gh_main_module_cli_url }})
+     - [**Configuración de Vite**]({{ config.extra.gh_vite_url }})
+     - [**Documentación**]({{ config.extra.gh_docs_url }})
+     - [**JS Utils**]({{ config.extra.gh_js_utils_url }})
 
 - **Proponer mejoras:** Comparte tus ideas para nuevas características o mejoras creando un issue.
 - **Contribuir con código:** Resuelve problemas existentes o añade nuevas funcionalidades mediante Pull Requests.

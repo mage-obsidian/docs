@@ -33,27 +33,27 @@ Al configurar el archivo `theme.xml`, presta atención si deseas heredar de un t
 Para configurar un tema como compatible con **{{ config.extra.components_name }}**, sigue estos pasos:
 
 1. **Crear el Archivo de Compatibilidad**  
-      - Nombre del archivo:  
-        `mage_obsidian_compatibility.xml`
+        - Nombre del archivo:  
+          `mage_obsidian_compatibility.xml`
 
-      - Ruta del archivo:  
-        Guarda el archivo en la siguiente ubicación:  
-        ```
-        app/design/frontend/Vendor/ThemeName/etc/mage_obsidian_compatibility.xml
-        ```
+        - Ruta del archivo:  
+          Guarda el archivo en la siguiente ubicación:  
+          ```
+          app/design/frontend/Vendor/ThemeName/etc/mage_obsidian_compatibility.xml
+          ```
 
 2. **Agregar el Contenido del Archivo**  
-      - Copia y pega el siguiente contenido en el archivo:
+        - Copia y pega el siguiente contenido en el archivo:
 
-        ```xml
-        <?xml version="1.0"?>
-        <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                xsi:noNamespaceSchemaLocation="urn:magento:module:MageObsidian_ModernFrontend:etc/xsd/mage_obsidian_theme_compatibility.xsd">
-            <features>
-                <compatibility>true</compatibility>
-            </features>
-        </config>
-        ```
+          ```xml
+          <?xml version="1.0"?>
+          <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:noNamespaceSchemaLocation="urn:magento:module:MageObsidian_ModernFrontend:etc/xsd/mage_obsidian_theme_compatibility.xsd">
+                <features>
+                     <compatibility>true</compatibility>
+                </features>
+          </config>
+          ```
 
 ---
 
@@ -62,14 +62,14 @@ Para configurar un tema como compatible con **{{ config.extra.components_name }}
 Una vez configurado el archivo de compatibilidad, es necesario ejecutar los siguientes comandos para integrar el tema en Magento y generar los metadatos necesarios:
 
 1. **Cargar el tema en Magento**  
-   ```bash
-   bin/magento setup:upgrade
-   ```
+    ```bash
+    bin/magento setup:upgrade
+    ```
 
 2. **Generar metadatos para {{ config.extra.components_name }}**  
-   ```bash
-   bin/magento mage-obsidian:frontend:config --generate
-   ```
+    ```bash
+    bin/magento mage-obsidian:frontend:config --generate
+    ```
 
 ---
 
