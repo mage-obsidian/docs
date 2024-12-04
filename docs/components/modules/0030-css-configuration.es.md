@@ -12,7 +12,7 @@ Este archivo será incluido para cada módulo que lo defina, a menos que se conf
 1. **Orden de Importación**  
     Los archivos CSS se cargan según la **prioridad de los módulos** definida en Magento. El orden se determina mediante la configuración de `sequence` en el archivo `module.xml` de cada módulo. Esto permite controlar el orden de importación del CSS de los módulos. Además, todo el CSS de los módulos se carga **antes del CSS de los temas**.
     
-    Para más detalles sobre cómo configurar el orden de carga de los módulos, consulta la documentación oficial de Magento:  
+    > Para más detalles sobre cómo configurar el orden de carga de los módulos, consulta la documentación oficial de Magento:  
     [Configurar el orden de carga de componentes](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 
     Un ejemplo típico de orden de importación sería:
@@ -29,9 +29,9 @@ Este archivo será incluido para cada módulo que lo defina, a menos que se conf
 
     - **Módulos**: Si un módulo desea incluir CSS personalizado, debe usar el archivo ubicado en `view/frontend/web/css/module.extend.css` como su punto de entrada. **{{ config.extra.components_name }}** rastrea automáticamente estos archivos para módulos compatibles.
     - **Temas**: El punto de entrada del CSS de los temas siempre es `web/css/theme.source.css`.
-    
+     
 2. **Flexibilidad con la Configuración del Tema**  
-    Como se mencionó anteriormente, la configuración del tema permite **ignorar las entradas CSS de módulos específicos**. Esto brinda flexibilidad para determinar qué estilos se incluirán en la compilación final.
+     Como se mencionó anteriormente, la configuración del tema permite **ignorar las entradas CSS de módulos específicos**. Esto brinda flexibilidad para determinar qué estilos se incluirán en la compilación final.
 
 ## Salida de CSS Optimizada
 
