@@ -2,7 +2,7 @@
 
 In **{{ config.extra.components_name }}**, each module can define its own Tailwind CSS configuration under the `tailwind` key in the module configuration file (`module.config.cjs`). This configuration follows the structure and syntax of Tailwind CSS version 3.
 
-For details on how to structure a Tailwind CSS configuration, refer to the official documentation:  
+> For details on how to structure a Tailwind CSS configuration, refer to the official documentation:  
 [Tailwind CSS Configuration](https://tailwindcss.com/docs/configuration)
 
 ## Example Configuration
