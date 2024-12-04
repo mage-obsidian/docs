@@ -7,12 +7,12 @@ Thank you for your interest in contributing to **{{ config.site_name }}**! This 
 ## Ways to Contribute
 
 - **Report bugs:** If you find any issues, feel free to create an issue in the appropriate GitHub repository.
-    - [**Core Module**]({{ config.extra.gh_main_module_url }})
-    - [**CLI Tools**]({{ config.extra.gh_main_module_cli_url }})
-    - [**Vite Configuration**]({{ config.extra.gh_vite_url }})
-    - [**JS Utils**]({{ config.extra.gh_js_utils_url }})
-    - [**Documentation**]({{ config.extra.gh_docs_url }})
-    
+     - [**Core Module**]({{ config.extra.gh_main_module_url }})
+     - [**CLI Tools**]({{ config.extra.gh_main_module_cli_url }})
+     - [**Vite Configuration**]({{ config.extra.gh_vite_url }})
+     - [**JS Utils**]({{ config.extra.gh_js_utils_url }})
+     - [**Documentation**]({{ config.extra.gh_docs_url }})
+     
 - **Propose improvements:** Share your ideas for new features or enhancements by creating an issue.
 - **Contribute code:** Solve existing issues or add new functionalities via Pull Requests.
 - **Improve documentation:** If you believe the documentation can be clearer or is incomplete, you can contribute by updating it!

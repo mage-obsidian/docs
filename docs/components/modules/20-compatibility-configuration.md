@@ -12,26 +12,26 @@ Once the module is prepared, include the compatibility configuration as describe
 ## Steps to Configure Compatibility
 
 1. **Create the Compatibility File**  
-      - File Name:  
-         `mage_obsidian_compatibility.xml`
+        - File Name:  
+            `mage_obsidian_compatibility.xml`
 
-      - File Path:  
-         Save the file in the following location:  
-         ```
-         app/code/Vendor/ModuleName/etc/mage_obsidian_compatibility.xml
-         ```
+        - File Path:  
+            Save the file in the following location:  
+            ```
+            app/code/Vendor/ModuleName/etc/mage_obsidian_compatibility.xml
+            ```
 
 2. **Add the File Content**  
-      - Copy and paste the following content into the file:
-         ```xml
-         <?xml version="1.0"?>
-         <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:noNamespaceSchemaLocation="urn:magento:module:MageObsidian_ModernFrontend:etc/xsd/mage_obsidian_compatibility.xsd">
-               <features>
-                  <compatibility>true</compatibility>
-               </features>
-         </config>
-         ```
+        - Copy and paste the following content into the file:
+            ```xml
+            <?xml version="1.0"?>
+            <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:noNamespaceSchemaLocation="urn:magento:module:MageObsidian_ModernFrontend:etc/xsd/mage_obsidian_compatibility.xsd">
+                    <features>
+                        <compatibility>true</compatibility>
+                    </features>
+            </config>
+            ```
 
 ---
 
@@ -40,14 +40,14 @@ Once the module is prepared, include the compatibility configuration as describe
 After configuring the compatibility file, you must run the following commands to integrate the theme into Magento and generate the necessary metadata:
 
 1. **Load Module in Magento**  
-   ```bash
-   bin/magento setup:upgrade
-   ```
+    ```bash
+    bin/magento setup:upgrade
+    ```
 
 2. **Generate metadata for {{ config.extra.components_name }}**  
-   ```bash
-   bin/magento mage-obsidian:frontend:config --generate
-   ```
+    ```bash
+    bin/magento mage-obsidian:frontend:config --generate
+    ```
 
 ---
 
