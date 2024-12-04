@@ -14,10 +14,16 @@ Use Composer to add the components to your project:
 composer require mage-obsidian/component-modern-frontend
 ```
 
-### 2. Install dependencies with npm
+### 2: Install Node Dependencies
 
-Ensure all necessary dependencies are properly configured. Run:
+Ensure all necessary node dependencies are installed:
 
+#### pnpm
+```bash
+pnpm --prefix vite install
+```
+
+#### npm
 ```bash
 npm --prefix vite install
 ```
@@ -42,8 +48,6 @@ bin/magento obsidian:frontend:config --generate
 
 The components are configured and ready to be used in your project! You can now start developing your theme with the modern tools offered by **{{ config.extra.components_name }}**.
 
----
-
 ## More Information
 
 For more details on customizing the components, starting theme development, and understanding all the benefits and advantages, see the [Detailed Components Documentation](../../components).
@@ -57,8 +61,6 @@ The theme based on **{{ config.extra.components_name }}** is still under develop
 ### Current Status
 - The design is in progress and will be available soon.
 - In the meantime, you can explore the components to start building custom solutions.
-
----
 
 ## More Information
 
