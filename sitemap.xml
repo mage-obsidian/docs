@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>None./</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="None"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/installation/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/installation/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/installation/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/overview/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/overview/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/overview/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0010-overview/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0010-overview/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0020-compatibility-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0030-css-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0040-module-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0040-module-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0040-module-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0050-tailwind-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0050-tailwind-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0050-tailwind-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0060-js-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0060-js-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0060-js-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0070-vue-components-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0070-vue-components-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0070-vue-components-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0080-imports-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0080-imports-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0080-imports-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0090-phtml-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0090-phtml-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0090-phtml-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0100-phtml-vue-integration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0100-phtml-vue-integration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0100-phtml-vue-integration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0110-hmr-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0110-hmr-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0110-hmr-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/modules/0120-vite-build/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0120-vite-build/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0120-vite-build/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/themes/0010-overview/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0010-overview/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/themes/0020-compatibility-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/themes/0030-css-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/themes/0040-theme-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0040-theme-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0040-theme-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonecomponents/themes/0050-components-workflow/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0050-components-workflow/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0050-components-workflow/"/>
+    </url>
+    <url>
+        <loc>Nonegetting-started/installation/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonegetting-started/installation/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/getting-started/installation/"/>
+    </url>
+    <url>
+        <loc>Nonegetting-started/requirements/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonegetting-started/requirements/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/getting-started/requirements/"/>
+    </url>
+    <url>
+        <loc>Noneintroduction/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneintroduction/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/introduction/"/>
+    </url>
+    <url>
+        <loc>Noneintroduction/key-features/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneintroduction/key-features/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/introduction/key-features/"/>
+    </url>
+    <url>
+        <loc>Nonereference/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonereference/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/reference/"/>
+    </url>
+    <url>
+        <loc>Nonesupport/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonesupport/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/support/"/>
+    </url>
+    <url>
+        <loc>Nonesupport/project/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonesupport/project/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/support/project/"/>
+    </url>
+    <url>
+        <loc>Nonetheme/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetheme/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/theme/"/>
+    </url>
+    <url>
+        <loc>Nonees/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="None"/>
+    </url>
+    <url>
+        <loc>Nonees/components/installation/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/installation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/installation/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/overview/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/overview/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0010-overview/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0010-overview/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0020-compatibility-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0030-css-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0040-module-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0040-module-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0040-module-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0050-tailwind-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0050-tailwind-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0050-tailwind-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0060-js-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0060-js-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0060-js-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0070-vue-components-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0070-vue-components-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0070-vue-components-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0080-imports-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0080-imports-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0080-imports-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0090-phtml-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0090-phtml-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0090-phtml-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0100-phtml-vue-integration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0100-phtml-vue-integration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0100-phtml-vue-integration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0110-hmr-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0110-hmr-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0110-hmr-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/modules/0120-vite-build/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/modules/0120-vite-build/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/modules/0120-vite-build/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/themes/0010-overview/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0010-overview/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/themes/0020-compatibility-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/themes/0030-css-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/themes/0040-theme-configuration/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0040-theme-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0040-theme-configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/components/themes/0050-components-workflow/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/components/themes/0050-components-workflow/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonecomponents/themes/0050-components-workflow/"/>
+    </url>
+    <url>
+        <loc>Nonees/getting-started/installation/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/getting-started/installation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonegetting-started/installation/"/>
+    </url>
+    <url>
+        <loc>Nonees/getting-started/requirements/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/getting-started/requirements/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonegetting-started/requirements/"/>
+    </url>
+    <url>
+        <loc>Nonees/introduction/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/introduction/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneintroduction/"/>
+    </url>
+    <url>
+        <loc>Nonees/introduction/key-features/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/introduction/key-features/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneintroduction/key-features/"/>
+    </url>
+    <url>
+        <loc>Nonees/reference/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/reference/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonereference/"/>
+    </url>
+    <url>
+        <loc>Nonees/support/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/support/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonesupport/"/>
+    </url>
+    <url>
+        <loc>Nonees/support/project/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/support/project/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonesupport/project/"/>
+    </url>
+    <url>
+        <loc>Nonees/theme/</loc>
+        <lastmod>2024-12-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/theme/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetheme/"/>
+    </url>
+</urlset>
