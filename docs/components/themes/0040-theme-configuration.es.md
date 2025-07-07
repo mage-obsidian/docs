@@ -3,10 +3,10 @@
 En **{{ config.extra.components_name }}**, cada tema compatible puede incluir configuraciones adicionales creando un archivo de configuración en:
 
 ```
-web/theme.config.cjs
+web/theme.config.js
 ```
 
-Este archivo utiliza el formato **CJS (CommonJS)** por razones de compatibilidad y exporta un objeto de configuración que **{{ config.extra.components_name }}** utiliza para personalizar y controlar el comportamiento del tema.
+Este archivo es un **módulo ESM (ECMAScript)** que hace `export default` de un objeto de configuración que **{{ config.extra.components_name }}** utiliza para personalizar y controlar el comportamiento del tema.
 
 ---
 
@@ -16,91 +16,44 @@ Este archivo utiliza el formato **CJS (CommonJS)** por razones de compatibilidad
     El archivo de configuración del tema debe colocarse en la siguiente ruta relativa al directorio del tema:
 
     ```
-    app/design/frontend/Vendor/Theme/web/theme.config.cjs
+    app/design/frontend/Vendor/Theme/web/theme.config.js
     ```
 
 2. **Ejemplo de Archivo de Configuración**  
-    Un ejemplo básico de un archivo `theme.config.cjs` podría verse así:
+    Un ejemplo básico de un archivo `theme.config.js` podría verse así:
 
     ```javascript
-    module.exports = {
-        tailwind: {
-            theme: {
-                extend: {
-                    // Agrega configuraciones personalizadas de Tailwind aquí
-                },
-            },
-            plugins: [],
-            content: [
-                './**/*.{vue,js}',            // Rastrear clases en archivos Vue y JS
-                '../**/*.phtml',             // Rastrear clases en plantillas PHTML
-                '../*/page_layout/override/base/*.xml', // Rastrear clases en diseños XML
-            ],
-        },
-        ignoredTailwindConfigFromModules: [],
+    export default {
         ignoredCssFromModules: [
-            'Vendor_ModuleNameA',           // Excluir CSS de módulos específicos
+            'Vendor_ModuleNameA',           // Excluir el CSS de este módulo del build
         ],
-        includeTailwindConfigFromParentThemes: true,
         includeCssSourceFromParentThemes: true,
         exposeNpmPackages: [
             {
-                exposePath: 'pinia',         // Ruta expuesta para importar
-                package: 'pinia',           // Nombre real del paquete
+                exposePath: 'pinia',         // Ruta usada para importarlo
+                package: 'pinia',           // Nombre real del paquete NPM
             },
         ],
     };
     ```
 
+> **Los tokens de Tailwind viven en CSS, no aquí.** Con [Tailwind 4](../modules/0050-tailwind-configuration.md) los design tokens del tema se declaran en `web/css/theme.source.css` (`@theme { … }`), así que `theme.config.js` solo lleva las opciones de build de abajo. Consulta [Configuración de CSS](0030-css-configuration.md).
+
 ---
 
 ## Opciones de Configuración
 
-### 1. **`tailwind`**  
-   - **Tipo**: `Object`  
-   - **Por defecto**: `{}`  
-   - **Descripción**: Define configuraciones personalizadas de Tailwind CSS para el tema. Esto puede incluir `theme`, `plugins` y un array de `content`.  
-   - **Ejemplo**:
-     ```javascript
-     tailwind: {
-         theme: {
-             extend: {
-                 colors: {
-                     brand: '#1a202c',
-                 },
-             },
-         },
-         plugins: [],
-         content: [
-             './**/*.{vue,js}',
-             '../**/*.phtml',
-         ],
-     }
-     ```
-> Para más detalles sobre cómo estructurar una configuración de Tailwind CSS, consulta la documentación oficial:  
-[Configuración de Tailwind CSS](https://tailwindcss.com/docs/configuration)
-
-### 2. **`ignoredTailwindConfigFromModules`**  
+### 1. **`ignoredCssFromModules`**  
    - **Tipo**: `Array` o `String ('all')`  
    - **Por defecto**: `[]`  
-   - **Descripción**: Lista las configuraciones específicas de Tailwind de los módulos que se deben ignorar. Si se establece en `'all'`, se excluirán las configuraciones de todos los módulos.  
+   - **Descripción**: Especifica los módulos cuyo CSS debe excluirse de la compilación final. Si se establece en `'all'`, se excluye el CSS de todos los módulos.  
 
-### 3. **`ignoredCssFromModules`**  
-   - **Tipo**: `Array` o `String ('all')`  
-   - **Por defecto**: `[]`  
-   - **Descripción**: Especifica los módulos cuyo CSS debe excluirse de la compilación final. Si se establece en `'all'`, se excluirá el CSS de todos los módulos.  
-
-### 4. **`includeTailwindConfigFromParentThemes`**  
-   - **Tipo**: `Boolean`  
-   - **Por defecto**: `true`  
-   - **Descripción**: Determina si el tema debe heredar las configuraciones de Tailwind de sus temas principales.  
-
-### 5. **`includeCssSourceFromParentThemes`**  
+### 2. **`includeCssSourceFromParentThemes`**  
    - **Tipo**: `Boolean`  
    - **Por defecto**: `true`  
    - **Descripción**: Determina si los archivos fuente de CSS de los temas principales deben incluirse en la compilación final.  
 
-### 6. **`exposeNpmPackages`**  
+### 3. **`exposeNpmPackages`**  
    - **Tipo**: `Array de Objetos`  
    - **Por defecto**: `[]`  
    - **Descripción**: Permite exponer paquetes NPM específicos para su uso en el JavaScript del frontend del tema. Cada objeto en el array debe definir:
@@ -138,20 +91,18 @@ Este archivo utiliza el formato **CJS (CommonJS)** por razones de compatibilidad
     Los temas principales pueden pasar configuraciones a los temas secundarios, simplificando la configuración y manteniendo la consistencia.
 
 3. **Control de Exclusión**:  
-    Elimina configuraciones de CSS o Tailwind no deseadas de módulos específicos o de todos los módulos, manteniendo una compilación final limpia y optimizada.
+    Elimina el CSS no deseado de módulos específicos o de todos los módulos, manteniendo una compilación final limpia y optimizada.
 
-4. **Integración con Tailwind**:  
-    Los temas pueden aprovechar al máximo Tailwind CSS con un enfoque basado en utilidades y control total sobre su configuración.
-
-5. **Integración de Paquetes NPM**:  
+4. **Integración de Paquetes NPM**:  
     Exponer paquetes NPM simplifica la gestión de dependencias, permitiendo a los temas usar directamente librerías de terceros. Estas pueden incluirse en las plantillas mediante `$block->getViewLibFileUrl()`.
 
 ---
 
 ## Notas Clave
 
-- El archivo de configuración utiliza el formato **CJS** para garantizar compatibilidad entre entornos.
-- El CSS y las configuraciones de Tailwind excluidas de los módulos se omiten por completo, reduciendo estilos innecesarios.
+- El archivo de configuración es un módulo **ESM** (`export default`), coherente con el engine de build ESM-only.
+- El CSS de módulos excluido se omite por completo, reduciendo estilos innecesarios.
 - Exponer paquetes NPM como objetos permite una integración precisa con librerías de terceros.
+- Los tokens de Tailwind se configuran CSS-first en `web/css/theme.source.css` (`@theme`), no en este archivo.
 
 Aprovechando este sistema de configuración, **{{ config.extra.components_name }}** garantiza que los temas sean potentes, personalizables y eficientes para todas las necesidades del frontend.

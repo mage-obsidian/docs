@@ -1,155 +1,80 @@
-# Configuración y Uso de HMR (Hot Module Replacement)
+# HMR (Hot Module Replacement)
 
-Hot Module Replacement (HMR) es una funcionalidad clave de **MageObsidian**, impulsada por Vite, que permite actualizaciones en tiempo real en tu frontend sin necesidad de refrescar el navegador. Esto mejora drásticamente la productividad al proporcionar retroalimentación instantánea durante el desarrollo.
-
----
-
-> ⚠️ **Aviso Importante**  
-> Las configuraciones descritas en esta sección son exclusivamente para **entornos de desarrollo**.  
-> **No apliques estas configuraciones en entornos de producción**, ya que podrían exponer tu aplicación a riesgos innecesarios y degradar el rendimiento.
+Hot Module Replacement (HMR) es una característica central de **MageObsidian** impulsada por Vite: actualiza tu frontend en el navegador en tiempo real, sin recargar la página completa. Esta página cubre las piezas específicas de HMR; para el ciclo completo del día a día (arrancar/detener el servidor, sincronizar el env, diagnóstico) consulta [Flujo de Desarrollo](../../getting-started/development.md).
 
 ---
 
-## Requisitos Previos: Configuración de Nginx
+> ⚠️ **Aviso Importante**
+> HMR es una característica **solo de desarrollo**. El flag de HMR se ignora cuando Magento corre en modo **producción**, así que no hay nada que deshacer antes de salir a producción.
 
-Una de las principales ventajas de Vite es su capacidad para gestionar HMR de manera eficiente. Sin embargo, para aprovechar esta funcionalidad en tu entorno Magento, necesitas configurar tu servidor Nginx para redirigir adecuadamente el tráfico al servidor de desarrollo de Vite.
+---
 
-### **1. Reglas Generales para Proxy de Vite**
+## 1. Habilitar HMR
 
-Añade este bloque para manejar el tráfico específico de HMR y las conexiones WebSocket necesarias:
+HMR es un flag de configuración de Magento, que se activa con un comando —sin editar archivos:
+
+```bash
+bin/magento mage-obsidian:frontend:hmr --enable
+bin/magento mage-obsidian:frontend:hmr --show      # ver el estado actual
+bin/magento mage-obsidian:frontend:hmr --disable   # volver a apagarlo
+```
+
+Magento además debe estar en **modo developer** (`bin/magento deploy:mode:set developer`); en producción el flag se ignora.
+
+## 2. Configurar Nginx
+
+El navegador debe poder alcanzar el dev server de Vite para que funcione HMR. Genera el snippet de proxy derivado de tu configuración y pégalo en tu server block:
+
+```bash
+bin/magento mage-obsidian:frontend:dev --print-nginx
+```
+
+El snippet enruta el tráfico HMR de Vite (con soporte WebSocket) y los assets generados hacia el dev server, por ejemplo:
 
 ```nginx
 location ~* ^/(?:@fs|@id|@vite|node_modules|__vite_ping|\.precompiled) {
-    proxy_pass http://phpfpm:5173;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-
+    proxy_pass http://<vite-host>:<vite-port>;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
 }
-```
 
-### **2. Reglas para Proxy de Recursos Estáticos**
-
-Este bloque garantiza que los archivos estáticos generados por Vite, como CSS o JavaScript compilados, sean correctamente proxys:
-
-```nginx
 location ~* ^/static/frontend/.+/.+/.+/vite_generated/(.*)$ {
-    proxy_pass http://phpfpm:5173/$1;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-
-    # Habilitar WebSocket para HMR
+    proxy_pass http://<vite-host>:<vite-port>/$1;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
 }
 ```
 
-### **3. Ubicación de las Reglas de Proxy**
+Coloca estas reglas **debajo** de tu rewrite de static-version existente (`location ~ ^/static/version\d*/ { ... }`). El host y el puerto vienen de tu configuración de MageObsidian —no los eliges a mano; `--print-nginx` los rellena.
 
-Asegúrate de colocar estas reglas debajo del bloque existente para recursos estáticos, como:
-
-```nginx
-location ~ ^/static/version\d*/ {
-    rewrite ^/static/version\d*/(.*)$ /static/$1 last;
-}
-```
-
----
-
-## 1. Iniciar el Servidor de Vite
-
-El servidor de desarrollo de Vite debe estar en ejecución para que HMR funcione. Usa el siguiente comando para iniciarlo para un tema específico:
+## 3. Arrancar el Dev Server
 
 ```bash
-pnpm --prefix vite run dev:theme Vendor/theme
+bin/magento mage-obsidian:frontend:dev --start --theme=Vendor/theme
 ```
 
-Este comando inicializa Vite, configurando su servidor HMR incorporado para escuchar en el host y puerto especificados.
-
-### **Configuración del Entorno**
-
-- El host y puerto del servidor Vite son configurables mediante variables de entorno.
-- En la primera ejecución, si estas variables no están configuradas, Vite te pedirá configurarlas.
+Esto sincroniza el `.env` de Vite desde tu config de Magento y lanza el dev server con HMR. Abre tu tienda —los cambios en un componente `.vue`, un `module.extend.css` o una fuente del tema se reflejan al instante. Deténlo con `--stop`, compruébalo con `--status`. Consulta [Flujo de Desarrollo](../../getting-started/development.md) para el conjunto completo de comandos.
 
 ---
 
-## 2. Configurar Magento para HMR
+## Resolución de Problemas
 
-Asegúrate de que las siguientes configuraciones estén activas en tu entorno Magento:
+Ejecuta el doctor —comprueba el modo de la app, el flag de HMR, el alcance del dev server, el contrato y el env de una sola vez:
 
-1. **Modo Developer**:  
-   Magento debe estar ejecutándose en modo developer. Actívalo con:
-   ```bash
-   bin/magento deploy:mode:set developer
-   ```
+```bash
+bin/magento mage-obsidian:frontend:doctor
+```
 
-2. **Configuración de HMR en MageObsidian**:  
-   La clave de configuración `'mage-obsidian/hmr/enabled'` debe estar configurada en `true`. Este ajuste está habilitado por defecto al instalar **MageObsidian**.
+Causas comunes cuando HMR "no actualiza":
 
----
-
-## 3. Uso de HMR en tu Flujo de Trabajo
-
-Una vez que todas las configuraciones estén en su lugar:
-
-1. Inicia el servidor de Vite para tu tema:
-   ```bash
-   pnpm --prefix vite run dev:theme Vendor/theme
-   ```
-
-2. Abre tu sitio Magento en el navegador. Cualquier cambio realizado en el código de tu frontend se reflejará inmediatamente sin necesidad de recargar la página.
+- **Flag de HMR apagado o modo producción** — `mage-obsidian:frontend:hmr --show`; el flag se ignora fuera de modo developer.
+- **Nginx no proxya a Vite** — regenera y vuelve a pegar el snippet con `--print-nginx`; confirma que el dev server es alcanzable (`--status` / doctor).
+- **Dev server no corriendo** — `mage-obsidian:frontend:dev --status`, luego `--start --theme=…`.
 
 ---
 
-## Ventajas Clave de HMR en Vite
-
-1. **Retroalimentación en Tiempo Real**:  
-   Ve los cambios en tu frontend instantáneamente sin necesidad de recargar el navegador, mejorando drásticamente la velocidad de desarrollo.
-
-2. **Actualizaciones Basadas en WebSocket**:  
-   El uso de conexiones WebSocket por parte de Vite garantiza actualizaciones fluidas, incluyendo inyección de CSS en vivo y cambios en JavaScript.
-
-3. **Gestión Optimizada de Recursos**:  
-   Vite sirve dinámicamente los recursos, evitando recompilaciones completas y reduciendo la sobrecarga del servidor de desarrollo.
-
-4. **Configuración Sencilla**:  
-   Con Nginx y las variables de entorno configuradas correctamente, el flujo de trabajo es fluido.
-
----
-
-## Ejemplo de Flujo de Trabajo
-
-1. **Editar un Archivo CSS**:  
-   Modifica un archivo en `view/frontend/web/css/module.extend.css`. El navegador se actualiza instantáneamente.
-
-2. **Editar un Componente Vue**:  
-   Actualiza un componente en `view/frontend/web/components`. HMR reemplaza dinámicamente el módulo y el cambio aparece inmediatamente.
-
-3. **Observar Resultados**:  
-   Sin recargas de página. Sin intervenciones manuales. Solo actualizaciones instantáneas.
-
----
-
-## Solución de Problemas
-
-1. **HMR No Funciona**:  
-   - Asegúrate de que el servidor de Vite esté ejecutándose en el host y puerto correctos.
-   - Verifica que Nginx esté configurado correctamente para hacer proxy al tráfico de HMR.
-
-2. **Archivos Estáticos No se Actualizan**:  
-   - Comprueba que la configuración `'mage-obsidian/hmr/enabled'` esté en `true`.
-   - Asegúrate de que Magento esté en modo developer.
-
-3. **Problemas con Variables de Entorno**:  
-   - Asegúrate de que las variables de entorno para el host y puerto de Vite estén configuradas correctamente.
-
----
-
-Con HMR configurado, puedes aprovechar al máximo las herramientas modernas de Vite y disfrutar de un proceso de desarrollo más rápido y fluido con **MageObsidian**.
+Con HMR habilitado y el proxy en su lugar, obtienes inyección de CSS y actualización de componentes al instante —sin recargas de página, sin rebuilds manuales.

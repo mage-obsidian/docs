@@ -1,85 +1,54 @@
-# Generating Static Files for Production
+# Building Static Assets
 
-When deploying a Magento site to production, it’s essential to generate optimized static files. **MageObsidian** uses Vite to process and bundle frontend assets, ensuring they are optimized for performance. This section explains how to generate these files for production environments.
+**MageObsidian** uses Vite to process and bundle frontend assets (CSS, JavaScript, Vue components). This page covers building those assets to disk — for local inspection without HMR, for CI, and for production deployment.
 
 ---
 
-## Steps to Generate Static Files
+## Build a Theme to Disk (no HMR)
 
-### **1. Generate Static Files for All Compatible Themes**
-
-To process and generate all static files for all compatible themes, run the following command:
+To build a single theme once to disk — the same artifacts a browser would get, but written to `web/generated` instead of served by the dev server — use the dev command with `--no-watch`:
 
 ```bash
-pnpm --prefix vite run build
+bin/magento mage-obsidian:frontend:dev --start --no-watch --theme=Vendor/theme
 ```
 
-This will:
+This is the inverse of `--start` (HMR): no daemon, no watching — it runs one build and exits. Useful to inspect the real output or to reproduce a CI build locally.
 
-- Process all frontend assets (CSS, JavaScript, Vue components, etc.) using Vite.
-- Generate fully optimized static files ready for production.
+### The underlying engine bin
 
----
-
-### **2. Generate Static Files for a Specific Theme**
-
-If you want to generate static files for a specific theme only, use this command:
+`frontend:dev` wraps the build engine's own bin, which you can also run directly from the `vite/` harness (this is what CI uses):
 
 ```bash
-pnpm --prefix vite run build:theme Vendor/Theme
+# from the component's vite/ directory
+mage-obsidian:build-themes                  # build every compatible theme
+mage-obsidian:build-themes --theme Vendor/theme   # build one
 ```
 
-Replace `Vendor/Theme` with the namespace and name of your desired theme. This is useful for deployments involving multiple themes or incremental updates.
+`frontend:dev` is the Magento-side entry point (it derives the Vite `.env` from your config first); `build-themes` is the lower-level engine command. Either produces the same output.
 
 ---
 
-## Important Notes
+## Production Deployment
 
-1. **Order of Execution**:  
-    Always run the Vite build command before deploying Magento’s static content:
-    ```bash
-    bin/magento setup:static-content:deploy
-    ```
+For production you do **not** run a separate build step. MageObsidian hooks into Magento's standard static-content deploy: its deploy plugins exclude modern themes from the legacy Less/RequireJS pipeline and produce/inject the Vite output as part of the normal command:
 
-2. **Why This Order?**  
+```bash
+bin/magento deploy:mode:set production
+bin/magento setup:static-content:deploy
+```
 
-    - The `vite build` command ensures all theme-related assets are processed and ready.
-    - Magento's `setup:static-content:deploy` will include the Vite-generated assets in the final deployment package.
+The Vite-generated assets land in the deployed static content alongside everything else. Vite handles minification, tree-shaking, and asset hashing for cache-busting automatically.
 
-3. **Optimized Files**:  
-    Vite automatically handles:
-    - Minification of JavaScript and CSS files.
-    - Tree-shaking to include only the necessary code.
-    - Asset hashing for cache busting.
-
-4. **Compatible Themes**:  
-    Ensure that your themes are compatible with **MageObsidian** before running these commands. Themes without the required configuration will not generate files.
+> **Compatible themes only.** Only themes that ship `etc/mage_obsidian_compatibility.xml` (and have been picked up by `mage-obsidian:frontend:config --generate`) go through the Vite pipeline. Themes without it follow Magento's native deploy untouched.
 
 ---
 
-## Example Workflow
+## Benefits
 
-1. **Generate Assets for All Themes**:
-    ```bash
-    pnpm --prefix vite run build
-    ```
-
-2. **Deploy Static Content**:
-    ```bash
-    bin/magento setup:static-content:deploy
-    ```
-
-## Benefits of Using Vite for Static Files
-
-1. **Optimized Performance**:  
-    Vite ensures your assets are minified and optimized for fast loading.
-
-2. **Modern Build Tools**:  
-    Leverage Vite’s cutting-edge bundling capabilities, including ES module support.
-
-3. **Seamless Integration**:  
-    The generated files are automatically compatible with Magento’s static content deployment process.
+- **Optimized output** — minified, tree-shaken, hashed assets ready for production.
+- **Native integration** — production builds happen inside `setup:static-content:deploy`; no extra step in your deploy pipeline.
+- **Coexistence** — legacy themes keep using Magento's native static deploy; only modern themes use Vite.
 
 ---
 
-By following these steps, you can ensure your frontend assets are fully optimized and ready for production, providing a seamless experience for your users.
+See [Development Workflow](../../getting-started/development.md) for the HMR dev server and the full command set, and [HMR](0110-hmr-configuration.md) for live reloading during development.

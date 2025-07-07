@@ -14,6 +14,16 @@
 
 - **Modernización aprovechando la base nativa:** Se apoya en el sistema nativo de Layouts, Bloques y Templates de Magento para modernizar el frontend, integrando lo mejor del ecosistema frontend de Magento con herramientas modernas.
 
+- **Islas Vue interactivas:** Los componentes Vue se montan como **islas independientes con hidratación perezosa** —los componentes por debajo del pliegue no cuestan nada hasta entrar en el viewport, y una página sin islas no envía Vue en absoluto. Consulta [Islas Vue](../components/modules/0105-vue-islands.md).
+
+- **Internacionalización integrada:** Traduce frases en los componentes con `$t('…')` contra el `js-translation.json` nativo de Magento, con un comando recolector para las fuentes `.vue`. Consulta [Internacionalización](../components/modules/0107-i18n.md).
+
+- **Datos estructurados integrados (JSON-LD):** Emite automáticamente markup de schema.org (Organization, WebSite, Breadcrumb, Product) para rich results —cacheable, sin JavaScript adicional, con un helper `json_ld` para tipos personalizados. Consulta [Datos estructurados](../components/modules/0130-structured-data.md).
+
+- **Motor Twig opcional, incluido por defecto:** Un motor de plantillas [Twig](../twig/index.md) viene junto al `.phtml` nativo —totalmente compatible, nunca obligatorio (se deshabilita con un comando). Añade auto-escaping de HTML y herencia de plantillas limpia para quien la quiera.
+
+- **Generadores de scaffolding:** `bin/magento mage-obsidian:generate:{module,theme,component}` crean módulos, temas y componentes Vue ya cableados para el frontend. Consulta [Generadores](../getting-started/scaffolding.md).
+
 - **Experiencia amigable para desarrolladores:** Diseñado para ser intuitivo y agradable, **{{ config.extra.components_name }}** promueve la creatividad y simplifica el uso de herramientas ampliamente adoptadas en la industria, haciendo del desarrollo frontend una tarea mucho más placentera.
 
 - **Soporte multi-tema:** Compatible con una estructura que permite gestionar múltiples temas derivados, evitando la duplicidad de código y lógica. Esto facilita el mantenimiento de diversos diseños específicos para cada tienda o marca dentro de un mismo ecosistema.

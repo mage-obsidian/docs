@@ -15,6 +15,9 @@ The **{{ config.site_name }}** project emerges as a disruptive proposal to revol
   <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">
      <img src="/assets/tailwind-logo.png" alt="TailwindCSS" style="max-width: 100%; height: auto;" />
   </a>
+  <a href="https://twig.symfony.com" target="_blank" rel="noopener noreferrer">
+     <img src="/assets/twig-logo.png" alt="Twig" style="max-width: 100%; height: auto;" />
+  </a>
 </div>
 
 **{{ config.extra.components_name }}** aims to simplify and modernize Magento's frontend development with an innovative and open-source alternative. This project introduces two key aspects:
@@ -28,6 +31,8 @@ The **{{ config.site_name }}** project emerges as a disruptive proposal to revol
     [Learn more about {{ config.extra.theme_name }}](../theme).
 
 One of the main strengths of **{{ config.extra.components_name }}** is that **it does not follow a PWA approach**. Instead, it leverages Magento's existing system of layouts, blocks, and templates, preserving its native architecture. This approach allows developers to take advantage of modern tools and current standards without compromising compatibility with existing modules and functionalities, offering a smoother and more efficient development experience.
+
+On top of that native foundation, **{{ config.extra.components_name }}** layers in modern building blocks: Vue components mount as **lazy-hydrated [islands](../components/modules/0105-vue-islands.md)**, a built-in **[i18n](../components/modules/0107-i18n.md)** layer translates them with Magento's native dictionaries, and an optional **[Twig engine](../twig/index.md)** — included by default and fully compatible with `.phtml` — is available for those who want HTML auto-escaping and clean template inheritance.
 
 Additionally, although the use of **NPM** packages has always been possible in Magento, **{{ config.extra.components_name }}** makes it simpler and more straightforward. Developers can now elegantly leverage the vast ecosystem of tools and libraries available, aligning Magento's frontend with global web development best practices.
 

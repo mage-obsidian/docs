@@ -1,16 +1,18 @@
 # Configuración de Tailwind
 
-En **{{ config.extra.components_name }}**, cada módulo puede definir su propia configuración de Tailwind CSS bajo la clave `tailwind` en el archivo de configuración del módulo (`module.config.cjs`). Esta configuración sigue la estructura y sintaxis de Tailwind CSS versión 3.
+**{{ config.extra.components_name }}** usa **Tailwind CSS 4**, que es **CSS-first**: los design tokens de un tema se declaran en su `web/css/theme.source.css` (`@import "tailwindcss";` y luego `@theme { … }`), no en una configuración JavaScript. Consulta [Configuración de CSS](../themes/0030-css-configuration.md) para el punto de entrada del tema.
 
-> Para más detalles sobre cómo estructurar una configuración de Tailwind CSS, consulta la documentación oficial:  
-[Configuración de Tailwind CSS](https://tailwindcss.com/docs/configuration)
+Un módulo todavía puede incluir un objeto `tailwind` bajo la clave `tailwind` de su `module.config.js` para opciones de Tailwind a nivel de módulo; esos objetos se fusionan entre módulos durante el build.
+
+> Para la configuración de Tailwind 4 (el bloque `@theme`, personalización CSS-first), consulta la documentación oficial:  
+[Tailwind CSS — Theme variables](https://tailwindcss.com/docs/theme)
 
 ## Ejemplo de Configuración
 
 Un ejemplo básico de un archivo de configuración de módulo con opciones para Tailwind CSS:
 
 ```javascript
-module.exports = {
+export default {
     tailwind: {
         theme: {
             extend: {} // Extiende las configuraciones predeterminadas aquí

@@ -37,7 +37,18 @@ $themeFile = $block->resolvePathByName('Theme::custom-component');
 ---
 
 ### 2. Rendering Vue Components
-The `renderVueComponent()` method generates the necessary HTML and JavaScript to load and mount a Vue component dynamically.
+The `renderVueComponent()` method mounts a Vue component as an **island**. Instead of an inline `<script>` per call, it emits a small, inert marker that a single page-level bootstrap discovers and mounts. By default the island hydrates **lazily** — only when it scrolls into the viewport — so below-the-fold components cost nothing until they are actually needed.
+
+**Signature**
+```php
+$block->renderVueComponent(string $componentName, array $props = [], bool $eager = false): string;
+```
+
+| Parameter | Description |
+|---|---|
+| `$componentName` | Component in `Vendor_Module::Component` notation (the `components/` prefix is implied). |
+| `$props` | Data passed to the component as Vue props. Encoded as attribute-safe JSON; an un-encodable value throws instead of emitting broken markup. |
+| `$eager` | `false` (default) hydrates when the marker becomes visible; `true` mounts immediately — use it for above-the-fold components. |
 
 **Example: Rendering a Vue Component in a `.phtml` Template**
 ```php
@@ -50,25 +61,22 @@ The `renderVueComponent()` method generates the necessary HTML and JavaScript to
 ) ?>
 ```
 
-The above code generates:
-
-- A `<div>` with a unique ID to host the Vue component.
-- A `<script>` block to load the Vue library, import the component, and mount it dynamically.
+The above emits a single marker — no inline mount script:
 
 **Rendered Output:**
 ```html
-<div id="vue-component-4b3403665fea6"></div>
-<script type="module">
-    import { createApp } from 'https://magento.test/static/version1733144244/frontend/Vendor/theme/en_US/generated/lib/vue.js';
-    import Component from 'https://magento.test/static/version1733144244/frontend/Vendor/theme/en_US/generated/Vendor_Module/components/NavBar.js';
-
-    try {
-        createApp(Component, {"title":"Welcome","userId":123}).mount('#vue-component-4b3403665fea6');
-    } catch (error) {
-        console.error('Failed to mount Vue component:', error);
-    }
-</script>
+<div data-mage-island
+     data-component="https://magento.test/static/version1733144244/frontend/Vendor/theme/en_US/generated/Vendor_Module/components/NavBar.js"
+     data-props="{&quot;title&quot;:&quot;Welcome&quot;,&quot;userId&quot;:123}"
+     data-strategy="visible"></div>
 ```
+
+For an above-the-fold component that should not wait for the viewport, opt into eager mounting:
+```php
+<?= $block->renderVueComponent('Vendor_Module::Hero', [], true) ?>
+```
+
+> **Note:** The Vue runtime and the i18n plugin load **once per page** and are shared across every island; a page with no islands never loads Vue at all. See [Vue Islands](0105-vue-islands.md) for the full architecture and the `visible`/`eager` strategies.
 
 ---
 
@@ -150,4 +158,4 @@ Here’s a complete example demonstrating multiple use cases:
 ## Next Steps
 
 - Learn more about overriding components and scripts in the **Themes** section.
-- Explore how to integrate advanced features like lazy loading and conditional imports.
+- Read [Vue Islands](0105-vue-islands.md) to understand lazy hydration and the `visible`/`eager` strategies.

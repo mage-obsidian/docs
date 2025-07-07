@@ -41,12 +41,14 @@ bin/magento setup:upgrade
 Run the following command to generate the initial configuration for the frontend components:
 
 ```bash
-bin/magento obsidian:frontend:config --generate
+bin/magento mage-obsidian:frontend:config --generate
 ```
 
 ### 5. Ready to develop
 
 The components are configured and ready to be used in your project! You can now start developing your theme with the modern tools offered by **{{ config.extra.components_name }}**.
+
+> **Note:** The install includes the optional [Twig engine](../twig/index.md) by default (a `.twig` engine alongside `.phtml`). It changes nothing about your existing `.phtml` templates; if you don't want it, [disable it](../twig/index.md#disabling-twig) with `bin/magento module:disable MageObsidian_ModernFrontendTwig`.
 
 ## More Information
 

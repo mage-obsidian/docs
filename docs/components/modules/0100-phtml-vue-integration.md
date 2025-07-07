@@ -2,6 +2,8 @@
 
 This section demonstrates how to integrate Vue.js logic directly within a `.phtml` file. It also showcases how PHP-rendered data can work seamlessly with Vue.js interactivity without creating a separate Single File Component (SFC).
 
+> **Tip:** This inline pattern is handy for a tiny, one-off enhancement on a server-rendered page. For anything you would build as a component, prefer [`renderVueComponent`](0090-phtml-configuration.md#2-rendering-vue-components), which mounts it as a lazy-hydrated [Vue island](0105-vue-islands.md): the Vue runtime is shared across the page instead of being imported again by every inline block.
+
 ---
 
 ## Example: Interactive Greeting

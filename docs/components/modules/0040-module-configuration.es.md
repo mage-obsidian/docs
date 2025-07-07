@@ -3,10 +3,10 @@
 En **{{ config.extra.components_name }}**, cada módulo compatible puede incluir configuraciones adicionales creando un archivo de configuración en:
 
 ```
-view/frontend/web/module.config.cjs
+view/frontend/web/module.config.js
 ```
 
-Este archivo sigue el formato **CJS (CommonJS)** por razones de compatibilidad y exporta un objeto de configuración que es leído por **{{ config.extra.components_name }}**.
+Este archivo es un **módulo ESM (ECMAScript)** que hace `export default` de un objeto de configuración leído por **{{ config.extra.components_name }}**.
 
 ## ¿Cómo Funciona?
 
@@ -17,10 +17,10 @@ Este archivo sigue el formato **CJS (CommonJS)** por razones de compatibilidad y
     [Configurar el orden de carga de componentes](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 
 2. **Ejemplo de Archivo de Configuración**  
-    Un ejemplo básico de un archivo `module.config.cjs` sería:
+    Un ejemplo básico de un archivo `module.config.js` sería:
 
     ```javascript
-    module.exports = {
+    export default {
          tailwind: {
               // Configuración de Tailwind CSS
          }
@@ -33,7 +33,7 @@ Este archivo sigue el formato **CJS (CommonJS)** por razones de compatibilidad y
     Las configuraciones de los módulos pueden ser sobrescritas directamente en los temas creando un archivo de configuración correspondiente. Por ejemplo:
 
     ```
-    app/design/frontend/Vendor/Theme/Vendor_Module/web/module.config.cjs
+    app/design/frontend/Vendor/Theme/Vendor_Module/web/module.config.js
     ```
 
     - Cuando este archivo existe, **reemplaza por completo** la configuración original proporcionada por el módulo.
@@ -51,6 +51,6 @@ Este archivo sigue el formato **CJS (CommonJS)** por razones de compatibilidad y
 
 ## Notas Clave
 
-- El formato del archivo es estrictamente **CJS** por compatibilidad entre entornos.
+- El archivo es un módulo **ESM** (`export default`), coherente con el engine de build ESM-only.
 - Las configuraciones se cargan según la secuencia definida en `module.xml`. Para obtener más información, consulta la [documentación oficial de Magento](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 - Las configuraciones sobrescritas en los temas reemplazan completamente las configuraciones originales del módulo, sin combinarlas ni extenderlas.

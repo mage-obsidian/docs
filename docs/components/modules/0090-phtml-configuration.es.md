@@ -38,7 +38,18 @@ $themeFile = $block->resolvePathByName('Theme::custom-component');
 
 ### 2. Renderización de Componentes Vue
 
-El método `renderVueComponent()` genera el HTML y JavaScript necesarios para cargar y montar un componente Vue dinámicamente.
+El método `renderVueComponent()` monta un componente Vue como una **isla**. En lugar de un `<script>` en línea por cada llamada, emite un marcador pequeño e inerte que un único bootstrap a nivel de página descubre y monta. Por defecto la isla se hidrata de forma **perezosa** —solo cuando entra en el viewport—, así que los componentes por debajo del pliegue no cuestan nada hasta que realmente se necesitan.
+
+**Firma**
+```php
+$block->renderVueComponent(string $componentName, array $props = [], bool $eager = false): string;
+```
+
+| Parámetro | Descripción |
+|---|---|
+| `$componentName` | Componente en notación `Vendor_Module::Component` (el prefijo `components/` está implícito). |
+| `$props` | Datos pasados al componente como props de Vue. Se codifican como JSON seguro para atributo; un valor no codificable lanza una excepción en vez de emitir markup roto. |
+| `$eager` | `false` (por defecto) hidrata cuando el marcador se vuelve visible; `true` monta de inmediato — úsalo para componentes por encima del pliegue. |
 
 **Ejemplo: Renderizar un Componente Vue en una Plantilla `.phtml`**
 ```php
@@ -51,25 +62,22 @@ El método `renderVueComponent()` genera el HTML y JavaScript necesarios para ca
 ) ?>
 ```
 
-Esto genera:
-
-- Un `<div>` con un ID único para alojar el componente Vue.
-- Un bloque `<script>` para cargar la biblioteca Vue, importar el componente y montarlo dinámicamente.
+Esto emite un único marcador, sin script de montaje en línea:
 
 **Salida Generada:**
 ```html
-<div id="vue-component-4b3403665fea6"></div>
-<script type="module">
-    import { createApp } from 'https://magento.test/static/version1733144244/frontend/Vendor/theme/en_US/generated/lib/vue.js';
-    import Component from 'https://magento.test/static/version1733144244/frontend/Vendor/theme/en_US/generated/Vendor_Module/components/NavBar.js';
-
-    try {
-        createApp(Component, {"title":"Bienvenido","userId":123}).mount('#vue-component-4b3403665fea6');
-    } catch (error) {
-        console.error('Failed to mount Vue component:', error);
-    }
-</script>
+<div data-mage-island
+     data-component="https://magento.test/static/version1733144244/frontend/Vendor/theme/en_US/generated/Vendor_Module/components/NavBar.js"
+     data-props="{&quot;title&quot;:&quot;Bienvenido&quot;,&quot;userId&quot;:123}"
+     data-strategy="visible"></div>
 ```
+
+Para un componente por encima del pliegue que no deba esperar al viewport, activa el montaje eager:
+```php
+<?= $block->renderVueComponent('Vendor_Module::Hero', [], true) ?>
+```
+
+> **Nota:** El runtime de Vue y el plugin de i18n se cargan **una sola vez por página** y se comparten entre todas las islas; una página sin islas no carga Vue en absoluto. Consulta [Islas Vue](0105-vue-islands.md) para conocer la arquitectura completa y las estrategias `visible`/`eager`.
 
 ---
 
@@ -153,4 +161,4 @@ Aquí tienes un ejemplo completo que demuestra múltiples casos de uso:
 ## Próximos Pasos
 
 - Aprende más sobre cómo sobrescribir componentes y scripts en la sección **Temas**.
-- Explora cómo integrar funciones avanzadas como carga diferida e importaciones condicionales.
+- Lee [Islas Vue](0105-vue-islands.md) para entender la hidratación perezosa y las estrategias `visible`/`eager`.

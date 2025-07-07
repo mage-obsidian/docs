@@ -14,6 +14,16 @@
 
 - **Modernization leveraging native foundations:** Builds upon Magento's native system of Layouts, Blocks, and Templates to modernize the frontend, integrating the best of Magento's frontend ecosystem with modern tools.
 
+- **Interactive Vue islands:** Vue components mount as independent, **lazy-hydrated islands** — below-the-fold components cost nothing until they enter the viewport, and a page with no islands ships no Vue at all. See [Vue Islands](../components/modules/0105-vue-islands.md).
+
+- **Built-in internationalization:** Translate phrases in components with `$t('…')` against Magento's native `js-translation.json`, with a collector command for the `.vue` sources. See [Internationalization](../components/modules/0107-i18n.md).
+
+- **Built-in structured data (JSON-LD):** Auto-emits schema.org markup (Organization, WebSite, Breadcrumb, Product) for rich results — cacheable, no extra JavaScript, with a `json_ld` helper for custom types. See [Structured Data](../components/modules/0130-structured-data.md).
+
+- **Optional Twig engine, included by default:** A [Twig](../twig/index.md) template engine ships alongside the native `.phtml` — fully compatible, never mandatory (disable it with one command). Adds HTML auto-escaping and clean template inheritance for those who want them.
+
+- **Scaffolding generators:** `bin/magento mage-obsidian:generate:{module,theme,component}` create modules, themes, and Vue components already wired for the frontend. See [Scaffolding](../getting-started/scaffolding.md).
+
 - **Developer-friendly experience:** Designed to be intuitive and enjoyable, **{{ config.extra.components_name }}** promotes creativity and simplifies the use of widely adopted industry tools, making frontend development a much more pleasant task.
 
 - **Multi-theme support:** Compatible with a structure that allows managing multiple derivative themes, avoiding code and logic duplication. This simplifies the maintenance of diverse designs tailored to each store or brand within the same ecosystem.

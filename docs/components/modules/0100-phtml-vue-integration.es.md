@@ -2,6 +2,8 @@
 
 Esta sección demuestra cómo integrar lógica de Vue.js directamente en un archivo `.phtml`. También muestra cómo los datos generados por PHP pueden trabajar sin problemas con la interactividad de Vue.js sin necesidad de crear un componente Single File Component (SFC).
 
+> **Consejo:** Este patrón en línea es útil para una mejora puntual y pequeña sobre una página renderizada en el servidor. Para cualquier cosa que construirías como componente, prefiere [`renderVueComponent`](0090-phtml-configuration.md#2-renderizacion-de-componentes-vue), que lo monta como una [isla Vue](0105-vue-islands.md) de hidratación perezosa: el runtime de Vue se comparte en toda la página en lugar de importarse de nuevo en cada bloque en línea.
+
 ---
 
 ## Ejemplo: Saludo Interactivo

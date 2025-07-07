@@ -3,10 +3,10 @@
 In **{{ config.extra.components_name }}**, each compatible module can include additional configurations by creating a configuration file at:
 
 ```
-view/frontend/web/module.config.cjs
+view/frontend/web/module.config.js
 ```
 
-This file follows the **CJS (CommonJS)** format for compatibility reasons and exports a configuration object that is read by **{{ config.extra.components_name }}**.
+This file is an **ESM (ECMAScript module)** that `export default`s a configuration object read by **{{ config.extra.components_name }}**.
 
 ## How It Works
 
@@ -17,10 +17,10 @@ This file follows the **CJS (CommonJS)** format for compatibility reasons and ex
     [Configuring Component Load Order](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 
 2. **Example Configuration File**  
-    A basic example of a `module.config.cjs` file might look like this:
+    A basic example of a `module.config.js` file might look like this:
 
     ```javascript
-    module.exports = {
+    export default {
          tailwind: {
               // Tailwind CSS configuration
          }
@@ -33,7 +33,7 @@ This file follows the **CJS (CommonJS)** format for compatibility reasons and ex
     Module configurations can be overridden directly in themes by creating a corresponding configuration file. For example:
 
     ```
-    app/design/frontend/Vendor/Theme/Vendor_Module/web/module.config.cjs
+    app/design/frontend/Vendor/Theme/Vendor_Module/web/module.config.js
     ```
 
     - When this file exists, it **completely replaces** the original configuration provided by the module.
@@ -51,6 +51,6 @@ This file follows the **CJS (CommonJS)** format for compatibility reasons and ex
 
 ## Key Notes
 
-- The file format is strictly **CJS** for compatibility across environments.
+- The file is an **ESM** module (`export default`), consistent with the ESM-only build engine.
 - Configurations are loaded in the sequence defined in `module.xml`. For detailed guidance, refer to the [official Magento documentation](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 - Overriding configurations in themes fully replaces the module's original settings, without merging or extending them.

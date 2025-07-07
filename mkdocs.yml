@@ -59,6 +59,10 @@ plugins:
             Getting started: Primeros pasos
             Requirements: Requerimientos
             Installation: Instalación
+            Scaffolding: Generadores
+            Development: Desarrollo
+            Twig Engine: Motor Twig
+            Helpers & Filters: Helpers y Filtros
             Configuration: Configuración
             How Contributing?: ¿Cómo contribuir?
             Components: Componentes
@@ -78,6 +82,8 @@ nav:
   - Getting started:
     - Requirements: getting-started/requirements.md
     - Installation: getting-started/installation.md
+    - Scaffolding: getting-started/scaffolding.md
+    - Development: getting-started/development.md
   - Components:
     - Overview: components/overview.md
     - Installation: components/installation.md
@@ -87,6 +93,9 @@ nav:
       - ... | flat | components/themes/*.md
   - Theme Overview:
     - theme/index.md
+  - Twig Engine:
+    - Overview: twig/index.md
+    - Helpers & Filters: twig/helpers.md
   # - Reference:
   #   - reference/index.md
   - How Contributing?:

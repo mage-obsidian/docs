@@ -1,16 +1,18 @@
 # Tailwind Configuration
 
-In **{{ config.extra.components_name }}**, each module can define its own Tailwind CSS configuration under the `tailwind` key in the module configuration file (`module.config.cjs`). This configuration follows the structure and syntax of Tailwind CSS version 3.
+**{{ config.extra.components_name }}** uses **Tailwind CSS 4**, which is **CSS-first**: a theme's design tokens are declared in its `web/css/theme.source.css` (`@import "tailwindcss";` then `@theme { … }`), not in a JavaScript config. See [CSS Configuration](../themes/0030-css-configuration.md) for the theme entry point.
 
-> For details on how to structure a Tailwind CSS configuration, refer to the official documentation:  
-[Tailwind CSS Configuration](https://tailwindcss.com/docs/configuration)
+A module can still ship a `tailwind` object under the `tailwind` key of its `module.config.js` for module-level Tailwind options; these objects are merged across modules during the build.
+
+> For Tailwind 4 configuration (the `@theme` block, CSS-first customization), refer to the official documentation:  
+[Tailwind CSS — Theme variables](https://tailwindcss.com/docs/theme)
 
 ## Example Configuration
 
 A basic example of a module configuration file with Tailwind CSS options:
 
 ```javascript
-module.exports = {
+export default {
     tailwind: {
         theme: {
             extend: {} // Extend default theme settings here

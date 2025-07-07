@@ -1,91 +1,54 @@
-# Generación de Archivos Estáticos para Producción
+# Generación de Archivos Estáticos
 
-Al desplegar un sitio Magento en producción, es fundamental generar archivos estáticos optimizados. **MageObsidian** utiliza Vite para procesar y empaquetar los recursos del frontend, asegurando un rendimiento óptimo. Esta sección explica cómo generar estos archivos para entornos de producción.
+**MageObsidian** utiliza Vite para procesar y empaquetar los recursos del frontend (CSS, JavaScript, componentes Vue). Esta página cubre cómo generar esos recursos a disco —para inspección local sin HMR, para CI y para el despliegue a producción.
 
 ---
 
-## Pasos para Generar Archivos Estáticos
+## Build de un Tema a Disco (sin HMR)
 
-### **1. Generar Archivos Estáticos para Todos los Temas Compatibles**
-
-Para procesar y generar todos los archivos estáticos para todos los temas compatibles, ejecuta el siguiente comando:
+Para construir un único tema una vez a disco —los mismos artefactos que recibiría un navegador, pero escritos en `web/generated` en lugar de servidos por el dev server— usa el comando de dev con `--no-watch`:
 
 ```bash
-pnpm --prefix vite run build
+bin/magento mage-obsidian:frontend:dev --start --no-watch --theme=Vendor/theme
 ```
 
-Este comando:
+Es el inverso de `--start` (HMR): sin daemon, sin watch —corre un build y termina. Útil para inspeccionar la salida real o reproducir un build de CI en local.
 
-- Procesa todos los recursos del frontend (CSS, JavaScript, componentes Vue, etc.) usando Vite.
-- Genera archivos estáticos completamente optimizados y listos para producción.
+### El bin del engine por debajo
 
----
-
-### **2. Generar Archivos Estáticos para un Tema Específico**
-
-Si deseas generar archivos estáticos para un solo tema, utiliza este comando:
+`frontend:dev` envuelve el bin propio del engine de build, que también puedes correr directamente desde el harness `vite/` (es lo que usa CI):
 
 ```bash
-pnpm --prefix vite run build:theme Vendor/Theme
+# desde el directorio vite/ del componente
+mage-obsidian:build-themes                  # construir todos los temas compatibles
+mage-obsidian:build-themes --theme Vendor/theme   # construir uno
 ```
 
-Reemplaza `Vendor/Theme` con el espacio de nombres y el nombre de tu tema deseado. Esto es útil para despliegues que involucren múltiples temas o actualizaciones incrementales.
+`frontend:dev` es el punto de entrada del lado Magento (primero deriva el `.env` de Vite desde tu config); `build-themes` es el comando de bajo nivel del engine. Ambos producen la misma salida.
 
 ---
 
-## Notas Importantes
+## Despliegue a Producción
 
-1. **Orden de Ejecución**:  
-   Siempre ejecuta el comando de compilación de Vite antes de desplegar el contenido estático de Magento:
-   ```bash
-   bin/magento setup:static-content:deploy
-   ```
+Para producción **no** corres un paso de build aparte. MageObsidian se engancha al deploy de contenido estático estándar de Magento: sus plugins de deploy excluyen los temas modernos del pipeline legacy de Less/RequireJS y producen/inyectan la salida de Vite como parte del comando normal:
 
-2. **¿Por Qué Este Orden?**  
-   - El comando `vite build` asegura que todos los recursos relacionados con los temas estén procesados y listos.  
-   - El comando `setup:static-content:deploy` de Magento incluirá los archivos generados por Vite en el paquete final de despliegue.
+```bash
+bin/magento deploy:mode:set production
+bin/magento setup:static-content:deploy
+```
 
-3. **Archivos Optimizados**:  
-   Vite se encarga automáticamente de:
-   - Minificar los archivos JavaScript y CSS.
-   - Aplicar tree-shaking para incluir solo el código necesario.
-   - Generar hashes para el versionado de los recursos y evitar problemas de caché.
+Los assets generados por Vite quedan en el contenido estático desplegado junto a todo lo demás. Vite se encarga de la minificación, el tree-shaking y el hashing de assets para cache-busting automáticamente.
 
-4. **Temas Compatibles**:  
-   Asegúrate de que tus temas sean compatibles con **MageObsidian** antes de ejecutar estos comandos. Los temas sin la configuración requerida no generarán archivos.
+> **Solo temas compatibles.** Solo los temas que entregan `etc/mage_obsidian_compatibility.xml` (y han sido detectados por `mage-obsidian:frontend:config --generate`) pasan por el pipeline de Vite. Los temas sin él siguen el deploy nativo de Magento intacto.
 
 ---
 
-## Ejemplo de Flujo de Trabajo
+## Beneficios
 
-1. **Generar Recursos para Todos los Temas**:
-   ```bash
-   pnpm --prefix vite run build
-   ```
-
-2. **Desplegar Contenido Estático**:
-   ```bash
-   bin/magento setup:static-content:deploy
-   ```
-
-3. **Limpiar Caché** (si es necesario):
-   ```bash
-   bin/magento cache:flush
-   ```
+- **Salida optimizada** — assets minificados, con tree-shaking y hash, listos para producción.
+- **Integración nativa** — los builds de producción ocurren dentro de `setup:static-content:deploy`; sin paso extra en tu pipeline de deploy.
+- **Coexistencia** — los temas legacy siguen usando el deploy estático nativo de Magento; solo los temas modernos usan Vite.
 
 ---
 
-## Beneficios de Usar Vite para Archivos Estáticos
-
-1. **Rendimiento Optimizado**:  
-   Vite asegura que tus recursos estén minificados y optimizados para una carga rápida.
-
-2. **Herramientas Modernas**:  
-   Aprovecha las capacidades de empaquetado de última generación de Vite, incluido el soporte para módulos ES.
-
-3. **Integración Sencilla**:  
-   Los archivos generados son automáticamente compatibles con el proceso de despliegue de contenido estático de Magento.
-
----
-
-Siguiendo estos pasos, puedes asegurarte de que los recursos de tu frontend estén completamente optimizados y listos para producción, proporcionando una experiencia fluida a tus usuarios.
+Consulta [Flujo de Desarrollo](../../getting-started/development.md) para el dev server con HMR y el conjunto completo de comandos, y [HMR](0110-hmr-configuration.md) para la recarga en vivo durante el desarrollo.
