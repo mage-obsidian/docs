@@ -18,10 +18,11 @@ El bloque que renderiza se lee automáticamente del contexto de Twig, así que l
 | `component_path(name)` | `resolveComponentPath()` | URL resuelta de un componente por su nombre `Vendor::Component`. |
 | `view_file_url(file_id, params = {})` | `getViewFileUrl()` | URL de un archivo de vista. |
 | `json_ld(type, data = {})` | `renderJsonLd()` | Un `<script>` [JSON-LD de schema.org](../components/modules/0130-structured-data.md) para un tipo personalizado (HTML seguro). |
+| `image(src, options = {})` | `renderImage()` | Un [`<img>`/`<picture>`](../components/modules/0140-images.md) amigable con CWV (HTML seguro). |
 
-Los helpers que emiten markup (`render_vue`, `child_html`, `hero_icon`, `json_ld`) están marcados como seguros, así que el auto-escaping de Twig deja su HTML intacto. Los helpers de URL devuelven cadenas planas y se auto-escapan como cualquier valor.
+Los helpers que emiten markup (`render_vue`, `child_html`, `hero_icon`, `json_ld`, `image`) están marcados como seguros, así que el auto-escaping de Twig deja su HTML intacto. Los helpers de URL devuelven cadenas planas y se auto-escapan como cualquier valor.
 
-> **Nota:** `render_vue`, `hero_icon`, `vite_url`, `component_path` y `json_ld` requieren que el bloque que renderiza extienda `MageObsidian\ModernFrontend\Block\Template`. Si un `.twig` lo renderiza un bloque no relacionado, el helper lanza un error accionable que nombra el método ausente. `child_html` y `view_file_url` funcionan en cualquier bloque de Magento.
+> **Nota:** `render_vue`, `hero_icon`, `vite_url`, `component_path`, `json_ld` e `image` requieren que el bloque que renderiza extienda `MageObsidian\ModernFrontend\Block\Template`. Si un `.twig` lo renderiza un bloque no relacionado, el helper lanza un error accionable que nombra el método ausente. `child_html` y `view_file_url` funcionan en cualquier bloque de Magento.
 
 ### Ejemplos
 

@@ -18,10 +18,11 @@ The rendering block is read from the Twig context automatically, so nested and r
 | `component_path(name)` | `resolveComponentPath()` | Resolved URL of a component by its `Vendor::Component` name. |
 | `view_file_url(file_id, params = {})` | `getViewFileUrl()` | URL of a view file. |
 | `json_ld(type, data = {})` | `renderJsonLd()` | A [schema.org JSON-LD](../components/modules/0130-structured-data.md) `<script>` for a custom type (safe HTML). |
+| `image(src, options = {})` | `renderImage()` | A CWV-friendly [`<img>`/`<picture>`](../components/modules/0140-images.md) (safe HTML). |
 
-The markup-emitting helpers (`render_vue`, `child_html`, `hero_icon`, `json_ld`) are flagged safe, so Twig's auto-escaping leaves their HTML intact. The URL helpers return plain strings and are auto-escaped like any value.
+The markup-emitting helpers (`render_vue`, `child_html`, `hero_icon`, `json_ld`, `image`) are flagged safe, so Twig's auto-escaping leaves their HTML intact. The URL helpers return plain strings and are auto-escaped like any value.
 
-> **Note:** `render_vue`, `hero_icon`, `vite_url`, `component_path` and `json_ld` require the rendering block to extend `MageObsidian\ModernFrontend\Block\Template`. If a `.twig` is rendered by an unrelated block, the helper raises an actionable error naming the missing method. `child_html` and `view_file_url` work on every Magento block.
+> **Note:** `render_vue`, `hero_icon`, `vite_url`, `component_path`, `json_ld` and `image` require the rendering block to extend `MageObsidian\ModernFrontend\Block\Template`. If a `.twig` is rendered by an unrelated block, the helper raises an actionable error naming the missing method. `child_html` and `view_file_url` work on every Magento block.
 
 ### Examples
 
@@ -41,6 +42,9 @@ The markup-emitting helpers (`render_vue`, `child_html`, `hero_icon`, `json_ld`)
 
 {# Emit a custom schema.org type (@context/@type added for you) #}
 {{ json_ld('FAQPage', { mainEntity: [{ '@type': 'Question', name: 'Q?', acceptedAnswer: { '@type': 'Answer', text: 'A.' } }] }) }}
+
+{# CWV-friendly image; width/height auto-detected for Vendor::path assets #}
+{{ image('Acme_Catalog::images/hero.jpg', { alt: 'Hero', fetchpriority: 'high' }) }}
 ```
 
 > `render_vue` mounts the component with the default `visible` (lazy) strategy. Eager mounting is a `.phtml` concern; if you need an above-the-fold island, render it from a `.phtml` with `$block->renderVueComponent($name, $props, true)`.

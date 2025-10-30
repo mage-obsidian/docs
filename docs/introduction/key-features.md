@@ -20,6 +20,8 @@
 
 - **Built-in structured data (JSON-LD):** Auto-emits schema.org markup (Organization, WebSite, Breadcrumb, Product) for rich results — cacheable, no extra JavaScript, with a `json_ld` helper for custom types. See [Structured Data](../components/modules/0130-structured-data.md).
 
+- **Core-Web-Vitals image helper:** An `image` helper renders `<img>`/`<picture>` with `width`/`height` (auto-detected for assets) to kill CLS, plus `loading`/`fetchpriority` to prioritize the LCP image. See [Responsive Images](../components/modules/0140-images.md).
+
 - **Optional Twig engine, included by default:** A [Twig](../twig/index.md) template engine ships alongside the native `.phtml` — fully compatible, never mandatory (disable it with one command). Adds HTML auto-escaping and clean template inheritance for those who want them.
 
 - **Scaffolding generators:** `bin/magento mage-obsidian:generate:{module,theme,component}` create modules, themes, and Vue components already wired for the frontend. See [Scaffolding](../getting-started/scaffolding.md).
