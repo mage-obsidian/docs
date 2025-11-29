@@ -22,6 +22,8 @@
 
 - **Helper de imágenes para Core Web Vitals:** Un helper `image` renderiza `<img>`/`<picture>` con `width`/`height` (auto-detectados en assets) para eliminar el CLS, más `loading`/`fetchpriority` para priorizar la imagen LCP. Consulta [Imágenes responsivas](../components/modules/0140-images.md).
 
+- **Estado compartido opt-in (Pinia):** Las islas pueden compartir estado reactivo mediante una única Pinia a nivel de página —cargada solo por los componentes que importan un store (ninguno para el resto)— con un puente `useCustomerData` listo que espeja las secciones de carrito/cliente de Magento, compatible con FPC. Consulta [Estado compartido](../components/modules/0150-state-management.md).
+
 - **Motor Twig opcional, incluido por defecto:** Un motor de plantillas [Twig](../twig/index.md) viene junto al `.phtml` nativo —totalmente compatible, nunca obligatorio (se deshabilita con un comando). Añade auto-escaping de HTML y herencia de plantillas limpia para quien la quiera.
 
 - **Generadores de scaffolding:** `bin/magento mage-obsidian:generate:{module,theme,component}` crean módulos, temas y componentes Vue ya cableados para el frontend. Consulta [Generadores](../getting-started/scaffolding.md).

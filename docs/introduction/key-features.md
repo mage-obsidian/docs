@@ -22,6 +22,8 @@
 
 - **Core-Web-Vitals image helper:** An `image` helper renders `<img>`/`<picture>` with `width`/`height` (auto-detected for assets) to kill CLS, plus `loading`/`fetchpriority` to prioritize the LCP image. See [Responsive Images](../components/modules/0140-images.md).
 
+- **Opt-in shared state (Pinia):** Islands can share reactive state through one page-wide Pinia — loaded only by components that import a store (none for the rest) — with a ready `useCustomerData` bridge mirroring Magento's cart/customer sections, FPC-safe. See [Shared State](../components/modules/0150-state-management.md).
+
 - **Optional Twig engine, included by default:** A [Twig](../twig/index.md) template engine ships alongside the native `.phtml` — fully compatible, never mandatory (disable it with one command). Adds HTML auto-escaping and clean template inheritance for those who want them.
 
 - **Scaffolding generators:** `bin/magento mage-obsidian:generate:{module,theme,component}` create modules, themes, and Vue components already wired for the frontend. See [Scaffolding](../getting-started/scaffolding.md).
