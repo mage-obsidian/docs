@@ -1,7 +1,7 @@
 {% raw %}
 # Estado compartido (Pinia)
 
-Cada isla Vue es su propia app, pero pueden compartir estado reactivo a través de una única instancia de [Pinia](https://pinia.vuejs.org) a nivel de página. Esto es **opt-in por diseño**: un componente que no necesita estado global no carga nada —el bootstrap de islas nunca instala Pinia, así que las páginas y los componentes sin store no envían Pinia en absoluto.
+Cada isla Vue es su propia app, pero pueden compartir estado reactivo a través de una única instancia de [Pinia](https://pinia.vuejs.org) a nivel de página. Esto es **opt-in por diseño**: Pinia se carga solo cuando un componente importa un store. El bootstrap de islas instala entonces esa instancia compartida en las islas —pero una página donde ningún componente usa un store no envía Pinia en absoluto.
 
 Un módulo de store activa la instancia compartida al importarse (vía `ensureSharedPinia()`), y como todos los stores resuelven contra la misma Pinia activa, cualquier isla que lo importe comparte el estado. ESM nativo, pago por uso.
 

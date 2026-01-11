@@ -1,7 +1,7 @@
 {% raw %}
 # Shared State (Pinia)
 
-Each Vue island is its own app, but they can share reactive state through a single page-wide [Pinia](https://pinia.vuejs.org) instance. This is **opt-in by design**: a component that needs no global state pulls in nothing — Pinia is never installed by the island bootstrap, so pages and components without a store ship no Pinia at all.
+Each Vue island is its own app, but they can share reactive state through a single page-wide [Pinia](https://pinia.vuejs.org) instance. This is **opt-in by design**: Pinia loads only when a component imports a store. The island bootstrap then installs that shared instance on the islands — but a page where no component uses a store ships no Pinia at all.
 
 A store module activates the shared instance on import (via `ensureSharedPinia()`), and because every store resolves against the same active Pinia, any islands that import it share state. Native ESM, pay-per-use.
 
