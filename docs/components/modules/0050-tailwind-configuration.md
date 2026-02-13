@@ -1,62 +1,51 @@
 # Tailwind Configuration
 
-**{{ config.extra.components_name }}** uses **Tailwind CSS 4**, which is **CSS-first**: a theme's design tokens are declared in its `web/css/theme.source.css` (`@import "tailwindcss";` then `@theme { … }`), not in a JavaScript config. See [CSS Configuration](../themes/0030-css-configuration.md) for the theme entry point.
+**{{ config.extra.components_name }}** uses **Tailwind CSS 4**, which is **CSS-first**: design tokens are declared in CSS (`@import "tailwindcss";` then `@theme { … }`), not in a JavaScript config. A theme declares its tokens in `web/css/theme.source.css` (see [CSS Configuration](../themes/0030-css-configuration.md)); a module contributes tokens/utilities through its `view/frontend/web/css/module.extend.css`.
 
-A module can still ship a `tailwind` object under the `tailwind` key of its `module.config.js` for module-level Tailwind options; these objects are merged across modules during the build.
+> For Tailwind 4 customization (the `@theme` block, the `@utility` and `@source` directives) refer to the official documentation:
+> [Tailwind CSS — Theme variables](https://tailwindcss.com/docs/theme) · [Detecting classes in source files](https://tailwindcss.com/docs/detecting-classes-in-source-files).
 
-> For Tailwind 4 configuration (the `@theme` block, CSS-first customization), refer to the official documentation:  
-[Tailwind CSS — Theme variables](https://tailwindcss.com/docs/theme)
+---
 
-## Example Configuration
+## How classes are detected (source scanning)
 
-A basic example of a module configuration file with Tailwind CSS options:
+Tailwind only generates the utility classes it actually finds in your source files. In this stack Tailwind's **automatic detection does not reach the Magento tree** (its base path is the Vite harness, not `app/`), so the engine registers the sources explicitly — with **full inheritance**, exactly like it already does for components:
+
+- **Vue/JS components** of every compatible module and of the theme, resolved through the theme → parent chain.
+- **Twig/phtml templates** — the `view/frontend/templates` directory of every compatible module, **plus the whole theme inheritance chain** (theme → parent → …).
+
+As a result, a class used in **any** module template/component, or in **any** theme of the inheritance chain (including a parent theme), is generated automatically. You do **not** need to add a manual `@source` for your templates.
+
+---
+
+## Opting a module out of scanning
+
+A theme can exclude specific modules from class detection with `ignoredTailwindConfigFromModules` in its `web/theme.config.js`:
 
 ```javascript
 export default {
-    tailwind: {
-        theme: {
-            extend: {} // Extend default theme settings here
-        },
-        plugins: [], // Add Tailwind CSS plugins if needed
-        content: [
-            '../templates/**/*.phtml' // Define the paths to your template files
-        ]
-    }
+    // Exclude these modules' components AND templates from Tailwind scanning…
+    ignoredTailwindConfigFromModules: ['Vendor_ModuleA', 'Vendor_ModuleB'],
+    // …or exclude every module with the literal string "all".
+    // ignoredTailwindConfigFromModules: 'all',
 };
 ```
 
-## How It Works
+- A **list of module names** excludes those modules' components **and** templates from the generated `@source` set.
+- The literal **`"all"`** excludes every module. The theme's own files are **always** scanned.
+- The list **merges down the theme inheritance chain**: a child theme inherits its parent's exclusions and can add more (the same merge applied to `ignoredCssFromModules`).
 
-1. **Merging Configurations**  
-    Tailwind CSS configurations defined in modules are **merged** during the build process:
-    - Configurations from all modules are merged first, respecting the order defined by the `sequence` in `module.xml`.
-    
-        > For more details on configuring module load order, refer to the official Magento documentation:  
-        [Configuring Component Load Order](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
-
-    - Theme configurations are merged afterwards, taking precedence over all module configurations.
-
-2. **Prioritization**  
-    - Module configurations are processed based on their dependency order as defined in their `module.xml`.
-    - Theme configurations always have the highest priority, allowing themes to override or extend Tailwind settings from modules.
-
-3. **Ignoring Module Configurations**  
-    - A theme can explicitly choose to **ignore the Tailwind configuration of a specific module**. When this is done, the module's configuration is excluded entirely from the merging process, giving themes full control over the final build.
+This is the source-scanning counterpart of [`ignoredCssFromModules`](../themes/0030-css-configuration.md), which excludes a module's **CSS** (`module.extend.css`) from the build.
 
 ---
 
-## Key Notes
+## Prioritization & overrides
 
-- The Tailwind configuration object should follow the syntax and structure defined in [Tailwind CSS documentation](https://tailwindcss.com/docs/configuration).
-- The `content` array must include the paths to the templates where Tailwind classes are used. This is essential for Tailwind's purge functionality to work correctly.
-- The merging process ensures flexibility, allowing both modules and themes to contribute to the final Tailwind CSS build while maintaining a clear prioritization hierarchy.
-- A theme can exclude module configurations entirely, providing full control over the Tailwind setup.
-- For more information on module dependency order, see the [official Magento documentation](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+- Module CSS (`module.extend.css`) is imported **before** the theme CSS, so a theme's `theme.source.css` can override module tokens through the normal CSS cascade.
+- Module load order follows the `sequence` declared in each `module.xml`. See the [official Magento documentation](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 
 ---
 
-## Benefits
+## Legacy note (Tailwind 3)
 
-- **Modularity**: Each module can define its own Tailwind CSS configuration independently.
-- **Flexibility**: Themes can take full control by overriding or ignoring module configurations.
-- **Performance**: The merging process ensures an optimized Tailwind CSS build that includes only the necessary styles.
+Earlier versions used a `tailwind` object with `content` / `theme.extend` / `plugins` inside `module.config.js`. **Tailwind 4 is CSS-first and that object is no longer read.** Tokens and utilities now live in `module.extend.css` / `theme.source.css`, and class detection is handled by the engine as described above — there is no `content` array to maintain.
