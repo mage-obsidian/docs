@@ -21,7 +21,7 @@ El nombre debe tener la forma `Vendor_Module`. Crea, bajo `app/code/Acme/Catalog
 - `registration.php`
 - `etc/module.xml` (secuenciado después del core)
 - `etc/mage_obsidian_compatibility.xml` (el opt-in del frontend)
-- `view/frontend/web/module.config.js`
+- `view/frontend/web/module.config.ts`
 
 Un módulo es invisible para el stack de frontend hasta que entrega el archivo de compatibilidad, por eso se genera por defecto. Sigue los próximos pasos impresos para activarlo:
 

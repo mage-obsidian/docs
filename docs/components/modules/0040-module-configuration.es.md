@@ -3,7 +3,7 @@
 En **{{ config.extra.components_name }}**, cada módulo compatible puede incluir configuraciones adicionales creando un archivo de configuración en:
 
 ```
-view/frontend/web/module.config.js
+view/frontend/web/module.config.ts
 ```
 
 Este archivo es un **módulo ESM (ECMAScript)** que hace `export default` de un objeto de configuración leído por **{{ config.extra.components_name }}**.
@@ -17,7 +17,7 @@ Este archivo es un **módulo ESM (ECMAScript)** que hace `export default` de un 
     [Configurar el orden de carga de componentes](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
 
 2. **Ejemplo de Archivo de Configuración**  
-    Un ejemplo básico de un archivo `module.config.js` sería:
+    Un ejemplo básico de un archivo `module.config.ts` sería:
 
     ```javascript
     export default {
@@ -33,7 +33,7 @@ Este archivo es un **módulo ESM (ECMAScript)** que hace `export default` de un 
     Las configuraciones de los módulos pueden ser sobrescritas directamente en los temas creando un archivo de configuración correspondiente. Por ejemplo:
 
     ```
-    app/design/frontend/Vendor/Theme/Vendor_Module/web/module.config.js
+    app/design/frontend/Vendor/Theme/Vendor_Module/web/module.config.ts
     ```
 
     - Cuando este archivo existe, **reemplaza por completo** la configuración original proporcionada por el módulo.
