@@ -27,8 +27,8 @@ The **{{ config.site_name }}** project emerges as a disruptive proposal to revol
     [Learn more about {{ config.extra.components_name }}](../components).
 
 2. **{{ config.extra.theme_name }}:**  
-    Although the base theme is still under development, its design will focus on leveraging the mentioned tools. This theme will not inherit anything from traditional themes like **Blank** or **Luma**, enabling a completely new design aligned with modern practices and free from the historical constraints of Magento's frontend. The long-term vision is for this theme to be compatible with Magento's open-source version, reinforcing a commitment to the developer community. Once the base theme is complete, work will begin on a version specifically designed for Magento's Enterprise edition.  
-    [Learn more about {{ config.extra.theme_name }}](../theme).
+    The base theme is built entirely on the mentioned tools and is already functional. It does not inherit anything from traditional themes like **Blank** or **Luma**, enabling a completely new design aligned with modern practices and free from the historical constraints of Magento's frontend. It targets Magento Open Source today, with Adobe Commerce and Mage-OS support planned for the future.  
+    [Learn more about {{ config.extra.theme_name }}](../theme) — or see it running in the [live demo]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
 
 One of the main strengths of **{{ config.extra.components_name }}** is that **it does not follow a PWA approach**. Instead, it leverages Magento's existing system of layouts, blocks, and templates, preserving its native architecture. This approach allows developers to take advantage of modern tools and current standards without compromising compatibility with existing modules and functionalities, offering a smoother and more efficient development experience.
 

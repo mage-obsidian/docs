@@ -21,6 +21,9 @@ desarrolladores, integrando tecnologías de vanguardia como:
 [![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
 </div>
 
+¿Quieres verlo en acción? Explora el storefront OBSIDIAN en la
+[**demo en vivo**]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
+
 ---
 
 ## Características

@@ -12,6 +12,9 @@ y plantillas nativos de Magento — para un flujo de trabajo más rápido y amig
 [![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
 </div>
 
+[:material-open-in-new: Demo en vivo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
+[:octicons-rocket-24: Empezar](getting-started/requirements.md){ .md-button }
+
 ---
 
 ## ¿Por dónde seguir?

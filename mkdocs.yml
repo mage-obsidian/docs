@@ -120,6 +120,7 @@ nav:
     - support/project.md
 extra:
   theme_name: "MageObsidian Theme"
+  demo_url: https://mage-obsidian-demo.jeanmarcos.dev/
   gh_theme_default_url: https://github.com/mage-obsidian/theme-default
   gh_theme_base_url: https://github.com/mage-obsidian/theme-base
   gh_storefront_url: https://github.com/mage-obsidian/module-storefront

@@ -4,8 +4,10 @@
 {% if config.theme.language == 'es' %}
 <strong>🚀 {{ config.site_name }} ya está listo para probar:</strong>
 levanta el tema, explora el stack y cuéntanos qué te parece. ¡Tu feedback es bienvenido!
+<a href="{{ config.extra.demo_url }}" target="_blank" rel="noopener"><strong>Demo en vivo →</strong></a>
 {% else %}
 <strong>🚀 {{ config.site_name }} is ready to try:</strong>
 spin up the theme, explore the stack, and let us know what you think. Feedback welcome!
+<a href="{{ config.extra.demo_url }}" target="_blank" rel="noopener"><strong>Live demo →</strong></a>
 {% endif %}
 {% endblock %}

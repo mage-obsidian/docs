@@ -21,6 +21,9 @@ incorporating cutting-edge technologies such as:
 [![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
 </div>
 
+Want to see it in action? Explore the OBSIDIAN storefront in the
+[**live demo**]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
+
 ---
 
 ## Features

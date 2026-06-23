@@ -6,6 +6,8 @@
 Magento's native layouts, blocks, and view models. It is already functional and covers the same
 ground as Luma (catalog, checkout, customer, search, cart, wishlist, compare, reviews, and sales).
 
+[:material-open-in-new: See OBSIDIAN live]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
+
 This page is a practical guide to **using and extending** the theme. For the underlying mechanism
 shared by every compatible theme, see [Compatibility Themes](../components/themes/0010-overview.md).
 

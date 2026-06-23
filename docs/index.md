@@ -12,6 +12,9 @@ Magento's native layouts, blocks, and templates — for a faster, friendlier wor
 [![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
 </div>
 
+[:material-open-in-new: Live demo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
+[:octicons-rocket-24: Get started](getting-started/requirements.md){ .md-button }
+
 ---
 
 ## Where to next?

@@ -7,6 +7,8 @@ manteniendo los layouts, bloques y view models nativos de Magento. Ya es funcion
 terreno que Luma (catálogo, checkout, cliente, búsqueda, carrito, wishlist, comparación, reseñas y
 ventas).
 
+[:material-open-in-new: Ver OBSIDIAN en vivo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
+
 Esta página es una guía práctica para **usar y extender** el tema. Para el mecanismo común a todo
 tema compatible, consulta [Temas Compatibles](../components/themes/0010-overview.md).
 
