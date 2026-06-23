@@ -14,7 +14,7 @@ tema compatible, consulta [Temas Compatibles](../components/themes/0010-overview
 
 !!! warning "Compatibilidad"
 
-    - ✅ **Magento Open Source 2.4.6+** — soportado hoy.
+    - ✅ **Magento Open Source 2.4.7+** — soportado hoy.
     - 🚧 **Adobe Commerce** y **Mage-OS** — aún no soportados. El soporte está planeado para el futuro.
 
 ---

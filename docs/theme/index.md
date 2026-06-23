@@ -13,7 +13,7 @@ shared by every compatible theme, see [Compatibility Themes](../components/theme
 
 !!! warning "Compatibility"
 
-    - ✅ **Magento Open Source 2.4.6+** — supported today.
+    - ✅ **Magento Open Source 2.4.7+** — supported today.
     - 🚧 **Adobe Commerce** and **Mage-OS** — not supported yet. Support is planned for the future.
 
 ---
