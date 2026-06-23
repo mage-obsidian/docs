@@ -24,8 +24,7 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material 
-      - run: pip install mkdocs-macros-plugin 
-      - run: pip install mkdocs-awesome-pages-plugin  
-      - run: pip install mkdocs-static-i18n  
+      - name: Install Cairo/Pango (social cards)
+        run: sudo apt-get update && sudo apt-get install -y libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pango1.0-tools
+      - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force
