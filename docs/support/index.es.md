@@ -28,6 +28,9 @@
 - [**Configuración de Vite**]({{ config.extra.gh_vite_url }}): Configuración e integración de Vite para el frontend moderno de Magento.
 - [**Documentación**]({{ config.extra.gh_docs_url }}): Guías y documentación completas para **{{ config.site_name }}**.
 - [**JS Utils**]({{ config.extra.gh_js_utils_url }}): Js Utils
+- [**Tema Default**]({{ config.extra.gh_theme_default_url }}): La piel OBSIDIAN (`mage-obsidian/theme-default`).
+- [**Tema Base**]({{ config.extra.gh_theme_base_url }}): La base re-tematizable (`mage-obsidian/theme-base`).
+- [**Módulo Storefront**]({{ config.extra.gh_storefront_url }}): Lógica de storefront e islas Vue compartidas (`mage-obsidian/module-storefront`).
 
 ---
 

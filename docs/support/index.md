@@ -27,6 +27,9 @@ Thank you for your interest in contributing to **{{ config.site_name }}**! This 
 - [**CLI Tools**]({{ config.extra.gh_main_module_cli_url }}): Command-line utilities for setup, configuration, and development.
 - [**Vite Configuration**]({{ config.extra.gh_vite_url }}): Vite setup and integration for the modern Magento frontend.
 - [**JS Utils**]({{ config.extra.gh_js_utils_url }}): Js Utils
+- [**Default Theme**]({{ config.extra.gh_theme_default_url }}): The OBSIDIAN skin (`mage-obsidian/theme-default`).
+- [**Base Theme**]({{ config.extra.gh_theme_base_url }}): The re-themable foundation (`mage-obsidian/theme-base`).
+- [**Storefront Module**]({{ config.extra.gh_storefront_url }}): Storefront logic and shared Vue islands (`mage-obsidian/module-storefront`).
 - [**Documentation**]({{ config.extra.gh_docs_url }}): Guides and documentation for **{{ config.site_name }}**.
 
 ---

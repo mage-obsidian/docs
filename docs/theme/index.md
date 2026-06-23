@@ -29,6 +29,8 @@ The theme ships as two stacked themes so design is cleanly separated from plumbi
     The neutral, technical foundation: build wiring and structural templates, **without** any
     design tokens. This is the parent you usually inherit from when starting a brand-new look.
 
+    Package `mage-obsidian/theme-base` · [:material-github: Source]({{ config.extra.gh_theme_base_url }})
+
 -   :material-palette-swatch:{ .lg .middle } __`MageObsidian/default`__
 
     ---
@@ -36,7 +38,13 @@ The theme ships as two stacked themes so design is cleanly separated from plumbi
     The **OBSIDIAN** skin: design tokens, styled Twig templates, and a replaceable apparel demo
     layer. Inherit from it when you want to keep OBSIDIAN and tweak; replace its tokens to rebrand.
 
+    Package `mage-obsidian/theme-default` · [:material-github: Source]({{ config.extra.gh_theme_default_url }})
+
 </div>
+
+The storefront logic — view models, legacy-layout neutralization, and shared Vue islands — lives in
+`mage-obsidian/module-storefront` ([source]({{ config.extra.gh_storefront_url }})), pulled in
+automatically by `theme-base`.
 
 Inheritance is declared with Magento's native `theme.xml`:
 
@@ -70,17 +78,25 @@ app/design/frontend/MageObsidian/default/
 
 ---
 
-## Activate the theme
+## Install & activate
 
-1. Select it in the Admin under **Stores → Configuration → General → Design → Design Theme**
+1. Require the theme with Composer. `mage-obsidian/theme-default` pulls in `theme-base`, the
+   modern-frontend engine, and the full storefront module stack (Luma-level parity) automatically:
+
+    ```bash
+    composer require mage-obsidian/theme-default
+    bin/magento setup:upgrade
+    ```
+
+2. Select it in the Admin under **Stores → Configuration → General → Design → Design Theme**
    (or via `bin/magento config:set`), then apply it to your store view.
-2. Regenerate the PHP ↔ JS contract so the build engine sees the theme:
+3. Regenerate the PHP ↔ JS contract so the build engine sees the theme:
 
     ```bash
     bin/magento mage-obsidian:frontend:config --generate
     ```
 
-3. Build the frontend assets to disk:
+4. Build the frontend assets to disk:
 
     ```bash
     mage-obsidian:build-themes --theme <theme>   # omit --theme to build all

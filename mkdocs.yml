@@ -120,7 +120,9 @@ nav:
     - support/project.md
 extra:
   theme_name: "MageObsidian Theme"
-  # gh_theme_url: https://github.com/mage-obsidian/obsidian-docs
+  gh_theme_default_url: https://github.com/mage-obsidian/theme-default
+  gh_theme_base_url: https://github.com/mage-obsidian/theme-base
+  gh_storefront_url: https://github.com/mage-obsidian/module-storefront
   gh_main_module_url: https://github.com/mage-obsidian/module-modern-frontend
   gh_main_module_cli_url: https://github.com/mage-obsidian/module-modern-frontend-cli
   gh_vite_url: https://github.com/mage-obsidian/component-modern-frontend
