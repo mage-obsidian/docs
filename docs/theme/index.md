@@ -29,7 +29,9 @@ The theme ships as two stacked themes so design is cleanly separated from plumbi
     The neutral, technical foundation: build wiring and structural templates, **without** any
     design tokens. This is the parent you usually inherit from when starting a brand-new look.
 
-    Package `mage-obsidian/theme-base` · [:material-github: Source]({{ config.extra.gh_theme_base_url }})
+    Package: `mage-obsidian/theme-base`
+
+    [:material-github: View source]({{ config.extra.gh_theme_base_url }}){ .md-button }
 
 -   :material-palette-swatch:{ .lg .middle } __`MageObsidian/default`__
 
@@ -38,13 +40,15 @@ The theme ships as two stacked themes so design is cleanly separated from plumbi
     The **OBSIDIAN** skin: design tokens, styled Twig templates, and a replaceable apparel demo
     layer. Inherit from it when you want to keep OBSIDIAN and tweak; replace its tokens to rebrand.
 
-    Package `mage-obsidian/theme-default` · [:material-github: Source]({{ config.extra.gh_theme_default_url }})
+    Package: `mage-obsidian/theme-default`
+
+    [:material-github: View source]({{ config.extra.gh_theme_default_url }}){ .md-button }
 
 </div>
 
 The storefront logic — view models, legacy-layout neutralization, and shared Vue islands — lives in
-`mage-obsidian/module-storefront` ([source]({{ config.extra.gh_storefront_url }})), pulled in
-automatically by `theme-base`.
+the **[`mage-obsidian/module-storefront`]({{ config.extra.gh_storefront_url }})** repository, pulled
+in automatically by `theme-base`.
 
 Inheritance is declared with Magento's native `theme.xml`:
 

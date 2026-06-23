@@ -30,7 +30,9 @@ El tema se entrega como dos temas apilados para separar limpiamente el diseño d
     La base técnica neutral: cableado del build y plantillas estructurales, **sin** tokens de
     diseño. Suele ser el padre del que heredas cuando empiezas un look completamente nuevo.
 
-    Paquete `mage-obsidian/theme-base` · [:material-github: Código]({{ config.extra.gh_theme_base_url }})
+    Paquete: `mage-obsidian/theme-base`
+
+    [:material-github: Ver código]({{ config.extra.gh_theme_base_url }}){ .md-button }
 
 -   :material-palette-swatch:{ .lg .middle } __`MageObsidian/default`__
 
@@ -40,13 +42,15 @@ El tema se entrega como dos temas apilados para separar limpiamente el diseño d
     reemplazable. Hereda de ella si quieres conservar OBSIDIAN y ajustar; reemplaza sus tokens para
     rebrandear.
 
-    Paquete `mage-obsidian/theme-default` · [:material-github: Código]({{ config.extra.gh_theme_default_url }})
+    Paquete: `mage-obsidian/theme-default`
+
+    [:material-github: Ver código]({{ config.extra.gh_theme_default_url }}){ .md-button }
 
 </div>
 
 La lógica de storefront — view models, neutralización del layout legacy e islas Vue compartidas —
-vive en `mage-obsidian/module-storefront` ([código]({{ config.extra.gh_storefront_url }})), que
-`theme-base` arrastra automáticamente.
+vive en el repositorio **[`mage-obsidian/module-storefront`]({{ config.extra.gh_storefront_url }})**,
+que `theme-base` arrastra automáticamente.
 
 La herencia se declara con el `theme.xml` nativo de Magento:
 
