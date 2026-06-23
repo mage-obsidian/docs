@@ -1,4 +1,5 @@
 site_name: MageObsidian
+site_url: https://mage-obsidian.jeanmarcos.dev/
 theme:
   logo: ./assets/tool.png
   favicon: ./assets/tool.png
@@ -7,17 +8,28 @@ theme:
   custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
-    - content.code.annotate 
+    - content.code.annotate
     - content.code.select
     - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - announce.dismiss
     - navigation.instant
     - navigation.instant.progress
     - navigation.tabs
+    - navigation.indexes
     - navigation.path
     - navigation.top
     - navigation.progress
     - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -32,7 +44,6 @@ theme:
 
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black
       toggle:
         icon: material/toggle-switch
         name: Switch to system preference
@@ -40,8 +51,13 @@ extra_css:
   - stylesheets/extra.css
 copyright: Jeanmarcos Juarez | MageObsidian
 plugins:
+  - search
   - awesome-pages
   - macros
+  - social:
+      cards_layout_options:
+        background_color: "#5B5BD6"
+        color: "#FFFFFF"
   - i18n:
       docs_structure: suffix
       languages:
@@ -133,6 +149,13 @@ extra:
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
 markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.keys
+  - toc:
+      permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -141,3 +164,10 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

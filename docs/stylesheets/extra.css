@@ -1,15 +1,88 @@
-[data-md-color-scheme="slate"] {
-     --md-hue: 225; 
+/* ── Brand palette: "Indigo técnico" ───────────────────────────── */
+:root {
+  --md-primary-fg-color: #5b5bd6;
+  --md-primary-fg-color--light: #7b7be0;
+  --md-primary-fg-color--dark: #4a4ac4;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+  --md-accent-fg-color: #1aa1b8;
+  --md-accent-fg-color--transparent: #22b8cf1a;
+  --md-typeset-a-color: #4a4ac4;
 }
 
+[data-md-color-scheme="slate"] {
+  --md-hue: 232;
+  --md-primary-fg-color: #7b7be0;
+  --md-primary-bg-color: #0b0b14;
+  --md-accent-fg-color: #34d0e0;
+  --md-typeset-a-color: #9d9df0;
+}
+
+/* ── Inherited fixes (kept) ─────────────────────────────────────── */
 nav.md-tabs .md-tabs__list li:first-child {
-     display: none;
+  display: none;
 }
 
 .md-main {
-     margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .md-select__inner {
-     left: 0;
+  left: 0;
+}
+
+/* ── Card grids ─────────────────────────────────────────────────── */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  transition: border-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid > .card:hover {
+  border-color: var(--md-accent-fg-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -12px var(--md-accent-fg-color);
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  margin: 0.6rem 0;
+}
+
+.md-typeset .grid.cards .lg.middle {
+  color: var(--md-primary-fg-color);
+}
+
+/* ── Type refinements ───────────────────────────────────────────── */
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.md-typeset h2 {
+  letter-spacing: -0.01em;
+}
+
+/* ── Tech logo strip on landing / overview ──────────────────────── */
+.tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.tech-strip img {
+  height: 38px;
+  width: auto;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tech-strip a:hover img {
+  opacity: 1;
+  transform: translateY(-2px);
 }
