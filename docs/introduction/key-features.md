@@ -40,6 +40,8 @@
 
 - **Exceptional performance:** Thanks to the underlying components, the theme is optimized to load only what is necessary, resulting in ultra-fast load times. This improves both user experience and performance metrics such as Google's Core Web Vitals.
 
+[![Lighthouse report: 100 across Performance, Accessibility, Best Practices and SEO](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }
+
 - **Modern and customizable design:** Built with the latest standards, the theme allows complete customization to meet any business's needs. Its flexibility ensures developers can create unique experiences without compromising performance.
 
 - **Easy and fast updates:** The theme's design facilitates maintenance, ensuring improvements and updates can be implemented without affecting site stability.

@@ -40,6 +40,8 @@
 
 - **Rendimiento excepcional:** Gracias a los componentes subyacentes, el tema está optimizado para cargar solo lo necesario, lo que resulta en tiempos de carga ultrarrápidos. Esto mejora tanto la experiencia del usuario como las métricas de rendimiento, como las Core Web Vitals de Google.
 
+[![Reporte de Lighthouse: 100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }
+
 - **Diseño moderno y personalizable:** Construido con los estándares más recientes, el tema permite una personalización completa para adaptarse a las necesidades de cualquier negocio. Su flexibilidad asegura que los desarrolladores puedan crear experiencias únicas sin comprometer el rendimiento.
 
 - **Actualizaciones sencillas y rápidas:** El diseño del tema facilita su mantenimiento, asegurando que las mejoras y actualizaciones se puedan implementar sin afectar la estabilidad del sitio.

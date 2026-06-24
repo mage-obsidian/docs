@@ -73,6 +73,10 @@ Pasa `sources` para emitir un `<picture>` con fallbacks AVIF/WebP:
 - **LCP:** marca la imagen hero con `fetchpriority: 'high'`; el helper la mantiene `eager` para que nunca se cargue de forma perezosa.
 - **El resto sigue siendo barato:** las imágenes usan `loading="lazy"` y `decoding="async"` por defecto.
 
+El tema por defecto en la [demo en vivo](https://mage-obsidian-demo.jeanmarcos.dev/) obtiene un 100 perfecto en todas las categorías:
+
+[![Reporte de Lighthouse: 100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO](/assets/lighthouse-100.png)](https://mage-obsidian-demo.jeanmarcos.dev/){ .lighthouse-shot target=_blank rel=noopener }
+
 ## Próximos pasos
 
 - [Helpers de Twig](../../twig/helpers.md) — la función `image` y el resto del puente.

@@ -15,6 +15,8 @@ y plantillas nativos de Magento — para un flujo de trabajo más rápido y amig
 [:material-open-in-new: Demo en vivo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
 [:octicons-rocket-24: Empezar](getting-started/requirements.md){ .md-button }
 
+[![Reporte de Lighthouse: 100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }
+
 ---
 
 ## ¿Por dónde seguir?

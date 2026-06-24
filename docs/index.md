@@ -15,6 +15,8 @@ Magento's native layouts, blocks, and templates — for a faster, friendlier wor
 [:material-open-in-new: Live demo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
 [:octicons-rocket-24: Get started](getting-started/requirements.md){ .md-button }
 
+[![Lighthouse report: 100 across Performance, Accessibility, Best Practices and SEO](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }
+
 ---
 
 ## Where to next?
