@@ -21,6 +21,8 @@ bin/magento mage-obsidian:frontend:hmr --disable   # turn it back off
 
 Magento must also be in **developer mode** (`bin/magento deploy:mode:set developer`); in production the flag is ignored.
 
+> **Tip:** `bin/magento mage-obsidian:frontend:dev --up` does this in one shot — developer mode, the HMR flag, the `.env` sync, the cache flush and the dev server — and `--down` reverses it. See [Development Workflow](../../getting-started/development.md).
+
 ## 2. Configure Nginx
 
 The browser must reach the Vite dev server for HMR. Generate the proxy snippet derived from your configuration and paste it into your server block:

@@ -6,22 +6,28 @@
 
 ## El Ciclo de un Vistazo
 
-```bash
-# una vez: pon Magento en modo developer y enciende HMR
-bin/magento deploy:mode:set developer
-bin/magento mage-obsidian:frontend:hmr --enable
+Dos comandos manejan todo el ciclo — `--up` para entrar, `--down` para volver. Sin encadenar deploy mode + HMR + cache flush + dev server a mano.
 
+```bash
 # una vez: cablea nginx al dev server de Vite (pega el snippet en tu server block)
 bin/magento mage-obsidian:frontend:dev --print-nginx
 
-# día a día: arranca el dev server para el tema en el que trabajas
-bin/magento mage-obsidian:frontend:dev --start --theme=Vendor/theme
+# entrar: modo developer + HMR on + .env sincronizado + caches flusheadas + dev server arriba
+bin/magento mage-obsidian:frontend:dev --up               # pregunta el tema en una terminal
+bin/magento mage-obsidian:frontend:dev --up --theme=Vendor/theme
 
 # ...edita .vue / css / templates con HMR en vivo...
 
 bin/magento mage-obsidian:frontend:dev --status   # ¿corriendo y alcanzable?
-bin/magento mage-obsidian:frontend:dev --stop     # detén al terminar
+
+# volver a los assets construidos: detiene el dev server + HMR off + rebuild a disco
+bin/magento mage-obsidian:frontend:dev --down
+bin/magento mage-obsidian:frontend:dev --down --production   # además cambia a modo producción
 ```
+
+`--up` es **probe-first**: si ya hay un dev server respondiendo (p. ej. uno que gestiona tu entorno), lo deja en paz en vez de arrancar un segundo. Es idempotente —seguro de re-correr. Omite `--theme` en una terminal y aparece un picker de los temas disponibles; pasa `--no-start` para setear solo el estado de Magento y dejar que tu entorno corra el servidor.
+
+> **Docker / Zento.** En un proyecto Zento el dev server corre como el servicio gestionado `vite`, así que usa el wrapper: `zento frontend up [theme]` (setea el estado con `--no-start` y enciende el servicio) y `zento frontend down [--production]` (rebuildea y apaga el servicio). `zento frontend dev` sigue sirviendo para ver los logs de HMR.
 
 ---
 
@@ -33,15 +39,17 @@ Gestiona el `.env` de Vite y el dev server local.
 
 | Opción | Qué hace |
 |---|---|
+| `--up [--theme=Vendor/theme] [--no-start]` | De una: modo developer + HMR on + sync `.env` + flush + dev server (probe-first). |
+| `--down [--production]` | De una, de vuelta a los assets construidos: detiene el dev server + HMR off + flush + rebuild a disco. |
 | `--sync-env` | Escribe `vite/.env` desde la config actual de Magento. |
 | `--show` | Imprime las env vars derivadas de la config sin escribir el archivo. |
-| `--start --theme=Vendor/theme` | Sincroniza el env y arranca el dev server de Vite (HMR). |
-| `--start --no-watch --theme=Vendor/theme` | Construye el tema una vez a disco en lugar de correr el servidor (sin HMR, sin daemon). |
+| `--start [--theme=Vendor/theme]` | Sincroniza el env y arranca el dev server de Vite (HMR). |
+| `--start --no-watch [--theme=Vendor/theme]` | Construye el tema una vez a disco en lugar de correr el servidor (sin HMR, sin daemon). |
 | `--stop` | Detiene el dev server arrancado por `--start`. |
 | `--status` | Reporta si el proceso del dev server corre y es alcanzable. |
 | `--print-nginx` | Imprime el snippet de proxy nginx (host/puerto desde la config) para pegar en tu server block. |
 
-`--start` requiere `--theme`. Arrancar siempre sincroniza el `.env` primero, así que rara vez llamas a `--sync-env` directamente —está para inspección o scripting. El comando corre el dev server **donde corre `bin/magento`**; correrlo en un contenedor distinto al del CLI es asunto de tu entorno.
+Cuando hace falta un tema (`--up`, `--start`) y omites `--theme`, el comando te deja elegir uno de los temas habilitados en una terminal, y falla ruidosamente (sin adivinar) si se corre de forma no interactiva. Arrancar siempre sincroniza el `.env` primero, así que rara vez llamas a `--sync-env` directamente. El comando corre el dev server **donde corre `bin/magento`**; correrlo en un contenedor distinto al del CLI es asunto de tu entorno (`--up` es probe-first, así que no duplica uno que tu entorno ya corra).
 
 ### `mage-obsidian:frontend:hmr`
 

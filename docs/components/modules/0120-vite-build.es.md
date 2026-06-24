@@ -14,6 +14,8 @@ bin/magento mage-obsidian:frontend:dev --start --no-watch --theme=Vendor/theme
 
 Es el inverso de `--start` (HMR): sin daemon, sin watch —corre un build y termina. Útil para inspeccionar la salida real o reproducir un build de CI en local.
 
+> Salir del ciclo de dev con `bin/magento mage-obsidian:frontend:dev --down` corre este mismo build por ti (HMR off + rebuild a disco). Usa `--no-watch` directo cuando solo quieras un build puntual sin tocar HMR.
+
 ### El bin del engine por debajo
 
 `frontend:dev` envuelve el bin propio del engine de build, que también puedes correr directamente desde el harness `vite/` (es lo que usa CI):

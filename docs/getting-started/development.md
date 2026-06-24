@@ -6,22 +6,28 @@
 
 ## The Loop at a Glance
 
-```bash
-# once: put Magento in developer mode and turn on HMR
-bin/magento deploy:mode:set developer
-bin/magento mage-obsidian:frontend:hmr --enable
+Two commands run the whole loop — `--up` to go live, `--down` to come back. No chaining deploy mode + HMR + cache flush + dev server by hand.
 
+```bash
 # once: wire nginx to the Vite dev server (paste the snippet into your server block)
 bin/magento mage-obsidian:frontend:dev --print-nginx
 
-# day to day: start the dev server for the theme you're working on
-bin/magento mage-obsidian:frontend:dev --start --theme=Vendor/theme
+# go live: developer mode + HMR on + .env synced + caches flushed + dev server up
+bin/magento mage-obsidian:frontend:dev --up               # prompts for the theme on a terminal
+bin/magento mage-obsidian:frontend:dev --up --theme=Vendor/theme
 
 # ...edit .vue / css / templates with live HMR...
 
 bin/magento mage-obsidian:frontend:dev --status   # is it running and reachable?
-bin/magento mage-obsidian:frontend:dev --stop     # stop when done
+
+# come back to built assets: stop the dev server + HMR off + rebuild to disk
+bin/magento mage-obsidian:frontend:dev --down
+bin/magento mage-obsidian:frontend:dev --down --production   # also switch to production mode
 ```
+
+`--up` is **probe-first**: if a dev server already answers (e.g. one your environment manages), it is left alone instead of spawning a second one. It is idempotent — safe to re-run. Omit `--theme` on a terminal and you get a picker of the available themes; pass `--no-start` to set the Magento state only and let your environment run the server.
+
+> **Docker / Zento.** In a Zento project the dev server runs as the managed `vite` service, so use the wrapper: `zento frontend up [theme]` (sets the state with `--no-start` and enables the service) and `zento frontend down [--production]` (rebuilds and stops the service). `zento frontend dev` still streams the HMR logs.
 
 ---
 
@@ -33,15 +39,17 @@ Manages the Vite `.env` and the local dev server.
 
 | Option | What it does |
 |---|---|
+| `--up [--theme=Vendor/theme] [--no-start]` | One shot into dev: developer mode + HMR on + sync `.env` + flush + (probe-first) dev server. |
+| `--down [--production]` | One shot back to built assets: stop the dev server + HMR off + flush + rebuild to disk. |
 | `--sync-env` | Write `vite/.env` from the current Magento config. |
 | `--show` | Print the env vars derived from config without writing the file. |
-| `--start --theme=Vendor/theme` | Sync the env, then start the Vite dev server (HMR). |
-| `--start --no-watch --theme=Vendor/theme` | Build the theme once to disk instead of running the server (no HMR, no daemon). |
+| `--start [--theme=Vendor/theme]` | Sync the env, then start the Vite dev server (HMR). |
+| `--start --no-watch [--theme=Vendor/theme]` | Build the theme once to disk instead of running the server (no HMR, no daemon). |
 | `--stop` | Stop the dev server started by `--start`. |
 | `--status` | Report whether the dev server process is running and reachable. |
 | `--print-nginx` | Print the nginx proxy snippet (host/port from config) to paste into your server block. |
 
-`--start` requires `--theme`. Starting always syncs the `.env` first, so you rarely call `--sync-env` directly — it's there for inspection or scripting. The command runs the dev server **where `bin/magento` runs**; running it in a different container than the CLI is your environment's concern.
+When a theme is needed (`--up`, `--start`) and you omit `--theme`, the command prompts you to pick one from the enabled themes on a terminal, and fails loudly (no guessing) when run non-interactively. Starting always syncs the `.env` first, so you rarely call `--sync-env` directly. The command runs the dev server **where `bin/magento` runs**; running it in a different container than the CLI is your environment's concern (`--up` is probe-first so it won't duplicate one your environment already runs).
 
 ### `mage-obsidian:frontend:hmr`
 
