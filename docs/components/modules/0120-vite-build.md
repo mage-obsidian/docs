@@ -43,6 +43,18 @@ The Vite-generated assets land in the deployed static content alongside everythi
 
 > **Compatible themes only.** Only themes that ship `etc/mage_obsidian_compatibility.xml` (and have been picked up by `mage-obsidian:frontend:config --generate`) go through the Vite pipeline. Themes without it follow Magento's native deploy untouched.
 
+### Server requirements
+
+Because the Vite build runs *inside* `setup:static-content:deploy`, whatever machine runs that command needs the JS toolchain from [Requirements](../../getting-started/requirements.md) — Node ≥ 22 and pnpm ≥ 11 — in addition to PHP. This applies to your deploy box, CI image, or build server, not just developer machines. If your pipeline builds static content on a separate build host, only that host needs Node/pnpm.
+
+> **Corepack version mismatch.** `vite/package.json` pins the exact pnpm version via the `packageManager` field. If the server has corepack enabled with a different pnpm active, the build aborts with a version-mismatch error before doing any work. Fix it by activating the pinned version:
+>
+> ```bash
+> corepack prepare pnpm@11.7.0 --activate
+> ```
+>
+> (Match the version to the current `packageManager` pin in `vite/package.json`.)
+
 ---
 
 ## Benefits
