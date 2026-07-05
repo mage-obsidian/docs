@@ -1,18 +1,23 @@
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q816Z9WN)
-# MageObsidian Documentation
+# MageObsidian — Documentation
 
+[![CI](https://github.com/mage-obsidian/docs/actions/workflows/ci.yml/badge.svg)](https://github.com/mage-obsidian/docs/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-This repository hosts the full documentation for the MageObsidian project.
+Source of the official [MageObsidian](https://github.com/mage-obsidian/module-modern-frontend) documentation, published at **[mage-obsidian.jeanmarcos.dev](https://mage-obsidian.jeanmarcos.dev/)**.
 
-## Related Repositories
+Built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), bilingual (English/Spanish): every page has an English `.md` and a Spanish `.es.md` counterpart. Pushing to `master` deploys automatically via GitHub Pages.
 
-- [MageObsidian Modern Frontend](https://github.com/mage-obsidian/module-modern-frontend)
-- [MageObsidian Modern Frontend CLI](https://github.com/mage-obsidian/module-modern-frontend-cli)
-- [MageObsidian Modern Frontend Component](https://github.com/mage-obsidian/component-modern-frontend)
-- [Docs](https://github.com/mage-obsidian/docs)
-- [JS Utils](https://github.com/mage-obsidian/js-package-utils)
+## Local development
 
-## Documentation
+```bash
+pip install -r requirements.txt
+mkdocs serve
+```
 
-For more details, visit the [official documentation](https://mage-obsidian.jeanmarcos.dev/).
+## Contributing
+
+Fixes and improvements are welcome — updating only the English page is fine; mention it in the PR so the translation can follow. See the [contributing guide](https://mage-obsidian.jeanmarcos.dev/support/).
+
+## Support the project
+
+If MageObsidian saves you time, consider [buying me a coffee](https://ko-fi.com/Q5Q816Z9WN). ❤️
