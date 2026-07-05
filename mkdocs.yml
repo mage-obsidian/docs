@@ -90,11 +90,15 @@ plugins:
             Home: Inicio
             Theme Overview: Tema
             Compatibility Themes: Temas Compatibles
+            MageObsidian vs Hyvä vs Luma: MageObsidian vs Hyvä vs Luma
+            Showcase: Vitrina
+            Roadmap: Hoja de ruta
 nav:
   - Home: index.md 
   - Introduction:
     - Motivation: introduction/index.md
     - Key Features: introduction/key-features.md
+    - MageObsidian vs Hyvä vs Luma: introduction/comparison.md
   - Getting started:
     - Requirements: getting-started/requirements.md
     - Installation: getting-started/installation.md
@@ -112,6 +116,8 @@ nav:
   - Twig Engine:
     - Overview: twig/index.md
     - Helpers & Filters: twig/helpers.md
+  - Showcase: showcase.md
+  - Roadmap: roadmap.md
   # - Reference:
   #   - reference/index.md
   - How Contributing?:
@@ -127,7 +133,7 @@ extra:
   gh_main_module_url: https://github.com/mage-obsidian/module-modern-frontend
   gh_main_module_cli_url: https://github.com/mage-obsidian/module-modern-frontend-cli
   gh_vite_url: https://github.com/mage-obsidian/component-modern-frontend
-  gh_docs_url: https://github.com/mage-obsidian/obsidian-docs
+  gh_docs_url: https://github.com/mage-obsidian/docs
   gh_js_utils_url: https://github.com/mage-obsidian/js-package-utils
   components_name: "MageObsidian Components"
   discord_link: https://discord.gg/d6nHVw8h
