@@ -45,7 +45,36 @@ The command renders the URL, extracts the critical subset, rewrites the `@font-f
 | `--resolve` | — | A curl `host:port:ip` entry, for local setups behind a custom host. |
 | `--node` / `--bin` | `node` / shipped bin | Override the Node binary or the extractor script. |
 
-The home page (`cms_index_index`) is the LCP page and the default target. Generate other handles by passing `--handle`/`--url`; any handle without a generated file simply degrades to the render-blocking stylesheet.
+### Which pages to cover — it depends on your traffic
+
+Critical CSS is generated **per layout handle** — one file per handle, and only pages whose handle has a generated file get the inline treatment. It is not a global switch; think of it as a per-entry-page optimization:
+
+- The benefit concentrates on the **first page of a visit, with a cold cache**. From the second page on, `style.css` is already in the browser cache and the render-blocking request costs close to nothing.
+- If visitors mostly enter through the home page, the default `cms_index_index` covers most of the win.
+- If organic search or ads land visitors **directly on products and categories**, those are first pages too — generate their handles as well:
+
+```bash
+bin/magento mage-obsidian:frontend:critical-css --handle catalog_product_view --url https://store.example/a-product.html
+bin/magento mage-obsidian:frontend:critical-css --handle catalog_category_view --url https://store.example/a-category.html
+```
+
+One granularity caveat: a handle's critical CSS is extracted from **one representative page** and applied to every page sharing that handle (all product pages share `catalog_product_view`). The above-the-fold structure is normally identical across them; anything a specific page needs beyond the extract simply arrives with the deferred stylesheet — correctness is guaranteed, the optimization is partial.
+
+Any handle without a generated file degrades to the render-blocking stylesheet.
+
+### Regenerate on every deploy
+
+`web/generated/critical/` is **build output, not shipped source**: a `composer update` of the theme — or any deploy that replaces it — wipes the generated files. Bake the generation into your deploy pipeline as its **last step**, once the site is already serving the new release (caches flushed, PHP-FPM restarted):
+
+```text
+setup:static-content:deploy  →  cache:flush + restart FPM  →  critical-css (per handle)  →  cache:clean full_page
+```
+
+Generating earlier extracts the CSS from the *previous* release — or fails outright against a half-deployed site. The final `cache:clean full_page` matters because pages cached before the file existed were rendered with the fallback stub.
+
+### Read-only infrastructure (Adobe Commerce Cloud)
+
+The generated file is written into the active theme's directory, which is **read-only at runtime** on Adobe Commerce Cloud and similar immutable deployments — while generation needs the live site, which only exists after the build phase. On those platforms, leave `dev/css/use_css_critical_path` off for now: pages stay correct with the render-blocking stylesheet. A runtime-writable storage location (so generation can run in a `post_deploy` hook) is under consideration.
 
 ### Enabling it
 

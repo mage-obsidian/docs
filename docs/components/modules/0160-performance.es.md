@@ -45,7 +45,36 @@ El comando renderiza la URL, extrae el subconjunto crítico, reescribe el `url(.
 | `--resolve` | — | Una entrada `host:port:ip` de curl, para entornos locales detrás de un host propio. |
 | `--node` / `--bin` | `node` / bin incluido | Sobrescribe el binario de Node o el script extractor. |
 
-La home (`cms_index_index`) es la página del LCP y el objetivo por defecto. Genera otros handles pasando `--handle`/`--url`; cualquier handle sin archivo generado degrada simplemente a la hoja bloqueante.
+### Qué páginas cubrir — depende de tu tráfico
+
+El critical CSS se genera **por layout handle** — un archivo por handle, y solo las páginas cuyo handle tiene archivo generado reciben el tratamiento inline. No es un switch global; piénsalo como una optimización por página de entrada:
+
+- El beneficio se concentra en la **primera página de la visita, con cache frío**. A partir de la segunda página, `style.css` ya está en el cache del browser y la petición bloqueante cuesta casi nada.
+- Si tus visitantes entran mayormente por la home, el default `cms_index_index` cubre el grueso de la ganancia.
+- Si la búsqueda orgánica o los anuncios aterrizan a los visitantes **directo en productos y categorías**, esas también son primeras páginas — genera sus handles también:
+
+```bash
+bin/magento mage-obsidian:frontend:critical-css --handle catalog_product_view --url https://store.example/un-producto.html
+bin/magento mage-obsidian:frontend:critical-css --handle catalog_category_view --url https://store.example/una-categoria.html
+```
+
+Un caveat de granularidad: el critical CSS de un handle se extrae de **una página representativa** y se aplica a todas las páginas que comparten ese handle (todas las páginas de producto comparten `catalog_product_view`). La estructura above-the-fold normalmente es idéntica entre ellas; lo que una página específica necesite más allá del extracto simplemente llega con la hoja diferida — la corrección está garantizada, la optimización es parcial.
+
+Cualquier handle sin archivo generado degrada a la hoja bloqueante.
+
+### Regenerar en cada deploy
+
+`web/generated/critical/` es **output de build, no source distribuido**: un `composer update` del tema — o cualquier deploy que lo reemplace — borra los archivos generados. Incorpora la generación a tu pipeline de deploy como su **último paso**, con el sitio ya sirviendo el release nuevo (caches flusheadas, PHP-FPM reiniciado):
+
+```text
+setup:static-content:deploy  →  cache:flush + restart FPM  →  critical-css (por handle)  →  cache:clean full_page
+```
+
+Generar antes extrae el CSS del release *anterior* — o falla directamente contra un sitio a medio deployar. El `cache:clean full_page` final importa porque las páginas cacheadas antes de que existiera el archivo se renderizaron con el stub de fallback.
+
+### Infraestructura read-only (Adobe Commerce Cloud)
+
+El archivo generado se escribe dentro del directorio del tema activo, que es **read-only en runtime** en Adobe Commerce Cloud y deployments inmutables similares — mientras que la generación necesita el sitio vivo, que solo existe después de la fase de build. En esas plataformas, deja `dev/css/use_css_critical_path` apagado por ahora: las páginas siguen correctas con la hoja bloqueante. Está en consideración una ubicación de storage escribible en runtime (para que la generación pueda correr en un hook `post_deploy`).
 
 ### Activarlo
 
