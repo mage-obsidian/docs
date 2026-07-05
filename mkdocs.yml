@@ -136,7 +136,7 @@ extra:
   gh_docs_url: https://github.com/mage-obsidian/docs
   gh_js_utils_url: https://github.com/mage-obsidian/js-package-utils
   components_name: "MageObsidian Components"
-  discord_link: https://discord.gg/d6nHVw8h
+  discord_link: https://discord.gg/bfeVCZt4Us
   alternate:
     - name: English
       link: /
@@ -149,7 +149,7 @@ extra:
     - icon: fontawesome/brands/github
       link: /support/#repositories
     - icon: fontawesome/brands/discord
-      link: https://discord.gg/d6nHVw8h
+      link: https://discord.gg/bfeVCZt4Us
   consent:
     title: Cookie consent
     description: >- 
