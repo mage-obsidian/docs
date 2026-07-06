@@ -2,6 +2,10 @@
 
 Hot Module Replacement (HMR) es una característica central de **MageObsidian** impulsada por Vite: actualiza tu frontend en el navegador en tiempo real, sin recargar la página completa. Esta página cubre las piezas específicas de HMR; para el ciclo completo del día a día (arrancar/detener el servidor, sincronizar el env, diagnóstico) consulta [Flujo de Desarrollo](../../getting-started/development.md).
 
+Así se siente — los design tokens retematizan la página y un template `.vue` se hot-swapea mientras el componente conserva su estado (el panel de búsqueda nunca se cierra):
+
+<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/hmr-live-edit-v2.mp4"></video>
+
 ---
 
 > ⚠️ **Aviso Importante**

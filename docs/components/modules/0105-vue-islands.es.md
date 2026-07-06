@@ -4,6 +4,10 @@ En **{{ config.extra.components_name }}**, cada componente Vue renderizado desde
 
 El método puente de `.phtml` [`renderVueComponent`](0090-phtml-configuration.md#2-renderizacion-de-componentes-vue) ya no emite un script de montaje en línea. Emite un marcador inerte que un único bootstrap a nivel de página descubre y monta —por defecto solo cuando el marcador entra en el viewport.
 
+Aquí en una página de producto real con la conexión limitada: el HTML renderizado en servidor pinta primero —legible antes de que se ejecute un solo byte de Vue— y luego las islas hidratan a medida que llegan sus chunks:
+
+<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/islands-hydration.mp4"></video>
+
 ---
 
 ## Por Qué Islas

@@ -8,6 +8,10 @@ El storefront de referencia que viene con MageObsidian: alabastro frío y obsidi
 
 [:material-open-in-new: Navega la demo en vivo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
 
+O date un recorrido rápido — home, categoría, página de producto:
+
+<video controls muted playsinline preload="metadata" style="max-width:100%;border-radius:8px" src="/assets/demo-navigation.mp4"></video>
+
 La demo obtiene **100/100/100/100 en Lighthouse** (Rendimiento, Accesibilidad, Buenas prácticas, SEO):
 
 [![Reporte de Lighthouse: 100 en todas las categorías](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }

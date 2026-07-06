@@ -4,6 +4,10 @@ In **{{ config.extra.components_name }}**, every Vue component rendered from a `
 
 The `.phtml` bridge method [`renderVueComponent`](0090-phtml-configuration.md#2-rendering-vue-components) does not emit an inline mount script anymore. It emits an inert marker that a single page-level bootstrap discovers and mounts — by default only when the marker scrolls into view.
 
+Here it is on a real product page over a throttled connection: the server-rendered HTML paints first — readable before a single byte of Vue executes — then the islands hydrate as their chunks arrive:
+
+<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/islands-hydration.mp4"></video>
+
 ---
 
 ## Why Islands
