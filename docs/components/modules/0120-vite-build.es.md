@@ -43,6 +43,19 @@ Los assets generados por Vite quedan en el contenido estático desplegado junto 
 
 > **Solo temas compatibles.** Solo los temas que entregan `etc/mage_obsidian_compatibility.xml` (y han sido detectados por `mage-obsidian:frontend:config --generate`) pasan por el pipeline de Vite. Los temas sin él siguen el deploy nativo de Magento intacto.
 
+### ¿Qué tan rápido es?
+
+Los deploys estáticos legacy son famosos por tardar minutos. Como el build de Vite reemplaza todo el pipeline de Less/RequireJS, un tema MageObsidian se despliega en segundos — esta es una corrida real contra un Magento 2.4.8 con sample data, un tema y un locale:
+
+<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/static-deploy.mp4"></video>
+
+```bash
+bin/magento setup:static-content:deploy -f --theme MageObsidian/default en_US
+# Execution time: 3.19s — build de producción de Vite incluido (688ms, 753 módulos)
+```
+
+Los números absolutos varían con el hardware y el tamaño del tema, pero la forma se mantiene: el build de Vite está en territorio sub-segundo y domina la materialización de archivos, así que el deploy del tema completo queda en segundos de un dígito.
+
 ### Requisitos del servidor
 
 Como el build de Vite corre *dentro* de `setup:static-content:deploy`, la máquina que ejecute ese comando necesita el toolchain JS de [Requisitos](../../getting-started/requirements.md) —Node ≥ 22 y pnpm ≥ 11— además de PHP. Esto aplica a tu servidor de deploy, imagen de CI o build server, no solo a las máquinas de desarrollo. Si tu pipeline construye el contenido estático en un build host separado, solo ese host necesita Node/pnpm.

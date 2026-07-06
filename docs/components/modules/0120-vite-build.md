@@ -43,6 +43,19 @@ The Vite-generated assets land in the deployed static content alongside everythi
 
 > **Compatible themes only.** Only themes that ship `etc/mage_obsidian_compatibility.xml` (and have been picked up by `mage-obsidian:frontend:config --generate`) go through the Vite pipeline. Themes without it follow Magento's native deploy untouched.
 
+### How fast is it?
+
+Legacy static deploys are infamous for taking minutes. Because the Vite build replaces the whole Less/RequireJS pipeline, a MageObsidian theme deploys in seconds — here is a real run against a Magento 2.4.8 store with sample data, one theme and one locale:
+
+<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/static-deploy.mp4"></video>
+
+```bash
+bin/magento setup:static-content:deploy -f --theme MageObsidian/default en_US
+# Execution time: 3.19s — Vite production build included (688ms, 753 modules)
+```
+
+Absolute numbers vary with hardware and theme size, but the shape holds: the Vite build is sub-second territory and file materialization dominates, so full-theme deploys stay in single-digit seconds.
+
 ### Server requirements
 
 Because the Vite build runs *inside* `setup:static-content:deploy`, whatever machine runs that command needs the JS toolchain from [Requirements](../../getting-started/requirements.md) — Node ≥ 22 and pnpm ≥ 11 — in addition to PHP. This applies to your deploy box, CI image, or build server, not just developer machines. If your pipeline builds static content on a separate build host, only that host needs Node/pnpm.
