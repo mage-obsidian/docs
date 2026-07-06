@@ -12,8 +12,11 @@ Tu apoyo financiero puede ayudarme a dedicar más tiempo al desarrollo del proye
 
 - **USDT (BEP-20)**:  
   Apoya a través de Binance Smart Chain:  
-  Dirección de Wallet:  
-  `0x33924E1D73a242d8b108D0eEDCc825fa4E757176`
+  Dirección de Wallet:
+
+    ```text linenums="0"
+    0x33924E1D73a242d8b108D0eEDCc825fa4E757176
+    ```
 
 ## 2. Contribuciones Técnicas
 

@@ -12,8 +12,11 @@ Your financial support can help me dedicate more time to the project's developme
 
 - **USDT (BEP-20)**:  
   Support through Binance Smart Chain:  
-  Wallet Address:  
-  `0x33924E1D73a242d8b108D0eEDCc825fa4E757176`
+  Wallet Address:
+
+    ```text linenums="0"
+    0x33924E1D73a242d8b108D0eEDCc825fa4E757176
+    ```
 
 Your support will be acknowledged in the release notes and on a future thank-you page.
 
