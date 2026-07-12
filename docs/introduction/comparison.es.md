@@ -6,7 +6,7 @@ Magento 2 tiene más de una respuesta a "¿cómo debería construirse el fronten
 
 | | **MageObsidian** | **Hyvä** | **Luma / Blank** |
 |---|---|---|---|
-| Licencia | MIT (gratis, open source) | Comercial (pago por proyecto) | Incluido con Magento |
+| Licencia | MIT (gratis, open source) | Theme open source (OSL 3.0 / AFL 3.0, gratis desde nov 2025); Checkout, Enterprise y UI siguen siendo de pago | Incluido con Magento |
 | CSS | Tailwind CSS 4 | Tailwind CSS | LESS |
 | JavaScript | Islas Vue 3 + ESM nativo | Alpine.js | RequireJS + jQuery + Knockout |
 | Tooling de build | Vite (dev server + HMR) | Build propio | Grunt / deploy estático |
@@ -27,7 +27,7 @@ La decisión de diseño central: **modernizar el toolchain sin reemplazar la arq
 
 ## Cuándo elegir cada uno
 
-**Elige Hyvä** si necesitas hoy un stack probado en producción, con soporte comercial y un gran ecosistema de extensiones compatibles. Es un producto excelente y la opción más segura para muchas agencias en este momento.
+**Elige Hyvä** si necesitas hoy un stack probado en producción — el theme ahora es gratuito y open source — con productos premium de pago (Checkout, Enterprise) y un gran ecosistema de extensiones compatibles. Es un producto excelente y la opción más segura para muchas agencias en este momento.
 
 **Elige MageObsidian** si quieres un stack completamente open source, prefieres Vue sobre Alpine, valoras conservar el sistema de layouts nativo de Magento y te sientes cómodo adoptando un proyecto que aún está completando la paridad total con Luma (mira la [hoja de ruta](../roadmap.md)).
 

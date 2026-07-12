@@ -6,7 +6,7 @@ Magento 2 has more than one answer to "how should my store's frontend be built?"
 
 | | **MageObsidian** | **Hyvä** | **Luma / Blank** |
 |---|---|---|---|
-| License | MIT (free, open source) | Commercial (paid per project) | Included with Magento |
+| License | MIT (free, open source) | Theme open source (OSL 3.0 / AFL 3.0, free since Nov 2025); Checkout, Enterprise & UI remain paid | Included with Magento |
 | CSS | Tailwind CSS 4 | Tailwind CSS | LESS |
 | JavaScript | Vue 3 islands + native ESM | Alpine.js | RequireJS + jQuery + Knockout |
 | Build tooling | Vite (dev server + HMR) | Custom build | Grunt / static deploy |
@@ -27,7 +27,7 @@ The core design decision: **modernize the toolchain without replacing Magento's 
 
 ## When to choose what
 
-**Choose Hyvä** if you need a production-proven stack today, with commercial support and a large ecosystem of compatible extensions. It is an excellent product and the safest choice for many agencies right now.
+**Choose Hyvä** if you need a production-proven stack today — the theme is now free and open source — with paid premium products (Checkout, Enterprise) and a large ecosystem of compatible extensions. It is an excellent product and the safest choice for many agencies right now.
 
 **Choose MageObsidian** if you want a fully open-source stack, prefer Vue over Alpine, value keeping Magento's native layout system, and are comfortable adopting a project that is still completing full Luma parity (see the [roadmap](../roadmap.md)).
 
