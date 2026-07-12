@@ -14,7 +14,7 @@ shared by every compatible theme, see [Compatibility Themes](../components/theme
 !!! warning "Compatibility"
 
     - ✅ **Magento Open Source 2.4.7+** — supported today.
-    - 🚧 **Adobe Commerce** and **Mage-OS** — not supported yet. Support is planned for the future.
+    - 🧪 **Adobe Commerce** and **Mage-OS** — technically compatible since core 2.6.0, but not fully tested yet.
 
 ---
 
