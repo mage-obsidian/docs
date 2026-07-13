@@ -65,7 +65,12 @@ bin/magento mage-obsidian:frontend:dev --start --theme=Vendor/theme
 
 This syncs the Vite `.env` from your Magento config and launches the dev server with HMR. Open your storefront — edits to a `.vue` component, a `module.extend.css`, or a theme source are reflected instantly. Stop it with `--stop`, check it with `--status`. See [Development Workflow](../../getting-started/development.md) for the complete command set.
 
----
+## Multi-website with a shared theme
+
+When the same theme is served on more than one website (different hosts), each host must reach the dev server over its **own** origin, or the secondary host gets `403` on Vite's assets and a "Vite dev server is not responding" banner.
+
+- **`VITE_SERVER_ALLOWED_HOSTS`** — list every storefront host that serves the theme (comma-separated). Vite answers asset requests only for allowed hosts.
+- **`MAGENTO_HOST`** — leave it **empty** for the multi-website case. The HMR websocket host is then derived from the browser's `window.location`, so each website opens a **same-origin** `wss` connection. Set a fixed value only when a proxy/tunnel forces one public host for all traffic.
 
 ## Troubleshooting
 
