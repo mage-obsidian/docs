@@ -66,6 +66,25 @@ Después de configurar el archivo de compatibilidad, debes ejecutar los siguient
 
 ---
 
+## Opcional: flag `universal` (convivencia multi-tema)
+
+Por defecto, el layout de un módulo compatible se recolecta **solo** bajo un tema **{{ config.extra.components_name }}**. Bajo un tema legacy (no-Obsidian) su layout se suprime, de modo que habilitar el módulo nunca rompe una tienda que sigue en Luma/Blank. Esto es lo que hace segura una migración por website: el tema activo de cada request decide si el módulo participa.
+
+Configura `<universal>true</universal>` para que el módulo aplique en **todos** los temas, legacy incluido:
+
+```xml
+<features>
+    <compatibility>true</compatibility>
+    <universal>true</universal>
+</features>
+```
+
+Úsalo solo en módulos cuyo layout sea agnóstico del tema. Un módulo universal aporta su layout **completo** a los temas legacy —tanto sus islas Vue como cualquier neutralización de bloques legacy (`remove="true"`)—, así que todo lo específico del tema que contenga también llegará al tema legacy. Omitir el flag (o ponerlo en `false`) mantiene el comportamiento por defecto, gateado por tema.
+
+Vuelve a ejecutar `mage-obsidian:frontend:config --generate` después de cambiar el flag para que el contrato lo recoja.
+
+---
+
 ## Propósito
 
 Esta configuración asegura que solo los módulos declarados explícitamente como compatibles puedan interactuar con las funcionalidades y la arquitectura de **{{ config.extra.components_name }}**, logrando un proceso de desarrollo más organizado y confiable.
