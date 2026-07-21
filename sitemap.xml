@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/roadmap/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/roadmap/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/roadmap/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/showcase/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/showcase/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/showcase/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/installation/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/installation/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/installation/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/overview/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/overview/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/overview/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0010-overview/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0010-overview/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0020-compatibility-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0030-css-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0040-module-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0040-module-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0040-module-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0050-tailwind-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0050-tailwind-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0050-tailwind-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0060-js-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0060-js-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0060-js-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0070-vue-components-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0070-vue-components-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0070-vue-components-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0080-imports-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0080-imports-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0080-imports-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0085-import-tooling/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0085-import-tooling/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0085-import-tooling/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0090-phtml-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0090-phtml-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0090-phtml-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0100-phtml-vue-integration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0100-phtml-vue-integration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0100-phtml-vue-integration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0105-vue-islands/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0105-vue-islands/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0105-vue-islands/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0107-i18n/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0107-i18n/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0107-i18n/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0110-hmr-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0110-hmr-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0110-hmr-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0120-vite-build/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0120-vite-build/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0120-vite-build/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0130-structured-data/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0130-structured-data/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0130-structured-data/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0140-images/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0140-images/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0140-images/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0150-state-management/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0150-state-management/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0150-state-management/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/modules/0160-performance/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0160-performance/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0160-performance/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/themes/0010-overview/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0010-overview/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/themes/0020-compatibility-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/themes/0030-css-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/themes/0040-theme-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0040-theme-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0040-theme-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/components/themes/0050-components-workflow/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0050-components-workflow/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0050-components-workflow/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/getting-started/development/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/development/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/development/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/getting-started/installation/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/installation/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/installation/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/getting-started/requirements/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/requirements/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/requirements/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/getting-started/scaffolding/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/scaffolding/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/scaffolding/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/introduction/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/introduction/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/introduction/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/introduction/comparison/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/introduction/comparison/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/introduction/comparison/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/introduction/key-features/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/introduction/key-features/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/introduction/key-features/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/reference/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/reference/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/reference/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/support/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/support/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/support/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/support/project/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/support/project/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/support/project/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/theme/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/theme/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/theme/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/twig/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/twig/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/twig/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/twig/helpers/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/twig/helpers/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/twig/helpers/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/roadmap/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/roadmap/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/roadmap/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/showcase/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/showcase/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/showcase/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/installation/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/installation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/installation/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/overview/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/overview/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0010-overview/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0010-overview/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0020-compatibility-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0030-css-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0040-module-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0040-module-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0040-module-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0050-tailwind-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0050-tailwind-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0050-tailwind-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0060-js-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0060-js-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0060-js-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0070-vue-components-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0070-vue-components-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0070-vue-components-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0080-imports-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0080-imports-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0080-imports-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0085-import-tooling/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0085-import-tooling/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0085-import-tooling/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0090-phtml-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0090-phtml-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0090-phtml-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0100-phtml-vue-integration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0100-phtml-vue-integration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0100-phtml-vue-integration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0105-vue-islands/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0105-vue-islands/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0105-vue-islands/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0107-i18n/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0107-i18n/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0107-i18n/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0110-hmr-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0110-hmr-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0110-hmr-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0120-vite-build/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0120-vite-build/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0120-vite-build/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0130-structured-data/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0130-structured-data/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0130-structured-data/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0140-images/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0140-images/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0140-images/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0150-state-management/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0150-state-management/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0150-state-management/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/modules/0160-performance/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/modules/0160-performance/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/modules/0160-performance/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/themes/0010-overview/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0010-overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0010-overview/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/themes/0020-compatibility-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0020-compatibility-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0020-compatibility-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/themes/0030-css-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0030-css-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0030-css-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/themes/0040-theme-configuration/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0040-theme-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0040-theme-configuration/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/components/themes/0050-components-workflow/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/components/themes/0050-components-workflow/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/components/themes/0050-components-workflow/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/getting-started/development/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/development/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/development/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/getting-started/installation/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/installation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/installation/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/getting-started/requirements/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/requirements/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/requirements/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/getting-started/scaffolding/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/getting-started/scaffolding/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/getting-started/scaffolding/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/introduction/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/introduction/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/introduction/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/introduction/comparison/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/introduction/comparison/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/introduction/comparison/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/introduction/key-features/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/introduction/key-features/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/introduction/key-features/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/reference/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/reference/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/reference/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/support/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/support/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/support/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/support/project/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/support/project/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/support/project/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/theme/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/theme/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/theme/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/twig/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/twig/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/twig/"/>
+    </url>
+    <url>
+        <loc>https://mage-obsidian.jeanmarcos.dev/es/twig/helpers/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://mage-obsidian.jeanmarcos.dev/es/twig/helpers/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mage-obsidian.jeanmarcos.dev/twig/helpers/"/>
+    </url>
+</urlset>
