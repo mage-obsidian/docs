@@ -79,7 +79,19 @@ Cablealo desde el layout con cualquier bloque —para los helpers de MageObsidia
 
 ## Caché
 
-Las plantillas Twig compiladas se cachean bajo `var/cache/twig`. En **modo developer**, `auto_reload` recompila una plantilla cada vez que su fuente cambia, `{{ dump() }}` está disponible y una variable indefinida lanza un error (`strict_variables`) en lugar de renderizarse como cadena vacía. En **modo producción** se usa el caché compilado tal cual. El auto-escaping de HTML siempre está activo.
+Twig compila cada plantilla a una clase PHP la primera vez que se renderiza. Esas clases son un tipo de caché real de Magento, **Twig Templates** (`twig_templates`), así que aparecen en `bin/magento cache:status` y en la grilla de Cache Management del admin junto a todos los demás:
+
+```bash
+bin/magento cache:clean twig_templates   # reconstruir las plantillas compiladas
+bin/magento cache:flush                  # las incluye, como a cualquier otro tipo
+bin/magento cache:disable twig_templates # compilar en cada request
+```
+
+Deshabilitar el tipo es la forma soportada de depurar una plantilla que parece trabada: no se escribe nada en disco y cada request recompila. Con esto activo la respuesta es notoriamente más lenta.
+
+No deberías tener que limpiar esta caché después de un deploy. Las clases compiladas viven en un directorio identificado por el conjunto de paquetes instalados, así que un `composer install` o `composer update` arranca con un espacio limpio y los archivos del build anterior se podan. Las plantillas editadas en el lugar se detectan por su fecha de modificación. Ambos mecanismos hacen falta: Composer conserva las fechas empaquetadas, así que un paquete instalado hoy puede traer archivos fechados semanas atrás — más viejos que la caché construida con su versión anterior.
+
+En **modo developer** `{{ dump() }}` está disponible y una variable indefinida lanza un error (`strict_variables`) en lugar de renderizarse como cadena vacía. El auto-escaping de HTML siempre está activo, en todos los modos.
 
 ---
 

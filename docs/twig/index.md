@@ -79,7 +79,19 @@ Wire it from layout with any block — for the MageObsidian helpers (`render_vue
 
 ## Caching
 
-Compiled Twig templates are cached under `var/cache/twig`. In **developer mode**, `auto_reload` recompiles a template whenever its source changes, `{{ dump() }}` is available, and an undefined variable raises an error (`strict_variables`) instead of rendering as an empty string. In **production mode** the compiled cache is used as-is. HTML auto-escaping is always on.
+Twig compiles each template to a PHP class the first time it is rendered. Those classes are a real Magento cache type, **Twig Templates** (`twig_templates`), so they show up in `bin/magento cache:status` and in the admin's Cache Management grid alongside every other type:
+
+```bash
+bin/magento cache:clean twig_templates   # rebuild the compiled templates
+bin/magento cache:flush                  # includes them, like every other type
+bin/magento cache:disable twig_templates # compile on every request
+```
+
+Disabling the type is the supported way to debug a template that seems stuck — nothing is written to disk and every request recompiles. Expect a noticeably slower response while it is off.
+
+You should never have to clear this cache after a deploy. The compiled classes live in a directory keyed by the installed package set, so a `composer install` or `composer update` starts from a clean namespace and the previous build's files are pruned. Templates edited in place are picked up from their modification time. Both mechanisms are needed: Composer preserves the packaged modification times, so a package installed today can carry files dated weeks ago — older than the cache built from its previous version.
+
+In **developer mode** `{{ dump() }}` is available and an undefined variable raises an error (`strict_variables`) instead of rendering as an empty string. HTML auto-escaping is always on, in every mode.
 
 ---
 
