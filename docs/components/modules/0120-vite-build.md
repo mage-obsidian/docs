@@ -28,6 +28,14 @@ mage-obsidian:build-themes --theme Vendor/theme   # build one
 
 `frontend:dev` is the Magento-side entry point (it derives the Vite `.env` from your config first); `build-themes` is the lower-level engine command. Either produces the same output.
 
+!!! tip "Run the CMS export first"
+    ```bash
+    bin/magento mage-obsidian:cms:export
+    ```
+    Tailwind scans files, and CMS content lives in a database. The export writes it out so the build
+    covers the classes written in pages and blocks; without it, those classes fall to the runtime
+    delta instead. See [CMS Content](0157-cms.md).
+
 ---
 
 ## Production Deployment

@@ -189,5 +189,6 @@ La lógica de descubrimiento/hidratación vive en el engine de build JS (`mage-o
 
 ## Próximos Pasos
 
+- Una isla también se puede colocar desde contenido CMS — por un merchant con un widget, o a mano con la directiva `{% raw %}{{island}}{% endraw %}`. Consulta [Contenido CMS](0157-cms.es.md).
 - Consulta [Uso de JavaScript y Componentes Vue en Plantillas `.phtml`](0090-phtml-configuration.md) para la referencia completa de `renderVueComponent`.
 - La misma isla se puede montar desde una plantilla `.twig` mediante el helper `render_vue` — consulta el [Motor Twig](../../twig/index.md).

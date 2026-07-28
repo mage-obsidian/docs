@@ -189,5 +189,6 @@ The discovery/hydration logic lives in the JS build engine (`mage-obsidian/runti
 
 ## Next Steps
 
+- An island can also be placed from CMS content — by a merchant through a widget, or by hand with the `{% raw %}{{island}}{% endraw %}` directive. See [CMS Content](0157-cms.md).
 - See [Using JavaScript and Vue Components in `.phtml` Templates](0090-phtml-configuration.md) for the full `renderVueComponent` reference.
 - The same island can be mounted from a `.twig` template via the `render_vue` helper — see the [Twig Engine](../../twig/index.md).
