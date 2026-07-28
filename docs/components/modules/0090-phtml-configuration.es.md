@@ -42,7 +42,13 @@ El método `renderVueComponent()` monta un componente Vue como una **isla**. En 
 
 **Firma**
 ```php
-$block->renderVueComponent(string $componentName, array $props = [], bool $eager = false): string;
+$block->renderVueComponent(
+    string $componentName,
+    array $props = [],
+    bool $eager = false,
+    string $serverHtml = '',
+    bool $hydrate = false
+): string;
 ```
 
 | Parámetro | Descripción |
@@ -50,6 +56,8 @@ $block->renderVueComponent(string $componentName, array $props = [], bool $eager
 | `$componentName` | Componente en notación `Vendor_Module::Component` (el prefijo `components/` está implícito). |
 | `$props` | Datos pasados al componente como props de Vue. Se codifican como JSON seguro para atributo; un valor no codificable lanza una excepción en vez de emitir markup roto. |
 | `$eager` | `false` (por defecto) hidrata cuando el marcador se vuelve visible; `true` monta de inmediato — úsalo para componentes por encima del pliegue. |
+| `$serverHtml` | Markup renderizado dentro del marcador, para que pinte junto con el documento en lugar de esperar al chunk del componente. |
+| `$hydrate` | `true` significa que `$serverHtml` **es** el estado inicial del componente y Vue lo adopta en el lugar. `false` (por defecto) lo trata como un placeholder que Vue reemplaza al montar. |
 
 **Ejemplo: Renderizar un Componente Vue en una Plantilla `.phtml`**
 ```php
@@ -77,7 +85,13 @@ Para un componente por encima del pliegue que no deba esperar al viewport, activ
 <?= $block->renderVueComponent('Vendor_Module::Hero', [], true) ?>
 ```
 
-> **Nota:** El runtime de Vue y el plugin de i18n se cargan **una sola vez por página** y se comparten entre todas las islas; una página sin islas no carga Vue en absoluto. Consulta [Islas Vue](0105-vue-islands.md) para conocer la arquitectura completa y las estrategias `visible`/`eager`.
+Una isla eager por encima del pliegue no debería dejar su contenedor vacío — eso es un hueco en la página hasta que llega su chunk. Renderiza su estado inicial en el servidor y deja que Vue lo hidrate:
+
+```php
+<?= $block->renderVueComponent('Vendor_Module::Hero', $props, true, $serverHtml, true) ?>
+```
+
+> **Nota:** El runtime de Vue y el plugin de i18n se cargan **una sola vez por página** y se comparten entre todas las islas; una página sin islas no carga Vue en absoluto. Consulta [Islas Vue](0105-vue-islands.md) para conocer la arquitectura completa, las estrategias `visible`/`eager` y cómo generar `$serverHtml`.
 
 ---
 

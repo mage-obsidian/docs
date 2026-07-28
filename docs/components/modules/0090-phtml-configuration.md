@@ -41,7 +41,13 @@ The `renderVueComponent()` method mounts a Vue component as an **island**. Inste
 
 **Signature**
 ```php
-$block->renderVueComponent(string $componentName, array $props = [], bool $eager = false): string;
+$block->renderVueComponent(
+    string $componentName,
+    array $props = [],
+    bool $eager = false,
+    string $serverHtml = '',
+    bool $hydrate = false
+): string;
 ```
 
 | Parameter | Description |
@@ -49,6 +55,8 @@ $block->renderVueComponent(string $componentName, array $props = [], bool $eager
 | `$componentName` | Component in `Vendor_Module::Component` notation (the `components/` prefix is implied). |
 | `$props` | Data passed to the component as Vue props. Encoded as attribute-safe JSON; an un-encodable value throws instead of emitting broken markup. |
 | `$eager` | `false` (default) hydrates when the marker becomes visible; `true` mounts immediately — use it for above-the-fold components. |
+| `$serverHtml` | Markup rendered inside the marker, so it paints with the document instead of after the component's chunk arrives. |
+| `$hydrate` | `true` means `$serverHtml` **is** the component's initial state and Vue adopts it in place. `false` (default) makes it a placeholder Vue replaces on mount. |
 
 **Example: Rendering a Vue Component in a `.phtml` Template**
 ```php
@@ -76,7 +84,13 @@ For an above-the-fold component that should not wait for the viewport, opt into 
 <?= $block->renderVueComponent('Vendor_Module::Hero', [], true) ?>
 ```
 
-> **Note:** The Vue runtime and the i18n plugin load **once per page** and are shared across every island; a page with no islands never loads Vue at all. See [Vue Islands](0105-vue-islands.md) for the full architecture and the `visible`/`eager` strategies.
+An eager island above the fold should not leave its container empty — that is a hole in the page until its chunk arrives. Render its initial state on the server and let Vue hydrate it:
+
+```php
+<?= $block->renderVueComponent('Vendor_Module::Hero', $props, true, $serverHtml, true) ?>
+```
+
+> **Note:** The Vue runtime and the i18n plugin load **once per page** and are shared across every island; a page with no islands never loads Vue at all. See [Vue Islands](0105-vue-islands.md) for the full architecture, the `visible`/`eager` strategies and how to generate `$serverHtml`.
 
 ---
 
