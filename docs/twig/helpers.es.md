@@ -11,15 +11,21 @@ El bloque que renderiza se lee automáticamente del contexto de Twig, así que l
 
 | Función | Mapea a | Devuelve |
 |---|---|---|
-| `render_vue(name, props = {}, eager = false)` | `renderVueComponent()` | Un marcador de [isla Vue](../components/modules/0105-vue-islands.md) (HTML seguro). |
+| `render_vue(name, props = {}, eager = false, server_html = '', hydrate = false)` | `renderVueComponent()` | Un marcador de [isla Vue](../components/modules/0105-vue-islands.md) (HTML seguro). |
 | `__(text, ...args)` | El `__()` de Magento | Texto traducido con sustitución de argumentos `%1`/`%2` (auto-escapado). |
 | `child_html(alias = '', use_cache = true)` | `getChildHtml()` | El HTML de un bloque hijo (seguro). |
-| `hero_icon(name, set = 'solid', size = '24')` | `getHeroIcon()` | Un SVG de Heroicons en línea (seguro). |
+| `hero_icon(name, set = 'solid', size = '24', class = '')` | `getHeroIcon()` | Un `<svg>` de Heroicons (seguro). |
 | `vite_url(path)` | `getViteFileUrl()` | URL de un archivo generado por Vite. |
 | `component_path(name)` | `resolveComponentPath()` | URL resuelta de un componente por su nombre `Vendor::Component`. |
 | `view_file_url(file_id, params = {})` | `getViewFileUrl()` | URL de un archivo de vista. |
 | `json_ld(type, data = {})` | `renderJsonLd()` | Un `<script>` [JSON-LD de schema.org](../components/modules/0130-structured-data.md) para un tipo personalizado (HTML seguro). |
 | `image(src, options = {})` | `renderImage()` | Un [`<img>`/`<picture>`](../components/modules/0140-images.md) amigable con CWV (HTML seguro). |
+
+Twig admite argumentos nombrados, que vale la pena usar en cuanto una llamada llega a la cola de la firma de `render_vue`:
+
+```twig
+{{ render_vue('Acme_Catalog::BuyBox', props, true, server_html, hydrate = true) }}
+```
 
 Los helpers que emiten markup (`render_vue`, `child_html`, `hero_icon`, `json_ld`, `image`) están marcados como seguros, así que el auto-escaping de Twig deja su HTML intacto. Los helpers de URL devuelven cadenas planas y se auto-escapan como cualquier valor.
 
@@ -105,6 +111,35 @@ El escape de HTML ya es el default de Twig, así que no hay un filtro `escape_ht
 
 ---
 
+## Nombrar una plantilla: namespaces
+
+Una referencia a plantilla se puede escribir como `Vendor_Module::path.twig`, o con un namespace: `@catalog/path.twig`. Ambas se resuelven por el fallback de temas de Magento, así que un tema hijo sobrescribe cualquiera de ellas igual que un `.phtml`.
+
+Los namespaces se derivan de la lista de módulos habilitados en vez de declararse, así que no hay nada que registrar:
+
+| Módulo | Siempre | Además, mientras ningún otro módulo lo reclame |
+|---|---|---|
+| `Magento_Catalog` | `@magento-catalog` | `@catalog` |
+| `MageObsidian_Storefront` | `@mage-obsidian-storefront` | `@storefront` |
+
+La forma con vendor nunca colisiona y nunca cambia, así que es la que una plantilla puede usar sin condiciones. La corta es la comodidad.
+
+Cuando dos vendors publican el mismo nombre de módulo, el desempate lo gana el que realmente contiene plantillas — `MageObsidian_Catalog` extiende a `Magento_Catalog` con código y JS pero no envía ningún `view/*/templates`, así que `@catalog` es el del módulo core. Un empate que ninguno o ambos pueden romper se deja sin registrar en vez de decidirlo en silencio; decláralo en `di.xml` para zanjarlo:
+
+```xml
+<type name="MageObsidian\ModernFrontendTwig\Model\Template\TemplateNamespaces">
+    <arguments>
+        <argument name="namespaces" xsi:type="array">
+            <item name="catalog" xsi:type="string">MageObsidian_Catalog</item>
+        </argument>
+    </arguments>
+</type>
+```
+
+`bin/magento mage-obsidian:twig:namespaces` imprime la tabla resuelta y marca los nombres cortos perdidos por una colisión. Un namespace desconocido falla al cargar, sugiriendo los más parecidos.
+
+---
+
 ## Composición: includes, embeds y macros
 
 Todas las referencias usan la notación `Vendor_Module::path.twig`, resuelta por el fallback de temas de Magento —así que un tema hijo sobrescribe cualquier partial/macro igual que un `.phtml`. Prefiere componer plantillas antes que copiar markup.
@@ -118,11 +153,28 @@ Todas las referencias usan la notación `Vendor_Module::path.twig`, resuelta por
 {% endblock %}
 ```
 
+**`@parent` — extender la plantilla que estás sobrescribiendo.** Un override de tema no puede hacer `{% extends %}` de su propio nombre: el fallback lo resuelve de vuelta al override y Twig entra en recursión. `@parent` es la copia un nivel más arriba de la cadena — la del tema padre, o la del módulo si no hay ninguno:
+
+```twig
+{# app/design/frontend/Acme/child/Magento_Theme/templates/html/header.twig #}
+{% extends '@parent' %}
+
+{% block nav %}
+    {{ parent() }}
+    <a href="/outlet">Outlet</a>
+{% endblock %}
+```
+
+Cada copia resuelve su propio nivel, así que una cadena de tres temas funciona: el hijo extiende el del padre, el padre el de la base, y la base el del módulo. En una plantilla de módulo es un error — no hay nada por encima.
+
 **`{% include %}` con `with`/`only`** — un partial parametrizado (`only` aísla el scope del partial):
 
 ```twig
-{% include 'Acme_Catalog::partials/badge.twig' with { label: 'New', tone: 'accent' } only %}
+{% include '@catalog/partials/badge.twig' with { label: 'New', tone: 'accent' } only %}
 ```
+
+!!! warning "`only` también descarta `block`"
+    `render_vue`, `hero_icon`, `image` y `json_ld` leen el bloque que renderiza desde el contexto. Una parcial incluida con `only` no lo hereda, así que pásalo — `with { block: block, … } only` — o el helper lanza un error diciendo exactamente esto.
 
 **`{% embed %}` — el equivalente de slots en Twig.** Incluye una carcasa y rellena sus bloques en el sitio de llamada. Ideal para cards/secciones cuyo armazón es compartido pero el contenido varía:
 
