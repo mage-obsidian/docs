@@ -137,6 +137,27 @@ The strategy comes from the `$eager` argument:
 
 Hydration is **idempotent**: the first mount claims the element, so a second observer callback for the same marker is a no-op.
 
+### 4. Lifecycle events
+
+Every island announces itself on the [event bus](0155-storefront-events.md), so anything that needs to react to hydration — analytics, a third-party widget, a measurement — does it without patching the bootstrap.
+
+| Event | Payload |
+|---|---|
+| `island_mount_before` | `{ component, strategy, element }` |
+| `island_mount_after` | `+ durationMs` |
+| `island_mount_failed` | `+ error` |
+| `page_ready` *(sticky)* | `{ url, islands }` — how many markers the bootstrap found |
+
+`durationMs` measures the import and the mount together, which makes it a profiler that needs no build flag and no extension:
+
+```js
+events.observe('island_mount_after', ({ component, durationMs }) => {
+    if (durationMs > 50) console.warn(component, durationMs);
+});
+```
+
+A page with no markers still dispatches `page_ready` with `islands: 0`, before the early return that keeps Vue out of the page. And because it is sticky, a snippet that registers *after* the bootstrap ran still receives it — the usual case for a deferred tag manager.
+
 ---
 
 ## Verifying It

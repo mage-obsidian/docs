@@ -57,6 +57,26 @@ Es **read-mostly**: el `customer-data.js` nativo de Magento sigue siendo el due�
 | `section(name)` | Una sección, o `null`. |
 | `sync()` | Re-lee el store canónico (se llama solo ante actualizaciones de Magento). |
 | `reload(names = [], { force })` | Trae secciones de `/customer/section/load/` y las fusiona. |
+| `patch(name, partial)` | Fusiona una sección parcial en el mapa reactivo, sólo en memoria. |
+| `snapshot()` | El mapa actual, para poder volver. |
+| `restore(snapshot)` | Lo devuelve. |
+
+## Proyectar un cambio antes de que el servidor lo confirme
+
+`patch` existe para que una interacción muestre su resultado de inmediato en vez de esperar el viaje de ida y vuelta — subir `summary_count` en el momento en que se envía un add-to-cart, quitar una fila en el momento en que se toca su papelera.
+
+Es deliberadamente **sólo en memoria**: nunca escribe en `mage-cache-storage`. El `customer-data.js` de Magento sigue siendo el dueño de la caché canónica, así que una proyección que resulte equivocada muere con la página en vez de sobrevivirle en local storage. `snapshot()` y `restore()` son el par que deshace una cuando el servidor rechaza:
+
+```js
+const rollback = customerData.snapshot();
+customerData.patch('cart', { summary_count: count.value + qty });
+
+if (!(await addToCart()).ok) {
+    customerData.restore(rollback);
+}
+```
+
+Un flujo que recarga la sección después no necesita rollback en absoluto — la recarga sobrescribe la proyección con la verdad. En [UI Optimista y Movimiento](0158-optimistic-ui-motion.md) está el patrón completo y el flag de admin que lo gobierna.
 
 ## Por qué respeta el FPC
 
@@ -66,4 +86,5 @@ Magento sirve páginas cacheadas y carga el contenido privado en el cliente tras
 
 - [Configuración de JS](0060-js-configuration.md) — exponer paquetes npm como `pinia` al bundle.
 - [Islas Vue](0105-vue-islands.md) — el modelo de app por isla que abarca esta capa de estado.
+- [UI Optimista y Movimiento](0158-optimistic-ui-motion.md) — para qué se construyeron `patch`, `snapshot` y `restore`.
 {% endraw %}

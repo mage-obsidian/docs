@@ -57,6 +57,26 @@ It is **read-mostly**: Magento's native `customer-data.js` stays the owner of th
 | `section(name)` | A single section, or `null`. |
 | `sync()` | Re-read the canonical store (called automatically on Magento updates). |
 | `reload(names = [], { force })` | Fetch sections from `/customer/section/load/` and merge. |
+| `patch(name, partial)` | Merge a partial section into the reactive map, in memory only. |
+| `snapshot()` | The current map, to go back to. |
+| `restore(snapshot)` | Put it back. |
+
+## Projecting a change before the server confirms it
+
+`patch` exists so an interaction can show its result immediately instead of waiting out the round trip — bumping `summary_count` the moment an add-to-cart is submitted, dropping a row the moment its trash icon is clicked.
+
+It is deliberately **memory-only**: it never writes to `mage-cache-storage`. Magento's `customer-data.js` remains the owner of the canonical cache, so a projection that turns out to be wrong dies with the page rather than outliving it in local storage. `snapshot()` and `restore()` are the pair that undoes one when the server refuses:
+
+```js
+const rollback = customerData.snapshot();
+customerData.patch('cart', { summary_count: count.value + qty });
+
+if (!(await addToCart()).ok) {
+    customerData.restore(rollback);
+}
+```
+
+A flow that reloads the section afterwards needs no rollback at all — the reload overwrites the projection with the truth. See [Optimistic UI & Motion](0158-optimistic-ui-motion.md) for the full pattern and the admin flag that governs it.
 
 ## How it stays FPC-safe
 
@@ -66,4 +86,5 @@ Magento serves cached pages and loads private content client-side after render (
 
 - [JS Configuration](0060-js-configuration.md) — exposing npm packages like `pinia` to the bundle.
 - [Vue Islands](0105-vue-islands.md) — the per-island app model this state layer spans.
+- [Optimistic UI & Motion](0158-optimistic-ui-motion.md) — what `patch`, `snapshot` and `restore` were built for.
 {% endraw %}

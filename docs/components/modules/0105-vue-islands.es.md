@@ -137,6 +137,27 @@ La estrategia viene del argumento `$eager`:
 
 La hidratación es **idempotente**: el primer montaje reclama el elemento, así que una segunda llamada del observer para el mismo marcador no hace nada.
 
+### 4. Eventos de ciclo de vida
+
+Cada isla se anuncia en el [bus de eventos](0155-storefront-events.md), así que cualquier cosa que necesite reaccionar a la hidratación — analítica, un widget de terceros, una medición — lo hace sin parchear el bootstrap.
+
+| Evento | Payload |
+|---|---|
+| `island_mount_before` | `{ component, strategy, element }` |
+| `island_mount_after` | `+ durationMs` |
+| `island_mount_failed` | `+ error` |
+| `page_ready` *(sticky)* | `{ url, islands }` — cuántos marcadores encontró el bootstrap |
+
+`durationMs` mide el import y el montaje juntos, lo que lo convierte en un perfilador que no necesita flag de build ni extensión:
+
+```js
+events.observe('island_mount_after', ({ component, durationMs }) => {
+    if (durationMs > 50) console.warn(component, durationMs);
+});
+```
+
+Una página sin marcadores igual despacha `page_ready` con `islands: 0`, antes del retorno temprano que mantiene a Vue fuera de la página. Y como es sticky, un snippet que se registre *después* de que corrió el bootstrap lo recibe igual — el caso habitual de un tag manager diferido.
+
 ---
 
 ## Cómo Verificarlo
