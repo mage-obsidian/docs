@@ -96,6 +96,7 @@ plugins:
             MageObsidian vs Hyvä vs Luma: MageObsidian vs Hyvä vs Luma
             Showcase: Vitrina
             Roadmap: Hoja de ruta
+            Changelog: Registro de cambios
 nav:
   - Home: index.md 
   - Introduction:
@@ -121,6 +122,7 @@ nav:
     - Helpers & Filters: twig/helpers.md
   - Showcase: showcase.md
   - Roadmap: roadmap.md
+  - Changelog: changelog.md
   # - Reference:
   #   - reference/index.md
   - How Contributing?:
