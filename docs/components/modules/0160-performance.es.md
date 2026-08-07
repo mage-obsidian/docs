@@ -106,4 +106,73 @@ El critical CSS es un trade-off: inyecta CSS en cada página cacheada (más HTML
 - El minificador por regex puede corromper el JSON inline que emite el runtime — `data-props` de las islas, el importmap, el JSON-LD — un riesgo sin ganancia real (Varnish + gzip/brotli ya colapsan el whitespace; el delta post-compresión es ~1–3 %).
 
 Puedes dejar el flag activo globalmente; el storefront no se ve afectado.
+
+## Varnish y el back/forward cache
+
+El VCL que genera Magento termina toda respuesta no estática con
+
+```vcl
+set resp.http.Cache-Control = "no-store, no-cache, must-revalidate, max-age=0";
+```
+
+sin importar lo que haya mandado la aplicación. `no-store` es justo la directiva
+que Chrome lee como «esta página no se puede guardar», así que detrás de Varnish
+el **back/forward cache queda apagado para toda la tienda**: cada «atrás» es un
+documento nuevo en vez de la página que el visitante dejó, con su posición de
+scroll incluida.
+
+Sin eso no se rompe nada. Una tienda Obsidian monta sus islas sobre el marcado
+que el servidor ya envió, así que la página llega terminada venga del
+back/forward cache, de Varnish o de PHP — la suite end-to-end comprueba
+exactamente eso y pasa con el VCL estándar. Lo que cuesta la cabecera es el
+«atrás» *instantáneo*, no un «atrás» correcto.
+
+Volver a activarlo es un cambio en el VCL, que pertenece a quien opera el borde y
+no a este paquete. Son dos líneas:
+
+```vcl
+sub vcl_deliver {
+    # Not letting browser to cache non-static files.
+    if (resp.http.Cache-Control !~ "private" && req.url !~ "^/(pub/)?(media|static)/") {
+        set resp.http.Pragma = "no-cache";
+        set resp.http.Expires = "-1";
+        if (obj.uncacheable) {
+            set resp.http.Cache-Control = "no-store, no-cache, must-revalidate, max-age=0";
+        } else {
+            set resp.http.Cache-Control = "no-cache, must-revalidate, max-age=0";
+        }
+    }
+```
+
+`obj.uncacheable` ya se consulta unas líneas más arriba en la propia plantilla de
+Magento, así que esto no introduce ningún concepto nuevo. Una página que Varnish
+cacheó es por definición idéntica para todo el mundo, de modo que no contiene
+nada que `no-store` proteja; el carrito, el checkout, la cuenta y
+`customer/section/load` siguen con `no-store` porque son no cacheables y entran
+por la primera rama. El navegador continúa revalidando antes de reutilizar nada:
+`no-cache` prohíbe servirlo sin preguntar.
+
+Después de cambiarlo hay que regenerar y recargar:
+
+```bash
+bin/magento varnish:vcl:generate --backend-host=<host> --backend-port=<port> --export-version=7 --output-file=/etc/varnish/default.vcl
+```
+
+### El bypass de `/checkout`
+
+Esa misma plantilla se niega a cachear nada bajo `/checkout`:
+
+```vcl
+if (req.url ~ "/customer" || req.url ~ "/checkout") {
+    return (pass);
+}
+```
+
+El checkout de MageObsidian es una **cáscara cacheable** cuya mitad privada llega
+por customer-data, así que esta línea tira ese diseño en silencio: la página la
+rehace PHP en cada visita. Quitando `|| req.url ~ "/checkout"` se recupera. El
+carrito y la página de éxito no se cachean en ningún caso: responden `no-store`
+por sí mismos y Varnish los pasa por eso, que es la comprobación que de verdad
+protege al comprador.
+
 {% endraw %}
