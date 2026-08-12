@@ -41,8 +41,11 @@ El mapa de herencia se calcula una vez al arrancar el dev server y se cachea. Ag
 Un watcher solo de desarrollo lo soluciona. Cuando **creas o eliminas** un componente o fuente JS bajo un directorio vigilado (el dir `web` de cada módulo adherido, más el tema y su cadena de padres), este:
 
 1. Invalida el mapa de herencia cacheado del tema.
-2. Reescribe el mapa de resolución persistido (para que `Vendor_Module::` resuelva el archivo nuevo en runtime).
-3. Regenera el `jsconfig.json` del tema (para que el editor también lo vea).
+2. Invalida el conjunto de interceptores compilado, para que un plugin agregado o reapuntado con el servidor levantado tenga efecto en el build siguiente.
+3. Reescribe el mapa de resolución persistido (para que `Vendor_Module::` resuelva el archivo nuevo en runtime).
+4. Regenera el `jsconfig.json` del tema (para que el editor también lo vea).
+
+Los plugins de resolución leen ese mapa **en cada petición** en vez de capturarlo al arrancar el servidor, que es lo que hace visible el refresco sin reiniciar.
 
 Registra `sources changed — refreshed <theme> import resolution`. Los cambios tienen debounce y las escrituras son idempotentes, así que editar el *contenido* de un archivo (a diferencia de agregar/eliminar archivos) no lo dispara —de eso se encarga el HMR propio de Vite.
 

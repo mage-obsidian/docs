@@ -41,8 +41,11 @@ The inheritance map is computed once when the dev server starts and cached. Addi
 A dev-only watcher fixes that. When you **create or delete** a component or JS source under a watched directory (every opted-in module's `web` dir, plus the theme and its parent chain), it:
 
 1. Invalidates the cached inheritance map for the theme.
-2. Rewrites the persisted resolution map (so `Vendor_Module::` resolves the new file at runtime).
-3. Regenerates the theme `jsconfig.json` (so the editor sees it too).
+2. Invalidates the compiled interceptor set, so a plugin added or retargeted while the server is up takes effect on the next build.
+3. Rewrites the persisted resolution map (so `Vendor_Module::` resolves the new file at runtime).
+4. Regenerates the theme `jsconfig.json` (so the editor sees it too).
+
+The resolver plugins read that map **per request** rather than capturing it when the server boots, which is what makes the refresh visible without a restart.
 
 It logs `sources changed — refreshed <theme> import resolution`. Changes are debounced and writes are idempotent, so editing file *contents* (as opposed to adding/removing files) does not trigger it — Vite's own HMR handles that.
 
