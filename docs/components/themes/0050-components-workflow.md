@@ -1,177 +1,133 @@
 # Creating Scripts and Components
 
-In **{{ config.extra.components_name }}**, themes can include custom JavaScript logic and Vue components to extend their functionality. These files should be placed under the theme directory:
+In **{{ config.extra.components_name }}**, themes carry their own JavaScript and Vue components, under the theme directory:
 
 ```
-app/design/frontend/Vendor/Theme
+app/design/frontend/Vendor/Theme/web/js          # plain scripts (.ts / .js)
+app/design/frontend/Vendor/Theme/web/components  # Vue single-file components
 ```
 
-Specifically:
-
-- **Custom JavaScript**:  
-  ```
-  app/design/frontend/Vendor/Theme/web/js
-  ```
-- **Vue Components**:  
-  ```
-  app/design/frontend/Vendor/Theme/web/components
-  ```
-
-This process follows the same workflow explained for modules, ensuring consistency and ease of use.
+Files under a module use `view/frontend/web/` instead. Everything below works the same either way — the only difference is the namespace you refer to them by: `Theme::` for the theme's own files, `Vendor_Module::` for a module's.
 
 ---
 
 ## Workflow
 
-### 1. **JavaScript in `web/js`**
+### 1. Scripts in `web/js`
 
-The `web/js` directory is intended for general-purpose JavaScript files that handle custom logic or utility functions. Files placed here are automatically processed by **Vite** and included in the frontend as needed.
+A script is a module, not a bundle entry. It is loaded once, does its work and exports whatever the rest needs.
 
-**Example**:
+```ts
+// app/design/frontend/Vendor/Theme/web/js/greeting.ts
+export function greetUser(name: string): void {
+    console.log(`Hello, ${name}!`);
+}
+```
 
-    ```javascript
-    // app/design/frontend/Vendor/Theme/web/js/theme-utils.js
-    export function greetUser(name) {
-         console.log(`Hello, ${name}! Welcome to our theme.`);
-    }
-    ```
+Load it from a template with the `script()` helper, which emits a `<script type="module">` pointing at the built file:
 
-**Usage in `.phtml`**:
-    ```php
-    <script type="module" src="<?= $block->getViteFileUrl('Theme::js/theme-utils.js') ?>"></script>
-    <script type="module">
-         import { greetUser } from 'Theme::js/theme-utils.js';
-         greetUser('John');
-    </script>
-    ```
+{% raw %}
+```twig
+{{ script('Theme::js/greeting') }}
+```
+{% endraw %}
 
----
+Import it from other JS with the framework's specifier — **never a relative path**:
 
-### 2. **Vue Components in `web/components`**
+```ts
+import { greetUser } from "Theme::js/greeting";
+```
 
-The `web/components` directory is designed for Vue Single File Components (SFC). Each component should follow Vue’s structure, leveraging the Composition API for better modularity and flexibility.
+The specifier is what makes theme inheritance work: a child theme that ships `web/js/greeting.ts` transparently replaces the parent's for everyone who imports it. A relative path resolves to one specific file on disk and skips that entirely. A typo fails the build with suggestions rather than shipping broken.
 
-**Example**:
-    ```vue
-    <!-- app/design/frontend/Vendor/Theme/web/components/Greeting.vue -->
-    <template>
-         <div>
-              <h1>Hello, {{ name }}!</h1>
-         </div>
-    </template>
+### 2. Vue components in `web/components`
 
-    <script>
-    import { ref } from 'vue';
+Components are single-file components using **`<script setup>`**. TypeScript is the default (`lang="ts"`).
 
-    export default {
-         setup() {
-              const name = ref('John');
-              return { name };
-         },
-    };
-    </script>
-    ```
+{% raw %}
+```vue
+<!-- app/design/frontend/Vendor/Theme/web/components/CartSummary.vue -->
+<script setup lang="ts">
+import { computed } from "vue";
 
-**Usage in `.phtml`**:
-    ```php
-    <?= $block->renderVueComponent('Theme::components/Greeting', ['name' => 'John Doe']) ?>
-    ```
+interface Item {
+    price: number;
+}
 
----
+const props = defineProps<{ items: Item[] }>();
 
-## Guidelines and Recommendations
+const total = computed(() => props.items.reduce((sum, item) => sum + item.price, 0));
+</script>
 
-1. **Consistent Workflow**  
-    The workflow for including scripts in themes is the same as for modules:
-    - Use `web/js` for general-purpose JavaScript.
-    - Use `web/components` for Vue components.
+<template>
+    <div>
+        <h2>Total: {{ total }}</h2>
+    </div>
+</template>
+```
+{% endraw %}
 
-2. **File Location**  
-    Ensure that your files are placed under the correct paths in the theme directory:
-    - JavaScript: `app/design/frontend/Vendor/Theme/web/js`
-    - Components: `app/design/frontend/Vendor/Theme/web/components`
+Mount it from a template as an **island** — a marker the runtime hydrates, not a page-wide app:
 
-3. **File Naming Conventions**  
-    - Use **kebab-case** or **camelCase** for file names in `web/js`.
-    - Use **PascalCase** for Vue component files in `web/components`.
+{% raw %}
+```twig
+{{ render_vue('Theme::components/CartSummary', { items: items }) }}
+```
+{% endraw %}
 
-4. **Dynamic Imports**  
-    Dynamic imports can be used for JavaScript files to optimize performance:
-    ```javascript
-    import('Theme::js/theme-utils.js').then(({ greetUser }) => greetUser('Dynamic Import'));
-    ```
+`render_vue(name, props, eager, serverHtml, hydrate)`:
 
-5. **Vite Processing**  
-    Both `web/js` and `web/components` are processed by **Vite**:
-    - Files are optimized and bundled.
-    - Tree-shaking ensures only necessary code is included.
+| Argument | Meaning |
+|---|---|
+| `name` | `Theme::components/X` or `Vendor_Module::components/X` |
+| `props` | Passed to the component as its props |
+| `eager` | `true` mounts immediately; the default waits until the island scrolls into view |
+| `serverHtml` | Markup for the component's initial state, so the island has something to show before Vue arrives |
+| `hydrate` | With `serverHtml`, adopt that markup instead of replacing it — no layout shift |
+
+Generate `serverHtml` with the `mage-obsidian:island-ssr` bin (see [Vue islands](../modules/0105-vue-islands.md)). An eager island that replaces its container shifts the page on mount; `bin/magento mage-obsidian:frontend:doctor` reports every one that does.
 
 ---
 
-## Example Workflow
+## Templates: Twig or phtml
 
-Here’s a practical example of including both a custom script and a Vue component in a theme:
+With the optional Twig module installed, templates are `.twig` and the helpers above are Twig functions. They are declared `is_safe => html`, so **they never need `|raw`**.
 
-1. **Create a Custom Script**:  
-    File: `app/design/frontend/Vendor/Theme/web/js/theme-logic.js`  
-    ```javascript
-    export function calculateTotal(items) {
-         return items.reduce((sum, item) => sum + item.price, 0);
-    }
-    ```
+Without it, the same capabilities are ViewModel calls from `.phtml`:
 
-2. **Create a Vue Component**:  
-    File: `app/design/frontend/Vendor/Theme/web/components/CartSummary.vue`  
-    ```vue
-    <template>
-         <div>
-              <h2>Total: {{ total }}</h2>
-         </div>
-    </template>
+```php
+<?= $block->renderVueComponent('Theme::components/CartSummary', ['items' => $items]) ?>
+<script type="module" src="<?= $escaper->escapeUrl($block->getViteFileUrl('Theme::js/greeting')) ?>"></script>
+```
 
-    <script>
-    import { ref } from 'vue';
-
-    export default {
-         props: {
-              items: {
-                    type: Array,
-                    required: true,
-              },
-         },
-         setup(props) {
-              const total = ref(
-                    props.items.reduce((sum, item) => sum + item.price, 0)
-              );
-              return { total };
-         },
-    };
-    </script>
-    ```
-
-3. **Include in `.phtml`**:  
-    ```php
-    <?php
-    $items = [
-         ['price' => 10],
-         ['price' => 20],
-    ];
-    ?>
-    <script type="module" src="<?= $block->getViteFileUrl('Theme::js/theme-logic.js') ?>"></script>
-    <?= $block->renderVueComponent('Theme::components/CartSummary', ['items' => $items]) ?>
-    ```
+New themes are expected to be written in Twig; `.phtml` remains supported for compatibility and for the rare block whose PHP the theme has to keep.
 
 ---
 
-## Benefits
+## Guidelines
 
-1. **Unified Workflow**  
-    Consistent methodology across modules and themes simplifies development and maintenance.
+1. **Location.** Scripts in `web/js`, components in `web/components`. Under a module, the same two directories inside `view/frontend/web/`.
+2. **Naming.** kebab-case for `web/js`, PascalCase for components.
+3. **Imports.** Always `Theme::` / `Vendor_Module::`. Relative paths across a module or theme boundary break inheritance.
+4. **Composition API only.** `<script setup>`; the Options API is not used anywhere in the shipped storefront.
+5. **Dynamic imports** work with the same specifiers, and are how an island's code stays out of the critical path:
+   ```ts
+   const { greetUser } = await import("Theme::js/greeting");
+   ```
+6. **Vite processes both directories** — bundled, tree-shaken, and fingerprinted into `web/generated`.
 
-2. **Modern Tooling**  
-    Vite ensures optimized bundling and faster builds, with support for tree-shaking and ES modules.
+---
 
-3. **Flexibility**  
-    Allows custom logic and Vue components to seamlessly integrate into the frontend, enhancing functionality and user experience.
+## Adding to an existing page
 
-By following these guidelines, you can create a well-organized and efficient theme that leverages **{{ config.extra.components_name }}** for maximum performance and scalability.
+A component that has to appear inside a block someone else owns does not need that block edited. Declare a child block in layout XML and render it where the parent template calls `child_html`:
+
+```xml
+<referenceBlock name="product.info.main">
+    <block class="MageObsidian\ModernFrontend\Block\Template"
+           name="vendor.cart.summary" as="cart_summary"
+           template="Vendor_Module::cart/summary.twig"/>
+</referenceBlock>
+```
+
+If the parent template has no hook for it, an **interceptor** can wrap the JS instead, without editing the module that owns it.
