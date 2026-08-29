@@ -199,6 +199,94 @@ Las plantillas consumen estos tokens como utilidades de Tailwind (`font-display`
 
 ---
 
+## Apariencia clara y oscura
+
+OBSIDIAN puede ofrecer al comprador un escaparate **claro**, **automático** u **oscuro**. Viene
+**desactivado**: un escaparate oscuro es una decisión de marca, y la fotografía de catálogo sobre
+fondo blanco se ve muy distinta contra una página oscura. Comprueba la tuya antes de activarlo.
+
+=== "CLI"
+
+    ```bash
+    bin/magento config:set mage_obsidian/appearance/enabled 1
+    bin/magento cache:flush
+    ```
+
+=== "Admin"
+
+    **Stores → Configuration → MageObsidian → Frontend → Appearance → Enable the Appearance
+    Selector**
+
+Activado, aparece en la cabecera un control de tres estados —sol, monitor, luna— con el automático
+en medio. El automático sigue al sistema operativo y lo sigue aunque el comprador lo cambie durante
+la visita. La elección vive en `localStorage`, nunca en una cookie.
+
+### Nunca varía el documento servido
+
+La apariencia se decide en el navegador, después de que el HTML se haya entregado. **Dos
+compradores con apariencias opuestas reciben los mismos bytes**, así que la página sigue siendo tan
+cacheable como era: sin `X-Magento-Vary`, sin entradas duplicadas en Varnish, sin una cabecera
+`Vary` propia.
+
+Un guion en línea en el `<head>` —emitido por el `SecureHtmlRenderer` de Magento, así que lleva el
+nonce de la CSP— lee la elección guardada y marca `data-theme` en `<html>` antes de la primera
+pintura. Los tokens de apariencia se inlinean junto a él, de modo que el primer fotograma ya sale
+correcto aunque la hoja de estilos diferida siga en camino.
+
+!!! warning "El estado automático necesita JavaScript"
+
+    El guion es lo que traduce la preferencia del sistema a una apariencia. Con los guiones
+    desactivados el escaparate se queda en claro. Eso mismo es lo que hace absoluto el interruptor
+    de apagado: sin guion no hay `data-theme`, y sin `data-theme` no hay apariencia oscura.
+
+### La paleta oscura
+
+La apariencia oscura **redefine los mismos tokens** en vez de introducir otros nuevos, así que cada
+plantilla que ya lee `text-ink` o `bg-alabaster` la sigue sin tocarse. La paleta vive en su propio
+archivo, `web/css/appearance.css`:
+
+```css
+:root {
+  --dark-page: #08070b;
+  --dark-surface: #1a1922;
+  --dark-surface-raised: #211f2a;
+  --dark-text: #ecebf0;
+  --dark-accent: #45a195;
+}
+
+:root[data-theme="dark"] {
+  --color-page: var(--dark-page);
+  --color-alabaster: var(--dark-surface);
+  --color-alabaster-raised: var(--dark-surface-raised);
+  --color-ink: var(--dark-text);
+  --color-accent: var(--dark-accent);
+
+  color-scheme: dark;
+}
+```
+
+La indirección es deliberada. Los nombres de los tokens describen la apariencia **clara**
+—`--color-ink` significa «tinta oscura», `--color-alabaster` significa «piedra clara»—, así que en
+la apariencia oscura sus valores dicen lo contrario de su nombre. Asignarlos desde variables de rol
+(`--dark-text`, `--dark-surface`) es lo que mantiene eso legible en vez de parecer un error.
+
+Para re-marcar la apariencia oscura, sobrescribe las variables de rol en tu tema hijo; nunca hace
+falta tocar el mapeo.
+
+!!! tip "Dos cosas que revisar en un escaparate oscuro"
+
+    **La fotografía de producto.** Las imágenes de catálogo con fondo blanco se convierten en
+    rectángulos brillantes sobre una página oscura. Ningún token lo arregla: decide si lo mitigas o
+    lo aceptas, con la parrilla delante.
+
+    **La separación entre superficies.** El ratio de contraste es una métrica de legibilidad de
+    texto y se comprime entre superficies oscuras: dos superficies que el comprador distingue sin
+    esfuerzo pueden medir 1,1:1. Compara luminosidad perceptual (`L*` de CIELAB) en su lugar —
+    OBSIDIAN mantiene las superficies contiguas separadas al menos 7 `L*`, la misma separación que
+    ya usa su paleta clara.
+
+---
+
 ## Construir tu propio tema encima
 
 Crea un tema en `app/design/frontend/Vendor/Custom/` y hereda de `theme-base` (lienzo limpio) o de

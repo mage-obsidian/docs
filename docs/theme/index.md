@@ -195,6 +195,92 @@ Templates consume these as Tailwind utilities (`font-display`, `text-ink`, `bg-a
 
 ---
 
+## Light and dark appearance
+
+OBSIDIAN can offer the shopper a **light**, **automatic** or **dark** storefront. It ships
+**turned off**: a dark storefront is a brand decision, and catalogue photography on a white
+background looks very different against a dark page. Check yours before you enable it.
+
+=== "CLI"
+
+    ```bash
+    bin/magento config:set mage_obsidian/appearance/enabled 1
+    bin/magento cache:flush
+    ```
+
+=== "Admin"
+
+    **Stores → Configuration → MageObsidian → Frontend → Appearance → Enable the Appearance
+    Selector**
+
+Enabled, a three-state control appears in the header — sun, monitor, moon — with the automatic
+state in the middle. Automatic follows the operating system and keeps following it if the shopper
+changes it mid-visit. The choice lives in `localStorage`, never in a cookie.
+
+### It never varies the served document
+
+The appearance is decided in the browser, after the HTML has been delivered. **Two shoppers with
+opposite appearances receive the same bytes**, so a page stays as cacheable as it was: no
+`X-Magento-Vary`, no duplicated Varnish entries, no `Vary` header of its own.
+
+A small inline script in the `<head>` — emitted through Magento's `SecureHtmlRenderer`, so it
+carries the CSP nonce — reads the stored choice and stamps `data-theme` on `<html>` before the
+first paint. The appearance tokens are inlined next to it, so the first frame is already correct
+even while the deferred stylesheet is still in flight.
+
+!!! warning "The automatic state needs JavaScript"
+
+    The script is what translates the system preference into an appearance. With scripts disabled
+    the storefront stays light. That is also what makes the off switch absolute: no script, no
+    `data-theme`, no dark appearance.
+
+### The dark palette
+
+The dark appearance **redefines the same tokens** rather than introducing new ones, so every
+template that already reads `text-ink` or `bg-alabaster` follows along untouched. The palette lives
+in its own file, `web/css/appearance.css`:
+
+```css
+:root {
+  --dark-page: #08070b;
+  --dark-surface: #1a1922;
+  --dark-surface-raised: #211f2a;
+  --dark-text: #ecebf0;
+  --dark-accent: #45a195;
+}
+
+:root[data-theme="dark"] {
+  --color-page: var(--dark-page);
+  --color-alabaster: var(--dark-surface);
+  --color-alabaster-raised: var(--dark-surface-raised);
+  --color-ink: var(--dark-text);
+  --color-accent: var(--dark-accent);
+
+  color-scheme: dark;
+}
+```
+
+The indirection is deliberate. Token names describe the **light** appearance — `--color-ink` means
+"dark ink", `--color-alabaster` means "pale stone" — so in the dark appearance their values say the
+opposite of their names. Assigning them from role variables (`--dark-text`, `--dark-surface`) is
+what keeps that readable instead of looking like a mistake.
+
+To rebrand the dark appearance, override the role variables in your child theme; you never need to
+touch the mapping.
+
+!!! tip "Two things to check on a dark storefront"
+
+    **Product photography.** Catalogue images with white backgrounds become bright rectangles on a
+    dark page. No token fixes this — decide whether to mitigate it or accept it, with the grid in
+    front of you.
+
+    **Surface separation.** Contrast ratio is a text-legibility metric and compresses between dark
+    surfaces: two surfaces a shopper distinguishes easily can measure 1.1:1. Compare perceptual
+    lightness (CIELAB `L*`) instead — OBSIDIAN keeps adjacent surfaces at least 7 `L*` apart, the
+    same separation its light palette already uses.
+
+---
+
 ## Build your own theme on top
 
 Create a theme under `app/design/frontend/Vendor/Custom/` and inherit from `theme-base` (clean
