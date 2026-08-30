@@ -152,6 +152,21 @@ const subtotalFlashing = useValueFlash(() => subtotal.value);
 
 The shimmer is on the **price only**, not the row. Dimming the whole row to say "one number is updating" reads as "this item is disabled".
 
+### The bag page swaps rows, it does not re-render them
+
+The bag page is server-rendered, so it re-fetches itself and replaces the cart region wholesale. Each row carries its own `view-transition-name`, and the leaving row fades and slides while the ones below close the gap — the same idea as the drawer, through the browser instead of Vue.
+
+The animations must be scoped to rows that actually enter or leave:
+
+```css
+::view-transition-old(.obsidian-cart-line):only-child { /* the row that left */ }
+::view-transition-new(.obsidian-cart-line):only-child { /* the row that arrived */ }
+```
+
+`:only-child` is how a snapshot says it has no counterpart — a row that only leaves has no `-new`, one that only arrives has no `-old`. A row that *survives* the swap has both, and must stay on the default cross-fade. Without the guard, a quantity step fades the surviving row out over 140 ms while fading it back in from 60 ms: the two curves leave the row sitting at about 40% opacity for ~60 ms, which reads as a blink. That is the row-level version of the mistake the flash avoids — dimming the whole row to say one number changed.
+
+Replacing the region also destroys whatever the visitor was operating, so the enhancer records the focused control before the swap and restores it after. Without it, the second press of `+` lands on nothing.
+
 ### Emptying
 
 When the last row leaves, the list cross-fades into the empty panel instead of collapsing to it — `<Transition mode="out-in">` around the two states.
@@ -163,6 +178,36 @@ Remove controls use `--color-danger` (`#a4322b`, a muted mineral red that sits i
 The icon comes from the shared sprite through the `Icon` component, never inline SVG — the same source `hero_icon()` uses, so a hydrating component matches its server markup.
 
 ---
+
+## Where feedback lands
+
+A confirmation that covers the navigation is worse than no confirmation, so the storefront makes two separate decisions: **who** announces an outcome, and **where** that announcement sits.
+
+### Adding to the bag opens the bag
+
+A successful add opens the mini-cart drawer and claims the announcement through `result.announced` (see [Storefront Events](0155-storefront-events.md#claiming-the-announcement)), so no success toast is emitted. The bag *is* the confirmation: the line is there, the subtotal is there, and checkout is one click away. The row whose quantity grew is tinted with `--color-accent-soft` for 1.8s, which follows quantity rather than the arrival of a new id — re-adding something already in the bag grows a line instead of creating one.
+
+A **refused** add is never claimed. It still reaches a toast, carrying Magento's own wording, and the drawer stays shut.
+
+The drawer also stays out of the way when the bag *page* is on screen — it would be covering itself. Nothing claims the announcement there either, so the add reaches a toast. Detection is the bag page's own root marker, not the URL, so store codes and URL suffixes do not matter.
+
+The drawer moves focus, so a screen reader hears the dialog. The add itself is announced separately by a live region that lives **outside** the drawer and is therefore already in the DOM when the message arrives — a live region inserted already populated is not reliably announced.
+
+### The toast stack is anchored to the bottom
+
+Toasts sit at the bottom: bottom-right from `sm` up, centred below it. The top-right corner is where the account, search and bag controls live, and a toast landing there covers the very control it is talking about — which also fails WCAG 2.2 SC 2.4.11 *Focus Not Obscured*, because a keyboard user can focus a control the toast is painted over.
+
+Anything docked to the bottom edge has to be cleared, and each contributor declares its own custom property:
+
+| Property | Declared by | Means |
+|---|---|---|
+| `--obsidian-bottom-inset` | the mobile checkout dock | furniture every floating layer must clear |
+| `--obsidian-cookie-notice-height` | the consent banner, measured at runtime | the banner's height while it is on screen |
+| `--obsidian-toast-inset` | any module with its own bottom-corner chrome | extra clearance the toast stack alone needs |
+
+`.toast-host` adds all three to its own padding, plus `env(safe-area-inset-bottom)`. A module that parks something in the bottom corner declares `--obsidian-toast-inset` scoped to the page that actually renders it — `:root:has(.my-widget)`, not a bare `:root` — so pages without it do not pay for the gap.
+
+Inside the stack the assertive region renders **last**, closest to the anchored corner, because that is where the eye lands.
 
 ## Reduced motion
 

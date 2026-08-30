@@ -152,6 +152,21 @@ const subtotalFlashing = useValueFlash(() => subtotal.value);
 
 El shimmer va **sólo sobre el precio**, no sobre la fila. Atenuar la fila entera para decir "un número se está actualizando" se lee como "este ítem está deshabilitado".
 
+### La página del bag intercambia filas, no las re-renderiza
+
+La página del bag se renderiza en el servidor, así que se re-solicita a sí misma y reemplaza la región del carrito entera. Cada fila lleva su propio `view-transition-name`, y la fila que se va se desvanece y desliza mientras las de abajo cierran el hueco — la misma idea que en el cajón, pero a través del navegador en vez de Vue.
+
+Las animaciones tienen que acotarse a las filas que realmente entran o salen:
+
+```css
+::view-transition-old(.obsidian-cart-line):only-child { /* la fila que se fue */ }
+::view-transition-new(.obsidian-cart-line):only-child { /* la fila que llegó */ }
+```
+
+`:only-child` es como un snapshot dice que no tiene contraparte — una fila que sólo sale no tiene `-new`, una que sólo llega no tiene `-old`. Una fila que *sobrevive* al intercambio tiene ambas, y debe quedarse en el cross-fade por defecto. Sin la guarda, un paso de cantidad desvanece la fila superviviente durante 140 ms mientras la reaparece desde los 60 ms: las dos curvas dejan la fila en torno al 40% de opacidad durante ~60 ms, y eso se lee como un parpadeo. Es la versión a nivel de fila del error que el flash evita — atenuar la fila entera para decir que cambió un número.
+
+Reemplazar la región también destruye aquello que el visitante estaba operando, así que el enhancer registra el control enfocado antes del intercambio y lo restaura después. Sin eso, la segunda pulsación de `+` cae sobre nada.
+
 ### Vaciarse
 
 Cuando sale la última fila, la lista hace cross-fade hacia el panel vacío en vez de colapsar a él — un `<Transition mode="out-in">` alrededor de los dos estados.
@@ -163,6 +178,36 @@ Los controles de eliminar usan `--color-danger` (`#a4322b`, un rojo mineral apag
 El ícono sale del sprite compartido a través del componente `Icon`, nunca SVG en línea — la misma fuente que usa `hero_icon()`, así que un componente que hidrata coincide con su marcado del servidor.
 
 ---
+
+## Dónde aterriza el feedback
+
+Una confirmación que tapa la navegación es peor que ninguna confirmación, así que el storefront toma dos decisiones separadas: **quién** anuncia un resultado y **dónde** se coloca ese anuncio.
+
+### Agregar al bag abre el bag
+
+Un alta correcta abre el cajón del minicart y reclama el aviso vía `result.announced` (ver [Eventos del Storefront](0155-storefront-events.md#reclamar-el-aviso)), así que no se emite ningún toast de éxito. El bag *es* la confirmación: la línea está ahí, el subtotal está ahí, y el checkout queda a un clic. La fila cuya cantidad creció se tiñe con `--color-accent-soft` durante 1.8s, siguiendo la cantidad y no la llegada de un id nuevo — volver a agregar algo que ya estaba en el bag hace crecer una línea en vez de crear una.
+
+Un alta **rechazada** nunca se reclama. Sigue llegando a un toast, con el texto propio de Magento, y el cajón se queda cerrado.
+
+El cajón también se aparta cuando la *página* del bag está en pantalla — se estaría tapando a sí mismo. Ahí tampoco reclama nadie el aviso, así que el alta llega a un toast. La detección usa el marcador raíz de esa página, no la URL, de modo que códigos de tienda y sufijos dan igual.
+
+El cajón mueve el foco, así que un lector de pantalla escucha el diálogo. El alta en sí la anuncia por separado una live region que vive **fuera** del cajón y por lo tanto ya está en el DOM cuando llega el mensaje — una live region insertada ya rellena no se anuncia de forma confiable.
+
+### La pila de toasts está anclada abajo
+
+Los toasts van abajo: abajo a la derecha desde `sm`, centrados por debajo. La esquina superior derecha es donde viven los controles de cuenta, búsqueda y bag, y un toast que aterriza ahí tapa justamente el control del que habla — lo que además incumple el SC 2.4.11 *Focus Not Obscured* de WCAG 2.2, porque un usuario de teclado puede enfocar un control sobre el que el toast está pintado.
+
+Todo lo que esté anclado al borde inferior hay que despejarlo, y cada contribuyente declara su propia custom property:
+
+| Propiedad | La declara | Significa |
+|---|---|---|
+| `--obsidian-bottom-inset` | el dock móvil del checkout | mobiliario que toda capa flotante debe despejar |
+| `--obsidian-cookie-notice-height` | el banner de consentimiento, medido en runtime | el alto del banner mientras está en pantalla |
+| `--obsidian-toast-inset` | cualquier módulo con cromo propio en la esquina inferior | despeje extra que sólo necesita la pila de toasts |
+
+`.toast-host` suma las tres a su propio padding, más `env(safe-area-inset-bottom)`. Un módulo que estacione algo en la esquina inferior declara `--obsidian-toast-inset` acotado a la página que realmente lo renderiza — `:root:has(.mi-widget)`, no un `:root` pelado — para que las páginas sin él no paguen el hueco.
+
+Dentro de la pila, la región assertive se renderiza **última**, más cerca de la esquina anclada, porque ahí es donde cae la vista.
 
 ## Movimiento reducido
 

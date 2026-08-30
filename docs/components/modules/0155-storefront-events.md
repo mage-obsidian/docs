@@ -176,6 +176,34 @@ interface CartEvent {
 
 `_after` fires once the response **and** the `cart`/`messages` section reload have landed, so an observer reading `section('cart')` sees the new state.
 
+#### Claiming the announcement
+
+`CartResult` is the object `addFromForm` / `addProduct` / `addRaw` hand back to their caller, and `_after` carries **that same object**, not a copy:
+
+```ts
+interface CartResult {
+    ok: boolean;
+    message?: string;   // Magento's own wording when it explains a refusal
+    announced?: boolean; // set by an observer that already told the customer
+}
+```
+
+So an `_after` observer that shows the outcome itself can set `announced` and the caller will skip its own toast:
+
+```ts
+events.observe('cart_add_after', (data) => {
+    if (!data.result.ok) {
+        return;
+    }
+    openMyOwnConfirmation();
+    data.result.announced = true;
+});
+```
+
+This is the one field an `_after` observer is meant to write — everything else on `result` is the server's verdict. The mini-cart uses it: a successful add opens the bag drawer, so a toast saying the same thing would be noise. Nothing claims a **failure**, so a refused add always reaches a toast.
+
+An observer that claims without actually showing anything makes the outcome silent. If yours can fail to render, claim only after it has.
+
 ### Wishlist and compare
 
 `wishlist_add_*`, `wishlist_remove_*`, `compare_add_*`, `compare_remove_*` — same `MutationEvent` shape, with `result: boolean`.

@@ -176,6 +176,34 @@ interface CartEvent {
 
 `_after` dispara cuando aterrizaron la respuesta **y** la recarga de las secciones `cart`/`messages`, así que un observer que lea `section('cart')` ve el estado nuevo.
 
+#### Reclamar el aviso
+
+`CartResult` es el objeto que `addFromForm` / `addProduct` / `addRaw` devuelven a quien los llamó, y `_after` lleva **ese mismo objeto**, no una copia:
+
+```ts
+interface CartResult {
+    ok: boolean;
+    message?: string;    // el texto de Magento cuando explica un rechazo
+    announced?: boolean; // lo pone un observer que ya avisó al cliente
+}
+```
+
+Así, un observer de `_after` que muestre el resultado por su cuenta puede marcar `announced` y quien llamó se saltará su propio toast:
+
+```ts
+events.observe('cart_add_after', (data) => {
+    if (!data.result.ok) {
+        return;
+    }
+    openMyOwnConfirmation();
+    data.result.announced = true;
+});
+```
+
+Es el único campo que un observer de `_after` está pensado para escribir — todo lo demás en `result` es el veredicto del servidor. El minicart lo usa: un alta correcta abre el cajón del bag, así que un toast diciendo lo mismo sería ruido. Nadie reclama un **fallo**, de modo que un alta rechazada siempre llega a un toast.
+
+Un observer que reclame sin mostrar nada deja el resultado en silencio. Si el tuyo puede fallar al renderizar, reclama después de haberlo hecho.
+
 ### Wishlist y comparar
 
 `wishlist_add_*`, `wishlist_remove_*`, `compare_add_*`, `compare_remove_*` — la misma forma `MutationEvent`, con `result: boolean`.
