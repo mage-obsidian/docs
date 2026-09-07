@@ -277,6 +277,29 @@ Before turning either flag on, the right move is almost always to **take the scr
 
 ---
 
+## Native surfaces the theme keeps
+
+Under a MageObsidian theme the framework's module manager reports every `Magento_*` module as "output disabled", and that manager is wired into the core's layout **and** page-layout file sources. The effect is not "the theme adds nothing to that screen": the core's layout file is dropped altogether. A core route that no MageObsidian module re-declares answers `200` with an empty body, or with the theme chrome and nothing inside, and no log says so.
+
+The storefront therefore re-declares the core surfaces a visitor, a crawler or an operator still reaches by URL. Each lives in the module that owns the area, keeps the native block and renders with a Twig template in the theme.
+
+| Surface | Route or page layout | Declared in | What it serves |
+|---|---|---|---|
+| `robots.txt` | `robots_index_index` | `module-storefront` | The instructions configured under *Design › Search Engine Robots*, as `text/plain`, followed by the sitemap lines |
+| Shipment tracking | `shipping/tracking/popup` | `module-sales` | Carrier, number and status of every track, and the store contact when the carrier answers nothing. The shipment email and the account's shipment page link to it |
+| RSS feed list | `/rss` | `module-storefront` | The active feeds, one link each. `404` while RSS is off |
+| Wish list sharing with RSS | `wishlist_email_rss` | `module-wishlist` | The "include RSS link" checkbox shows only with *RSS Feeds › Wish List* active, and a share that asks for the link never fails |
+| Login as Customer landing | `loginascustomer/login/index` | `module-customer` | A `meta refresh` to the customer account, with a manual link for whoever disabled it. No script |
+| Full-width page layouts | `cms-full-width`, `category-full-width`, `product-full-width` | `theme-base`, under `Magento_PageBuilder/` (`page_layout/*.xml` for the structure, `layouts.xml` for the label the admin and the page builder recognise) | The columns of `1column` or `2columns-left` with the `page-main--full-width` class on the content area, which the theme styles without side margins |
+
+The page layouts live in the theme under `Magento_PageBuilder/` on purpose. Theme sources are not filtered, and that folder disappears with the module, at the same moment the admin stops offering those layouts.
+
+Two core routes are deliberately not kept, and the parity registry of `storefront-verification` records what each answers under the theme: `review/product/listAjax`, replaced by the review island and linked from nowhere, and `/swagger`, a development tool served only outside production mode.
+
+When a page under the theme answers with an empty `<main>`, suspect a dropped core handle before anything else. The parity registry lists every core handle and page layout together with who re-declares it, and refuses an "out of scope" entry that does not say what the route answers.
+
+---
+
 ## Next Steps
 
 - [Structured Data (JSON-LD)](0130-structured-data.md) — the schema.org half of the same story.

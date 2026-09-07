@@ -277,6 +277,29 @@ Antes de encender cualquiera de los dos flags, lo correcto casi siempre es **sac
 
 ---
 
+## Superficies nativas que el tema conserva
+
+Bajo un tema MageObsidian, el gestor de módulos del framework declara «salida deshabilitada» para todo módulo `Magento_*`, y ese gestor está cableado en las fuentes de archivos de layout **y** de page layout del core. El efecto no es «el tema no aporta nada a esa pantalla»: el archivo de layout del core desaparece por completo. Una ruta del core que ningún módulo MageObsidian re-declare responde `200` con un cuerpo vacío, o con el cromo del tema y nada dentro, sin que ningún log lo diga.
+
+Por eso el escaparate re-declara las superficies del core que un visitante, un rastreador o un operador siguen alcanzando por URL. Cada una vive en el módulo dueño del área, conserva el bloque nativo y se renderiza con una plantilla Twig del tema.
+
+| Superficie | Ruta o page layout | Declarada en | Qué sirve |
+|---|---|---|---|
+| `robots.txt` | `robots_index_index` | `module-storefront` | Las instrucciones configuradas en *Diseño › Robots de buscadores*, como `text/plain`, seguidas de las líneas de sitemap |
+| Seguimiento de envíos | `shipping/tracking/popup` | `module-sales` | Transportista, número y estado de cada seguimiento, y el contacto de la tienda cuando el transportista no responde. El correo de envío y la página de envío de la cuenta enlazan a él |
+| Lista de feeds RSS | `/rss` | `module-storefront` | Los feeds activos, un enlace por cada uno. `404` con RSS desactivado |
+| Compartir la wishlist con RSS | `wishlist_email_rss` | `module-wishlist` | La casilla «incluir enlace RSS» aparece solo con *Feeds RSS › Wishlist* activo, y un envío que pida el enlace nunca falla |
+| Aterrizaje de «Login as Customer» | `loginascustomer/login/index` | `module-customer` | Un `meta refresh` a la cuenta del cliente, con un enlace manual para quien lo tenga deshabilitado. Sin script |
+| Page layouts a ancho completo | `cms-full-width`, `category-full-width`, `product-full-width` | `theme-base`, en `Magento_PageBuilder/` (`page_layout/*.xml` para la estructura, `layouts.xml` para la etiqueta que reconocen el admin y el constructor de página) | Las columnas de `1column` o `2columns-left` con la clase `page-main--full-width` en el área de contenido, que el tema estiliza sin márgenes laterales |
+
+Los page layouts viven en el tema bajo `Magento_PageBuilder/` a propósito. Las fuentes de tema no pasan por el filtro, y esa carpeta desaparece con el módulo, en el mismo momento en que el admin deja de ofrecer esos layouts.
+
+Dos rutas del core no se conservan de forma deliberada, y el registro de paridad de `storefront-verification` anota lo que cada una responde bajo el tema: `review/product/listAjax`, reemplazada por la isla de reseñas y sin ningún enlace hacia ella, y `/swagger`, una herramienta de desarrollo que solo se sirve fuera del modo producción.
+
+Cuando una página bajo el tema responde con un `<main>` vacío, sospecha antes que nada de un handle del core descartado. El registro de paridad lista cada handle y page layout del core junto con quién lo re-declara, y rechaza una entrada «fuera de alcance» que no diga qué responde la ruta.
+
+---
+
 ## Próximos pasos
 
 - [Datos estructurados (JSON-LD)](0130-structured-data.md) — la mitad de schema.org de esta misma historia.
