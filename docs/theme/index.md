@@ -164,6 +164,7 @@ no JavaScript config involved.
   --color-obsidian-800: #16151d;
 
   /* — Alabaster: cool mineral light base (not warm cream) — */
+  --color-alabaster-deep: #e9e7ee;
   --color-alabaster: #eceaf0;
   --color-alabaster-raised: #f6f5f8;
   --color-paper: #ffffff;
@@ -251,6 +252,7 @@ in its own file, `web/css/appearance.css`:
 
 :root[data-theme="dark"] {
   --color-page: var(--dark-page);
+  --color-alabaster-deep: var(--dark-surface-raised);
   --color-alabaster: var(--dark-surface);
   --color-alabaster-raised: var(--dark-surface-raised);
   --color-ink: var(--dark-text);
