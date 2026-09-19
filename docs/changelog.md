@@ -16,11 +16,67 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ## Unreleased
 
+**A fresh install serves built assets.** `module-modern-frontend` shipped HMR switched on, and
+Magento only overrides that flag in production mode, so a new store in the default mode asked a
+Vite dev server that was not running for every asset: all of them returned 404 and no island
+mounted. HMR is now **off by default** and opt-in. `mage-obsidian:frontend:hmr --enable` and
+`mage-obsidian:frontend:dev --up` still turn it on. If you use the dev server and never saved the
+flag yourself, run `bin/magento mage-obsidian:frontend:hmr --enable` once after upgrading; the
+doctor reports "HMR disabled" until you do.
+
 **Static deploy verification no longer cries wolf.** The check added in `module-modern-frontend`
 2.15.0 read `--language`'s default value, `all`, as if it were a locale, so it looked under a
 `pub/static/<area>/<theme>/all/` that Magento never writes and reported a flawless deploy as
 entirely missing. It now resolves the sentinel through Magento's own `LocaleResolver`, honours
 `--theme`, `--exclude-theme` and `--exclude-language`, and **warns instead of aborting** the deploy.
+
+**The Vite harness installs outside our own environment.** `component-modern-frontend` shipped
+`vite/pnpm-workspace.yaml` with a pnpm store under `/home/www` and the supply-chain release-age
+check switched off, both settings of our local environment. On any machine where `/home/www` is not
+writable, `pnpm install` failed. Both are gone; if you relied on that store path, set
+`pnpm_config_store_dir` in your environment. The harness now declares `engines.node >=22.13`, the
+floor of the pnpm version it pins.
+
+**A production build no longer asks for dev server settings.** `mage-obsidian` 3.1.0 validates the
+dev server variables only with `--dev-server`, and only `VITE_SERVER_HOST` and `VITE_SERVER_PORT`
+are required. Without a terminal it never prompts. Before, a build without `vite/.env` opened a
+prompt, exited 1 and aborted `setup:static-content:deploy` in any CI.
+
+**PHP 8.3 is required.** Every MageObsidian package now declares `"php": ">=8.3"`, and
+`module-modern-frontend` requires Magento 2.4.7 or later. The code uses typed class constants, so
+on PHP 8.2 Composer installed the packages and `setup:di:compile` then failed with a parse error.
+**PHP 8.2 is no longer supported.**
+
+**A failed compile keeps the CMS delta you had.** When the Tailwind binary was missing, timed out
+or failed, `module-modern-frontend` wrote an empty delta over the last good one, and the classes
+the build did not cover lost their styles until the next successful save. The previous stylesheet
+now stays in place. A compile that fails with the binary installed is logged; a missing binary is left
+to the doctor, which already reports it.
+
+**The frontend contract is regenerated only when the module list is written.** Every write to
+`config.php` or `env.php` regenerated it, so a failure there broke `deploy:mode:set` and
+`setup:config:set`. It now runs only when the `modules` section is written, and a failure is logged
+with the command to run instead of failing the write. A contract that fails its schema no longer
+leaves the `.php` file rewritten either: both files are written only after validation passes.
+
+**Payment pages allow inline styles again, and the pre-paint survives a strict policy.** Magento
+enforces the policy on `checkout_index_index` and `multishipping_checkout_billing`, and our
+storefront-wide `styles/inline=0` blocked the inline styles payment extensions inject there. Both
+pages are back to Magento's default. The pre-paint now applies its rules through a constructable
+stylesheet, which `style-src` does not govern, and falls back to a `<style>` element only in
+browsers without them.
+
+**Static deploy reports themes with no Vite build.** A theme whose build output was missing or
+empty passed the deploy in silence. It is now named in a warning. Set `MAGE_OBSIDIAN_STRICT_DEPLOY=1`
+to turn that warning, and a failure to publish the build, into a failed deploy.
+
+**Source-writing commands refuse production mode.** `mage-obsidian:generate:module`, `:theme`,
+`:component` and `mage-obsidian:i18n:collect` exit with an error in production mode instead of
+failing halfway through a write. `mage-obsidian:frontend:dev` is unchanged.
+
+**Page Builder classes stay out of the CMS delta.** `pagebuilder-*` classes never resolve to a
+Tailwind rule and filled the delta's unresolved list. They are skipped by default; the prefix list
+is an `ignoredClassPrefixes` argument of `ContentExporter` in `di.xml`.
 
 ---
 

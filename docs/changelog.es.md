@@ -16,12 +16,69 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ## Sin publicar
 
+**Una instalación nueva sirve los assets construidos.** `module-modern-frontend` venía con el HMR
+encendido, y Magento solo anula ese flag en modo production, así que una tienda nueva en el modo
+por defecto le pedía cada asset a un dev server de Vite que no estaba corriendo: todos devolvían
+404 y ninguna isla montaba. Ahora el HMR viene **apagado por defecto** y se activa a propósito.
+`mage-obsidian:frontend:hmr --enable` y `mage-obsidian:frontend:dev --up` lo siguen encendiendo.
+Si usas el dev server y nunca guardaste el flag, corre `bin/magento mage-obsidian:frontend:hmr
+--enable` una vez después de actualizar; el doctor avisa "HMR disabled" hasta que lo hagas.
+
 **La verificación del deploy estático ya no da falsas alarmas.** El chequeo añadido en
 `module-modern-frontend` 2.15.0 leía el valor por defecto de `--language`, `all`, como si fuera un
 locale, así que buscaba en un `pub/static/<área>/<tema>/all/` que Magento nunca escribe y reportaba
 un deploy impecable como enteramente ausente. Ahora resuelve el centinela a través del propio
 `LocaleResolver` de Magento, respeta `--theme`, `--exclude-theme` y `--exclude-language`, y
 **advierte en vez de abortar** el deploy.
+
+**El harness de Vite se instala fuera de nuestro entorno.** `component-modern-frontend` publicaba
+`vite/pnpm-workspace.yaml` con el store de pnpm en `/home/www` y el control de antigüedad de
+publicaciones apagado, dos ajustes de nuestro entorno local. En cualquier máquina donde `/home/www`
+no se podía escribir, `pnpm install` fallaba. Ya no están; si dependías de esa ruta del store,
+define `pnpm_config_store_dir` en tu entorno. El harness declara ahora `engines.node >=22.13`, el
+piso de la versión de pnpm que fija.
+
+**El build de producción ya no pide ajustes del dev server.** `mage-obsidian` 3.1.0 valida las
+variables del dev server solo con `--dev-server`, y solo `VITE_SERVER_HOST` y `VITE_SERVER_PORT` son
+obligatorias. Sin terminal nunca pregunta. Antes, un build sin `vite/.env` abría un prompt, salía con
+1 y abortaba `setup:static-content:deploy` en cualquier CI.
+
+**Se requiere PHP 8.3.** Todos los paquetes MageObsidian declaran `"php": ">=8.3"`, y
+`module-modern-frontend` requiere Magento 2.4.7 o posterior. El código usa typed class constants, así
+que con PHP 8.2 Composer instalaba los paquetes y después `setup:di:compile` fallaba con un parse
+error. **Se deja de soportar PHP 8.2.**
+
+**Un compile fallido conserva el delta CMS que tenías.** Cuando el binario de Tailwind faltaba,
+superaba el timeout o fallaba, `module-modern-frontend` escribía un delta vacío encima del último
+bueno, y las clases que el build no cubría perdían sus estilos hasta el siguiente guardado exitoso.
+Ahora la hoja anterior se queda. Un compile que falla con el binario instalado se registra en el
+log; si falta el binario, lo informa el doctor, como ya hacía.
+
+**El contrato del frontend se regenera solo cuando se escribe la lista de módulos.** Cada escritura de
+`config.php` o `env.php` lo regeneraba, así que una falla ahí rompía `deploy:mode:set` y
+`setup:config:set`. Ahora corre solo cuando se escribe la sección `modules`, y una falla se registra
+con el comando a correr en lugar de hacer fallar la escritura. Un contrato que no pasa su schema
+tampoco deja reescrito el `.php`: los dos archivos se escriben solo después de validar.
+
+**Las páginas de pago vuelven a permitir estilos inline, y el prepaint resiste una política
+estricta.** Magento aplica la política en `checkout_index_index` y `multishipping_checkout_billing`,
+y nuestro `styles/inline=0` de todo el storefront bloqueaba ahí los estilos inline que inyectan las
+extensiones de pago. Las dos páginas vuelven al valor por defecto de Magento. El prepaint aplica sus
+reglas con una hoja construible, que `style-src` no controla, y solo usa un `<style>` en navegadores
+que no las soportan.
+
+**El deploy estático avisa de los temas sin build de Vite.** Un tema cuya salida faltaba o estaba
+vacía pasaba el deploy en silencio. Ahora se nombra en un aviso. Con `MAGE_OBSIDIAN_STRICT_DEPLOY=1`,
+ese aviso y una falla al publicar el build hacen fallar el deploy.
+
+**Los comandos que escriben código fuente rechazan el modo production.**
+`mage-obsidian:generate:module`, `:theme`, `:component` y `mage-obsidian:i18n:collect` salen con un
+error en modo production en lugar de fallar a mitad de una escritura. `mage-obsidian:frontend:dev` no
+cambia.
+
+**Las clases de Page Builder quedan fuera del delta CMS.** Las clases `pagebuilder-*` nunca resuelven
+a una regla de Tailwind y llenaban la lista de no resueltas del delta. Se omiten por defecto; la lista
+de prefijos es el argumento `ignoredClassPrefixes` de `ContentExporter` en `di.xml`.
 
 ---
 
