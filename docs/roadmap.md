@@ -44,6 +44,10 @@ declaration in a theme never counts as coverage on its own.
 - **Full Luma parity for the default theme** — closing the entries the register still lists as
   blocked or uncovered, so a store can switch to MageObsidian without losing any stock
   functionality.
+- **Adobe Commerce** — `mage-obsidian:frontend:doctor` now detects Adobe Commerce and
+  inventories which Commerce-only storefront families a store has enabled, and which of
+  them have a MageObsidian module installed. The inventory reports what is installed; it
+  does not claim that any of it has been verified on that platform.
 
 ## 🔜 Planned
 

@@ -45,6 +45,10 @@ plataforma; una declaración en un tema nunca cuenta como cobertura por sí sola
 - **Paridad total con Luma para el tema default** — cerrar las entradas que el registro sigue
   listando como bloqueadas o no cubiertas, para que una tienda pueda cambiarse a MageObsidian
   sin perder funcionalidad estándar.
+- **Adobe Commerce** — `mage-obsidian:frontend:doctor` ahora detecta Adobe Commerce e
+  inventaria qué familias del storefront exclusivas de Commerce tiene habilitadas una tienda,
+  y cuáles de ellas tienen un módulo de MageObsidian instalado. El inventario reporta qué está
+  instalado; no afirma que nada de eso haya sido verificado en esa plataforma.
 
 ## 🔜 Planificado
 
