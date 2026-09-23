@@ -16,6 +16,21 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ## Septiembre 2026
 
+### Checkout de invitado que pide iniciar sesión, y mensajes que se repiten
+
+Con un producto descargable en el carrito, Magento rechaza por defecto el checkout de invitado. En el
+nativo, los botones de checkout le piden al invitado que inicie sesión; los nuestros navegaban a
+`/checkout`, que rebotaba al carrito, y el mensaje "Guest checkout is disabled." solo salía la primera
+vez. Ahora los botones llevan al invitado a iniciar sesión con un `referer` de vuelta al checkout, la
+página de login lo devuelve ahí, y un mensaje de sesión que el servidor vuelve a enviar siempre se
+muestra.
+
+- **module-checkout** 3.12.1 — los botones de checkout del carrito y del minicart llevan al invitado a
+  iniciar sesión cuando el carrito no admite invitados
+- **module-customer** 2.4.1 — un inicio de sesión que trae `referer` vuelve a él
+- **module-storefront** 3.22.1 — mostrar un mensaje de sesión repetido cuando su cookie se borró
+- **theme-default** 3.21.2 — pasar la URL de login a los botones de checkout
+
 ### Instalaciones que funcionan fuera de nuestro entorno
 
 Arreglos que salieron al instalar el stack en una tienda que no se construyó con él: valores por

@@ -16,6 +16,20 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ## September 2026
 
+### Guest checkout that asks to sign in, and messages that repeat
+
+With a downloadable product in the bag, Magento refuses guest checkout by default. Natively the
+checkout buttons ask the guest to sign in; ours navigated to `/checkout`, which bounced back to the
+cart, and the "Guest checkout is disabled." message showed only on the first try. The buttons now
+send the guest to sign in with a `referer` back to checkout, the sign-in page returns there, and a
+session message the server sends again always shows.
+
+- **module-checkout** 3.12.1 — the cart page and mini-cart checkout buttons lead a guest to sign in
+  when the cart refuses guest checkout
+- **module-customer** 2.4.1 — a sign-in that carries a `referer` returns to it
+- **module-storefront** 3.22.1 — show a repeated session message when its cookie was cleared
+- **theme-default** 3.21.2 — pass the sign-in URL to the checkout buttons
+
 ### Installs that hold up outside our environment
 
 Fixes found installing the stack on a store it was not built on: defaults that only worked in our
