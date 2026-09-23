@@ -16,6 +16,22 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ## Unreleased
 
+**The Vite harness installs outside our own environment.** `component-modern-frontend` shipped
+`vite/pnpm-workspace.yaml` with a pnpm store under `/home/www` and the supply-chain release-age
+check switched off, both settings of our local environment. On any machine where `/home/www` is not
+writable, `pnpm install` failed. Both are gone; if you relied on that store path, set
+`pnpm_config_store_dir` in your environment. The harness now declares `engines.node >=22.13`, the
+floor of the pnpm version it pins.
+
+---
+
+## September 2026
+
+### Installs that hold up outside our environment
+
+Fixes found installing the stack on a store it was not built on: defaults that only worked in our
+own environment, checks that failed a healthy deploy, and a policy that blocked payment pages.
+
 **A fresh install serves built assets.** `module-modern-frontend` shipped HMR switched on, and
 Magento only overrides that flag in production mode, so a new store in the default mode asked a
 Vite dev server that was not running for every asset: all of them returned 404 and no island
@@ -24,25 +40,16 @@ mounted. HMR is now **off by default** and opt-in. `mage-obsidian:frontend:hmr -
 flag yourself, run `bin/magento mage-obsidian:frontend:hmr --enable` once after upgrading; the
 doctor reports "HMR disabled" until you do.
 
-**Static deploy verification no longer cries wolf.** The check added in `module-modern-frontend`
-2.15.0 read `--language`'s default value, `all`, as if it were a locale, so it looked under a
-`pub/static/<area>/<theme>/all/` that Magento never writes and reported a flawless deploy as
-entirely missing. It now resolves the sentinel through Magento's own `LocaleResolver`, honours
-`--theme`, `--exclude-theme` and `--exclude-language`, and **warns instead of aborting** the deploy.
-
-**The Vite harness installs outside our own environment.** `component-modern-frontend` shipped
-`vite/pnpm-workspace.yaml` with a pnpm store under `/home/www` and the supply-chain release-age
-check switched off, both settings of our local environment. On any machine where `/home/www` is not
-writable, `pnpm install` failed. Both are gone; if you relied on that store path, set
-`pnpm_config_store_dir` in your environment. The harness now declares `engines.node >=22.13`, the
-floor of the pnpm version it pins.
+**The doctor reports Adobe Commerce coverage.** On an Adobe Commerce install,
+`mage-obsidian:frontend:doctor` adds a section listing the Commerce-only storefront families, the
+Commerce modules behind each one and whether a MageObsidian module covers it.
 
 **A production build no longer asks for dev server settings.** `mage-obsidian` 3.1.0 validates the
 dev server variables only with `--dev-server`, and only `VITE_SERVER_HOST` and `VITE_SERVER_PORT`
 are required. Without a terminal it never prompts. Before, a build without `vite/.env` opened a
 prompt, exited 1 and aborted `setup:static-content:deploy` in any CI.
 
-**PHP 8.3 is required.** Every MageObsidian package now declares `"php": ">=8.3"`, and
+**PHP 8.3 is required.** Every MageObsidian Magento module now declares `"php": ">=8.3"`, and
 `module-modern-frontend` requires Magento 2.4.7 or later. The code uses typed class constants, so
 on PHP 8.2 Composer installed the packages and `setup:di:compile` then failed with a parse error.
 **PHP 8.2 is no longer supported.**
@@ -78,6 +85,22 @@ failing halfway through a write. `mage-obsidian:frontend:dev` is unchanged.
 Tailwind rule and filled the delta's unresolved list. They are skipped by default; the prefix list
 is an `ignoredClassPrefixes` argument of `ContentExporter` in `di.xml`.
 
+- **module-modern-frontend** 2.20.0 — HMR off by default; contract validated before writing and
+  regenerated only on module-list writes; CMS delta kept on a failed compile and Page Builder classes
+  skipped; inline styles back on the payment pages and a CSSOM pre-paint; deploy warning for themes
+  with no Vite build; Adobe Commerce storefront inventory; PHP 8.3 and Magento 2.4.7
+- **module-modern-frontend-cli** 2.8.0 — Adobe Commerce section in the doctor; source-writing
+  commands refuse production mode; requires core ^2.20
+- **mage-obsidian** 3.1.0 — validate dev server settings only with `--dev-server`
+- **module-catalog** 3.12.0 — place the filter column where the page layout declares it
+- **module-storefront** 3.22.0, **module-showcase** 1.5.0 — ship the collected `en_US` dictionary
+- PHP 8.3 floor: **module-catalog-search** 2.2.0, **module-checkout** 3.12.0, **module-customer**
+  2.4.0, **module-downloadable** 2.2.0, **module-gift-message** 2.2.0, **module-instant-purchase**
+  2.2.0, **module-inventory-stock-visualizer** 1.2.0, **module-modern-frontend-twig** 2.7.0,
+  **module-multishipping** 2.1.0, **module-persistent** 2.1.0, **module-product-alert** 2.1.0,
+  **module-review** 2.3.0, **module-sales** 2.4.0, **module-search** 1.3.0, **module-send-friend**
+  2.2.0, **module-vault** 2.3.0, **module-wishlist** 2.3.0
+
 ---
 
 ## August 2026
@@ -107,6 +130,17 @@ longer costs a full uncached page render.
 
 - **module-showcase** 1.0.0 – 1.2.0 — new module: switch MageObsidian features per visitor, offer the
   cacheable checkout as a visitor switch, and report the active feature set as New Relic attributes
+
+### Static deploy verification
+
+**Static deploy verification no longer cries wolf.** The check added in `module-modern-frontend`
+2.15.0 read `--language`'s default value, `all`, as if it were a locale, so it looked under a
+`pub/static/<area>/<theme>/all/` that Magento never writes and reported a flawless deploy as
+entirely missing. It now resolves the sentinel through Magento's own `LocaleResolver`, honours
+`--theme`, `--exclude-theme` and `--exclude-language`, and **warns instead of aborting** the deploy.
+
+- **module-modern-frontend** 2.15.1 — resolve `--language all` through `LocaleResolver`; warn
+  instead of aborting
 
 ---
 

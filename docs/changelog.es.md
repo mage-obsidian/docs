@@ -16,6 +16,23 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ## Sin publicar
 
+**El harness de Vite se instala fuera de nuestro entorno.** `component-modern-frontend` publicaba
+`vite/pnpm-workspace.yaml` con el store de pnpm en `/home/www` y el control de antigüedad de
+publicaciones apagado, dos ajustes de nuestro entorno local. En cualquier máquina donde `/home/www`
+no se podía escribir, `pnpm install` fallaba. Ya no están; si dependías de esa ruta del store,
+define `pnpm_config_store_dir` en tu entorno. El harness declara ahora `engines.node >=22.13`, el
+piso de la versión de pnpm que fija.
+
+---
+
+## Septiembre 2026
+
+### Instalaciones que funcionan fuera de nuestro entorno
+
+Arreglos que salieron al instalar el stack en una tienda que no se construyó con él: valores por
+defecto que solo servían en nuestro entorno, chequeos que tumbaban un deploy sano y una política que
+bloqueaba las páginas de pago.
+
 **Una instalación nueva sirve los assets construidos.** `module-modern-frontend` venía con el HMR
 encendido, y Magento solo anula ese flag en modo production, así que una tienda nueva en el modo
 por defecto le pedía cada asset a un dev server de Vite que no estaba corriendo: todos devolvían
@@ -24,26 +41,16 @@ por defecto le pedía cada asset a un dev server de Vite que no estaba corriendo
 Si usas el dev server y nunca guardaste el flag, corre `bin/magento mage-obsidian:frontend:hmr
 --enable` una vez después de actualizar; el doctor avisa "HMR disabled" hasta que lo hagas.
 
-**La verificación del deploy estático ya no da falsas alarmas.** El chequeo añadido en
-`module-modern-frontend` 2.15.0 leía el valor por defecto de `--language`, `all`, como si fuera un
-locale, así que buscaba en un `pub/static/<área>/<tema>/all/` que Magento nunca escribe y reportaba
-un deploy impecable como enteramente ausente. Ahora resuelve el centinela a través del propio
-`LocaleResolver` de Magento, respeta `--theme`, `--exclude-theme` y `--exclude-language`, y
-**advierte en vez de abortar** el deploy.
-
-**El harness de Vite se instala fuera de nuestro entorno.** `component-modern-frontend` publicaba
-`vite/pnpm-workspace.yaml` con el store de pnpm en `/home/www` y el control de antigüedad de
-publicaciones apagado, dos ajustes de nuestro entorno local. En cualquier máquina donde `/home/www`
-no se podía escribir, `pnpm install` fallaba. Ya no están; si dependías de esa ruta del store,
-define `pnpm_config_store_dir` en tu entorno. El harness declara ahora `engines.node >=22.13`, el
-piso de la versión de pnpm que fija.
+**El doctor informa la cobertura de Adobe Commerce.** En una instalación de Adobe Commerce,
+`mage-obsidian:frontend:doctor` añade una sección con las familias de storefront exclusivas de
+Commerce, los módulos de Commerce detrás de cada una y si un módulo de MageObsidian la cubre.
 
 **El build de producción ya no pide ajustes del dev server.** `mage-obsidian` 3.1.0 valida las
 variables del dev server solo con `--dev-server`, y solo `VITE_SERVER_HOST` y `VITE_SERVER_PORT` son
 obligatorias. Sin terminal nunca pregunta. Antes, un build sin `vite/.env` abría un prompt, salía con
 1 y abortaba `setup:static-content:deploy` en cualquier CI.
 
-**Se requiere PHP 8.3.** Todos los paquetes MageObsidian declaran `"php": ">=8.3"`, y
+**Se requiere PHP 8.3.** Todos los módulos Magento de MageObsidian declaran `"php": ">=8.3"`, y
 `module-modern-frontend` requiere Magento 2.4.7 o posterior. El código usa typed class constants, así
 que con PHP 8.2 Composer instalaba los paquetes y después `setup:di:compile` fallaba con un parse
 error. **Se deja de soportar PHP 8.2.**
@@ -80,6 +87,23 @@ cambia.
 a una regla de Tailwind y llenaban la lista de no resueltas del delta. Se omiten por defecto; la lista
 de prefijos es el argumento `ignoredClassPrefixes` de `ContentExporter` en `di.xml`.
 
+- **module-modern-frontend** 2.20.0 — HMR apagado por defecto; contrato validado antes de escribir y
+  regenerado solo al escribir la lista de módulos; delta CMS conservado si el compile falla y clases
+  de Page Builder omitidas; estilos inline de vuelta en las páginas de pago y prepaint por CSSOM;
+  aviso en el deploy para temas sin build de Vite; inventario del storefront de Adobe Commerce;
+  PHP 8.3 y Magento 2.4.7
+- **module-modern-frontend-cli** 2.8.0 — sección de Adobe Commerce en el doctor; los comandos que
+  escriben código fuente rechazan el modo production; requiere core ^2.20
+- **mage-obsidian** 3.1.0 — validar los ajustes del dev server solo con `--dev-server`
+- **module-catalog** 3.12.0 — ubicar la columna de filtros donde la declara el page layout
+- **module-storefront** 3.22.0, **module-showcase** 1.5.0 — incluir el diccionario `en_US` recolectado
+- Piso de PHP 8.3: **module-catalog-search** 2.2.0, **module-checkout** 3.12.0, **module-customer**
+  2.4.0, **module-downloadable** 2.2.0, **module-gift-message** 2.2.0, **module-instant-purchase**
+  2.2.0, **module-inventory-stock-visualizer** 1.2.0, **module-modern-frontend-twig** 2.7.0,
+  **module-multishipping** 2.1.0, **module-persistent** 2.1.0, **module-product-alert** 2.1.0,
+  **module-review** 2.3.0, **module-sales** 2.4.0, **module-search** 1.3.0, **module-send-friend**
+  2.2.0, **module-vault** 2.3.0, **module-wishlist** 2.3.0
+
 ---
 
 ## Agosto 2026
@@ -111,6 +135,18 @@ listado filtrado ya no cuesta el render completo de una página sin caché.
 - **module-showcase** 1.0.0 – 1.2.0 — módulo nuevo: alternar funcionalidades de MageObsidian por
   visitante, ofrecer el checkout cacheable como interruptor y reportar el conjunto activo como
   atributos de New Relic
+
+### Verificación del deploy estático
+
+**La verificación del deploy estático ya no da falsas alarmas.** El chequeo añadido en
+`module-modern-frontend` 2.15.0 leía el valor por defecto de `--language`, `all`, como si fuera un
+locale, así que buscaba en un `pub/static/<área>/<tema>/all/` que Magento nunca escribe y reportaba
+un deploy impecable como enteramente ausente. Ahora resuelve el centinela a través del propio
+`LocaleResolver` de Magento, respeta `--theme`, `--exclude-theme` y `--exclude-language`, y
+**advierte en vez de abortar** el deploy.
+
+- **module-modern-frontend** 2.15.1 — resolver `--language all` con `LocaleResolver`; advertir en
+  vez de abortar
 
 ---
 
