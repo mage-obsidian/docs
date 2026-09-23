@@ -14,17 +14,6 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
-## Unreleased
-
-**The Vite harness installs outside our own environment.** `component-modern-frontend` shipped
-`vite/pnpm-workspace.yaml` with a pnpm store under `/home/www` and the supply-chain release-age
-check switched off, both settings of our local environment. On any machine where `/home/www` is not
-writable, `pnpm install` failed. Both are gone; if you relied on that store path, set
-`pnpm_config_store_dir` in your environment. The harness now declares `engines.node >=22.13`, the
-floor of the pnpm version it pins.
-
----
-
 ## September 2026
 
 ### Installs that hold up outside our environment
@@ -85,12 +74,23 @@ failing halfway through a write. `mage-obsidian:frontend:dev` is unchanged.
 Tailwind rule and filled the delta's unresolved list. They are skipped by default; the prefix list
 is an `ignoredClassPrefixes` argument of `ContentExporter` in `di.xml`.
 
+**The Vite harness installs outside our own environment.** `component-modern-frontend` shipped
+`vite/pnpm-workspace.yaml` with a pnpm store under `/home/www` and the supply-chain release-age
+check switched off, both settings of our local environment. On any machine where `/home/www` is not
+writable, `pnpm install` failed. Both are gone; if you relied on that store path, set
+`pnpm_config_store_dir` in your environment. The harness now declares `engines.node >=22.13`, the
+floor of the pnpm version it pins. Upgrading an install whose `vite/node_modules` was created with the old store path: delete
+`vite/node_modules` once, or pnpm aborts without a terminal with
+`ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY`.
+
 - **module-modern-frontend** 2.20.0 — HMR off by default; contract validated before writing and
   regenerated only on module-list writes; CMS delta kept on a failed compile and Page Builder classes
   skipped; inline styles back on the payment pages and a CSSOM pre-paint; deploy warning for themes
   with no Vite build; Adobe Commerce storefront inventory; PHP 8.3 and Magento 2.4.7
 - **module-modern-frontend-cli** 2.8.0 — Adobe Commerce section in the doctor; source-writing
   commands refuse production mode; requires core ^2.20
+- **component-modern-frontend** 2.6.0 — drop our environment's pnpm settings from the harness;
+  require engine ^3.1.0 and Node 22.13
 - **mage-obsidian** 3.1.0 — validate dev server settings only with `--dev-server`
 - **module-catalog** 3.12.0 — place the filter column where the page layout declares it
 - **module-storefront** 3.22.0, **module-showcase** 1.5.0 — ship the collected `en_US` dictionary

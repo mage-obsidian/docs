@@ -14,17 +14,6 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
-## Sin publicar
-
-**El harness de Vite se instala fuera de nuestro entorno.** `component-modern-frontend` publicaba
-`vite/pnpm-workspace.yaml` con el store de pnpm en `/home/www` y el control de antigüedad de
-publicaciones apagado, dos ajustes de nuestro entorno local. En cualquier máquina donde `/home/www`
-no se podía escribir, `pnpm install` fallaba. Ya no están; si dependías de esa ruta del store,
-define `pnpm_config_store_dir` en tu entorno. El harness declara ahora `engines.node >=22.13`, el
-piso de la versión de pnpm que fija.
-
----
-
 ## Septiembre 2026
 
 ### Instalaciones que funcionan fuera de nuestro entorno
@@ -87,6 +76,15 @@ cambia.
 a una regla de Tailwind y llenaban la lista de no resueltas del delta. Se omiten por defecto; la lista
 de prefijos es el argumento `ignoredClassPrefixes` de `ContentExporter` en `di.xml`.
 
+**El harness de Vite se instala fuera de nuestro entorno.** `component-modern-frontend` publicaba
+`vite/pnpm-workspace.yaml` con el store de pnpm en `/home/www` y el control de antigüedad de
+publicaciones apagado, dos ajustes de nuestro entorno local. En cualquier máquina donde `/home/www`
+no se podía escribir, `pnpm install` fallaba. Ya no están; si dependías de esa ruta del store,
+define `pnpm_config_store_dir` en tu entorno. El harness declara ahora `engines.node >=22.13`, el
+piso de la versión de pnpm que fija. Al actualizar una instalación cuyo `vite/node_modules` se creó con la ruta vieja del store,
+borra `vite/node_modules` una vez; si no, pnpm aborta sin terminal con
+`ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY`.
+
 - **module-modern-frontend** 2.20.0 — HMR apagado por defecto; contrato validado antes de escribir y
   regenerado solo al escribir la lista de módulos; delta CMS conservado si el compile falla y clases
   de Page Builder omitidas; estilos inline de vuelta en las páginas de pago y prepaint por CSSOM;
@@ -94,6 +92,8 @@ de prefijos es el argumento `ignoredClassPrefixes` de `ContentExporter` en `di.x
   PHP 8.3 y Magento 2.4.7
 - **module-modern-frontend-cli** 2.8.0 — sección de Adobe Commerce en el doctor; los comandos que
   escriben código fuente rechazan el modo production; requiere core ^2.20
+- **component-modern-frontend** 2.6.0 — quitar del harness los ajustes de pnpm de nuestro
+  entorno; requerir el motor ^3.1.0 y Node 22.13
 - **mage-obsidian** 3.1.0 — validar los ajustes del dev server solo con `--dev-server`
 - **module-catalog** 3.12.0 — ubicar la columna de filtros donde la declara el page layout
 - **module-storefront** 3.22.0, **module-showcase** 1.5.0 — incluir el diccionario `en_US` recolectado
