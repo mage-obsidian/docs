@@ -28,6 +28,7 @@ See [Navigation continuity](theme/navigation.md).
   (`mage_obsidian/navigation/retain`, on by default); click progress indicator; requires core ^2.22
 - **module-modern-frontend** 2.22.0 — inlined head scripts are printed without their source
   file's license header (`RuntimeScriptReader`)
+- **module-modern-frontend-twig** 2.7.1 — `inline_view_file` drops a view file's license header
 - **theme-default** 3.21.3 — translation of the progress announcement
 
 ### Builds without a database

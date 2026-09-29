@@ -30,6 +30,8 @@ siguen pintando de forma progresiva, así que las métricas de primera carga no 
   progreso al hacer clic; requiere el núcleo ^2.22
 - **module-modern-frontend** 2.22.0 — los scripts que se incrustan en el head se imprimen sin la
   cabecera de licencia de su archivo (`RuntimeScriptReader`)
+- **module-modern-frontend-twig** 2.7.1 — `inline_view_file` quita la cabecera de licencia del
+  archivo que incrusta
 - **theme-default** 3.21.3 — traducción del anuncio de progreso
 
 ### Builds sin base de datos
