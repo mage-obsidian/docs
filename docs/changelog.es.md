@@ -111,6 +111,8 @@ borra `vite/node_modules` una vez; si no, pnpm aborta sin terminal con
   entorno; requerir el motor ^3.1.0 y Node 22.13
 - **mage-obsidian** 3.1.0 — validar los ajustes del dev server solo con `--dev-server`
 - **module-catalog** 3.12.0 — ubicar la columna de filtros donde la declara el page layout
+- **theme-base** 3.13.1 — dar a las columnas laterales de `2columns-right` y `3columns` las
+  clases que necesita la columna de filtros
 - **module-storefront** 3.22.0, **module-showcase** 1.5.0 — incluir el diccionario `en_US` recolectado
 - Piso de PHP 8.3: **module-catalog-search** 2.2.0, **module-checkout** 3.12.0, **module-customer**
   2.4.0, **module-downloadable** 2.2.0, **module-gift-message** 2.2.0, **module-instant-purchase**

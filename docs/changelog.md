@@ -107,6 +107,8 @@ floor of the pnpm version it pins. Upgrading an install whose `vite/node_modules
   require engine ^3.1.0 and Node 22.13
 - **mage-obsidian** 3.1.0 — validate dev server settings only with `--dev-server`
 - **module-catalog** 3.12.0 — place the filter column where the page layout declares it
+- **theme-base** 3.13.1 — give the side columns of `2columns-right` and `3columns` the classes
+  the filter column needs
 - **module-storefront** 3.22.0, **module-showcase** 1.5.0 — ship the collected `en_US` dictionary
 - PHP 8.3 floor: **module-catalog-search** 2.2.0, **module-checkout** 3.12.0, **module-customer**
   2.4.0, **module-downloadable** 2.2.0, **module-gift-message** 2.2.0, **module-instant-purchase**
