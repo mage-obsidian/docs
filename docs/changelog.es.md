@@ -16,6 +16,22 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ## Septiembre 2026
 
+### Navegación sin frames en blanco
+
+Seguir un enlace dentro de la tienda ya no muestra una pantalla en blanco ni una cabecera sobre un
+cuerpo vacío en un teléfono lento. La página anterior se mantiene en pantalla hasta que la siguiente
+analizó su contenido principal, y una barra de progreso fina y un anuncio para lectores de pantalla
+confirman el clic en el acto. Las primeras visitas, las llegadas desde otros sitios y las recargas
+siguen pintando de forma progresiva, así que las métricas de primera carga no cambian. Ver
+[Continuidad de navegación](theme/navigation.md).
+
+- **module-storefront** 3.23.0 — retiene la página anterior hasta que la siguiente tiene su
+  contenido principal (`mage_obsidian/navigation/retain`, activado por defecto); indicador de
+  progreso al hacer clic; requiere el núcleo ^2.22
+- **module-modern-frontend** 2.22.0 — los scripts que se incrustan en el head se imprimen sin la
+  cabecera de licencia de su archivo (`RuntimeScriptReader`)
+- **theme-default** 3.21.3 — traducción del anuncio de progreso
+
 ### Builds sin base de datos
 
 Una tienda ahora puede construir MageObsidian en una fase sin base de datos y en otra ruta raíz, y

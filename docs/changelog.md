@@ -16,6 +16,20 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ## September 2026
 
+### Navigation without blank frames
+
+Following a link inside the store no longer flashes a blank screen or a header over an empty body on
+a slow phone. The previous page stays on screen until the next one has parsed its main content, and
+a thin progress bar and a screen-reader announcement acknowledge the click at once. First visits,
+arrivals from other sites and reloads still paint progressively, so first-load metrics do not move.
+See [Navigation continuity](theme/navigation.md).
+
+- **module-storefront** 3.23.0 — hold the previous page until the next has its main content
+  (`mage_obsidian/navigation/retain`, on by default); click progress indicator; requires core ^2.22
+- **module-modern-frontend** 2.22.0 — inlined head scripts are printed without their source
+  file's license header (`RuntimeScriptReader`)
+- **theme-default** 3.21.3 — translation of the progress announcement
+
 ### Builds without a database
 
 A store can now build MageObsidian in a phase with no database and under another root path, then
