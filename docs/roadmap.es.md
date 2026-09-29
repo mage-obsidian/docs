@@ -48,7 +48,8 @@ plataforma; una declaración en un tema nunca cuenta como cobertura por sí sola
 - **Adobe Commerce** — `mage-obsidian:frontend:doctor` ahora detecta Adobe Commerce e
   inventaria qué familias del storefront exclusivas de Commerce tiene habilitadas una tienda,
   y cuáles de ellas tienen un módulo de MageObsidian instalado. El inventario reporta qué está
-  instalado; no afirma que nada de eso haya sido verificado en esa plataforma.
+  instalado; no afirma que nada de eso haya sido verificado en esa plataforma. Qué se verificó
+  y cómo instalar está en [Adobe Commerce](getting-started/adobe-commerce.md).
 
 ## 🔜 Planificado
 

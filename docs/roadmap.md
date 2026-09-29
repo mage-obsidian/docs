@@ -47,7 +47,8 @@ declaration in a theme never counts as coverage on its own.
 - **Adobe Commerce** — `mage-obsidian:frontend:doctor` now detects Adobe Commerce and
   inventories which Commerce-only storefront families a store has enabled, and which of
   them have a MageObsidian module installed. The inventory reports what is installed; it
-  does not claim that any of it has been verified on that platform.
+  does not claim that any of it has been verified on that platform. What was verified, and
+  how to install, is in [Adobe Commerce](getting-started/adobe-commerce.md).
 
 ## 🔜 Planned
 

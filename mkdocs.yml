@@ -106,6 +106,7 @@ nav:
   - Getting started:
     - Requirements: getting-started/requirements.md
     - Installation: getting-started/installation.md
+    - Adobe Commerce: getting-started/adobe-commerce.md
     - Scaffolding: getting-started/scaffolding.md
     - Development: getting-started/development.md
   - Components:
