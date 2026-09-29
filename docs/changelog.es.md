@@ -16,6 +16,28 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ## Septiembre 2026
 
+### Builds sin base de datos
+
+Una tienda ahora puede construir MageObsidian en una fase sin base de datos y en otra ruta raíz, y
+desplegar el resultado después: el modelo de Adobe Commerce Cloud y de cualquier pipeline que
+entrega un artefacto. El deploy estático regenera el contrato del frontend desde el filesystem, con
+rutas relativas a la raíz de Magento, y el build de Vite se puede saltar, comprueba que puede
+escribir antes de vaciar nada y respeta las exclusiones de temas. Ver
+[Adobe Commerce](getting-started/adobe-commerce.md#build-sin-base-de-datos).
+
+- **mage-obsidian** 3.2.0 — resolver las rutas del contrato contra la raíz de Magento; aceptar el
+  schema 1.1.0; `MAGE_OBSIDIAN_BUILD_CONCURRENCY`
+- **component-modern-frontend** 2.7.0 — requerir el motor ^3.2.0
+- **module-modern-frontend** 2.21.0 — temas leídos del filesystem; contrato regenerado en el deploy
+  estático con rutas relativas a la raíz (schema 1.1.0); `MAGE_OBSIDIAN_SKIP_VITE_BUILD`,
+  comprobación de escritura y exclusiones de temas en el build de Vite; critical CSS leído de
+  `web/critical/`; estado de la baseline CMS por tema
+- **module-modern-frontend-cli** 2.9.0 — critical CSS escrito en `<tema>/web/critical/`; fila de
+  baseline CMS en el doctor; requiere core ^2.21
+
+**Al actualizar:** regenera el critical CSS de cada tema; el archivo viejo en
+`web/generated/critical/` desaparece con el siguiente build de Vite.
+
 ### Checkout de invitado que pide iniciar sesión, y mensajes que se repiten
 
 Con un producto descargable en el carrito, Magento rechaza por defecto el checkout de invitado. En el

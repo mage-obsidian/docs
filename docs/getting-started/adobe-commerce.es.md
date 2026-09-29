@@ -18,8 +18,10 @@ Lo que eso **no** cubre:
   recompensa, gift registry, pedido por SKU, invitaciones y el resto) todavía no tienen
   storefront de MageObsidian. Corre `bin/magento mage-obsidian:frontend:doctor` para ver cuáles
   tiene habilitadas tu tienda.
-- **Adobe Commerce Cloud.** Su build corre sin base de datos, y la generación del contrato del
-  frontend todavía no lo soporta.
+- **Adobe Commerce Cloud** no se probó en un proyecto real. El build sin base de datos está
+  soportado y probado ([siguiente sección](#build-sin-base-de-datos)); falta verificar que
+  ece-tools conserve el contrato entre el build y el deploy, que Node.js esté en el `PATH` de la
+  imagen de build y la memoria del contenedor de build.
 - **Pasarelas de pago.** Solo se probó Check / Money order.
 
 ## Requisitos
@@ -63,6 +65,69 @@ construidos. Para trabajar con el dev server de Vite, sigue [Desarrollo](develop
 bin/magento mage-obsidian:frontend:dev --up
 ```
 
+## Build sin base de datos
+
+Adobe Commerce Cloud, y cualquier pipeline que arma un artefacto y lo copia al servidor, corre
+`setup:static-content:deploy` en una fase sin base de datos y en otra ruta raíz. MageObsidian lo
+soporta:
+
+- Commitea `app/etc/config.php` con todos los módulos y con las secciones `scopes` y `themes`:
+  `bin/magento app:config:dump scopes themes`.
+- La fase de build necesita Node.js 22.13 o posterior y pnpm, y el harness de Vite instalado con
+  `pnpm --prefix vite install --frozen-lockfile`.
+- `setup:static-content:deploy` regenera el contrato del frontend desde el filesystem antes de
+  construir, así que nunca usa un contrato commiteado desde otra máquina. Las rutas dentro de la
+  raíz de Magento se escriben relativas a ella, y el árbol construido se puede mover.
+
+| Variable | Uso |
+|---|---|
+| `MAGE_OBSIDIAN_SKIP_VITE_BUILD=1` | Regenera el contrato pero salta el build de Vite, cuando un paso anterior ya construyó los temas. Úsala junto con `MAGE_OBSIDIAN_STRICT_DEPLOY=1`. |
+| `MAGE_OBSIDIAN_STRICT_DEPLOY=1` | Hace fallar el deploy cuando un tema no tiene build de Vite, en vez de solo informarlo. |
+| `MAGE_OBSIDIAN_BUILD_CONCURRENCY=<n>` | Temas construidos en paralelo. Por defecto, uno menos que la cantidad de CPU; bájalo si el contenedor de build se queda sin memoria. |
+
+**Contenido CMS.** Sin base de datos el build no puede leer el contenido CMS, así que los temas se
+construyen con una baseline de clases vacía y cada clase escrita en contenido CMS se genera en
+runtime. Para que funcione hacen falta dos pasos:
+
+1. Instala el CLI standalone de Tailwind en `bin/tailwindcss` durante el build, en la versión que
+   usa el harness:
+
+    ```bash
+    V=$(node -p "require('./vite/node_modules/tailwindcss/package.json').version")
+    curl -sL -o bin/tailwindcss "https://github.com/tailwindlabs/tailwindcss/releases/download/v$V/tailwindcss-linux-x64"
+    chmod +x bin/tailwindcss
+    ```
+
+2. Corre `bin/magento mage-obsidian:cms:jit` en la primera fase con base de datos, antes de que la
+   tienda reciba tráfico: `post_deploy` en Cloud, después de `setup:upgrade` en un pipeline propio.
+
+La fila **CMS baseline** de `bin/magento mage-obsidian:frontend:doctor` informa la baseline de cada
+tema.
+
+**Critical CSS.** `mage-obsidian:frontend:critical-css` escribe en
+`<tema>/web/critical/<handle>.css`, en las fuentes del tema. Genéralo en desarrollo y commitéalo
+con el tema; el deploy lo publica como cualquier otro archivo estático.
+
+Un `.magento.app.yaml` como este lo junta todo. Todavía no se probó en un proyecto Cloud real:
+
+```yaml
+hooks:
+    build: |
+        set -e
+        composer install
+        pnpm --prefix vite install --frozen-lockfile
+        V=$(node -p "require('./vite/node_modules/tailwindcss/package.json').version")
+        curl -sL -o bin/tailwindcss "https://github.com/tailwindlabs/tailwindcss/releases/download/v$V/tailwindcss-linux-x64"
+        chmod +x bin/tailwindcss
+        php ./vendor/bin/ece-tools run scenario/build/generate.xml
+        php ./vendor/bin/ece-tools run scenario/build/transfer.xml
+    deploy: |
+        php ./vendor/bin/ece-tools run scenario/deploy.xml
+    post_deploy: |
+        php ./vendor/bin/ece-tools run scenario/post-deploy.xml
+        php bin/magento mage-obsidian:cms:jit
+```
+
 ## Paquetes que no aplican
 
 La instalación estándar de arriba solo trae lo que necesita el tema. Hay dos paquetes de la
@@ -88,6 +153,10 @@ bin/magento mage-obsidian:frontend:hmr --disable
 los comandos de módulos cuando uno no se puede construir, y eso pasa cuando `generated/code`
 tiene un interceptor de un constructor anterior. Regenera el código con
 `bin/magento setup:di:compile`, o borra `generated/code` y corre `bin/magento cache:clean config`.
+
+**`Cannot build Vite assets: "…" is not writable`.** El build de Vite escribe en `vite/` y en el
+`web/generated/` de cada tema. Corre el deploy estático en una fase que pueda escribir en el árbol
+de código; en Cloud, esa es la fase de build.
 
 **`ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY` después de actualizar `component-modern-frontend`.**
 Las versiones anteriores a 2.6.0 ubicaban el store de pnpm en otro lugar, y pnpm se niega a

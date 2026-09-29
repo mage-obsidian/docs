@@ -16,6 +16,27 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ## September 2026
 
+### Builds without a database
+
+A store can now build MageObsidian in a phase with no database and under another root path, then
+deploy the result: the model of Adobe Commerce Cloud and of any pipeline that ships an artifact.
+Static deploy regenerates the frontend contract from the filesystem, with paths relative to the
+Magento root, and the Vite build can be skipped, checks it can write before emptying anything, and
+honours theme exclusions. See [Adobe Commerce](getting-started/adobe-commerce.md#building-without-a-database).
+
+- **mage-obsidian** 3.2.0 — resolve contract paths against the Magento root; accept schema 1.1.0;
+  `MAGE_OBSIDIAN_BUILD_CONCURRENCY`
+- **component-modern-frontend** 2.7.0 — require engine ^3.2.0
+- **module-modern-frontend** 2.21.0 — themes read from the filesystem; contract regenerated in
+  static deploy with root-relative paths (schema 1.1.0); `MAGE_OBSIDIAN_SKIP_VITE_BUILD`, write
+  checks and theme exclusions in the Vite build; critical CSS read from `web/critical/`; CMS
+  baseline status per theme
+- **module-modern-frontend-cli** 2.9.0 — critical CSS written to `<theme>/web/critical/`; CMS
+  baseline row in the doctor; requires core ^2.21
+
+**Upgrading:** regenerate each theme's critical CSS after upgrading; the old file under
+`web/generated/critical/` is dropped by the next Vite build.
+
 ### Guest checkout that asks to sign in, and messages that repeat
 
 With a downloadable product in the bag, Magento refuses guest checkout by default. Natively the
