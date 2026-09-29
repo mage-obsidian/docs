@@ -32,8 +32,9 @@ escribir antes de vaciar nada y respeta las exclusiones de temas. Ver
   estático con rutas relativas a la raíz (schema 1.1.0); `MAGE_OBSIDIAN_SKIP_VITE_BUILD`,
   comprobación de escritura y exclusiones de temas en el build de Vite; critical CSS leído de
   `web/critical/`; estado de la baseline CMS por tema
-- **module-modern-frontend-cli** 2.9.0 — critical CSS escrito en `<tema>/web/critical/`; fila de
-  baseline CMS en el doctor; requiere core ^2.21
+- **module-modern-frontend-cli** 2.9.0 — critical CSS escrito en `<tema>/web/critical/` con URLs
+  de fuentes relativas, que el core resuelve para la tienda que lo sirve; fila de baseline CMS en
+  el doctor; requiere core ^2.21
 
 **Al actualizar:** regenera el critical CSS de cada tema; el archivo viejo en
 `web/generated/critical/` desaparece con el siguiente build de Vite.

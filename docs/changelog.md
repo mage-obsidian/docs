@@ -31,8 +31,9 @@ honours theme exclusions. See [Adobe Commerce](getting-started/adobe-commerce.md
   static deploy with root-relative paths (schema 1.1.0); `MAGE_OBSIDIAN_SKIP_VITE_BUILD`, write
   checks and theme exclusions in the Vite build; critical CSS read from `web/critical/`; CMS
   baseline status per theme
-- **module-modern-frontend-cli** 2.9.0 — critical CSS written to `<theme>/web/critical/`; CMS
-  baseline row in the doctor; requires core ^2.21
+- **module-modern-frontend-cli** 2.9.0 — critical CSS written to `<theme>/web/critical/` with
+  relative font URLs, which the core resolves for the serving store; CMS baseline row in the
+  doctor; requires core ^2.21
 
 **Upgrading:** regenerate each theme's critical CSS after upgrading; the old file under
 `web/generated/critical/` is dropped by the next Vite build.
