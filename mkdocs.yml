@@ -94,6 +94,7 @@ plugins:
             Theme Overview: Tema
             Compatibility Themes: Temas Compatibles
             MageObsidian vs Hyvä vs Luma: MageObsidian vs Hyvä vs Luma
+            Navigation continuity: Continuidad de navegación
             Showcase: Vitrina
             Roadmap: Hoja de ruta
             Changelog: Registro de cambios
@@ -118,6 +119,7 @@ nav:
       - ... | flat | components/themes/*.md
   - Theme Overview:
     - theme/index.md
+    - Navigation continuity: theme/navigation.md
   - Twig Engine:
     - Overview: twig/index.md
     - Helpers & Filters: twig/helpers.md
