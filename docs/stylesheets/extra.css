@@ -112,9 +112,9 @@ nav.md-tabs .md-tabs__list li:first-child {
   gap: 1rem;
   list-style: none;
   margin: 2rem 0;
-  padding: 1.5rem 0 0;
+  padding: 2rem 0.5rem 0;
   overflow-x: auto;
-  border-top: 2px solid var(--md-default-fg-color--light);
+  background: linear-gradient(var(--md-default-fg-color--light), var(--md-default-fg-color--light)) 0 0.9rem / 100% 2px no-repeat local;
 }
 
 .md-typeset ol.mo-timeline > .mo-ms {
@@ -128,7 +128,7 @@ nav.md-tabs .md-tabs__list li:first-child {
 .md-typeset ol.mo-timeline > .mo-ms::before {
   content: "";
   position: absolute;
-  top: -1.9rem;
+  top: -1.4rem;
   left: 0;
   width: 0.7rem;
   height: 0.7rem;
@@ -216,7 +216,7 @@ nav.md-tabs .md-tabs__list li:first-child {
     gap: 0;
     padding: 0 0 0 1.25rem;
     overflow-x: visible;
-    border-top: 0;
+    background: none;
     border-left: 2px solid var(--md-default-fg-color--light);
   }
 
