@@ -56,6 +56,7 @@
   --mo-banner-fg: #d8d3cb;
   --mo-zebra: #f3efe7;
   --mo-raised: #fffdf9;
+  --mo-row-hover: #ebe6dc;
   --md-default-bg-color: var(--mo-paper);
   --md-default-fg-color: var(--mo-ink);
   --md-default-fg-color--light: var(--mo-muted);
@@ -84,6 +85,7 @@
   --mo-banner-fg: #d8d3cb;
   --mo-zebra: #17151d;
   --mo-raised: #1f1d26;
+  --mo-row-hover: #24222c;
   --md-hue: 260;
   --md-default-bg-color: var(--mo-bg);
   --md-default-fg-color: var(--mo-ink);
@@ -616,7 +618,7 @@ a[target="_blank"]:has(> img, > svg, > picture)::after {
 .md-typeset table:not([class]) tbody tr:hover,
 .mo-table-scroll tbody tr:hover,
 .mo-table-scroll tbody tr:hover th[scope="row"] {
-  background-color: color-mix(in srgb, var(--md-accent-fg-color) 10%, var(--md-default-bg-color));
+  background-color: var(--mo-row-hover);
   box-shadow: none;
 }
 
