@@ -19,6 +19,8 @@ jobs:
       - run: PYTHONPATH=scripts python -m docs_checks phrases site
       - run: PYTHONPATH=scripts python -m docs_checks voseo docs
       - run: PYTHONPATH=scripts python -m docs_checks parity docs
+      - run: git clone --depth 1 https://github.com/mage-obsidian/framework ../framework && git clone --depth 1 https://github.com/mage-obsidian/storefront ../storefront
+      - run: PYTHONPATH=scripts python -m docs_checks reference ../framework ../storefront docs
       - uses: actions/upload-artifact@v4
         with:
           name: site
