@@ -3,6 +3,10 @@ verifications:
     platforms: ["Magento Open Source 2.4.9"]
     date: "2026-09-22"
     source: "storefront-verification register"
+  first-theme:
+    platforms: ["Adobe Commerce 2.4.9"]
+    date: "2026-10-06"
+    source: "first-theme tutorial run on the ee store"
   install:
     platforms: ["Magento Open Source 2.4.7–2.4.9", "Mage-OS 2.4.7–2.4.9"]
     date: "2026-10-06"
