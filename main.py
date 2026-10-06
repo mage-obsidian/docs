@@ -31,7 +31,7 @@ def define_env(env):
 
     @env.macro
     def verified(key):
-        return render_verified(env.variables["verified"][key], lang())
+        return render_verified(env.variables["verifications"][key], lang())
 
     @env.macro
     def compat_table():
