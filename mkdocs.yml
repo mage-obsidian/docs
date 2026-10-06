@@ -53,6 +53,7 @@ extra_css:
 copyright: Jeanmarcos Juarez | MageObsidian
 hooks:
   - hooks/i18n_redirects.py
+  - hooks/search_split.py
 plugins:
   - search
   - macros:
