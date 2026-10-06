@@ -52,9 +52,10 @@
   --mo-accent: #2f6e66;
   --mo-accent-soft: #e3f0ee;
   --mo-line: #e3ddd2;
-  --mo-banner-bg: #14121a;
+  --mo-banner-bg: #0f1f1e;
   --mo-banner-fg: #d8d3cb;
   --mo-zebra: #f3efe7;
+  --mo-raised: #fffdf9;
   --md-default-bg-color: var(--mo-paper);
   --md-default-fg-color: var(--mo-ink);
   --md-default-fg-color--light: var(--mo-muted);
@@ -79,9 +80,10 @@
   --mo-accent: #7fd6c8;
   --mo-accent-soft: #45a1951f;
   --mo-line: rgba(243, 239, 231, .10);
-  --mo-banner-bg: #17151d;
+  --mo-banner-bg: #0f1f1e;
   --mo-banner-fg: #d8d3cb;
   --mo-zebra: #17151d;
+  --mo-raised: #1f1d26;
   --md-hue: 260;
   --md-default-bg-color: var(--mo-bg);
   --md-default-fg-color: var(--mo-ink);
@@ -586,6 +588,18 @@ a[target="_blank"]::after {
 
 a[target="_blank"]:has(> img, > svg, > picture)::after {
   content: none;
+}
+
+.md-top {
+  background-color: var(--mo-raised);
+  color: var(--mo-ink);
+  border: 1px solid var(--mo-line);
+  box-shadow: 0 6px 20px -6px rgba(0, 0, 0, .45);
+}
+
+.md-top:hover,
+.md-top:focus {
+  border-color: var(--md-accent-fg-color);
 }
 
 .md-typeset pre > code {
