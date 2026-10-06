@@ -510,7 +510,7 @@ a[target="_blank"]::after {
   content: " ↗";
 }
 
-.mo-toc-mobile {
+.md-typeset .mo-toc-mobile {
   display: none;
   margin: 0 0 1.2em;
   border: 1px solid var(--mo-line);
@@ -526,8 +526,8 @@ a[target="_blank"]::after {
   font-weight: 500;
 }
 
-@media (max-width: 76.234375em) {
-  .mo-toc-mobile {
+@media (max-width: 59.984375em) {
+  .md-typeset .mo-toc-mobile {
     display: block;
   }
 

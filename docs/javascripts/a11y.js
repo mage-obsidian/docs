@@ -1,3 +1,7 @@
+// This file is part of the MageObsidian - Documentation project.
+//
+// SPDX-FileCopyrightText: 2024 Jeanmarcos Juarez
+// SPDX-License-Identifier: MIT
 const isEs = () => document.documentElement.lang === "es";
 
 const drawerToggle = document.querySelector("label.md-header__button[for='__drawer']");
