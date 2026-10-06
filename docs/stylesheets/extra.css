@@ -248,6 +248,7 @@ nav.md-tabs .md-tabs__list li:first-child {
 
 .md-typeset .mo-item small {
   color: var(--mo-muted);
+  opacity: 1;
 }
 
 @media (max-width: 600px) {
@@ -399,7 +400,7 @@ nav.md-tabs .md-tabs__list li:first-child {
 .mo-line::before { content: "$ "; color: var(--hero-accent); user-select: none; }
 .md-typeset .mo-code code { padding-right: 3rem; white-space: pre-wrap; overflow-wrap: anywhere; }
 
-.mo-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.25rem 0; }
+.mo-bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin: 1.25rem 0; }
 
 .md-typeset .mo-cell {
   display: flex;
@@ -411,6 +412,7 @@ nav.md-tabs .md-tabs__list li:first-child {
   background: var(--mo-paper);
   color: var(--mo-ink);
   text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .md-typeset a.mo-cell { transition: border-color .2s ease, transform .2s ease; }
@@ -423,7 +425,7 @@ nav.md-tabs .md-tabs__list li:first-child {
 .mo-source { margin-top: auto; color: var(--mo-muted); font-size: .7rem; }
 
 @media (max-width: 760px) {
-  .mo-bento { grid-template-columns: repeat(2, 1fr); }
+  .mo-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mo-cell { padding: 1rem; }
 }
 

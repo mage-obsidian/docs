@@ -58,3 +58,4 @@ const patch = () => {
 };
 
 document$.subscribe(patch);
+document.fonts.ready.then(patch);

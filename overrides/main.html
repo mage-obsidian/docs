@@ -14,6 +14,28 @@
 {% endif %}
 {% endblock %}
 
+    {% block scripts %}
+<template id="mo-late-scripts">{{ super() }}</template>
+<script>
+  requestAnimationFrame(function () {
+    setTimeout(function () {
+      var template = document.getElementById("mo-late-scripts");
+      template.content.querySelectorAll("script[src]").forEach(function (original) {
+        var script = document.createElement("script");
+        script.async = false;
+        script.src = original.getAttribute("src");
+        document.body.appendChild(script);
+      });
+    });
+  });
+</script>
+{% endblock %}
+
+{% block fonts %}
+<link rel="preload" href="{{ 'assets/fonts/Inter-Regular.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ 'assets/fonts/Inter-Bold.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+{% endblock %}
+
     {% block config %}
       {% set search_base = "es/" | url if config.theme.language == "es" else base_url %}
       {% set _ = namespace() %}
