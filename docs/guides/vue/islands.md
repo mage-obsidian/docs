@@ -106,7 +106,7 @@ Indentation is handled for you — `renderVueComponent` strips the whitespace be
 ## How It Works
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["Twig render_vue"] --> B["data-mage-island marker"]
   B --> C["Page bootstrap"]
   C --> D["Mount or hydrate"]

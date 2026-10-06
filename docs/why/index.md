@@ -108,9 +108,9 @@ modernizes the creation of Magento themes.
 This approach introduces a more accessible, efficient, and developer-friendly workflow.
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["Module or theme"] --> B["etc/mage_obsidian_compatibility.xml"]
-  B --> C["frontend:config --generate"]
+  B --> C["frontend:config<br>--generate"]
   C --> D["mage_obsidian_frontend_modules.json"]
   D --> E["Vite build engine"]
 ```

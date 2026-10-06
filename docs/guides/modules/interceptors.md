@@ -5,7 +5,7 @@ Interceptors let one module change the behaviour of another module's JavaScript 
 The build swaps the target module for a generated wrapper, so every importer of the target gets the intercepted version. The target file on disk is never modified.
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["import"] --> B["Virtual module #92;0interceptor:#60;path#62;"]
   B --> C["before"]
   C --> D["around"]

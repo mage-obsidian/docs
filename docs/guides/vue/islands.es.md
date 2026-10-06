@@ -106,7 +106,7 @@ De la indentación se encarga el framework: `renderVueComponent` elimina el whit
 ## Cómo Funciona
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["Twig render_vue"] --> B["Marcador data-mage-island"]
   B --> C["Bootstrap de página"]
   C --> D["Montaje o hidratación"]

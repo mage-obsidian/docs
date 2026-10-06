@@ -105,9 +105,9 @@ históricos y aprovechar las mejores prácticas actuales de desarrollo web,
 Este enfoque introduce un flujo de trabajo más accesible, eficiente y amigable para los desarrolladores.
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["Módulo o tema"] --> B["etc/mage_obsidian_compatibility.xml"]
-  B --> C["frontend:config --generate"]
+  B --> C["frontend:config<br>--generate"]
   C --> D["mage_obsidian_frontend_modules.json"]
   D --> E["Motor de build Vite"]
 ```
