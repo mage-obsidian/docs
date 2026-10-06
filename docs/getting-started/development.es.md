@@ -61,7 +61,7 @@ bin/magento mage-obsidian:frontend:hmr --disable
 bin/magento mage-obsidian:frontend:hmr --show
 ```
 
-Consulta [HMR](../components/modules/0110-hmr-configuration.md) para los detalles y el proxy de nginx.
+Consulta [HMR](../guides/features/hmr.md) para los detalles y el proxy de nginx.
 
 ### `mage-obsidian:frontend:doctor`
 
@@ -77,7 +77,7 @@ Córrelo primero cuando algo no se comporte: suele señalar la causa (modo equiv
 
 ## Build a Disco
 
-Para producir los assets construidos reales sin el dev server (inspección local o CI), usa `--no-watch`, o el bin de bajo nivel del engine. Consulta [Generación de Archivos Estáticos](../components/modules/0120-vite-build.md).
+Para producir los assets construidos reales sin el dev server (inspección local o CI), usa `--no-watch`, o el bin de bajo nivel del engine. Consulta [Generación de Archivos Estáticos](../guides/features/vite-build.md).
 
 ```bash
 bin/magento mage-obsidian:frontend:dev --start --no-watch --theme=Vendor/theme
@@ -88,5 +88,5 @@ bin/magento mage-obsidian:frontend:dev --start --no-watch --theme=Vendor/theme
 ## Próximos Pasos
 
 - [Generadores](scaffolding.md) — genera módulos, temas y componentes.
-- [HMR](../components/modules/0110-hmr-configuration.md) — los detalles de recarga en vivo y nginx.
-- [Generación de Archivos Estáticos](../components/modules/0120-vite-build.md) — deploy a producción.
+- [HMR](../guides/features/hmr.md) — los detalles de recarga en vivo y nginx.
+- [Generación de Archivos Estáticos](../guides/features/vite-build.md) — deploy a producción.

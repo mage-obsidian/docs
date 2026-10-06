@@ -1,0 +1,299 @@
+{% raw %}
+# CMS Content
+
+**MageObsidian** treats CMS content as a first-class part of the storefront: a page can render from a versioned template, an author can drop a Vue island into it, and Tailwind classes written in the admin work — including after the theme was built.
+
+---
+
+## A CMS page rendered from the theme
+
+A page whose text belongs to the codebase — a privacy notice, a shipping policy — should ship and be translated with the theme, not live in a database row no install reproduces.
+
+Magento already builds a layout handle per page, so the theme opts one in:
+
+```xml
+<!-- <theme>/Magento_Cms/layout/cms_page_view_id_<identifier>.xml -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="cms_page">
+            <arguments>
+                <argument name="obsidian_template" xsi:type="string">Magento_Cms::privacy/policy.twig</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
+```
+
+The template replaces the stored content, and **nothing else changes**: `cms_page` stays in the layout, so the document title, meta description, keywords, breadcrumbs and the `cms-<identifier>` body class still come from the CMS record. A merchant takes the page back by deleting the layout file.
+
+## Typography for authored content
+
+A Tailwind preflight strips the browser defaults for `h2`, `ul` and `blockquote`, which is right for a designed storefront and wrong for HTML someone pasted into the admin. Every CMS page and block is therefore wrapped in `.cms-content`, and the theme styles that.
+
+Those rules belong in the **base layer**:
+
+```css
+@layer base {
+  .cms-content :is(h1, h2, h3) { font-family: var(--font-display); }
+  .cms-content h2 { font-size: var(--text-h3); }
+}
+```
+
+Tailwind declares the order `theme, base, components, utilities`, so a `class="text-3xl"` written in the CMS wins over the prose rule no matter how specific that rule is. Unlayered, it would lose — the class would be in the stylesheet and still not apply.
+
+---
+
+## Vue islands from content
+
+### Exposing one
+
+Most components are not candidates: a product form needs a product in the registry, a cart counter belongs in the header. So a module says which of its own components make sense in content:
+
+```xml
+<type name="MageObsidian\ModernFrontend\Service\Cms\IslandRegistry">
+    <arguments>
+        <argument name="islands" xsi:type="array">
+            <item name="product_carousel" xsi:type="array">
+                <item name="component" xsi:type="string">Vendor_Module::catalog/ProductCarousel</item>
+                <item name="label" xsi:type="string" translate="true">Product carousel</item>
+                <item name="description" xsi:type="string" translate="true">A row of products from a category.</item>
+                <item name="props" xsi:type="array">
+                    <item name="limit" xsi:type="number">4</item>
+                </item>
+            </item>
+        </argument>
+    </arguments>
+</type>
+```
+
+The array merges across modules, so anyone contributes without touching the engine. `props` are the defaults an author's own values are merged over.
+
+### Placing one
+
+From the admin, **Insert Widget → Vue Island**. The component dropdown is the registry intersected with the theme's Vite manifest — allowed *and* actually built, so it is impossible to pick a component whose chunk would 404.
+
+By hand, the `{{island}}` directive:
+
+```
+{{island "Vendor_Module::catalog/ProductCarousel" strategy="eager"}}
+
+{{island component="Vendor_Module::catalog/ProductCarousel"}}{"limit": 8}{{/island}}
+```
+
+Props go in the **body**, not in a parameter: the directive tokenizer reads `key="value"` pairs, so a JSON object's own quotes would end the value halfway through.
+
+A component that is not registered renders nothing and says why in the log. `strategy` is `visible` (mount on scroll) or `eager`; see [Vue Islands](../vue/islands.md).
+
+!!! note "Islands need the storefront runtime"
+    The directive is available wherever Magento's CMS filter runs, emails included. There is no island bootstrap in an email, so the marker would sit there inert.
+
+---
+
+## Page Builder content
+
+Page Builder saves a page as one blob of HTML: every element carries `data-content-type`, and what the author styled lives in `<style>` elements written into the same row. The theme does not parse it and does not rewrite it — it renders what the author saved.
+
+Two things have to happen around it.
+
+### The author's styling survives the policy
+
+Page Builder writes **two** stylesheets, and they look nothing alike. What the author styled is scoped to `#html-body [data-pb-style="…"]`. What the author uploaded as a background arrives under a generated class instead — the only sheet it writes outside its own convention.
+
+Both are inline by construction, so a policy that disallows inline styles drops them and the page renders unstyled, with nothing in the console to say so. MageObsidian hands both to the platform to be hashed.
+
+The background one needs one more step. Page Builder builds its class with `uniqid()`, so the sheet is a different string on every render and no hash survives to the next one. The class is replaced by one derived from the rules it carries — in the sheet and on the element wearing it — before anything is handed over. Two renders of the same content then produce the same class, and the hash describes what the browser receives.
+
+A `<style>` an admin typed into an HTML content type is left exactly where it was. Widening the policy to arbitrary admin text is the merchant's decision, not the theme's.
+
+### Behaviour arrives only where it is asked for
+
+Most of what Page Builder renders is finished markup. A handful of content types are inert without script — a tab set shows every panel at once, a slider is a column of stacked slides. So the behaviour is pulled in by the content that asks for it, and a page that asks for nothing downloads nothing.
+
+Which content asks for what is declarative. A module adds a virtual type naming the marker and the behaviour, then one item to the map. It goes in **`etc/frontend/di.xml`**:
+
+```xml
+<virtualType name="Vendor\Module\Model\PageBuilder\Detector\Map"
+             type="MageObsidian\Storefront\Model\PageBuilder\Detector\MarkerDetector">
+    <arguments>
+        <argument name="marker" xsi:type="string">data-content-type="map"</argument>
+        <argument name="module" xsi:type="string">Vendor_Module::js/map</argument>
+    </arguments>
+</virtualType>
+
+<type name="MageObsidian\Storefront\Model\PageBuilder\Enhancer">
+    <arguments>
+        <argument name="detectors" xsi:type="array">
+            <item name="map" xsi:type="object">Vendor\Module\Model\PageBuilder\Detector\Map</item>
+        </argument>
+    </arguments>
+</type>
+```
+
+The marker is matched against the output Page Builder already produced, so it is any literal that appears in it — an attribute, a class, a whole `data-appearance` pair. Anything that needs to look harder than a substring implements `DetectorInterface` instead of reusing `MarkerDetector`.
+
+Each behaviour is emitted once however many detectors matched it, in the order the map declares them.
+
+!!! warning "Declare it in the frontend area, and keep the map flat"
+    Two ways to lose the whole map without seeing an error.
+
+    **The area matters.** Entries merge by item name only within the same area. A `detectors` argument declared in a module's global `etc/di.xml` is *replaced* — not merged — by one declared in any `etc/frontend/di.xml`, so a single contributor in the wrong file wipes tabs, sliders and everything else. Everyone declares it in `etc/frontend/di.xml`.
+
+    **Keep it flat.** `detectors` is a flat array of objects, and the configuration each one needs goes on its virtual type. Nested array items compile empty — the argument arrives as an empty array, again with nothing to notice.
+
+### Adding a content type of your own
+
+Page Builder lets a module register a content type of its own, and what its master template writes is saved verbatim. That is the one clean extension point the platform offers, and it is where a component of yours can reach the author's palette.
+
+There are two shapes, and which one you need is decided by a single question: **does this content depend on data the server has?**
+
+| | An island | A widget directive |
+|---|---|---|
+| Saves | `<div data-mage-island data-component data-props>` | `{{widget type="…" template="…"}}` |
+| Rendered | in the browser, on hydration | by the server, before the page is sent |
+| Use when | the content is the author's own configuration | the content comes from the catalog, a customer, or anything else the database holds |
+| Ships with | `ObsidianMap`, `ObsidianBanner` | `obsidian_products` |
+
+Never reach for the island when the answer is the server's data: the visitor would get nothing until JavaScript ran, and a crawler would get nothing at all.
+
+#### The island shape, end to end
+
+**1. Write the behaviour as a plain module.** It takes a root element and improves it in place, and it knows nothing about Vue. This is the testable unit, and it is what the detector applies to the platform's own content type later.
+
+```ts
+export function enhanceThing(root: HTMLElement, view: Window = window): boolean { … }
+```
+
+**2. Write the component as a thin wrapper.** It renders the markup its behaviour reads and calls it on mount. If it reimplements anything, the two will drift.
+
+**3. Declare it placeable** in the module's `etc/di.xml`, which is also what makes it reachable by the island widget and the `{{island}}` directive:
+
+```xml
+<type name="MageObsidian\ModernFrontend\Service\Cms\IslandRegistry">
+    <arguments>
+        <argument name="islands" xsi:type="array">
+            <item name="vendor_thing" xsi:type="array">
+                <item name="component" xsi:type="string">Vendor_Module::pagebuilder/Thing</item>
+                <item name="label" xsi:type="string" translate="true">Thing</item>
+                <item name="props" xsi:type="array">
+                    <item name="heading" xsi:type="string"></item>
+                </item>
+            </item>
+        </argument>
+    </arguments>
+</type>
+```
+
+**4. Declare the content type** in `view/adminhtml/pagebuilder/content_type/vendor_thing.xml`. Its `main` element needs the four attributes the storefront looks for, and the props converter that folds the form's `prop_*` fields into one JSON attribute:
+
+```xml
+<attribute name="island" source="data-mage-island"/>
+<attribute name="component" source="data-component"/>
+<attribute name="strategy" source="data-strategy"/>
+<attribute name="props" source="data-props" converter="MageObsidian_Storefront/js/converter/attribute/island-props"/>
+```
+
+**5. Write the form.** Every visible field is named `prop_<name>` and becomes a prop. Three hidden fields carry the marker itself — `island`, `strategy`, and `component`, whose default is the path the build emits the component at:
+
+```
+/generated/Vendor_Module/components/pagebuilder/Thing.js
+```
+
+The author is never offered a field for it. Even if the saved markup were edited by hand, the browser resolves that name against what the build produced and mounts nothing it did not — see [Vue Islands](../vue/islands.md).
+
+**6. Reserve the box.** Add a `min_height` field and map it to `<style name="min_height" source="min_height"/>`. The island has no server-rendered state, so without this the page moves when it hydrates.
+
+**7. Add a `master.html`** that is one line — the attributes and nothing else — and a `preview.html` that shows what the author configured, bound straight to those attributes. No business logic in Knockout: the editor half is the part this project does not control, and the less of it there is the less an editor upgrade can break.
+
+!!! warning "The path in the form and the path the build emits are one thing in two files"
+    Nothing at runtime reconciles them: rename the component and the marker keeps naming a path that no longer exists, and the island silently stops mounting. Pin it with a test that compares the form's default against `ViteResolver::getComponentFile()` for the registered name — `ContentTypeIslandTest` in `module-storefront` does exactly that.
+
+#### The widget-directive shape
+
+When the content is the server's, the master template stores a directive instead. Subclass the platform's own mass converter and change only what you need — `obsidian_products` overrides nothing but the template the directive names — then declare it under `<converters>` in the appearance. Nothing parses the saved content afterwards: the directive is expanded by the same filter every piece of authored content already passes through.
+
+---
+
+## Tailwind written in the CMS
+
+Tailwind's scanner reads files. CMS content lives in a database, so a class written in the admin is invisible to a build. MageObsidian closes that in two steps.
+
+### At build time
+
+```bash
+bin/magento mage-obsidian:cms:export
+```
+
+This writes every page and block to `var/mage-obsidian/cms/`, and the engine emits a `@source` for that directory. Run it **before building the theme** and the build covers every class the content already uses, exactly — no list to curate.
+
+The export also leaves the class list it saw, which the build copies into its own output as `cms-candidates.json`. That is the baseline for what comes next.
+
+A theme opts out in `theme.config.js`:
+
+```js
+export default {
+    scanCmsContent: false,
+};
+```
+
+### After the build
+
+An author who writes a new class the next day cannot wait for a deploy. So the storefront compiles the difference:
+
+```
+delta = classes(CMS content now) − classes(the build's baseline)
+```
+
+It is **derived, never appended to**. There is no growing file to prune and no reset to remember: after a build, the difference is empty on its own and the stylesheet disappears from the page.
+
+The delta is compiled by Tailwind's standalone binary — a single file, no Node:
+
+```bash
+curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
+chmod +x tailwindcss-linux-x64
+mv tailwindcss-linux-x64 bin/tailwindcss
+```
+
+Use `-musl` on Alpine, and `-arm64` on ARM. A different location is configurable at `mage_obsidian/cms/tailwind_bin`.
+
+Because it is the real compiler, arbitrary values work: `p-[13px]` and `text-[17px]` compile as readily as `p-4`.
+
+It runs when an author saves, and a quarter-hourly cron catches content that arrived some other way — an import, the REST API, a data patch. `bin/magento mage-obsidian:cms:jit` forces it, and `--show` reports the state without rebuilding.
+
+!!! warning "Without the binary"
+    Nothing breaks: saving works, the storefront serves what the build produced, and the classes written since simply do not apply. `mage-obsidian:frontend:doctor` reports it, and names the classes it could not generate.
+
+### Excluding content
+
+Content pasted from somewhere else — a third-party embed — carries hundreds of foreign class names that would pollute both the build and the delta. Turn on **Exclude from the CSS scan** on the page or block, and it is skipped by both. Whatever styling it needs then has to come with it.
+
+---
+
+## How it is served
+
+The delta is a stylesheet under `pub/media`, but it is served through a controller at a **fixed URL**:
+
+```
+/mage-obsidian/cms/css
+```
+
+Magento's stock nginx config sends `expires +1y` for any `.css` under `/media/`, so a stable media URL could not be invalidated for a year — and a versioned one would put a changing `href` in the head of every page, invalidating the full page cache every time an author wrote a new class.
+
+Here the href never changes and the **ETag** does the work: a client revalidates within five minutes and gets the new bytes the moment the content changes, while the page cache is never touched. The `<link>` is emitted only while there is a delta, so the empty↔non-empty flip is the one thing that changes a page's HTML.
+
+---
+
+## Key Notes
+
+- The generated rules are wrapped in `@layer utilities`, joining the layer the built stylesheet already declares — a class compiled on the fly behaves exactly like one that came out of the build.
+- One delta per theme. The same class compiles to different CSS against different tokens.
+- Only classes written in a `class` attribute are seen. One assembled by JavaScript at runtime is invisible to any scanner, here or in the build.
+- Merchant-authored content is **not** run through Twig — that would be arbitrary execution from the admin. Templates come in through `{{block ... template="....twig"}}` or the layout argument above.
+
+---
+
+## Next Steps
+
+- [Vue Islands](../vue/islands.md) — how the components placed here are mounted.
+- [Vite Build](vite-build.md) — where the `@source` for exported content fits in the pipeline.
+{% endraw %}

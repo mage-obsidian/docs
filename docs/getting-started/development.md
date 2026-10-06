@@ -61,7 +61,7 @@ bin/magento mage-obsidian:frontend:hmr --disable
 bin/magento mage-obsidian:frontend:hmr --show
 ```
 
-See [HMR](../components/modules/0110-hmr-configuration.md) for details and the nginx proxy.
+See [HMR](../guides/features/hmr.md) for details and the nginx proxy.
 
 ### `mage-obsidian:frontend:doctor`
 
@@ -77,7 +77,7 @@ Run it first whenever something doesn't behave: it usually pinpoints the cause (
 
 ## Building to Disk
 
-To produce the real built assets without the dev server (local inspection or CI), use `--no-watch`, or the lower-level engine bin. See [Building Static Assets](../components/modules/0120-vite-build.md).
+To produce the real built assets without the dev server (local inspection or CI), use `--no-watch`, or the lower-level engine bin. See [Building Static Assets](../guides/features/vite-build.md).
 
 ```bash
 bin/magento mage-obsidian:frontend:dev --start --no-watch --theme=Vendor/theme
@@ -88,5 +88,5 @@ bin/magento mage-obsidian:frontend:dev --start --no-watch --theme=Vendor/theme
 ## Next Steps
 
 - [Scaffolding](scaffolding.md) — generate modules, themes, and components.
-- [HMR](../components/modules/0110-hmr-configuration.md) — the live-reload details and nginx.
-- [Building Static Assets](../components/modules/0120-vite-build.md) — production deploy.
+- [HMR](../guides/features/hmr.md) — the live-reload details and nginx.
+- [Building Static Assets](../guides/features/vite-build.md) — production deploy.

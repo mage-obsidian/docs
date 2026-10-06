@@ -37,7 +37,7 @@ Magento's native layouts, blocks, and templates — for a faster, friendlier wor
 
     The toolkit that powers it all — modules, compatible themes, and how they fit together.
 
-    [:octicons-arrow-right-24: Overview](components/overview.md)
+    [:octicons-arrow-right-24: Overview](why/index.md)
 
 -   :material-leaf:{ .lg .middle } __Twig Engine__
 
@@ -45,7 +45,7 @@ Magento's native layouts, blocks, and templates — for a faster, friendlier wor
 
     Write templates in Twig alongside phtml, with helpers and filters built in.
 
-    [:octicons-arrow-right-24: Explore Twig](twig/index.md)
+    [:octicons-arrow-right-24: Explore Twig](guides/twig.md)
 
 -   :material-palette:{ .lg .middle } __Theme__
 
@@ -53,7 +53,7 @@ Magento's native layouts, blocks, and templates — for a faster, friendlier wor
 
     Learn how the default theme is structured and how to build on top of it.
 
-    [:octicons-arrow-right-24: Theme overview](theme/index.md)
+    [:octicons-arrow-right-24: Theme overview](guides/themes/obsidian.md)
 
 -   :material-heart:{ .lg .middle } __Contribute__
 
@@ -61,7 +61,7 @@ Magento's native layouts, blocks, and templates — for a faster, friendlier wor
 
     {{ config.site_name }} is open source. Join in, report issues, and help it grow.
 
-    [:octicons-arrow-right-24: How to contribute](support/index.md)
+    [:octicons-arrow-right-24: How to contribute](project/contributing.md)
 
 -   :material-school:{ .lg .middle } __New here?__
 
@@ -69,7 +69,7 @@ Magento's native layouts, blocks, and templates — for a faster, friendlier wor
 
     Start with the motivation and key features to see what makes {{ config.site_name }} different.
 
-    [:octicons-arrow-right-24: Introduction](introduction/index.md)
+    [:octicons-arrow-right-24: Introduction](why/index.md)
 
 </div>
 

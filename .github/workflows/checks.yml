@@ -14,7 +14,8 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install -y libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev pango1.0-tools
       - run: pip install -r requirements-dev.txt
       - run: pytest scripts/tests -q
-      - run: mkdocs build -d site
+      - run: mkdocs build --strict -d site
+      - run: PYTHONPATH=scripts python -m docs_checks redirects scripts/fixtures/sitemap-2026-10-06.xml site
       - run: PYTHONPATH=scripts python -m docs_checks phrases site
       - run: PYTHONPATH=scripts python -m docs_checks voseo docs
       - run: PYTHONPATH=scripts python -m docs_checks parity docs

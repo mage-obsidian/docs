@@ -48,11 +48,11 @@ bin/magento mage-obsidian:frontend:config --generate
 
 The components are configured and ready to be used in your project! You can now start developing your theme with the modern tools offered by **{{ config.extra.components_name }}**.
 
-> **Note:** The install includes the optional [Twig engine](../twig/index.md) by default (a `.twig` engine alongside `.phtml`). It changes nothing about your existing `.phtml` templates; if you don't want it, [disable it](../twig/index.md#disabling-twig) with `bin/magento module:disable MageObsidian_ModernFrontendTwig`.
+> **Note:** The install includes the optional [Twig engine](../guides/twig.md) by default (a `.twig` engine alongside `.phtml`). It changes nothing about your existing `.phtml` templates; if you don't want it, [disable it](../guides/twig.md#disabling-twig) with `bin/magento module:disable MageObsidian_ModernFrontendTwig`.
 
 ## More Information
 
-For more details on customizing the components, starting theme development, and understanding all the benefits and advantages, see the [Detailed Components Documentation](../components/overview.md).
+For more details on customizing the components, starting theme development, and understanding all the benefits and advantages, see the [Detailed Components Documentation](../why/index.md).
 
 ---
 
@@ -62,4 +62,4 @@ The theme based on **{{ config.extra.components_name }}** is available on Packag
 
 ## More Information
 
-For more information about the theme, visit the [Theme](../../theme) section.
+For more information about the theme, visit the [Theme](../guides/themes/obsidian.md) section.

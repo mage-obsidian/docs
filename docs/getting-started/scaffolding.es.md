@@ -133,4 +133,4 @@ bin/magento mage-obsidian:generate:component ProductCard --module=Acme_Catalog -
 # 3. Agrega el <block> impreso a un handle de layout, luego haz build
 ```
 
-El componente se renderiza como una [isla Vue](../components/modules/0105-vue-islands.md) de hidratación perezosa. Edita el `.vue` generado y el [watcher de desarrollo](../components/modules/0085-import-tooling.md#watcher-en-vivo-de-desarrollo) mantiene sincronizadas la resolución y el autocompletado del editor.
+El componente se renderiza como una [isla Vue](../guides/vue/islands.md) de hidratación perezosa. Edita el `.vue` generado y el [watcher de desarrollo](../guides/modules/javascript.md#watcher-en-vivo-de-desarrollo) mantiene sincronizadas la resolución y el autocompletado del editor.

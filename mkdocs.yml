@@ -55,7 +55,6 @@ hooks:
   - hooks/i18n_redirects.py
 plugins:
   - search
-  - awesome-pages
   - macros
   - social:
       cards_layout_options:
@@ -72,69 +71,185 @@ plugins:
           name: Español
           build: true
           nav_translations:
-            Introduction: Introducción
-            Key Features: Características Clave
-            Motivation: Motivación
-            Getting started: Primeros pasos
-            Requirements: Requerimientos
-            Installation: Instalación
-            Scaffolding: Generadores
-            Development: Desarrollo
-            Twig Engine: Motor Twig
-            Helpers & Filters: Helpers y Filtros
-            Configuration: Configuración
-            How Contributing?: ¿Cómo contribuir?
-            Components: Componentes
-            Theme: Tema
-            Reference: Referencia
-            Supporting the Project: Apoyando el Proyecto
-            Compatibility Modules: Módulos Compatibles
-            Overview: Resumen
             Home: Inicio
-            Theme Overview: Tema
-            Compatibility Themes: Temas Compatibles
-            MageObsidian vs Hyvä vs Luma: MageObsidian vs Hyvä vs Luma
-            Navigation continuity: Continuidad de navegación
+            Why: Por qué
+            vs Hyvä and Luma: Frente a Hyvä y Luma
+            What's new in 4.0: Novedades de 4.0
             Showcase: Vitrina
+            Get started: Primeros pasos
+            Requirements: Requisitos
+            Compatibility: Compatibilidad
+            Install: Instalación
+            Install on Adobe Commerce: Instalación en Adobe Commerce
+            Your first child theme: Tu primer tema hijo
+            Development workflow: Flujo de desarrollo
+            Scaffolding: Generadores
+            Deploy to production: Despliegue a producción
+            Upgrade: Actualizar
+            From 3.x to 4.0: De 3.x a 4.0
+            Guides: Guías
+            Themes: Temas
+            The OBSIDIAN theme: El tema OBSIDIAN
+            Build a theme: Crear un tema
+            Theme configuration: Configuración del tema
+            CSS & Tailwind: CSS y Tailwind
+            Scripts and components: Scripts y componentes
+            Navigation continuity: Continuidad de navegación
+            Modules: Módulos
+            Make a module compatible: Hacer compatible un módulo
+            Port an existing extension: Portar una extensión existente
+            Module configuration: Configuración del módulo
+            JavaScript & imports: JavaScript e imports
+            JS interceptors: Interceptores JS
+            Templates (.phtml): Plantillas (.phtml)
+            Vue & interactivity: Vue e interactividad
+            Vue components: Componentes Vue
+            Islands: Islas
+            Shared state: Estado compartido
+            Storefront events: Eventos del storefront
+            Optimistic UI & motion: UI optimista y movimiento
+            Internationalization: Internacionalización
+            Twig engine: Motor Twig
+            Features: Funcionalidades
+            SEO & head: SEO y head
+            Structured data: Datos estructurados
+            Images: Imágenes
+            CMS content: Contenido CMS
+            Performance & critical CSS: Rendimiento y CSS crítico
+            Vite build: Build con Vite
+            HMR: HMR
+            Reference: Referencia
+            CLI commands: Comandos CLI
+            Configuration paths: Rutas de configuración
+            Environment variables: Variables de entorno
+            Build configuration: Configuración del build
+            Compatibility XML & contract: XML de compatibilidad y contrato
+            Twig helpers & filters: Helpers y filtros Twig
+            Package map: Mapa de paquetes
+            Project: Proyecto
+            Versioning & support: Versiones y soporte
             Roadmap: Hoja de ruta
+            Known scope: Alcance conocido
             Changelog: Registro de cambios
+            Contributing: Contribuir
+            Support the project: Apoyar el proyecto
   - redirects:
       redirect_maps:
         showcase.md: why/showcase.md
+        introduction/comparison.md: why/comparison.md
+        components/modules/0070-vue-components-configuration.md: guides/vue/components.md
+        components/modules/0105-vue-islands.md: guides/vue/islands.md
+        components/modules/0107-i18n.md: guides/vue/i18n.md
+        components/modules/0110-hmr-configuration.md: guides/features/hmr.md
+        components/modules/0120-vite-build.md: guides/features/vite-build.md
+        components/modules/0130-structured-data.md: guides/features/structured-data.md
+        components/modules/0135-seo-head.md: guides/features/seo-head.md
+        components/modules/0140-images.md: guides/features/images.md
+        components/modules/0150-state-management.md: guides/vue/state.md
+        components/modules/0155-storefront-events.md: guides/vue/events.md
+        components/modules/0157-cms.md: guides/features/cms.md
+        components/modules/0158-optimistic-ui-motion.md: guides/vue/optimistic-ui.md
+        components/modules/0160-performance.md: guides/features/performance.md
+        components/themes/0030-css-configuration.md: guides/themes/css.md
+        components/themes/0040-theme-configuration.md: guides/themes/configuration.md
+        components/themes/0050-components-workflow.md: guides/themes/components.md
+        theme/index.md: guides/themes/obsidian.md
+        theme/navigation.md: guides/themes/navigation.md
+        twig/index.md: guides/twig.md
+        twig/helpers.md: reference/twig.md
+        roadmap.md: project/roadmap.md
+        changelog.md: project/changelog.md
+        support/index.md: project/contributing.md
+        support/project.md: project/sponsor.md
+        introduction/index.md: why/index.md
+        introduction/key-features.md: why/index.md
+        components/overview.md: why/index.md
+        components/modules/0010-overview.md: guides/modules/compatibility.md
+        components/modules/0020-compatibility-configuration.md: guides/modules/compatibility.md
+        components/modules/0030-css-configuration.md: guides/modules/configuration.md
+        components/modules/0040-module-configuration.md: guides/modules/configuration.md
+        components/modules/0050-tailwind-configuration.md: guides/modules/configuration.md
+        components/modules/0060-js-configuration.md: guides/modules/javascript.md
+        components/modules/0080-imports-configuration.md: guides/modules/javascript.md
+        components/modules/0085-import-tooling.md: guides/modules/javascript.md
+        components/modules/0090-phtml-configuration.md: guides/modules/phtml.md
+        components/modules/0100-phtml-vue-integration.md: guides/modules/phtml.md
+        components/themes/0010-overview.md: guides/themes/build.md
+        components/themes/0020-compatibility-configuration.md: guides/themes/build.md
+        components/installation.md: getting-started/installation.md
 nav:
-  - Home: index.md 
-  - Introduction:
-    - Motivation: introduction/index.md
-    - Key Features: introduction/key-features.md
-    - MageObsidian vs Hyvä vs Luma: introduction/comparison.md
-  - Getting started:
+  - Home: index.md
+  - Why:
+    - why/index.md
+    - vs Hyvä and Luma: why/comparison.md
+    - What's new in 4.0: why/whats-new-4.md
+    - Showcase: why/showcase.md
+  - Get started:
+    - getting-started/index.md
     - Requirements: getting-started/requirements.md
-    - Installation: getting-started/installation.md
-    - Adobe Commerce: getting-started/adobe-commerce.md
+    - Compatibility: getting-started/compatibility.md
+    - Install: getting-started/installation.md
+    - Install on Adobe Commerce: getting-started/adobe-commerce.md
+    - Your first child theme: getting-started/first-theme.md
+    - Development workflow: getting-started/development.md
     - Scaffolding: getting-started/scaffolding.md
-    - Development: getting-started/development.md
-  - Components:
-    - Overview: components/overview.md
-    - Installation: components/installation.md
-    - Compatibility Modules:
-      - ... | flat | components/modules/*.md
-    - Compatibility Themes:
-      - ... | flat | components/themes/*.md
-  - Theme Overview:
-    - theme/index.md
-    - Navigation continuity: theme/navigation.md
-  - Twig Engine:
-    - Overview: twig/index.md
-    - Helpers & Filters: twig/helpers.md
-  - Showcase: why/showcase.md
-  - Roadmap: roadmap.md
-  - Changelog: changelog.md
-  # - Reference:
-  #   - reference/index.md
-  - How Contributing?:
-    - support/index.md
-  - Supporting the Project:
-    - support/project.md
+    - Deploy to production: getting-started/deploy.md
+  - Upgrade:
+    - upgrade/index.md
+    - From 3.x to 4.0: upgrade/3-to-4.md
+  - Guides:
+    - guides/index.md
+    - Themes:
+      - guides/themes/index.md
+      - The OBSIDIAN theme: guides/themes/obsidian.md
+      - Build a theme: guides/themes/build.md
+      - Theme configuration: guides/themes/configuration.md
+      - CSS & Tailwind: guides/themes/css.md
+      - Scripts and components: guides/themes/components.md
+      - Navigation continuity: guides/themes/navigation.md
+    - Modules:
+      - guides/modules/index.md
+      - Make a module compatible: guides/modules/compatibility.md
+      - Port an existing extension: guides/modules/porting.md
+      - Module configuration: guides/modules/configuration.md
+      - JavaScript & imports: guides/modules/javascript.md
+      - JS interceptors: guides/modules/interceptors.md
+      - Templates (.phtml): guides/modules/phtml.md
+    - Vue & interactivity:
+      - guides/vue/index.md
+      - Vue components: guides/vue/components.md
+      - Islands: guides/vue/islands.md
+      - Shared state: guides/vue/state.md
+      - Storefront events: guides/vue/events.md
+      - Optimistic UI & motion: guides/vue/optimistic-ui.md
+      - Internationalization: guides/vue/i18n.md
+    - Twig engine: guides/twig.md
+    - Features:
+      - guides/features/index.md
+      - SEO & head: guides/features/seo-head.md
+      - Structured data: guides/features/structured-data.md
+      - Images: guides/features/images.md
+      - CMS content: guides/features/cms.md
+      - Performance & critical CSS: guides/features/performance.md
+      - Vite build: guides/features/vite-build.md
+      - HMR: guides/features/hmr.md
+  - Reference:
+    - reference/index.md
+    - CLI commands: reference/cli.md
+    - Configuration paths: reference/config-paths.md
+    - Environment variables: reference/env.md
+    - Build configuration: reference/build-config.md
+    - Compatibility XML & contract: reference/contract.md
+    - Twig helpers & filters: reference/twig.md
+    - Package map: reference/packages.md
+  - Project:
+    - project/index.md
+    - Versioning & support: project/versioning.md
+    - Roadmap: project/roadmap.md
+    - Known scope: project/known-scope.md
+    - Changelog: project/changelog.md
+    - Contributing: project/contributing.md
+    - Support the project: project/sponsor.md
 extra:
   theme_name: "MageObsidian Theme"
   demo_url: https://mage-obsidian-demo.jeanmarcos.dev/

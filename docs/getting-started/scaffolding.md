@@ -133,4 +133,4 @@ bin/magento mage-obsidian:generate:component ProductCard --module=Acme_Catalog -
 # 3. Add the printed <block> to a layout handle, then build
 ```
 
-The component renders as a lazy-hydrated [Vue island](../components/modules/0105-vue-islands.md). Edit the generated `.vue` and the [dev watcher](../components/modules/0085-import-tooling.md#live-dev-watcher) keeps resolution and editor autocomplete in sync.
+The component renders as a lazy-hydrated [Vue island](../guides/vue/islands.md). Edit the generated `.vue` and the [dev watcher](../guides/modules/javascript.md#live-dev-watcher) keeps resolution and editor autocomplete in sync.
