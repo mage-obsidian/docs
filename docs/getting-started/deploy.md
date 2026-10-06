@@ -1,7 +1,5 @@
 # Deploy to production
 
-{{ verified('install') }}
-
 There is **no separate build step**. MageObsidian hooks into Magento's standard static-content deploy: its deploy plugins exclude modern themes from the legacy Less/RequireJS pipeline and produce and inject the Vite output (minified, tree-shaken, hashed) as part of the normal command:
 
 ```bash
@@ -17,16 +15,7 @@ If you have not installed the theme yet, start with [Installation](installation.
 
 ## How fast is it?
 
-Legacy static deploys are infamous for taking minutes. Because the Vite build replaces the whole Less/RequireJS pipeline, a MageObsidian theme deploys in seconds — here is a real run against a Magento 2.4.8 store with sample data, one theme and one locale:
-
-<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/static-deploy.mp4"></video>
-
-```bash
-bin/magento setup:static-content:deploy -f --theme MageObsidian/default en_US
-# Execution time: 3.19s — Vite production build included (688ms, 753 modules)
-```
-
-Absolute numbers vary with hardware and theme size, but the shape holds: the Vite build is sub-second territory and file materialization dominates, so full-theme deploys stay in single-digit seconds.
+Legacy static deploys are infamous for taking minutes. Because the Vite build replaces the whole Less/RequireJS pipeline, a MageObsidian theme deploys in seconds, not minutes. Absolute times vary with hardware and theme size, but the Vite build is fast and file materialization dominates.
 
 ## Server requirements
 

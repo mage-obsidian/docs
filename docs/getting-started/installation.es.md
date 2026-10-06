@@ -2,7 +2,7 @@
 
 {{ verified('install') }}
 
-Esta es la receta que la matriz de versiones ejecuta en cada plataforma listada en [Compatibilidad](compatibility.md): los paquetes publicados, instalados desde Packagist en una tienda limpia, luego construidos y desplegados. Con `^4.0`, Composer instala los módulos del storefront 4.0.1 y el framework y `theme-default` 4.0.0. Revisa primero los [requisitos](requirements.md). En Adobe Commerce, lee también [Instalar en Adobe Commerce](adobe-commerce.md).
+Los pasos 1 a 6 son la receta que la matriz de versiones ejecuta en cada plataforma listada en [Compatibilidad](compatibility.md): los paquetes publicados, instalados desde Packagist en una tienda limpia y construidos, seguidos de una verificación rápida del storefront. El paso 7 es el paso de producción y no forma parte de la corrida de la matriz. Con `^4.0`, Composer instala los módulos del storefront 4.0.1 y el framework y `theme-default` 4.0.0. Revisa primero los [requisitos](requirements.md). En Adobe Commerce, lee también [Instalar en Adobe Commerce](adobe-commerce.md).
 
 ## 1. Requerir el tema
 
@@ -30,7 +30,13 @@ bin/magento mage-obsidian:frontend:config --generate
 
 ## 5. Preparar el harness de Vite
 
-Composer copia el harness `vite/` a la raíz de Magento. Crea `vite/.env` a partir de `vite/.env.sample` con los valores de tu host y luego instala las dependencias de Node tal como están bloqueadas:
+El harness `vite/` debe estar en la raíz de Magento. Si falta `vite/package.json`, cópialo desde el paquete instalado:
+
+```bash
+[ -f vite/package.json ] || { rm -rf vite && cp -r vendor/mage-obsidian/component-modern-frontend/vite vite; }
+```
+
+Crea `vite/.env` a partir de `vite/.env.sample` con los valores de tu host y luego instala las dependencias de Node tal como están bloqueadas:
 
 ```bash
 cd vite

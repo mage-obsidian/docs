@@ -1,7 +1,5 @@
 # Despliegue a producción
 
-{{ verified('install') }}
-
 **No hay un paso de build aparte**. MageObsidian se engancha al deploy de contenido estático estándar de Magento: sus plugins de deploy excluyen los temas modernos del pipeline legacy de Less/RequireJS y producen e inyectan la salida de Vite (minificada, con tree-shaking y hash) como parte del comando normal:
 
 ```bash
@@ -17,16 +15,7 @@ Si aún no has instalado el tema, empieza por [Instalación](installation.md). P
 
 ## ¿Qué tan rápido es?
 
-Los deploys estáticos legacy son famosos por tardar minutos. Como el build de Vite reemplaza todo el pipeline de Less/RequireJS, un tema MageObsidian se despliega en segundos — esta es una corrida real contra un Magento 2.4.8 con sample data, un tema y un locale:
-
-<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/static-deploy.mp4"></video>
-
-```bash
-bin/magento setup:static-content:deploy -f --theme MageObsidian/default en_US
-# Execution time: 3.19s — build de producción de Vite incluido (688ms, 753 módulos)
-```
-
-Los números absolutos varían con el hardware y el tamaño del tema, pero la forma se mantiene: el build de Vite está en territorio sub-segundo y domina la materialización de archivos, así que el deploy del tema completo queda en segundos de un dígito.
+Los deploys estáticos legacy son famosos por tardar minutos. Como el build de Vite reemplaza todo el pipeline de Less/RequireJS, un tema MageObsidian se despliega en segundos, no en minutos. Los tiempos absolutos varían con el hardware y el tamaño del tema, pero el build de Vite es rápido y domina la materialización de archivos.
 
 ## Requisitos del servidor
 

@@ -2,7 +2,7 @@
 
 {{ verified('install') }}
 
-This is the recipe the release matrix runs on every platform listed in [Compatibility](compatibility.md): the published packages, installed from Packagist on a clean store, then built and deployed. With `^4.0`, Composer installs the storefront modules 4.0.1 and the framework and `theme-default` 4.0.0. Check the [requirements](requirements.md) first. On Adobe Commerce, read [Install on Adobe Commerce](adobe-commerce.md) as well.
+Steps 1 to 6 are the recipe the release matrix runs on every platform listed in [Compatibility](compatibility.md): the published packages, installed from Packagist on a clean store and built, followed by a storefront smoke check. Step 7 is the production step and is not part of the matrix run. With `^4.0`, Composer installs the storefront modules 4.0.1 and the framework and `theme-default` 4.0.0. Check the [requirements](requirements.md) first. On Adobe Commerce, read [Install on Adobe Commerce](adobe-commerce.md) as well.
 
 ## 1. Require the theme
 
@@ -30,7 +30,13 @@ bin/magento mage-obsidian:frontend:config --generate
 
 ## 5. Prepare the Vite harness
 
-Composer copies the `vite/` harness into the Magento root. Create `vite/.env` from `vite/.env.sample` with the values for your host, then install the Node dependencies exactly as locked:
+The `vite/` harness must be in the Magento root. If `vite/package.json` is missing, copy it from the installed package:
+
+```bash
+[ -f vite/package.json ] || { rm -rf vite && cp -r vendor/mage-obsidian/component-modern-frontend/vite vite; }
+```
+
+Create `vite/.env` from `vite/.env.sample` with the values for your host, then install the Node dependencies exactly as locked:
 
 ```bash
 cd vite
