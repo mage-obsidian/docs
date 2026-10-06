@@ -19,7 +19,7 @@ private verification harness, on the
 
 | Register | Figure | Measured |
 |---|---|---|
-| Parity entries | 486 — 318 covered, 138 out of scope, 27 resolved, 3 blocked | 2026-09-29 |
+| Parity entries | 486 — 247 covered, 71 partial, 138 out of scope, 27 resolved, 3 blocked | 2026-10-06 |
 | Page layouts | 15 entries, 13 covered by an executed test, 2 out of scope | 2026-09-22 |
 | Build engine unit tests | 321 | 2026-09-22 |
 | Harness unit tests | 268 | 2026-09-22 |

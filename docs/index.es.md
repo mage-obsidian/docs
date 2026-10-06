@@ -19,7 +19,7 @@ install:
   - {tab: pnpm, lines: ["cd vite && pnpm install --frozen-lockfile", "pnpm build:theme MageObsidian/default"]}
 tiles:
   - {eyebrow: "Lighthouse", number: "100", text: "en la tienda demo, móvil", source: "Lighthouse 13.5.0 · 2026-10-06", href: "why/showcase/"}
-  - {eyebrow: "Verificados", number: "318", text: "comportamientos de Luma", source: "registro · 2026-09-29", href: "project/known-scope/"}
+  - {eyebrow: "Verificadas", number: "247", text: "pantallas de Luma, completas", source: "registro · 2026-10-06", href: "project/known-scope/"}
   - {eyebrow: "Compatibilidad", wide: true, title: "Magento Open Source y Mage-OS", text: "Se instala desde Packagist en cada versión.", href: "getting-started/compatibility/"}
 paths:
   - {eyebrow: "01 · Evaluar", wide: true, title: "Por qué MageObsidian", text: "Cómo se compara con Hyvä y Luma, y qué está —y qué no— verificado todavía.", href: "why/"}

@@ -19,7 +19,7 @@ arnés de verificación privado, sobre el par
 
 | Registro | Cifra | Medido |
 |---|---|---|
-| Entradas de paridad | 486 — 318 cubiertas, 138 fuera de alcance, 27 resueltas, 3 bloqueadas | 2026-09-29 |
+| Entradas de paridad | 486 — 247 cubiertas, 71 parciales, 138 fuera de alcance, 27 resueltas, 3 bloqueadas | 2026-10-06 |
 | Layouts de página | 15 entradas, 13 cubiertas por una prueba ejecutada, 2 fuera de alcance | 2026-09-22 |
 | Pruebas unitarias del motor de build | 321 | 2026-09-22 |
 | Pruebas unitarias del arnés | 268 | 2026-09-22 |

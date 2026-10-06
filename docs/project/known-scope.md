@@ -1,5 +1,5 @@
 ---
-description: "What MageObsidian does not cover and why, with the Luma parity register read on 2026-09-29."
+description: "What MageObsidian does not cover and why, with the Luma parity register read on 2026-10-06."
 ---
 # Known scope
 
@@ -7,7 +7,24 @@ What MageObsidian does not cover, and why. Each item here is a decision or a mea
 
 ## Luma parity
 
-The parity register was read on 2026-09-29 against **Magento Open Source 2.4.9**. It lists 486 entries: 318 covered, 27 resolved, 138 out of scope and 3 blocked. A covered entry has a test that observed the behaviour; the two groups below are the ones that are not.
+The parity register was read on 2026-10-06 against **Magento Open Source 2.4.9**. It lists 486 entries: 247 covered, 71 partial, 27 resolved, 138 out of scope and 3 blocked. A covered entry has a test that observed the behaviour, and every block the core contributes to that screen is accounted for. A partial entry has the test, but one or more of those blocks has no counterpart; the three groups below are the ones that are not covered.
+
+Until 2026-10-06 the register compared screens only, so a screen MageObsidian re-declared counted as covered even when a block another core module added to it was gone. It now also compares the 832 blocks the core declares on those screens. The 71 partial entries come from that comparison, and they were all counted as covered before.
+
+### Partial
+
+108 blocks on 71 screens have no counterpart. Each one is listed in the register with what the shopper loses. By area:
+
+| Area | What is missing |
+|---|---|
+| Blocks an action when a store setting is on | With reCAPTCHA enabled for coupons, a coupon cannot be applied from the cart. With reCAPTCHA enabled for the wish list, a wish list cannot be shared. With terms and conditions enabled, the multi-address review shows no agreements to accept. The core still validates all three on the server. |
+| Cart | Minimum order amount, reduced-quantity and price-change notices are not shown, and checkout is not disabled by them. A cart with a minimum-advertised-price item shows its total. Cross-sell cards have no add to wish list or compare. |
+| Account and session | On a phone there is no Sign In or My Account link in the header or the menu drawer. Remember Me is lost on the default sign-in. A sign-in or registration started from checkout loses the checkout context. There is no Create an Account link in the header and no account offer on the success page. A shopper with cookies disabled is not told so. The cookie domain and Secure setting are not published to the browser, so the `form_key` cookie ignores them. |
+| Catalog and search | Product videos, tier-price messages, quantity-increment hints, the category image, swatches on listing cards, the compare sidebar, recently viewed products, search suggestions and related terms, and skip links around the gallery. Product views and search terms are no longer recorded for the admin reports. |
+| Orders and emails | Bundle selections and downloadable link titles in the order, invoice and credit memo emails, and Fixed Product Tax in their totals. Comments on orders, invoices, shipments and credit memos. Reorder and Print Order on the document pages, the Track your order link, the Recently Ordered sidebar, the order status on printed documents, and the print and downloadable-products links on the success page. Item options in the multi-address steps. |
+| Wish list | Updating quantities, item comments, editing a saved item's options, showing which variant was saved, review summaries, and the sidebar. |
+| Marketing and feeds | Google Ads conversion tracking, both the gtag and the legacy tag (Google Analytics 4 is ported). RSS links in the head, the footer, category pages, the wish list and order pages. |
+| Platform | Subresource Integrity hashes on the checkout scripts (PCI DSS 4.0 requirement 6.4.3). A switcher between store groups. The back-in-stock unsubscribe page. Customer data invalidation across websites that share an origin. |
 
 ### Blocked
 
