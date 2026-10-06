@@ -1,9 +1,9 @@
-# Actualizar
+# Notas de actualización
 
-Lleva una instalación existente a una nueva versión mayor.
+Una sección por cada versión menor de 4.x, con cualquier paso manual y cada deprecación.
 
-<div class="grid cards" markdown>
+## 4.0
 
-- **[De 3.x a 4.0](3-to-4.md)** — los pasos para pasar de 3.x a 4.0.
+Ningún paso manual más allá de [actualizar desde 3.x](3-to-4.md). Sin deprecaciones.
 
-</div>
+Consulta la [política de deprecación](../project/versioning.md#deprecation-policy).

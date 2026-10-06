@@ -1,9 +1,9 @@
-# Upgrade
+# Upgrade notes
 
-Move an existing installation to a new major version.
+One section per minor release of 4.x with any manual step and every deprecation.
 
-<div class="grid cards" markdown>
+## 4.0
 
-- **[From 3.x to 4.0](3-to-4.md)** — the steps to move from 3.x to 4.0.
+No manual steps beyond [upgrading from 3.x](3-to-4.md). No deprecations.
 
-</div>
+See the [deprecation policy](../project/versioning.md#deprecation-policy).
