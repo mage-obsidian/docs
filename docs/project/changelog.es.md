@@ -42,34 +42,34 @@ Nada.
 
 ### Mapa de versiones
 
-Última versión de cada paquete antes de 4.0 y la versión que trae 4.0.
+Última versión de cada paquete antes de 4.0 y la versión 4.0.0.
 
-| Paquete | Última antes de 4.0 | 4.0 |
+| Paquete | Última antes de 4.0 | 4.0.0 |
 |---|---|---|
 | mage-obsidian/module-modern-frontend | 2.22.0 | 4.0.0 |
 | mage-obsidian/module-modern-frontend-cli | 2.9.0 | 4.0.0 |
 | mage-obsidian/module-modern-frontend-twig | 2.7.1 | 4.0.0 |
 | mage-obsidian/component-modern-frontend | 2.7.0 | 4.0.0 |
 | mage-obsidian (npm) | 3.2.0 | 4.0.0 |
-| mage-obsidian/module-catalog | 3.12.0 | 4.0.1 |
-| mage-obsidian/module-catalog-search | 2.2.0 | 4.0.1 |
-| mage-obsidian/module-checkout | 3.12.1 | 4.0.1 |
-| mage-obsidian/module-customer | 2.4.1 | 4.0.1 |
-| mage-obsidian/module-downloadable | 2.2.0 | 4.0.1 |
-| mage-obsidian/module-gift-message | 2.2.0 | 4.0.1 |
-| mage-obsidian/module-instant-purchase | 2.2.0 | 4.0.1 |
-| mage-obsidian/module-multishipping | 2.1.0 | 4.0.1 |
-| mage-obsidian/module-persistent | 2.1.0 | 4.0.1 |
-| mage-obsidian/module-product-alert | 2.1.0 | 4.0.1 |
-| mage-obsidian/module-review | 2.3.0 | 4.0.1 |
-| mage-obsidian/module-sales | 2.4.0 | 4.0.1 |
-| mage-obsidian/module-search | 1.3.0 | 4.0.1 |
-| mage-obsidian/module-send-friend | 2.2.0 | 4.0.1 |
-| mage-obsidian/module-showcase | 1.5.0 | 4.0.1 |
-| mage-obsidian/module-storefront | 3.23.0 | 4.0.1 |
-| mage-obsidian/module-vault | 2.3.0 | 4.0.1 |
-| mage-obsidian/module-wishlist | 2.3.0 | 4.0.1 |
-| mage-obsidian/theme-base | 3.13.1 | 4.0.1 |
+| mage-obsidian/module-catalog | 3.12.0 | 4.0.0 |
+| mage-obsidian/module-catalog-search | 2.2.0 | 4.0.0 |
+| mage-obsidian/module-checkout | 3.12.1 | 4.0.0 |
+| mage-obsidian/module-customer | 2.4.1 | 4.0.0 |
+| mage-obsidian/module-downloadable | 2.2.0 | 4.0.0 |
+| mage-obsidian/module-gift-message | 2.2.0 | 4.0.0 |
+| mage-obsidian/module-instant-purchase | 2.2.0 | 4.0.0 |
+| mage-obsidian/module-multishipping | 2.1.0 | 4.0.0 |
+| mage-obsidian/module-persistent | 2.1.0 | 4.0.0 |
+| mage-obsidian/module-product-alert | 2.1.0 | 4.0.0 |
+| mage-obsidian/module-review | 2.3.0 | 4.0.0 |
+| mage-obsidian/module-sales | 2.4.0 | 4.0.0 |
+| mage-obsidian/module-search | 1.3.0 | 4.0.0 |
+| mage-obsidian/module-send-friend | 2.2.0 | 4.0.0 |
+| mage-obsidian/module-showcase | 1.5.0 | 4.0.0 |
+| mage-obsidian/module-storefront | 3.23.0 | 4.0.0 |
+| mage-obsidian/module-vault | 2.3.0 | 4.0.0 |
+| mage-obsidian/module-wishlist | 2.3.0 | 4.0.0 |
+| mage-obsidian/theme-base | 3.13.1 | 4.0.0 |
 | mage-obsidian/theme-default | 3.21.3 | 4.0.0 |
 
 ---
