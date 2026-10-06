@@ -20,6 +20,17 @@ for (const path of UI_PAGES) {
   }
 }
 for (const lang of ["", "es/"]) {
+  await page.goto(base + lang + "guides/", { waitUntil: "load" });
+  const dead = await page.evaluate(() =>
+    [...document.querySelectorAll(".grid.cards > ul > li")].filter((card) => {
+      const box = card.getBoundingClientRect();
+      const hit = document.elementFromPoint(box.right - 12, box.bottom - 12);
+      return !hit || !hit.closest("a");
+    }).length,
+  );
+  if (dead) findings.push(`/${lang}guides/ ${dead} card(s) not clickable outside their title`);
+}
+for (const lang of ["", "es/"]) {
   await page.goto(base + lang, { waitUntil: "load" });
   await page.locator("input[data-md-component='search-query']").fill("islands");
   const found = await page.locator(".md-search-result__item").first().waitFor({ timeout: 10000 }).then(() => true, () => false);

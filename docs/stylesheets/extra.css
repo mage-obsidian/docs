@@ -132,8 +132,18 @@ nav.md-tabs .md-tabs__list li:first-child {
     box-shadow 0.2s ease;
 }
 
-.md-typeset .grid.cards > ul > li:hover,
-.md-typeset .grid > .card:hover {
+.md-typeset .grid.cards > ul > li:has(> strong:first-child > a) {
+  position: relative;
+}
+
+.md-typeset .grid.cards > ul > li > strong:first-child > a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.md-typeset .grid.cards > ul > li:has(> strong:first-child > a):hover,
+.md-typeset .grid.cards > ul > li:has(> strong:first-child > a:focus-visible) {
   border-color: var(--mo-accent);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px -12px var(--mo-accent);
