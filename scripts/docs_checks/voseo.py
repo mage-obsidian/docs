@@ -7,6 +7,8 @@ WORDS = [
     "vos", "podés", "querés", "tenés", "hacé", "fijate", "mirá", "dale", "acá", "che",
     "usá", "instalá", "ejecutá", "corré", "agregá", "creá", "probá", "revisá", "configurá",
     "elegí", "escribí", "seguí", "abrí", "definí", "vosotros", "tío", "órale", "güey", "chido",
+    "activá", "sos", "sabés", "necesitás", "tené", "poné", "decí", "andá", "guardá", "cambiá",
+    "borrá", "copiá", "pegá", "verificá", "reiniciá", "ingresá", "completá", "asegurate", "acordate",
 ]
 
 PATTERN = re.compile(r"(?<![\w-])(" + "|".join(re.escape(w) for w in WORDS) + r")(?![\w-])", re.IGNORECASE)

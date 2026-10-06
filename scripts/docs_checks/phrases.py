@@ -1,3 +1,4 @@
+import html
 import re
 from pathlib import Path
 
@@ -24,8 +25,8 @@ TAGS = re.compile(r"<[^>]+>")
 SPACE = re.compile(r"\s+")
 
 
-def _text(html):
-    return SPACE.sub(" ", TAGS.sub(" ", html)).lower()
+def _text(markup):
+    return SPACE.sub(" ", html.unescape(TAGS.sub(" ", markup))).lower()
 
 
 def find_banned(site_dir, banned, allowed):

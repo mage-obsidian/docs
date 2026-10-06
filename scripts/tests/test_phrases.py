@@ -29,3 +29,8 @@ def test_mirror_urls_are_allowed_only_in_the_package_map(docs_tree):
     })
     assert find_mirror_links(site, ["module-catalog"], ["reference/packages/index.html"]) == [
         "guides/index.html: github.com/mage-obsidian/module-catalog"]
+
+
+def test_matching_decodes_html_entities(docs_tree):
+    site = docs_tree({"x/index.html": "<p>Ready&nbsp;to&#32;try</p>"})
+    assert find_banned(site, ["ready to try"], {}) == ["x/index.html: ready to try"]
