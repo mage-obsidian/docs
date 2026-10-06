@@ -8,9 +8,9 @@
 
 {% block announce %}
 {% if config.theme.language == 'es' %}
-<a href="{{ base_url }}/es/why/whats-new-4/" class="mo-announce"><strong>MageObsidian 4.0 es estable.</strong> Qué cambia y cómo actualizar →</a>
+<a href="{{ base_url }}/es/why/whats-new-4/" class="mo-announce"><span class="mo-announce__full"><strong>MageObsidian 4.0 es estable.</strong> Qué cambia y cómo actualizar →</span><span class="mo-announce__short" aria-hidden="true"><strong>4.0 es estable</strong> · Novedades →</span></a>
 {% else %}
-<a href="{{ base_url }}/why/whats-new-4/" class="mo-announce"><strong>MageObsidian 4.0 is stable.</strong> What changed and how to upgrade →</a>
+<a href="{{ base_url }}/why/whats-new-4/" class="mo-announce"><span class="mo-announce__full"><strong>MageObsidian 4.0 is stable.</strong> What changed and how to upgrade →</span><span class="mo-announce__short" aria-hidden="true"><strong>4.0 is stable</strong> · What's new →</span></a>
 {% endif %}
 {% endblock %}
 
