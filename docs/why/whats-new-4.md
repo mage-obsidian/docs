@@ -8,11 +8,11 @@ description: "MageObsidian 4.0 is the first stable release: a stable contract fo
 
 MageObsidian 4.0 is the first stable release. From here on, the surface listed in the [Reference](../reference/index.md) does not change incompatibly until 5.0. What that covers, and how long each line is supported, is in [Versioning & support](../project/versioning.md).
 
-## Same packages, same code
+## Nothing was renamed
 
 No package was renamed. The Packagist and npm names are the ones you already use.
 
-4.0.0 shipped the last 2.x and 3.x code plus SPDX license headers. Those headers caused a regression, fixed the same day in storefront 4.0.1: templates failed on PHP 8.3 and 8.4, and a template variable was missing on Magento 2.4.7.
+4.0.0 shipped the last 2.x and 3.x code plus SPDX license headers. Those headers caused a regression on PHP 8.3 and 8.4, where templates failed. Storefront 4.0.1 fixed it the same day, together with an unrelated bug that left a template variable missing on Magento 2.4.7.
 
 ## Two release trains
 

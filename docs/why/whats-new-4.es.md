@@ -8,11 +8,11 @@ description: "MageObsidian 4.0 es la primera versión estable: un contrato estab
 
 MageObsidian 4.0 es la primera versión estable. A partir de ahora, la superficie que lista la [Referencia](../reference/index.md) no cambia de forma incompatible hasta la 5.0. Lo que cubre y cuánto tiempo se mantiene cada línea está en [Versiones y soporte](../project/versioning.md).
 
-## Mismos paquetes, mismo código
+## Ningún paquete cambió de nombre
 
 Ningún paquete fue renombrado. Los nombres de Packagist y npm son los mismos que ya usas.
 
-4.0.0 publicó el último código de 2.x y 3.x más las cabeceras de licencia SPDX. Esas cabeceras causaron una regresión, corregida el mismo día en storefront 4.0.1: las plantillas fallaban en PHP 8.3 y 8.4, y faltaba una variable de plantilla en Magento 2.4.7.
+4.0.0 publicó el último código de 2.x y 3.x más las cabeceras de licencia SPDX. Esas cabeceras causaron una regresión en PHP 8.3 y 8.4, donde las plantillas fallaban. Storefront 4.0.1 la corrigió el mismo día, junto con un error ajeno que dejaba sin definir una variable de plantilla en Magento 2.4.7.
 
 ## Dos trenes de versiones
 
