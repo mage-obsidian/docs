@@ -13,7 +13,7 @@ Este archivo será incluido para cada módulo que lo defina, a menos que se conf
     Los archivos CSS se cargan según la **prioridad de los módulos** definida en Magento. El orden se determina mediante la configuración de `sequence` en el archivo `module.xml` de cada módulo. Esto permite controlar el orden de importación del CSS de los módulos. Además, todo el CSS de los módulos se carga **antes del CSS de los temas**.
     
     > Para más detalles sobre cómo configurar el orden de carga de los módulos, consulta la documentación oficial de Magento:  
-    [Configurar el orden de carga de componentes](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+    [Configurar el orden de carga de componentes](https://developer.adobe.com/commerce/php/development/build/component-load-order).
 
     Un ejemplo típico de orden de importación sería:
 

@@ -8,12 +8,8 @@
 
 {% block announce %}
 {% if config.theme.language == 'es' %}
-<strong>🚀 {{ config.site_name }} ya está listo para probar:</strong>
-levanta el tema, explora el stack y cuéntanos qué te parece. ¡Tu feedback es bienvenido!
-<a href="{{ config.extra.demo_url }}" target="_blank" rel="noopener"><strong>Demo en vivo →</strong></a>
+<a href="{{ base_url }}/es/why/whats-new-4/" class="mo-announce"><strong>MageObsidian 4.0 es estable.</strong> Qué cambia y cómo actualizar →</a>
 {% else %}
-<strong>🚀 {{ config.site_name }} is ready to try:</strong>
-spin up the theme, explore the stack, and let us know what you think. Feedback welcome!
-<a href="{{ config.extra.demo_url }}" target="_blank" rel="noopener"><strong>Live demo →</strong></a>
+<a href="{{ base_url }}/why/whats-new-4/" class="mo-announce"><strong>MageObsidian 4.0 is stable.</strong> What changed and how to upgrade →</a>
 {% endif %}
 {% endblock %}

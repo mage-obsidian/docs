@@ -42,7 +42,7 @@ This is the source-scanning counterpart of [`ignoredCssFromModules`](../themes/0
 ## Prioritization & overrides
 
 - Module CSS (`module.extend.css`) is imported **before** the theme CSS, so a theme's `theme.source.css` can override module tokens through the normal CSS cascade.
-- Module load order follows the `sequence` declared in each `module.xml`. See the [official Magento documentation](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+- Module load order follows the `sequence` declared in each `module.xml`. See the [official Magento documentation](https://developer.adobe.com/commerce/php/development/build/component-load-order).
 
 ---
 

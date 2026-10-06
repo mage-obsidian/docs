@@ -7,7 +7,7 @@ A diferencia de los módulos, **no recomendamos incluir soporte para {{ config.e
 ## Crear un Tema Compatible
 
 Para crear un tema, primero sigue los pasos estándar descritos en la documentación oficial de Magento:  
-[Creación de un tema en Magento](https://developer.adobe.com/commerce/php/tutorials/frontend/create-theme/)  
+[Creación de un tema en Magento](https://developer.adobe.com/commerce/frontend-core/guide/themes/)  
 
 En resumen, necesitas crear una estructura como esta:
 

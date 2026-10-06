@@ -1,7 +1,7 @@
 
 # Instalación
 
-La instalación de **{{ config.site_name }}** consta de dos partes principales: los **componentes**, que ya están disponibles, y el **tema**, que aún se encuentra en desarrollo.
+La instalación de **{{ config.site_name }}** consta de dos partes principales: los **componentes**, que ya están disponibles, y el **tema**, que está publicado en Packagist como `mage-obsidian/theme-default`.
 
 ## {{ config.extra.components_name }}
 
@@ -53,17 +53,13 @@ bin/magento mage-obsidian:frontend:config --generate
 
 ## Más información
 
-Para obtener más detalles sobre la personalización de los componentes, iniciar el desarrollo de un tema y conocer todos los beneficios y ventajas, consulta la sección [Documentación detallada de los componentes](../../components).
+Para obtener más detalles sobre la personalización de los componentes, iniciar el desarrollo de un tema y conocer todos los beneficios y ventajas, consulta la sección [Documentación detallada de los componentes](../components/overview.md).
 
 ---
 
 ## {{ config.extra.theme_name }}
 
-El tema basado en **{{ config.extra.components_name }}** aún está en desarrollo y no está disponible para su instalación. Una vez completado, proporcionará un diseño moderno, SEO-friendly y altamente personalizable para tiendas Magento.
-
-### Estado actual
-- El diseño está en progreso y estará disponible próximamente.
-- Mientras tanto, puedes explorar los componentes para empezar a construir soluciones personalizadas.
+El tema basado en **{{ config.extra.components_name }}** está disponible en Packagist como `mage-obsidian/theme-default`. Proporciona un diseño moderno, SEO-friendly y altamente personalizable para tiendas Magento.
 
 ## Más información
 

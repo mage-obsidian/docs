@@ -176,7 +176,7 @@ Cache-Control: max-age=86400, public
 Detalles que conviene conocer:
 
 - El media type es `application/manifest+json`, no `application/json`.
-- Es cacheable por un día para el navegador, la CDN y Varnish. El full page cache de Magento no lo alcanza —solo cubre resultados `Result\Page`—, así que acá el mecanismo son las cabeceras HTTP.
+- Es cacheable por un día para el navegador, la CDN y Varnish. El full page cache de Magento no lo alcanza —solo cubre resultados `Result\Page`—, así que aquí el mecanismo son las cabeceras HTTP.
 - `icons` aparece en cuanto haya un logo o un favicon configurado; sin ninguno de los dos, la propiedad se omite en lugar de emitirse vacía.
 - Apagado, el endpoint responde **404**, no un manifest vacío, y ese `404` no se anuncia como cacheable por un día.
 

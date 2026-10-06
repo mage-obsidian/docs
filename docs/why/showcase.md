@@ -18,4 +18,4 @@ The demo scores **100/100/100/100 on Lighthouse** (Performance, Accessibility, B
 
 ## Your store here
 
-Running MageObsidian in production or building a theme with it? We would love to feature it — share it in [GitHub Discussions](https://github.com/mage-obsidian/module-modern-frontend/discussions).
+Running MageObsidian in production or building a theme with it? We would love to feature it — share it in [GitHub Discussions](https://github.com/mage-obsidian/framework/discussions).

@@ -1,7 +1,8 @@
 # Registro de cambios
 
-MageObsidian se distribuye como un conjunto de paquetes versionados de forma independiente, pero sus
-funcionalidades rara vez viven en uno solo: un checkout cacheable es un flag del core, un módulo de
+Desde 4.0.0, el framework y el storefront publican cada uno todos sus paquetes bajo una misma versión.
+Antes de 4.0, los paquetes estaban versionados de forma independiente; ese historial se conserva más abajo.
+Las funcionalidades rara vez viven en un solo paquete: un checkout cacheable es un flag del core, un módulo de
 compatibilidad y una plantilla del tema aterrizando juntos. Esta página sigue al **stack**, para que
 puedas leer qué cambió sin tener que recomponerlo a partir de una docena de feeds de releases.
 

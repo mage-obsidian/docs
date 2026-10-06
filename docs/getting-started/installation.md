@@ -1,6 +1,6 @@
 # Installation
 
-The installation of **{{ config.site_name }}** consists of two main parts: the **components**, which are already available, and the **theme**, which is still under development.
+The installation of **{{ config.site_name }}** consists of two main parts: the **components**, which are available now, and the **theme**, which is published on Packagist as `mage-obsidian/theme-default`.
 
 ## {{ config.extra.components_name }}
 
@@ -52,17 +52,13 @@ The components are configured and ready to be used in your project! You can now 
 
 ## More Information
 
-For more details on customizing the components, starting theme development, and understanding all the benefits and advantages, see the [Detailed Components Documentation](../../components).
+For more details on customizing the components, starting theme development, and understanding all the benefits and advantages, see the [Detailed Components Documentation](../components/overview.md).
 
 ---
 
 ## {{ config.extra.theme_name }}
 
-The theme based on **{{ config.extra.components_name }}** is still under development and is not yet available for installation. Once completed, it will provide a modern, SEO-friendly, and highly customizable design for Magento stores.
-
-### Current Status
-- The design is in progress and will be available soon.
-- In the meantime, you can explore the components to start building custom solutions.
+The theme based on **{{ config.extra.components_name }}** is available on Packagist as `mage-obsidian/theme-default`. It provides a modern, SEO-friendly, and highly customizable design for Magento stores.
 
 ## More Information
 

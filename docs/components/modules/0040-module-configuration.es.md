@@ -14,7 +14,7 @@ Este archivo es un **módulo ESM (ECMAScript)** que hace `export default` de un 
     Los archivos de configuración se cargan en el orden definido por la configuración de `sequence` en el archivo `module.xml` de cada módulo.
     
     > Para más detalles sobre cómo definir el orden de carga de los módulos, consulta la documentación oficial de Magento:  
-    [Configurar el orden de carga de componentes](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+    [Configurar el orden de carga de componentes](https://developer.adobe.com/commerce/php/development/build/component-load-order).
 
 2. **Ejemplo de Archivo de Configuración**  
     Un ejemplo básico de un archivo `module.config.ts` sería:
@@ -52,5 +52,5 @@ Este archivo es un **módulo ESM (ECMAScript)** que hace `export default` de un 
 ## Notas Clave
 
 - El archivo es un módulo **ESM** (`export default`), coherente con el engine de build ESM-only.
-- Las configuraciones se cargan según la secuencia definida en `module.xml`. Para obtener más información, consulta la [documentación oficial de Magento](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+- Las configuraciones se cargan según la secuencia definida en `module.xml`. Para obtener más información, consulta la [documentación oficial de Magento](https://developer.adobe.com/commerce/php/development/build/component-load-order).
 - Las configuraciones sobrescritas en los temas reemplazan completamente las configuraciones originales del módulo, sin combinarlas ni extenderlas.

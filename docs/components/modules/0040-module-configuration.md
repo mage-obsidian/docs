@@ -14,7 +14,7 @@ This file is an **ESM (ECMAScript module)** that `export default`s a configurati
     Configuration files are loaded in the order defined by the `sequence` configuration in each module's `module.xml` file.
     
     > For more details on how to define the sequence of modules, see the official Magento documentation:  
-    [Configuring Component Load Order](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+    [Configuring Component Load Order](https://developer.adobe.com/commerce/php/development/build/component-load-order).
 
 2. **Example Configuration File**  
     A basic example of a `module.config.ts` file might look like this:
@@ -52,5 +52,5 @@ This file is an **ESM (ECMAScript module)** that `export default`s a configurati
 ## Key Notes
 
 - The file is an **ESM** module (`export default`), consistent with the ESM-only build engine.
-- Configurations are loaded in the sequence defined in `module.xml`. For detailed guidance, refer to the [official Magento documentation](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+- Configurations are loaded in the sequence defined in `module.xml`. For detailed guidance, refer to the [official Magento documentation](https://developer.adobe.com/commerce/php/development/build/component-load-order).
 - Overriding configurations in themes fully replaces the module's original settings, without merging or extending them.

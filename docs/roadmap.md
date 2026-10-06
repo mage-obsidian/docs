@@ -1,6 +1,6 @@
 # Roadmap
 
-Where the project stands and where it is going. This roadmap is intentionally high-level and may change — follow [GitHub Discussions](https://github.com/mage-obsidian/module-modern-frontend/discussions) for updates.
+Where the project stands and where it is going. This roadmap is intentionally high-level and may change — follow [GitHub Discussions](https://github.com/mage-obsidian/framework/discussions) for updates.
 
 ## ✅ Available today
 
@@ -17,7 +17,7 @@ Where the project stands and where it is going. This roadmap is intentionally hi
 ## 📊 What has been verified
 
 Measured on 2026-09-22 against **Magento Open Source 2.4.9** with the
-[verification harness](https://github.com/mage-obsidian/storefront-verification), on the
+private verification harness, on the
 `theme-default` / `theme-base` pair:
 
 | Register | Figure |
@@ -52,8 +52,7 @@ declaration in a theme never counts as coverage on its own.
 
 ## 🔜 Planned
 
-- **Stable release** once parity is reached, with curated release notes and an upgrade guide.
-- **Showcase** of stores running MageObsidian in production — [tell us about yours](https://github.com/mage-obsidian/module-modern-frontend/discussions)!
+- **Showcase** of stores running MageObsidian in production — [tell us about yours](https://github.com/mage-obsidian/framework/discussions)!
 
 !!! note "A note on pace"
     MageObsidian is developed in the maintainer's free time. If it saves you time, consider [supporting the project](support/project.md) — it directly accelerates this roadmap.

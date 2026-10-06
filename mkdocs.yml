@@ -1,7 +1,7 @@
 site_name: MageObsidian
 site_url: https://mage-obsidian.jeanmarcos.dev/
-repo_url: https://github.com/mage-obsidian/module-modern-frontend
-repo_name: mage-obsidian/module-modern-frontend
+repo_url: https://github.com/mage-obsidian/framework
+repo_name: mage-obsidian/framework
 edit_uri: ""
 theme:
   logo: ./assets/tool.png
@@ -21,8 +21,6 @@ theme:
     - content.tabs.link
     - content.tooltips
     - announce.dismiss
-    - navigation.instant
-    - navigation.instant.progress
     - navigation.tabs
     - navigation.indexes
     - navigation.path
@@ -141,13 +139,17 @@ extra:
   theme_name: "MageObsidian Theme"
   demo_url: https://mage-obsidian-demo.jeanmarcos.dev/
   gh_theme_default_url: https://github.com/mage-obsidian/theme-default
-  gh_theme_base_url: https://github.com/mage-obsidian/theme-base
-  gh_storefront_url: https://github.com/mage-obsidian/module-storefront
-  gh_main_module_url: https://github.com/mage-obsidian/module-modern-frontend
-  gh_main_module_cli_url: https://github.com/mage-obsidian/module-modern-frontend-cli
-  gh_vite_url: https://github.com/mage-obsidian/component-modern-frontend
+  gh_framework_url: https://github.com/mage-obsidian/framework
+  gh_storefront_monorepo_url: https://github.com/mage-obsidian/storefront
+  gh_theme_base_url: https://github.com/mage-obsidian/storefront/tree/master/packages/theme-base
+  gh_storefront_url: https://github.com/mage-obsidian/storefront/tree/master/packages/module-storefront
+  gh_main_module_url: https://github.com/mage-obsidian/framework/tree/master/packages/module-modern-frontend
+  gh_main_module_cli_url: https://github.com/mage-obsidian/framework/tree/master/packages/module-modern-frontend-cli
+  gh_vite_url: https://github.com/mage-obsidian/framework/tree/master/packages/component-modern-frontend
   gh_docs_url: https://github.com/mage-obsidian/docs
-  gh_js_utils_url: https://github.com/mage-obsidian/js-package-utils
+  gh_js_utils_url: https://github.com/mage-obsidian/framework/tree/master/packages/js-package-utils
+  gh_discussions_framework: https://github.com/mage-obsidian/framework/discussions
+  gh_discussions_storefront: https://github.com/mage-obsidian/storefront/discussions
   components_name: "MageObsidian Components"
   discord_link: https://discord.gg/bfeVCZt4Us
   alternate:
@@ -159,17 +161,8 @@ extra:
       lang: es
   generator: false
   social:
-    - icon: fontawesome/brands/github
-      link: /support/#repositories
-    - icon: fontawesome/brands/discord
-      link: https://discord.gg/bfeVCZt4Us
-  consent:
-    title: Cookie consent
-    description: >- 
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
+    - {icon: fontawesome/brands/github, link: https://github.com/mage-obsidian, name: GitHub}
+    - {icon: fontawesome/brands/discord, link: https://discord.gg/bfeVCZt4Us, name: Discord}
 markdown_extensions:
   - attr_list
   - md_in_html

@@ -42,7 +42,7 @@ Es la contraparte —a nivel de escaneo de fuentes— de [`ignoredCssFromModules
 ## Prioridad y overrides
 
 - El CSS de módulo (`module.extend.css`) se importa **antes** que el CSS del tema, de modo que el `theme.source.css` de un tema puede sobrescribir los tokens de módulo mediante la cascada normal de CSS.
-- El orden de carga de módulos sigue la `sequence` declarada en cada `module.xml`. Ver la [documentación oficial de Magento](https://developer.adobe.com/commerce/php/development/build/component-load-order/).
+- El orden de carga de módulos sigue la `sequence` declarada en cada `module.xml`. Ver la [documentación oficial de Magento](https://developer.adobe.com/commerce/php/development/build/component-load-order).
 
 ---
 

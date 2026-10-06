@@ -1,6 +1,6 @@
 # Hoja de ruta
 
-Dónde está el proyecto y hacia dónde va. Esta hoja de ruta es deliberadamente de alto nivel y puede cambiar — sigue las [GitHub Discussions](https://github.com/mage-obsidian/module-modern-frontend/discussions) para novedades.
+Dónde está el proyecto y hacia dónde va. Esta hoja de ruta es deliberadamente de alto nivel y puede cambiar — sigue las [GitHub Discussions](https://github.com/mage-obsidian/framework/discussions) para novedades.
 
 ## ✅ Disponible hoy
 
@@ -17,7 +17,7 @@ Dónde está el proyecto y hacia dónde va. Esta hoja de ruta es deliberadamente
 ## 📊 Qué se ha verificado
 
 Medido el 2026-09-22 contra **Magento Open Source 2.4.9** con el
-[harness de verificación](https://github.com/mage-obsidian/storefront-verification), sobre el
+harness de verificación privado, sobre el
 par `theme-default` / `theme-base`:
 
 | Registro | Cifra |
@@ -53,8 +53,7 @@ plataforma; una declaración en un tema nunca cuenta como cobertura por sí sola
 
 ## 🔜 Planificado
 
-- **Release estable** al alcanzar la paridad, con notas de versión curadas y una guía de actualización.
-- **Vitrina** de tiendas usando MageObsidian en producción — [¡cuéntanos de la tuya!](https://github.com/mage-obsidian/module-modern-frontend/discussions)
+- **Vitrina** de tiendas usando MageObsidian en producción — [¡cuéntanos de la tuya!](https://github.com/mage-obsidian/framework/discussions)
 
 !!! note "Una nota sobre el ritmo"
     MageObsidian se desarrolla en el tiempo libre de su mantenedor. Si te ahorra tiempo, considera [apoyar el proyecto](support/project.md) — eso acelera directamente esta hoja de ruta.

@@ -24,7 +24,7 @@ The **{{ config.site_name }}** project emerges as a disruptive proposal to revol
 
 1. **{{ config.extra.components_name }}:**  
     Already available and open source, these tools have been created to implement a completely new approach to Magento theme development. They enable the integration of modern technologies like **Vite**, **TailwindCSS**, **Vue.js**, and **ESM** (native JavaScript modules), providing a more accessible, efficient, and developer-friendly experience.  
-    [Learn more about {{ config.extra.components_name }}](../components).
+    [Learn more about {{ config.extra.components_name }}](../components/overview.md).
 
 2. **{{ config.extra.theme_name }}:**  
     The base theme is built entirely on the mentioned tools and is already functional. It does not inherit anything from traditional themes like **Blank** or **Luma**, enabling a completely new design aligned with modern practices and free from the historical constraints of Magento's frontend. It targets Magento Open Source today; Adobe Commerce and Mage-OS are technically compatible as of core 2.6.0 but not fully tested yet.  

@@ -28,7 +28,7 @@ mage-obsidian:build-themes --theme Vendor/theme   # construir uno
 
 `frontend:dev` es el punto de entrada del lado Magento (primero deriva el `.env` de Vite desde tu config); `build-themes` es el comando de bajo nivel del engine. Ambos producen la misma salida.
 
-!!! tip "Corré primero el export del CMS"
+!!! tip "Ejecuta primero el export del CMS"
     ```bash
     bin/magento mage-obsidian:cms:export
     ```

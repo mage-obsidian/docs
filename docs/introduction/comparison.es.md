@@ -13,7 +13,7 @@ Magento 2 tiene más de una respuesta a "¿cómo debería construirse el fronten
 | Plantillas | `.phtml` + motor Twig opcional | `.phtml` (sistema de temas propio) | `.phtml` |
 | Layout XML de Magento | Nativo — layouts, bloques y herencia de temas siguen funcionando | Reemplazado por su propio enfoque simplificado | Nativo |
 | Ecosistema de extensiones | Joven — módulos de compatibilidad para los dominios core | Grande — amplia cobertura de terceros | Universal |
-| Madurez | Pre-1.0, en desarrollo activo | Probado en producción desde 2021 | Default legacy |
+| Madurez | Estable (4.0, octubre de 2026) | Probado en producción desde 2021 | Default legacy |
 | Rendimiento | Lighthouse 100/100/100/100 en la [demo en vivo]({{ config.extra.demo_url }}) | Excelente | Pobre sin mucho tuning |
 
 ## Qué hace diferente a MageObsidian

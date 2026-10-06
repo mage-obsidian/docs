@@ -3,7 +3,7 @@
 With **{{ config.extra.components_name }}**, integrating JavaScript files and Vue components into `.phtml` templates is made simpler and more powerful through the `MageObsidian\ModernFrontend\Block\Template` class.
 
 This enhanced block class provides methods to efficiently load, resolve, and render resources, maintaining consistency with the import conventions explained earlier. [Importing Between Magento Modules
-](../80-imports-configuration/)
+](0080-imports-configuration.md)
 
 ---
 

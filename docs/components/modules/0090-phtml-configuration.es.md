@@ -2,7 +2,7 @@
 
 Con **{{ config.extra.components_name }}**, integrar archivos JavaScript y componentes Vue en plantillas `.phtml` es más simple y poderoso gracias a la clase `MageObsidian\ModernFrontend\Block\Template`.
 
-Esta clase mejorada proporciona métodos para cargar, resolver y renderizar recursos de manera eficiente, manteniendo la consistencia con las convenciones de importación explicadas anteriormente. [Importaciones Entre Módulos de Magento](../80-imports-configuration/)
+Esta clase mejorada proporciona métodos para cargar, resolver y renderizar recursos de manera eficiente, manteniendo la consistencia con las convenciones de importación explicadas anteriormente. [Importaciones Entre Módulos de Magento](0080-imports-configuration.md)
 
 ---
 

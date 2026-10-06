@@ -13,7 +13,7 @@ Magento 2 has more than one answer to "how should my store's frontend be built?"
 | Templates | `.phtml` + optional Twig engine | `.phtml` (own theme system) | `.phtml` |
 | Magento layout XML | Native — layouts, blocks and theme inheritance keep working | Replaced by its own simplified approach | Native |
 | Extension ecosystem | Young — compatibility modules for core domains | Large — broad third-party coverage | Universal |
-| Maturity | Pre-1.0, under active development | Production-proven since 2021 | Legacy default |
+| Maturity | Stable (4.0, October 2026) | Production-proven since 2021 | Legacy default |
 | Performance | Lighthouse 100/100/100/100 on the [live demo]({{ config.extra.demo_url }}) | Excellent | Poor without heavy tuning |
 
 ## What makes MageObsidian different

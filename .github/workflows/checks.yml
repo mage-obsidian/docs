@@ -15,6 +15,9 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - run: pytest scripts/tests -q
       - run: mkdocs build -d site
+      - run: PYTHONPATH=scripts python -m docs_checks phrases site
+      - run: PYTHONPATH=scripts python -m docs_checks voseo docs
+      - run: PYTHONPATH=scripts python -m docs_checks parity docs
       - uses: actions/upload-artifact@v4
         with:
           name: site

@@ -18,4 +18,4 @@ La demo obtiene **100/100/100/100 en Lighthouse** (Rendimiento, Accesibilidad, B
 
 ## Tu tienda aquí
 
-¿Usas MageObsidian en producción o estás construyendo un tema con él? Nos encantaría mostrarlo — compártelo en las [GitHub Discussions](https://github.com/mage-obsidian/module-modern-frontend/discussions).
+¿Usas MageObsidian en producción o estás construyendo un tema con él? Nos encantaría mostrarlo — compártelo en las [GitHub Discussions](https://github.com/mage-obsidian/framework/discussions).

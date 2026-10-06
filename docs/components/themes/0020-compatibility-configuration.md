@@ -5,7 +5,7 @@ Unlike modules, **we do not recommend adding support for {{ config.extra.compone
 ## Creating a Compatible Theme
 
 To create a theme, first follow the standard steps described in the official Magento documentation:  
-[Creating a Theme in Magento](https://developer.adobe.com/commerce/php/tutorials/frontend/create-theme/)  
+[Creating a Theme in Magento](https://developer.adobe.com/commerce/frontend-core/guide/themes/)  
 
 In summary, you need to create a structure like this:
 

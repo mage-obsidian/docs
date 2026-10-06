@@ -1,7 +1,8 @@
 # Changelog
 
-MageObsidian ships as a set of independently versioned packages, but its features rarely live in
-just one of them: a cacheable checkout is a core flag, a compatibility module and a theme template
+From 4.0.0 on, the framework and the storefront each release all their packages under one version.
+Before 4.0, packages were independently versioned; that history is kept below. Features rarely live in
+just one package: a cacheable checkout is a core flag, a compatibility module and a theme template
 landing together. This page follows the **stack**, so you can read what changed without having to
 recompose it from a dozen release feeds.
 
