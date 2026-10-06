@@ -55,7 +55,9 @@ hooks:
   - hooks/i18n_redirects.py
 plugins:
   - search
-  - macros
+  - macros:
+      include_yaml:
+        - docs/data/verification.yml
   - social:
       cards_layout_options:
         background_color: "#5B5BD6"
