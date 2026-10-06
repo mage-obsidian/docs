@@ -5,7 +5,7 @@ description: "Every bin/magento mage-obsidian command with its options and examp
 
 Every command runs through `bin/magento` from the Magento root. Besides the options listed, they accept the global Symfony Console options (`--help`, `--quiet`, `--verbose`, `--no-interaction`, `--ansi`).
 
-## `mage-obsidian:cms:export`
+## `mage-obsidian:cms:export` { data-toc-label="cms:export" }
 
 Export CMS page and block content so Tailwind can scan the classes written in it.
 
@@ -15,7 +15,7 @@ bin/magento mage-obsidian:cms:export
 
 No options.
 
-## `mage-obsidian:cms:jit`
+## `mage-obsidian:cms:jit` { data-toc-label="cms:jit" }
 
 Rebuild the CSS for Tailwind classes written in CMS content after the last build.
 
@@ -27,7 +27,7 @@ bin/magento mage-obsidian:cms:jit [options]
 |---|---|---|
 | `--show` | Report the current state without rebuilding. | — |
 
-## `mage-obsidian:frontend:config`
+## `mage-obsidian:frontend:config` { data-toc-label="frontend:config" }
 
 Manage configuration of active modules and themes compatible with the modern frontend.
 
@@ -42,7 +42,7 @@ bin/magento mage-obsidian:frontend:config [options]
 | `--modules` | Display only the modules configuration (requires `--show`). | — |
 | `--themes` | Display only the themes configuration (requires `--show`). | — |
 
-## `mage-obsidian:frontend:critical-css`
+## `mage-obsidian:frontend:critical-css` { data-toc-label="frontend:critical-css" }
 
 Extract above-the-fold critical CSS for a layout handle into the theme's `web/critical` dir.
 
@@ -62,7 +62,7 @@ bin/magento mage-obsidian:frontend:critical-css [options]
 | `--bin=BIN` | Path to the node critical-css bin. | — |
 | `--node=NODE` | node binary. | `node` |
 
-## `mage-obsidian:frontend:dev`
+## `mage-obsidian:frontend:dev` { data-toc-label="frontend:dev" }
 
 Manage the MageObsidian dev workflow (one-shot `--up`/`--down`, Vite `.env`, dev server).
 
@@ -86,7 +86,7 @@ bin/magento mage-obsidian:frontend:dev [options]
 | `--watch` | With `--start`: run the HMR dev server. | Default for `--start` |
 | `--no-watch` | With `--start`: build the theme once to disk instead of running the dev server. | — |
 
-## `mage-obsidian:frontend:doctor`
+## `mage-obsidian:frontend:doctor` { data-toc-label="frontend:doctor" }
 
 Diagnose the MageObsidian dev environment (HMR, Vite dev server, contract, config).
 
@@ -96,7 +96,7 @@ bin/magento mage-obsidian:frontend:doctor
 
 No options.
 
-## `mage-obsidian:frontend:hmr`
+## `mage-obsidian:frontend:hmr` { data-toc-label="frontend:hmr" }
 
 Manage Hot Module Replacement (HMR) configuration for modules and themes compatible with the modern frontend.
 
@@ -110,7 +110,7 @@ bin/magento mage-obsidian:frontend:hmr [options]
 | `--enable` | Enable HMR. | — |
 | `--disable` | Disable HMR. | — |
 
-## `mage-obsidian:generate:component`
+## `mage-obsidian:generate:component` { data-toc-label="generate:component" }
 
 Generate a Vue component wired for the MageObsidian frontend.
 
@@ -129,7 +129,7 @@ bin/magento mage-obsidian:generate:component [options] [--] <name>
 | `--wire` | Also generate a phtml stub that renders the component. | — |
 | `-f, --force` | Overwrite files if they already exist. | — |
 
-## `mage-obsidian:generate:module`
+## `mage-obsidian:generate:module` { data-toc-label="generate:module" }
 
 Generate a new module under `app/code` pre-wired for the MageObsidian frontend.
 
@@ -145,7 +145,7 @@ bin/magento mage-obsidian:generate:module [options] [--] <name>
 |---|---|---|
 | `-f, --force` | Overwrite files if they already exist. | — |
 
-## `mage-obsidian:generate:theme`
+## `mage-obsidian:generate:theme` { data-toc-label="generate:theme" }
 
 Generate a new frontend theme under `app/design` pre-wired for MageObsidian.
 
@@ -163,7 +163,7 @@ bin/magento mage-obsidian:generate:theme [options] [--] <path>
 | `--title=TITLE` | Human-readable theme title. | — |
 | `-f, --force` | Overwrite files if they already exist. | — |
 
-## `mage-obsidian:i18n:collect`
+## `mage-obsidian:i18n:collect` { data-toc-label="i18n:collect" }
 
 Collect translatable phrases from `.vue`/`.ts`/`.js` and `.twig` into each component i18n CSV.
 
@@ -175,7 +175,7 @@ bin/magento mage-obsidian:i18n:collect [options]
 |---|---|---|
 | `--locale=LOCALE` | Locale of the CSV dictionary to write (for example `en_US`). | `en_US` |
 
-## `mage-obsidian:twig:namespaces`
+## `mage-obsidian:twig:namespaces` { data-toc-label="twig:namespaces" }
 
 Show the Twig template namespaces (`@alias/path.twig`) and their modules.
 
