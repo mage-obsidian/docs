@@ -13,11 +13,13 @@ The build engine reads two configuration files. A theme ships `theme.config.js` 
 
 Located at `web/theme.config.js` inside the theme. The engine loads the file of every theme in the inheritance chain and deep-merges them, with the child theme winning over its parents. Arrays are concatenated by that merge, so a child theme adds to the list its parent declared.
 
-The keys that have a default take it in the child theme **before** the merge, so omitting one does not inherit the parent's value. `includeCssSourceFromParentThemes`, `ignoredCssFromModules`, `exposeNpmPackages` and `vue.runtimeOnly` therefore need to be repeated in the child whenever the value is not the default: a parent's `includeCssSourceFromParentThemes: false`, `vue.runtimeOnly: true` or `ignoredCssFromModules: "all"` is lost if the child omits it. Lists declared by the parent are still kept. Only `ignoredTailwindConfigFromModules` and `scanCmsContent`, which have no default, are inherited when the child omits them.
+Since framework 4.0.1, defaults are applied **after** the merge, so a child theme that omits a key inherits its parent's value: a parent's `vue.runtimeOnly: true` or `ignoredCssFromModules: "all"` carries over to the child. Up to 4.0.0 the defaults were applied to the child before the merge, and those keys had to be repeated in the child.
+
+`includeCssSourceFromParentThemes` is the exception: it describes the theme's own relation to its parents, so it is never inherited and defaults to `true` in every theme.
 
 | Key | Type | Default | Effect |
 |---|---|---|---|
-| `includeCssSourceFromParentThemes` | `boolean` | `true` | Imports the `theme.source.css` of every ancestor theme, from the root down. With `false`, only the active theme's own `theme.source.css` is imported. |
+| `includeCssSourceFromParentThemes` | `boolean` | `true` | Imports the `theme.source.css` of the ancestor themes, from the root down, stopping at the nearest ancestor that sets `false`: that ancestor is included and the ones above it are not. With `false`, only the active theme's own `theme.source.css` is imported. Up to framework 4.0.0 the whole chain up to the root was imported. |
 | `ignoredCssFromModules` | `string[]` or `"all"` | `[]` | Modules whose `module.extend.css` is **not** imported into the build. `"all"` skips every module. |
 | `ignoredTailwindConfigFromModules` | `string[]` or `"all"` | not set | Modules whose files Tailwind does **not** scan for classes (Vue components and `.twig` / `.phtml` templates). `"all"` skips every module. The theme's own files are always scanned. |
 | `scanCmsContent` | `boolean` | not set (scanned) | With `false`, the build does not scan the CMS content exported by `bin/magento mage-obsidian:cms:export`. Any other value, or no value, keeps the scan on. |

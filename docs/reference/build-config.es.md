@@ -13,11 +13,13 @@ El motor de build lee dos archivos de configuración. Un tema aporta `theme.conf
 
 Está en `web/theme.config.js` dentro del tema. El motor carga el archivo de cada tema de la cadena de herencia y los combina en profundidad, con el tema hijo por encima de sus padres. Esa combinación concatena los arrays, de modo que un tema hijo suma a la lista que declaró su padre.
 
-Las claves que tienen valor por defecto lo toman en el tema hijo **antes** de la combinación, así que omitir una no hereda el valor del padre. Por eso `includeCssSourceFromParentThemes`, `ignoredCssFromModules`, `exposeNpmPackages` y `vue.runtimeOnly` deben repetirse en el hijo siempre que el valor no sea el predeterminado: un `includeCssSourceFromParentThemes: false`, un `vue.runtimeOnly: true` o un `ignoredCssFromModules: "all"` del padre se pierde si el hijo lo omite. Las listas que declaró el padre se conservan. Solo `ignoredTailwindConfigFromModules` y `scanCmsContent`, que no tienen valor por defecto, se heredan cuando el hijo los omite.
+Desde framework 4.0.1, los valores por defecto se aplican **después** de la combinación, así que un tema hijo que omite una clave hereda el valor de su padre: un `vue.runtimeOnly: true` o un `ignoredCssFromModules: "all"` del padre pasa al hijo. Hasta 4.0.0 los valores por defecto se aplicaban al hijo antes de la combinación, y esas claves había que repetirlas en el hijo.
+
+`includeCssSourceFromParentThemes` es la excepción: describe la relación del propio tema con sus padres, así que nunca se hereda y vale `true` por defecto en cada tema.
 
 | Clave | Tipo | Valor por defecto | Efecto |
 |---|---|---|---|
-| `includeCssSourceFromParentThemes` | `boolean` | `true` | Importa el `theme.source.css` de cada tema ancestro, desde la raíz hacia abajo. Con `false`, solo se importa el `theme.source.css` del tema activo. |
+| `includeCssSourceFromParentThemes` | `boolean` | `true` | Importa el `theme.source.css` de los temas ancestros, desde la raíz hacia abajo, hasta el ancestro más cercano que declara `false`: ese ancestro se incluye y los que están por encima no. Con `false`, solo se importa el `theme.source.css` del tema activo. Hasta framework 4.0.0 se importaba toda la cadena hasta la raíz. |
 | `ignoredCssFromModules` | `string[]` o `"all"` | `[]` | Módulos cuyo `module.extend.css` **no** se importa en el build. `"all"` omite todos los módulos. |
 | `ignoredTailwindConfigFromModules` | `string[]` o `"all"` | sin definir | Módulos cuyos archivos Tailwind **no** escanea en busca de clases (componentes Vue y plantillas `.twig` / `.phtml`). `"all"` omite todos los módulos. Los archivos del propio tema siempre se escanean. |
 | `scanCmsContent` | `boolean` | sin definir (se escanea) | Con `false`, el build no escanea el contenido CMS exportado con `bin/magento mage-obsidian:cms:export`. Cualquier otro valor, o ninguno, mantiene el escaneo activo. |
