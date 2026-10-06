@@ -43,5 +43,5 @@ jobs:
       - run: npx playwright install --with-deps chromium
         working-directory: tools/browser-checks
       - run: (node tools/browser-checks/serve.mjs site 8000 &) && sleep 2
-      - run: node check-a11y.mjs && node check-overflow.mjs && node check-lighthouse.mjs
+      - run: node check-a11y.mjs && node check-overflow.mjs && node check-ui.mjs && node check-lighthouse.mjs
         working-directory: tools/browser-checks

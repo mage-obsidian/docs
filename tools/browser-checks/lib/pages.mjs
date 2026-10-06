@@ -9,3 +9,4 @@ export const KEY_PAGES = [
 ];
 export const LIGHTHOUSE_PAGES = ["", "getting-started/", "getting-started/installation/", "getting-started/compatibility/"];
 export const OVERFLOW_PAGES = ["", "why/comparison/", "reference/cli/", "reference/config-paths/", "project/roadmap/"];
+export const UI_PAGES = ["getting-started/installation/", "getting-started/first-theme/", "upgrade/3-to-4/", "reference/cli/"];

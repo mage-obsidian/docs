@@ -14,21 +14,29 @@
 {% endif %}
 {% endblock %}
 
-    {% block scripts %}
-<template id="mo-late-scripts">{{ super() }}</template>
+{% block scripts %}
 <script>
-  requestAnimationFrame(function () {
-    setTimeout(function () {
-      var template = document.getElementById("mo-late-scripts");
-      template.content.querySelectorAll("script[src]").forEach(function (original) {
-        var script = document.createElement("script");
-        script.async = false;
-        script.src = original.getAttribute("src");
-        document.body.appendChild(script);
-      });
+  (function () {
+    var afterLoad = new Promise(function (resolve) {
+      var later = function () { setTimeout(resolve, 1000); };
+      if (document.readyState === "complete") later();
+      else addEventListener("load", later, { once: true });
     });
-  });
+    var open = XMLHttpRequest.prototype.open;
+    var send = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.open = function (method, url) {
+      this.moAfterLoad = /\/search_index\.json$/.test(String(url));
+      return open.apply(this, arguments);
+    };
+    XMLHttpRequest.prototype.send = function () {
+      var request = this;
+      var args = arguments;
+      if (!request.moAfterLoad) return send.apply(request, args);
+      afterLoad.then(function () { send.apply(request, args); });
+    };
+  })();
 </script>
+{{ super() }}
 {% endblock %}
 
 {% block fonts %}

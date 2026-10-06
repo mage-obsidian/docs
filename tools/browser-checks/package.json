@@ -7,7 +7,8 @@
     "a11y": "node check-a11y.mjs",
     "lighthouse": "node check-lighthouse.mjs",
     "overflow": "node check-overflow.mjs",
-    "serve": "node serve.mjs"
+    "serve": "node serve.mjs",
+    "ui": "node check-ui.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.0",
