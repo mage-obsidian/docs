@@ -136,18 +136,7 @@ solución de problemas en [Configuración de HMR](../features/hmr.md) y
 
 ## Desplegar a producción
 
-**No hay un paso de build aparte**. MageObsidian se engancha al deploy de static-content estándar de
-Magento: sus plugins excluyen los temas modernos del pipeline legacy de Less/RequireJS e inyectan la
-salida de Vite (minificada, con tree-shaking y hashing) como parte del comando normal:
-
-```bash
-bin/magento deploy:mode:set production
-bin/magento setup:static-content:deploy
-```
-
-Solo los temas que incluyen `etc/mage_obsidian_compatibility.xml` pasan por el pipeline de Vite; el
-resto sigue el deploy nativo de Magento sin tocarse. Consulta
-[Compilar Assets Estáticos](../features/vite-build.md).
+MageObsidian se engancha al deploy de contenido estático estándar de Magento, así que no hay un paso de build aparte. Consulta [Despliegue a producción](../../getting-started/deploy.md).
 
 ---
 

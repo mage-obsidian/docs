@@ -1,9 +1,10 @@
-## Requisitos previos
+# Requisitos
 
 Antes de comenzar con **{{ config.extra.components_name }}**, asegúrate de cumplir con los siguientes requisitos:
 
-- **Magento:** Magento Open Source 2.4.7 o superior instalada y configurada.
-- **PHP:** Version 8.3.
+- **Magento:** Magento Open Source o Mage-OS 2.4.7 o superior, instalado y configurado. Consulta [Compatibilidad](compatibility.md) para ver las versiones en las que se probó cada release.
+- **Adobe Commerce:** 2.4.7 o superior, con sus propias claves de Composer. Consulta [Instalar en Adobe Commerce](adobe-commerce.md).
+- **PHP:** Versión 8.3 o superior.
 - **Node.js:** Versión 22 o superior instalada en tu entorno.
 - **pnpm:** Versión 11 o superior. pnpm es el gestor de paquetes para el que está configurado el harness de Vite (`packageManager` está fijado en `vite/package.json`).
 - **Acceso a la terminal:** Permisos para ejecutar comandos en el servidor donde esté alojado Magento.

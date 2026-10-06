@@ -1,65 +1,67 @@
 # Installation
 
-The installation of **{{ config.site_name }}** consists of two main parts: the **components**, which are available now, and the **theme**, which is published on Packagist as `mage-obsidian/theme-default`.
+{{ verified('install') }}
 
-## {{ config.extra.components_name }}
+This is the recipe the release matrix runs on every platform listed in [Compatibility](compatibility.md): the published packages, installed from Packagist on a clean store, then built and deployed. With `^4.0`, Composer installs the storefront modules 4.0.1 and the framework and `theme-default` 4.0.0. Check the [requirements](requirements.md) first. On Adobe Commerce, read [Install on Adobe Commerce](adobe-commerce.md) as well.
 
-The components are the core of **{{ config.site_name }}**, designed to provide a modern and efficient frontend for Magento. Follow these steps to install them:
+## 1. Require the theme
 
-### 1. Install via Composer
-
-Use Composer to add the components to your project:
+`mage-obsidian/theme-default` pulls in `theme-base`, the framework, the Vite harness and the full storefront module stack:
 
 ```bash
-composer require mage-obsidian/component-modern-frontend
+composer require mage-obsidian/theme-default:^4.0
 ```
 
-### 2: Install Node Dependencies
-
-Ensure all necessary node dependencies are installed:
-
-#### pnpm
-```bash
-pnpm --prefix vite install
-```
-
-#### npm
-```bash
-npm --prefix vite install
-```
-
-### 3. Configure Magento
-
-Update Magento's configuration to register the components:
+## 2. Register the modules
 
 ```bash
 bin/magento setup:upgrade
 ```
 
-### 4. Generate initial configuration
+## 3. Activate the theme
 
-Run the following command to generate the initial configuration for the frontend components:
+In the Admin, go to **Content › Design › Configuration**, edit the scope you want and pick **MageObsidian — Default (Obsidian)** as the applied theme.
+
+## 4. Generate the PHP ↔ JS contract
 
 ```bash
 bin/magento mage-obsidian:frontend:config --generate
 ```
 
-### 5. Ready to develop
+## 5. Prepare the Vite harness
 
-The components are configured and ready to be used in your project! You can now start developing your theme with the modern tools offered by **{{ config.extra.components_name }}**.
+Composer copies the `vite/` harness into the Magento root. Create `vite/.env` from `vite/.env.sample` with the values for your host, then install the Node dependencies exactly as locked:
+
+```bash
+cd vite
+pnpm install --frozen-lockfile
+```
+
+The `.env` carries `VITE_SERVER_HOST`, `VITE_SERVER_PORT`, `VITE_SERVER_SECURE`, `VITE_HMR_PATH`, `MAGENTO_HOST` and `VITE_SERVER_ALLOWED_HOSTS`. Without it, the build stops in a non-interactive shell.
+
+## 6. Build the theme
+
+From the `vite/` directory:
+
+```bash
+pnpm build:theme MageObsidian/default
+```
+
+## 7. Deploy the static content and flush the cache
+
+Back in the Magento root:
+
+```bash
+bin/magento setup:static-content:deploy
+bin/magento cache:flush
+```
+
+Open the storefront: the home page renders with its Vue islands. For production, see [Deploy to production](deploy.md).
 
 > **Note:** The install includes the optional [Twig engine](../guides/twig.md) by default (a `.twig` engine alongside `.phtml`). It changes nothing about your existing `.phtml` templates; if you don't want it, [disable it](../guides/twig.md#disabling-twig) with `bin/magento module:disable MageObsidian_ModernFrontendTwig`.
 
-## More Information
+## Next steps
 
-For more details on customizing the components, starting theme development, and understanding all the benefits and advantages, see the [Detailed Components Documentation](../why/index.md).
-
----
-
-## {{ config.extra.theme_name }}
-
-The theme based on **{{ config.extra.components_name }}** is available on Packagist as `mage-obsidian/theme-default`. It provides a modern, SEO-friendly, and highly customizable design for Magento stores.
-
-## More Information
-
-For more information about the theme, visit the [Theme](../guides/themes/obsidian.md) section.
+- [Your first child theme](first-theme.md) to customize the theme.
+- [Development workflow](development.md) for live reload with HMR.
+- [Why MageObsidian](../why/index.md) and the [theme guide](../guides/themes/obsidian.md).

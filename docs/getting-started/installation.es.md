@@ -1,66 +1,67 @@
-
 # Instalación
 
-La instalación de **{{ config.site_name }}** consta de dos partes principales: los **componentes**, que ya están disponibles, y el **tema**, que está publicado en Packagist como `mage-obsidian/theme-default`.
+{{ verified('install') }}
 
-## {{ config.extra.components_name }}
+Esta es la receta que la matriz de versiones ejecuta en cada plataforma listada en [Compatibilidad](compatibility.md): los paquetes publicados, instalados desde Packagist en una tienda limpia, luego construidos y desplegados. Con `^4.0`, Composer instala los módulos del storefront 4.0.1 y el framework y `theme-default` 4.0.0. Revisa primero los [requisitos](requirements.md). En Adobe Commerce, lee también [Instalar en Adobe Commerce](adobe-commerce.md).
 
-Los componentes son el núcleo de **{{ config.site_name }}**, diseñados para proporcionar un frontend moderno y eficiente para Magento. Sigue estos pasos para instalarlos:
+## 1. Requerir el tema
 
-### 1. Instalación vía Composer
-
-Utiliza Composer para agregar los componentes a tu proyecto:
+`mage-obsidian/theme-default` trae `theme-base`, el framework, el harness de Vite y toda la pila de módulos del storefront:
 
 ```bash
-composer require mage-obsidian/component-modern-frontend
+composer require mage-obsidian/theme-default:^4.0
 ```
 
-### 2: Instalar dependencias de Node
-
-Asegúrate de que todas las dependencias necesarias de Node estén instaladas:
-
-#### pnpm
-```bash
-pnpm --prefix vite install
-```
-
-#### npm
-```bash
-npm --prefix vite install
-```
-
-### 3. Configurar Magento
-
-Actualiza la configuración de Magento para registrar los componentes:
+## 2. Registrar los módulos
 
 ```bash
 bin/magento setup:upgrade
 ```
 
-### 4. Generar configuración inicial
+## 3. Activar el tema
 
-Ejecuta el siguiente comando para generar la configuración inicial de los componentes de frontend:
+En el Admin, ve a **Content › Design › Configuration**, edita el scope que quieras y elige **MageObsidian — Default (Obsidian)** como tema aplicado.
+
+## 4. Generar el contrato PHP ↔ JS
 
 ```bash
 bin/magento mage-obsidian:frontend:config --generate
 ```
 
-### 5. Todo listo para desarrollar
+## 5. Preparar el harness de Vite
 
-¡Los componentes están configurados y listos para ser utilizados en tu proyecto! Ahora puedes comenzar a desarrollar tu tema con las herramientas modernas que ofrece **{{ config.extra.components_name }}**.
+Composer copia el harness `vite/` a la raíz de Magento. Crea `vite/.env` a partir de `vite/.env.sample` con los valores de tu host y luego instala las dependencias de Node tal como están bloqueadas:
 
-> **Nota:** La instalación incluye por defecto el [motor Twig](../guides/twig.md) (un motor `.twig` junto a `.phtml`). No cambia nada de tus plantillas `.phtml` existentes; si no lo quieres, [deshabilítalo](../guides/twig.md#deshabilitar-twig) con `bin/magento module:disable MageObsidian_ModernFrontendTwig`.
+```bash
+cd vite
+pnpm install --frozen-lockfile
+```
 
-## Más información
+El `.env` lleva `VITE_SERVER_HOST`, `VITE_SERVER_PORT`, `VITE_SERVER_SECURE`, `VITE_HMR_PATH`, `MAGENTO_HOST` y `VITE_SERVER_ALLOWED_HOSTS`. Sin él, el build se detiene en una shell no interactiva.
 
-Para obtener más detalles sobre la personalización de los componentes, iniciar el desarrollo de un tema y conocer todos los beneficios y ventajas, consulta la sección [Documentación detallada de los componentes](../why/index.md).
+## 6. Construir el tema
 
----
+Desde el directorio `vite/`:
 
-## {{ config.extra.theme_name }}
+```bash
+pnpm build:theme MageObsidian/default
+```
 
-El tema basado en **{{ config.extra.components_name }}** está disponible en Packagist como `mage-obsidian/theme-default`. Proporciona un diseño moderno, SEO-friendly y altamente personalizable para tiendas Magento.
+## 7. Desplegar el contenido estático y vaciar la caché
 
-## Más información
+De vuelta en la raíz de Magento:
 
-Para más información sobre el tema, visita la sección [Tema](../guides/themes/obsidian.md).
+```bash
+bin/magento setup:static-content:deploy
+bin/magento cache:flush
+```
+
+Abre el storefront: la home se renderiza con sus islas de Vue. Para producción, consulta [Despliegue a producción](deploy.md).
+
+> **Nota:** La instalación incluye por defecto el [motor Twig](../guides/twig.md) opcional (un motor `.twig` junto a `.phtml`). No cambia nada de tus plantillas `.phtml` existentes; si no lo quieres, [desactívalo](../guides/twig.md#deshabilitar-twig) con `bin/magento module:disable MageObsidian_ModernFrontendTwig`.
+
+## Siguientes pasos
+
+- [Tu primer tema hijo](first-theme.md) para personalizar el tema.
+- [Flujo de desarrollo](development.md) para recarga en vivo con HMR.
+- [Por qué MageObsidian](../why/index.md) y la [guía del tema](../guides/themes/obsidian.md).
