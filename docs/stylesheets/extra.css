@@ -355,7 +355,12 @@ nav.md-tabs .md-tabs__list li:first-child {
   .mo-announce__short { display: inline; }
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 37.5em) and (max-width: 76.234375em) {
+  .md-header__button[for="__drawer"] { order: -2; }
+  .md-header__button.md-logo { display: block; order: -1; }
+}
+
+@media screen and (min-width: 37.5em) {
   .md-header__title > .md-header__ellipsis > .md-header__topic:first-child {
     position: absolute;
     width: 1px;
