@@ -53,6 +53,8 @@ theme:
 extra_css:
   - stylesheets/extra.css
 copyright: Jeanmarcos Juarez | MageObsidian
+hooks:
+  - hooks/i18n_redirects.py
 plugins:
   - search
   - awesome-pages
@@ -98,6 +100,9 @@ plugins:
             Showcase: Vitrina
             Roadmap: Hoja de ruta
             Changelog: Registro de cambios
+  - redirects:
+      redirect_maps:
+        showcase.md: why/showcase.md
 nav:
   - Home: index.md 
   - Introduction:
@@ -123,7 +128,7 @@ nav:
   - Twig Engine:
     - Overview: twig/index.md
     - Helpers & Filters: twig/helpers.md
-  - Showcase: showcase.md
+  - Showcase: why/showcase.md
   - Roadmap: roadmap.md
   - Changelog: changelog.md
   # - Reference:
