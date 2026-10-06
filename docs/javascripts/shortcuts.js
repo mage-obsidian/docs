@@ -1,9 +1,7 @@
-/*
- * This file is part of the MageObsidian - Documentation project.
- *
- * SPDX-FileCopyrightText: 2024 Jeanmarcos Juarez
- * SPDX-License-Identifier: MIT
- */
+// This file is part of the MageObsidian - Documentation project.
+//
+// SPDX-FileCopyrightText: 2024 Jeanmarcos Juarez
+// SPDX-License-Identifier: MIT
 document.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
     const toggle = document.querySelector("label[for='__search']");

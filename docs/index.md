@@ -1,5 +1,8 @@
 ---
 template: home.html
+hide:
+  - navigation
+  - toc
 title: MageObsidian — the modern frontend for Magento
 description: Vite, Tailwind CSS 4 and Vue islands on top of Magento's native layouts, blocks and templates. 4.0 is stable.
 hero:

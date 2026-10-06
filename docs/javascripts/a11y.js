@@ -1,6 +1,4 @@
-/*
- * This file is part of the MageObsidian - Documentation project.
- *
- * SPDX-FileCopyrightText: 2024 Jeanmarcos Juarez
- * SPDX-License-Identifier: MIT
- */
+// This file is part of the MageObsidian - Documentation project.
+//
+// SPDX-FileCopyrightText: 2024 Jeanmarcos Juarez
+// SPDX-License-Identifier: MIT

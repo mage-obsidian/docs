@@ -396,7 +396,8 @@ nav.md-tabs .md-tabs__list li:first-child {
 .mo-code [role="tabpanel"] { overflow-x: auto; }
 .md-typeset .mo-code pre { margin: 0; padding: 1rem 1.1rem; }
 .md-typeset .mo-code code { background: none; color: var(--hero-ink); font-size: .8rem; line-height: 1.7; }
-.mo-prompt { color: var(--hero-accent); user-select: none; }
+.mo-line::before { content: "$ "; color: var(--hero-accent); user-select: none; }
+.md-typeset .mo-code code { padding-right: 3rem; white-space: pre-wrap; overflow-wrap: anywhere; }
 
 .mo-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.25rem 0; }
 
