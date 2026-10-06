@@ -8,7 +8,7 @@ Todo lo que publica MageObsidian, con su registro, su tren de versiones y su fun
 
 ## Framework
 
-El tren del framework está en 4.0.0. Los cinco paquetes llevan la misma versión.
+El tren del framework está en 4.0.1. Los cinco paquetes llevan la misma versión.
 
 | Paquete | Registro | Tren | Obligatorio / opcional | Fuente |
 |---|---|---|---|---|

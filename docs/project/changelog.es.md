@@ -14,6 +14,21 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
+## Framework 4.0.1 — 2026-10-06
+
+### Corregido
+
+- **js-package-utils** (`mage-obsidian` en npm) — un tema hijo hereda los valores del `theme.config.js` de sus padres. Los valores por defecto se aplican después de la combinación, así que un `vue.runtimeOnly: true` o un `ignoredCssFromModules: "all"` del padre ya no se reinicia en el hijo.
+- **js-package-utils** — las fuentes CSS de los temas ancestros se detienen en el ancestro más cercano que declara `includeCssSourceFromParentThemes: false`, en lugar de llegar siempre hasta el tema raíz.
+- **module-modern-frontend** — un contrato regenerado con `mage-obsidian:frontend:config --generate` tiene efecto sin recargar PHP-FPM, también con `opcache.validate_timestamps=0`.
+- **module-modern-frontend-cli** — `mage-obsidian:generate:theme` escribe `includeCssSourceFromParentThemes`, la clave que lee el motor, en lugar de `includeParentThemes`, que nada leía.
+
+### Notas de actualización
+
+`^4.0` ya resuelve los paquetes PHP a 4.0.1. El harness de Vite todavía instala el motor 3.2, así que las dos correcciones del motor llegan a un build cuando el harness pase a requerir el motor 4.0.1.
+
+---
+
 ## Storefront 4.0.1 — 2026-10-06
 
 ### Corregido
