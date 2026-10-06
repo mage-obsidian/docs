@@ -63,5 +63,10 @@ const patch = () => {
   });
 };
 
+document.addEventListener("click", (event) => {
+  const button = event.target.closest(".md-code__button");
+  if (button && event.detail > 0) setTimeout(() => button.blur());
+});
+
 document$.subscribe(patch);
 document.fonts.ready.then(patch);
