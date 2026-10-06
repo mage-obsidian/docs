@@ -489,6 +489,28 @@ nav.md-tabs .md-tabs__list li:first-child {
   .mo-text { font-size: .8rem; }
 }
 
+.md-typeset ul.mo-legend {
+  display: grid;
+  gap: 0.35rem;
+  margin: 1em 0 1.4em;
+  padding: 0;
+  list-style: none;
+  color: var(--mo-muted);
+  font-size: 0.75rem;
+}
+
+.md-typeset ul.mo-legend > li {
+  display: grid;
+  grid-template-columns: 8.5em 1fr;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.md-typeset ul.mo-legend strong {
+  color: var(--mo-ink);
+  font-weight: 600;
+}
+
 .md-typeset ol.mo-flow {
   display: flex;
   flex-wrap: wrap;
@@ -667,11 +689,6 @@ a[target="_blank"]:has(> img, > svg, > picture)::after {
 .md-top:hover,
 .md-top:focus {
   border-color: var(--md-accent-fg-color);
-}
-
-.md-typeset pre > code {
-  padding-top: 0.87em;
-  padding-bottom: 0.67em;
 }
 
 .md-typeset table:not([class]) tbody tr:hover {

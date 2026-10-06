@@ -7,8 +7,13 @@ description: Which Magento and Mage-OS versions each MageObsidian release was in
 {{ verified('matrix') }}
 
 Every MageObsidian release is installed from Packagist on a clean store for each platform below,
-and must render the storefront with its Vue islands. A ✅ means that combination passed; a ❌ means
-it was tested and failed; ⏳ means it has not been run for this release yet.
+and must render the storefront with its Vue islands.
+
+<ul class="mo-legend">
+  <li><strong>✅ Passed</strong> installed and rendered the storefront with its islands</li>
+  <li><strong>❌ Failed</strong> tested, and it did not</li>
+  <li><strong>⏳ Not run yet</strong> not run for this release yet</li>
+</ul>
 
 ## {{ compatibility.release_label }}
 

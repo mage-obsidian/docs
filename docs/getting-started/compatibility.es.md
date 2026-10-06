@@ -8,8 +8,13 @@ description: En qué versiones de Magento y Mage-OS se instaló y probó cada ve
 
 
 Cada versión de MageObsidian se instala desde Packagist en una tienda limpia para cada plataforma
-de abajo, y debe renderizar el storefront con sus islas Vue. ✅ significa que esa combinación pasó;
-❌ significa que se probó y falló; ⏳ significa que aún no se ha ejecutado para esta versión.
+de abajo, y debe renderizar el storefront con sus islas Vue.
+
+<ul class="mo-legend">
+  <li><strong>✅ Pasa</strong> se instaló y renderizó el storefront con sus islas</li>
+  <li><strong>❌ Falla</strong> se probó y no lo hizo</li>
+  <li><strong>⏳ Sin ejecutar</strong> aún no se ha ejecutado para esta versión</li>
+</ul>
 
 ## {{ compatibility.release_label }}
 
