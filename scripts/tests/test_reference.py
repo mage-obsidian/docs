@@ -17,6 +17,20 @@ def test_config_paths_join_section_group_field(docs_tree):
     assert config_paths([root / "pkg"]) == ["mage_obsidian/navigation/progress", "mage_obsidian/navigation/retain"]
 
 
+def test_config_paths_prefer_explicit_config_path(docs_tree):
+    root = docs_tree({"pkg/src/etc/adminhtml/system.xml": """<config><system>
+<section id="mage_obsidian_frontend">
+<group id="speculation"><field id="retain"><config_path>mage_obsidian/navigation/retain</config_path></field><field id="plain"/></group>
+<group id="outer"><group id="inner"><field id="deep"/></group></group>
+</section>
+</system></config>"""})
+    assert config_paths([root / "pkg"]) == [
+        "mage_obsidian/navigation/retain",
+        "mage_obsidian_frontend/outer/inner/deep",
+        "mage_obsidian_frontend/speculation/plain",
+    ]
+
+
 def test_env_vars_from_engine_and_sample(docs_tree):
     root = docs_tree({
         "engine/src/cli/build.ts": "const c = process.env.MAGE_OBSIDIAN_BUILD_CONCURRENCY; process.env.NODE_ENV",

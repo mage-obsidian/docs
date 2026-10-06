@@ -15,6 +15,13 @@ def commands(packages_dirs):
     return sorted(found)
 
 
+def _group_fields(group, prefix):
+    for field in group.findall("field"):
+        yield field.findtext("config_path") or f'{prefix}/{group.get("id")}/{field.get("id")}'
+    for child in group.findall("group"):
+        yield from _group_fields(child, f'{prefix}/{group.get("id")}')
+
+
 def config_paths(packages_dirs):
     found = set()
     for package in packages_dirs:
@@ -22,8 +29,7 @@ def config_paths(packages_dirs):
             root = ET.parse(xml).getroot()
             for section in root.iter("section"):
                 for group in section.findall("group"):
-                    for field in group.findall("field"):
-                        found.add(f'{section.get("id")}/{group.get("id")}/{field.get("id")}')
+                    found.update(_group_fields(group, section.get("id")))
     return sorted(found)
 
 
