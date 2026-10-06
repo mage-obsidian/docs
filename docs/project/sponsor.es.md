@@ -1,3 +1,6 @@
+---
+description: "Formas de apoyar el desarrollo de MageObsidian, económicamente o contribuyendo."
+---
 # Apoyo al Proyecto
 
 **{{ config.extra.components_name }}** y **{{ config.extra.theme_name }}** son proyectos que desarrollo en mi tiempo libre, lo que puede limitar la velocidad de su progreso. Si valoras estos proyectos y deseas contribuir a su desarrollo, hay dos formas principales de ayudar:

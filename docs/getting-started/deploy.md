@@ -1,3 +1,6 @@
+---
+description: "Deploy MageObsidian to production with Magento's standard static-content deploy, with no separate build step."
+---
 # Deploy to production
 
 There is **no separate build step**. MageObsidian hooks into Magento's standard static-content deploy: its deploy plugins exclude modern themes from the legacy Less/RequireJS pipeline and produce and inject the Vite output (minified, tree-shaken, hashed) as part of the normal command:

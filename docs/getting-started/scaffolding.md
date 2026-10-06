@@ -1,3 +1,6 @@
+---
+description: "Generate modules, themes and Vue components already wired for the MageObsidian frontend with bin/magento."
+---
 # Scaffolding
 
 **{{ config.site_name }}** ships `bin/magento` generators that scaffold modules, themes, and Vue components already wired for the frontend — so the resolver picks them up with no manual setup. They live in the `mage-obsidian/module-modern-frontend-cli` package.

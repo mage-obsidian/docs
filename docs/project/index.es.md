@@ -1,3 +1,6 @@
+---
+description: "Cómo se versiona MageObsidian, hacia dónde va y cómo participar."
+---
 # Proyecto
 
 Cómo se versiona MageObsidian, hacia dónde va y cómo participar.

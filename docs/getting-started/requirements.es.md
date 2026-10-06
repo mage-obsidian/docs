@@ -1,3 +1,6 @@
+---
+description: "Las versiones de Magento, PHP, Node.js y pnpm y el acceso a terminal que necesitas antes de instalar MageObsidian."
+---
 # Requisitos
 
 Antes de comenzar con **{{ config.extra.components_name }}**, asegúrate de cumplir con los siguientes requisitos:

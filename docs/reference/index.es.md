@@ -1,3 +1,6 @@
+---
+description: "Páginas de consulta de los comandos, la configuración, el contrato de build y los helpers de Twig que forman la superficie estable de 4.x."
+---
 # Referencia
 
 Páginas de consulta para comandos, configuración, el contrato del build y los helpers. Lo que figura en Referencia es la superficie estable de 4.x (consulta [Versionado y soporte](../project/versioning.md)).

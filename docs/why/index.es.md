@@ -1,3 +1,6 @@
+---
+description: "Qué es MageObsidian, por qué existe y cómo moderniza el toolchain del frontend de Magento sin reemplazar su arquitectura."
+---
 # Por qué MageObsidian
 
 > **Nota:** Este proyecto es desarrollado en mi tiempo libre, lo que puede significar que el progreso sea más lento de lo esperado. Si deseas apoyar el desarrollo y acelerar su progreso, considera contribuir económicamente. Más detalles en la sección [Apoyo al Proyecto](../project/sponsor.md).

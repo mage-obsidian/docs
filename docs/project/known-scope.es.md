@@ -1,3 +1,6 @@
+---
+description: "Qué no cubre MageObsidian y por qué, con el registro de paridad con Luma leído el 2026-09-22."
+---
 # Alcance conocido
 
 Lo que MageObsidian no cubre, y por qué. Cada punto aquí es una decisión o un límite medido, no algo dejado fuera de vista.

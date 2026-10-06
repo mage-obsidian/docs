@@ -1,3 +1,6 @@
+---
+description: "The environment variables the Vite harness and build engine read, with their purpose and default."
+---
 # Environment variables
 
 The build engine reads these variables from the environment or from `vite/.env` (see `vite/.env.sample`). `bin/magento mage-obsidian:frontend:dev --sync-env` writes `vite/.env` from the Magento configuration.

@@ -1,3 +1,6 @@
+---
+description: "Las rutas de core_config_data que lee el frontend de MageObsidian, con etiquetas del admin, valores por defecto y alcance."
+---
 # Rutas de configuración
 
 Estas son las rutas de `core_config_data` que lee el frontend de MageObsidian. Se editan en **Stores → Configuration → MageObsidian → Frontend**, o con `bin/magento config:set <ruta> <valor>`. El valor por defecto sale del `etc/config.xml` del módulo; `—` significa que la ruta no trae un valor por defecto. Las etiquetas del admin se muestran tal como aparecen en la interfaz.

@@ -1,3 +1,6 @@
+---
+description: "The OBSIDIAN default theme, with screenshots, a tour and a link to the live demo."
+---
 # Showcase
 
 ## OBSIDIAN — the default theme

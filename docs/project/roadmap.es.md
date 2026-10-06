@@ -1,3 +1,6 @@
+---
+description: "Dónde ha estado MageObsidian y hacia dónde va, con hitos enlazados al registro de cambios."
+---
 # Hoja de ruta
 
 Dónde ha estado MageObsidian y hacia dónde va. Cada hito enlaza con su entrada del changelog; lo planificado no lleva fecha hasta que se está construyendo.

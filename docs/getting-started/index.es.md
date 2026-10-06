@@ -1,3 +1,6 @@
+---
+description: "De los requisitos a un storefront desplegado: instala el stack, crea tu primer tema y publícalo."
+---
 # Primeros pasos
 
 De los requisitos a un storefront desplegado: instala el stack, crea tu primer tema y publícalo.

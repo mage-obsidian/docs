@@ -1,3 +1,6 @@
+---
+description: "What MageObsidian does not cover and why, with the Luma parity register read on 2026-09-22."
+---
 # Known scope
 
 What MageObsidian does not cover, and why. Each item here is a decision or a measured limit, not something left out of sight.

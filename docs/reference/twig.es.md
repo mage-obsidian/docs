@@ -1,3 +1,6 @@
+---
+description: "Las funciones y filtros de Twig que el motor Twig de MageObsidian ofrece a las plantillas."
+---
 {% raw %}
 # Helpers y Filtros de Twig
 

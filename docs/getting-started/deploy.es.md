@@ -1,3 +1,6 @@
+---
+description: "Despliega MageObsidian a producción con el static-content deploy estándar de Magento, sin un paso de build aparte."
+---
 # Despliegue a producción
 
 **No hay un paso de build aparte**. MageObsidian se engancha al deploy de contenido estático estándar de Magento: sus plugins de deploy excluyen los temas modernos del pipeline legacy de Less/RequireJS y producen e inyectan la salida de Vite (minificada, con tree-shaking y hash) como parte del comando normal:

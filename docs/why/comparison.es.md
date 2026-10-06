@@ -1,20 +1,82 @@
+---
+description: "Una comparación honesta de MageObsidian, Hyvä y Luma, incluyendo cuándo no elegir MageObsidian."
+---
 # Elegir un frontend: MageObsidian vs Hyvä vs Luma
 
 Magento 2 tiene más de una respuesta a "¿cómo debería construirse el frontend de mi tienda?". Esta página es una comparación honesta para ayudarte a decidir — incluyendo cuándo **no** elegir MageObsidian.
 
 ## De un vistazo
 
-| | **MageObsidian** | **Hyvä** | **Luma / Blank** |
-|---|---|---|---|
-| Licencia | MIT (gratis, open source) | Theme open source (OSL 3.0 / AFL 3.0, gratis desde nov 2025); Checkout, Enterprise y UI siguen siendo de pago | Incluido con Magento |
-| CSS | Tailwind CSS 4 | Tailwind CSS | LESS |
-| JavaScript | Islas Vue 3 + ESM nativo | Alpine.js | RequireJS + jQuery + Knockout |
-| Tooling de build | Vite (dev server + HMR) | Build propio | Grunt / deploy estático |
-| Plantillas | `.phtml` + motor Twig opcional | `.phtml` (sistema de temas propio) | `.phtml` |
-| Layout XML de Magento | Nativo — layouts, bloques y herencia de temas siguen funcionando | Reemplazado por su propio enfoque simplificado | Nativo |
-| Ecosistema de extensiones | Joven — módulos de compatibilidad para los dominios core | Grande — amplia cobertura de terceros | Universal |
-| Madurez | Estable (4.0, octubre de 2026) | Probado en producción desde 2021 | Default legacy |
-| Rendimiento | Lighthouse 100/100/100/100 en la [demo en vivo]({{ config.extra.demo_url }}) | Excelente | Pobre sin mucho tuning |
+<div class="mo-table-scroll" tabindex="0" role="region" aria-label="Comparación" markdown>
+
+<table markdown>
+<thead markdown>
+<tr markdown>
+<th scope="col" markdown>Característica</th>
+<th scope="col" markdown>**MageObsidian**</th>
+<th scope="col" markdown>**Hyvä**</th>
+<th scope="col" markdown>**Luma / Blank**</th>
+</tr>
+</thead>
+<tbody markdown>
+<tr markdown>
+<th scope="row" markdown>Licencia</th>
+<td markdown>MIT (gratis, open source)</td>
+<td markdown>Theme open source (OSL 3.0 / AFL 3.0, gratis desde nov 2025); Checkout, Enterprise y UI siguen siendo de pago</td>
+<td markdown>Incluido con Magento</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>CSS</th>
+<td markdown>Tailwind CSS 4</td>
+<td markdown>Tailwind CSS</td>
+<td markdown>LESS</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>JavaScript</th>
+<td markdown>Islas Vue 3 + ESM nativo</td>
+<td markdown>Alpine.js</td>
+<td markdown>RequireJS + jQuery + Knockout</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>Tooling de build</th>
+<td markdown>Vite (dev server + HMR)</td>
+<td markdown>Build propio</td>
+<td markdown>Grunt / deploy estático</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>Plantillas</th>
+<td markdown>`.phtml` + motor Twig opcional</td>
+<td markdown>`.phtml` (sistema de temas propio)</td>
+<td markdown>`.phtml`</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>Layout XML de Magento</th>
+<td markdown>Nativo — layouts, bloques y herencia de temas siguen funcionando</td>
+<td markdown>Reemplazado por su propio enfoque simplificado</td>
+<td markdown>Nativo</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>Ecosistema de extensiones</th>
+<td markdown>Joven — módulos de compatibilidad para los dominios core</td>
+<td markdown>Grande — amplia cobertura de terceros</td>
+<td markdown>Universal</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>Madurez</th>
+<td markdown>Estable (4.0, octubre de 2026)</td>
+<td markdown>Probado en producción desde 2021</td>
+<td markdown>Default legacy</td>
+</tr>
+<tr markdown>
+<th scope="row" markdown>Rendimiento</th>
+<td markdown>Lighthouse 100/100/100/100 en la [demo en vivo]({{ config.extra.demo_url }})</td>
+<td markdown>Excelente</td>
+<td markdown>Pobre sin mucho tuning</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 
 ## Qué hace diferente a MageObsidian
 

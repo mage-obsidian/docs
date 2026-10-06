@@ -1,3 +1,6 @@
+---
+description: "Ways to support the development of MageObsidian, financially or by contributing."
+---
 # How support the {{ config.site_name }}?
 
 **{{ config.extra.components_name }}** and **{{ config.extra.theme_name }}** are projects I develop in my free time, which may limit their progress speed. If you value these projects and wish to contribute to their development, there are two main ways to help:

@@ -1,3 +1,6 @@
+---
+description: "Ejecuta todo el ciclo de desarrollo del frontend desde bin/magento con el servidor de desarrollo de Vite y HMR."
+---
 # Flujo de Desarrollo
 
 **{{ config.site_name }}** dirige todo el ciclo de desarrollo del frontend desde `bin/magento`. Nunca editas a mano el `.env` de Vite: se **deriva de tu configuración de Magento** (Stores → Configuration → MageObsidian), que es la fuente única de verdad para el host, el puerto y los ajustes de HMR del dev server. Los comandos de abajo lo sincronizan por ti.

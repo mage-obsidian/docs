@@ -1,3 +1,6 @@
+---
+description: "Qué cambió en cada versión de MageObsidian, seguido a través de los paquetes que lo incluyen."
+---
 # Registro de cambios
 
 Desde 4.0.0, el framework y el storefront publican cada uno todos sus paquetes bajo una misma versión.

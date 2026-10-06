@@ -1,3 +1,6 @@
+---
+description: "El tema OBSIDIAN por defecto, con capturas, un recorrido y un enlace a la demo en vivo."
+---
 # Vitrina
 
 ## OBSIDIAN — el tema default

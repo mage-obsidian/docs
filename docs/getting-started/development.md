@@ -1,3 +1,6 @@
+---
+description: "Run the whole frontend dev loop from bin/magento with the Vite dev server and HMR."
+---
 # Development Workflow
 
 **{{ config.site_name }}** drives the whole frontend dev loop from `bin/magento`. You never hand-edit the Vite `.env`: it is **derived from your Magento configuration** (Stores → Configuration → MageObsidian), which is the single source of truth for the dev server host, port, and HMR settings. The commands below sync it for you.

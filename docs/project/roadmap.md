@@ -1,3 +1,6 @@
+---
+description: "Where MageObsidian has been and where it goes next, with milestones linked to the changelog."
+---
 # Roadmap
 
 Where MageObsidian has been, and where it goes next. Every milestone links to its changelog entry; what is planned carries no date until it is being built.

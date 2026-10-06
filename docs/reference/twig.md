@@ -1,3 +1,6 @@
+---
+description: "The Twig functions and filters the MageObsidian Twig engine provides for templates."
+---
 {% raw %}
 # Twig Helpers & Filters
 

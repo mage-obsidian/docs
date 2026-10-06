@@ -1,3 +1,6 @@
+---
+description: "From the requirements to a deployed storefront: install the stack, build your first theme and ship it."
+---
 # Get started
 
 From the requirements to a deployed storefront: install the stack, build your first theme and ship it.

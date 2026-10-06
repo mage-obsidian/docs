@@ -1,3 +1,6 @@
+---
+description: "Cada comando bin/magento mage-obsidian con sus opciones y ejemplos."
+---
 # Comandos CLI
 
 Todos los comandos se ejecutan con `bin/magento` desde la raíz de Magento. Además de las opciones listadas, aceptan las opciones globales de Symfony Console (`--help`, `--quiet`, `--verbose`, `--no-interaction`, `--ansi`).

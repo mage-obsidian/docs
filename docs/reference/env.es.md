@@ -1,3 +1,6 @@
+---
+description: "Las variables de entorno que leen el harness de Vite y el motor de build, con su propósito y valor por defecto."
+---
 # Variables de entorno
 
 El motor de compilación lee estas variables del entorno o del archivo `vite/.env` (ver `vite/.env.sample`). `bin/magento mage-obsidian:frontend:dev --sync-env` escribe `vite/.env` a partir de la configuración de Magento.

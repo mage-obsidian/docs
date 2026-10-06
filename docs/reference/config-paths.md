@@ -1,3 +1,6 @@
+---
+description: "The core_config_data paths the MageObsidian frontend reads, with admin labels, defaults and scope."
+---
 # Configuration paths
 
 These are the `core_config_data` paths the MageObsidian frontend reads. Edit them under **Stores → Configuration → MageObsidian → Frontend**, or with `bin/magento config:set <path> <value>`. The default comes from the module's `etc/config.xml`; `—` means the path ships without a default. Admin labels are shown as they appear in the interface.

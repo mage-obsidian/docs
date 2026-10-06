@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+{% if config.theme.language == 'es' %}
+<h1>Página no encontrada</h1>
+<p>La página que buscas cambió de lugar o no existe. Prueba la <a href="{{ base_url }}/es/">página de inicio</a> o la búsqueda.</p>
+<div lang="en">
+<h2>Page not found</h2>
+<p>The page you are looking for moved or does not exist. Try the <a href="{{ base_url }}/">home page</a> or search.</p>
+</div>
+{% else %}
+<h1>Page not found</h1>
+<p>The page you are looking for moved or does not exist. Try the <a href="{{ base_url }}/">home page</a> or search.</p>
+<div lang="es">
+<h2>Página no encontrada</h2>
+<p>La página que buscas cambió de lugar o no existe. Prueba la <a href="{{ base_url }}/es/">página de inicio</a> o la búsqueda.</p>
+</div>
+{% endif %}
+{% endblock %}

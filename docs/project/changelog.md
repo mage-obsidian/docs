@@ -1,3 +1,6 @@
+---
+description: "What changed in each MageObsidian release, followed across the packages that carry it."
+---
 # Changelog
 
 From 4.0.0 on, the framework and the storefront each release all their packages under one version.

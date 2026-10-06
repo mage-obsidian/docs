@@ -1,3 +1,6 @@
+---
+description: "Notas de actualización de cada versión menor de MageObsidian 4.x, con cada paso manual y cada deprecación."
+---
 # Notas de actualización
 
 Una sección por cada versión menor de 4.x, con cualquier paso manual y cada deprecación.

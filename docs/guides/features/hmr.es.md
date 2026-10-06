@@ -1,3 +1,6 @@
+---
+title: HMR (recarga en caliente)
+---
 # HMR (Hot Module Replacement)
 
 Hot Module Replacement (HMR) es una característica central de **MageObsidian** impulsada por Vite: actualiza tu frontend en el navegador en tiempo real, sin recargar la página completa. Esta página cubre las piezas específicas de HMR; para el ciclo completo del día a día (arrancar/detener el servidor, sincronizar el env, diagnóstico) consulta [Flujo de Desarrollo](../../getting-started/development.md).

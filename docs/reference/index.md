@@ -1,3 +1,6 @@
+---
+description: "Lookup pages for the commands, configuration, build contract and Twig helpers that make up the stable 4.x surface."
+---
 # Reference
 
 Lookup pages for commands, configuration, the build contract and helpers. What is listed in Reference is the stable surface of 4.x (see [Versioning & support](../project/versioning.md)).

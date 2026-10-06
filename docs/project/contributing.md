@@ -1,3 +1,6 @@
+---
+description: "How to report bugs, propose improvements and contribute code or documentation to MageObsidian."
+---
 # How to Contribute
 
 Thank you for your interest in contributing to **{{ config.site_name }}**! This is an Open Source project aimed at revolutionizing frontend development in Magento. Your contributions are essential to improving the experience and expanding the theme's capabilities.

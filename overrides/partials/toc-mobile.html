@@ -1,0 +1,12 @@
+{% if page.toc and page.toc.items %}
+<details class="mo-toc-mobile">
+  <summary>{% if config.theme.language == 'es' %}En esta página{% else %}On this page{% endif %}</summary>
+  <ul>
+    {% for item in page.toc.items %}
+    <li><a href="{{ item.url }}">{{ item.title }}</a>
+      {% if item.children %}<ul>{% for child in item.children %}<li><a href="{{ child.url }}">{{ child.title }}</a></li>{% endfor %}</ul>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</details>
+{% endif %}

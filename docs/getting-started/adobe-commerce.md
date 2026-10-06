@@ -1,3 +1,6 @@
+---
+description: "What differs when you install MageObsidian on Adobe Commerce 2.4.9: Composer keys, packages that do not apply and known problems."
+---
 # Adobe Commerce
 
 **{{ config.extra.components_name }}** installs and runs on **Adobe Commerce 2.4.9** with the

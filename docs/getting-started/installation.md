@@ -1,3 +1,6 @@
+---
+description: "Install the MageObsidian theme from Packagist, generate the contract, build the assets and check the storefront."
+---
 # Installation
 
 {{ verified('install') }}

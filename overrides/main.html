@@ -48,3 +48,8 @@
         } | tojson -}}
       </script>
     {% endblock %}
+
+{% block content %}
+{% include "partials/toc-mobile.html" %}
+{{ super() }}
+{% endblock %}

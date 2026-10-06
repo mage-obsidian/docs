@@ -1,3 +1,6 @@
+---
+description: "Genera módulos, temas y componentes Vue ya conectados al frontend de MageObsidian con bin/magento."
+---
 # Generadores
 
 **{{ config.site_name }}** incluye generadores de `bin/magento` que crean módulos, temas y componentes Vue ya cableados para el frontend —de modo que el resolver los detecta sin configuración manual. Viven en el paquete `mage-obsidian/module-modern-frontend-cli`.

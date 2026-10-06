@@ -1,3 +1,6 @@
+---
+description: "How MageObsidian is versioned, where it is heading and how to take part."
+---
 # Project
 
 How MageObsidian is versioned, where it is heading and how to take part.

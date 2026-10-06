@@ -1,3 +1,6 @@
+---
+description: "Cómo reportar errores, proponer mejoras y contribuir código o documentación a MageObsidian."
+---
 # Cómo Contribuir
 
 ¡Gracias por tu interés en contribuir a **{{ config.site_name }}**! Este es un proyecto Open Source que busca revolucionar el desarrollo frontend en Magento. Tus aportes son fundamentales para mejorar la experiencia y expandir las capacidades del tema.

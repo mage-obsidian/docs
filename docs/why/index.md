@@ -1,3 +1,6 @@
+---
+description: "What MageObsidian is, why it exists and how it modernizes Magento's frontend toolchain without replacing its architecture."
+---
 # Why MageObsidian
 
 > **Note:** This project is developed in my free time, which may result in slower progress than expected. If you'd like to support its development and accelerate progress, consider contributing financially. More details can be found in the [Project Support](../project/sponsor.md) section.
