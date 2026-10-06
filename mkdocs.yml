@@ -4,16 +4,14 @@ repo_url: https://github.com/mage-obsidian/framework
 repo_name: mage-obsidian/framework
 edit_uri: ""
 theme:
-  logo: ./assets/tool.png
-  favicon: ./assets/tool.png
+  logo: assets/logo.svg
+  favicon: assets/favicon.svg
   language: en
   name: material
   custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
-  font:
-    text: Inter
-    code: JetBrains Mono
+  font: false
   features:
     - content.code.annotate
     - content.code.select
@@ -33,20 +31,24 @@ theme:
     - search.share
   palette:
     - media: "(prefers-color-scheme)"
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/link
+        icon: material/theme-light-dark
         name: Switch to light mode
-
     - media: "(prefers-color-scheme: light)"
-      scheme: default 
+      scheme: default
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/toggle-switch-off
+        icon: material/weather-sunny
         name: Switch to dark mode
-
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/toggle-switch
+        icon: material/weather-night
         name: Switch to system preference
 extra_css:
   - stylesheets/extra.css
@@ -60,10 +62,10 @@ plugins:
       include_yaml:
         - docs/data/verification.yml
         - docs/data/roadmap.yml
+  - privacy
   - social:
-      cards_layout_options:
-        background_color: "#5B5BD6"
-        color: "#FFFFFF"
+      cards_layout_dir: overrides/layouts
+      cards_layout: obsidian
   - i18n:
       docs_structure: suffix
       languages:
@@ -291,10 +293,8 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.highlight:
-      anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-      linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences

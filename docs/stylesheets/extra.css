@@ -4,25 +4,94 @@
  * SPDX-FileCopyrightText: 2024 Jeanmarcos Juarez
  * SPDX-License-Identifier: MIT
  */
-/* ── Brand palette: "Indigo técnico" ───────────────────────────── */
-:root {
-  --md-primary-fg-color: #5b5bd6;
-  --md-primary-fg-color--light: #7b7be0;
-  --md-primary-fg-color--dark: #4a4ac4;
-  --md-primary-bg-color: #ffffff;
-  --md-primary-bg-color--light: #ffffffb3;
-  --md-accent-fg-color: #1aa1b8;
-  --md-accent-fg-color--transparent: #22b8cf1a;
-  --md-typeset-a-color: #4a4ac4;
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/Inter-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/fonts/Inter-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/fonts/JetBrainsMono-SemiBold.woff2") format("woff2");
+}
+
+:root, [data-md-color-scheme="default"] {
+  --mo-bg: #f7f4ee;
+  --mo-paper: #fffdf9;
+  --mo-ink: #14121a;
+  --mo-muted: #5f5a52;
+  --mo-accent: #2f6e66;
+  --mo-accent-soft: #e3f0ee;
+  --mo-line: #e3ddd2;
+  --md-default-bg-color: var(--mo-paper);
+  --md-default-fg-color: var(--mo-ink);
+  --md-default-fg-color--light: var(--mo-muted);
+  --md-primary-fg-color: var(--mo-ink);
+  --md-primary-fg-color--light: #2a2731;
+  --md-primary-fg-color--dark: #08070b;
+  --md-primary-bg-color: #f3efe7;
+  --md-primary-bg-color--light: #f3efe7;
+  --md-accent-fg-color: var(--mo-accent);
+  --md-accent-fg-color--transparent: #2f6e661a;
+  --md-typeset-a-color: var(--mo-accent);
+  --md-code-hl-variable-color: #595959;
+  --md-text-font: "Inter";
+  --md-code-font: "JetBrains Mono";
 }
 
 [data-md-color-scheme="slate"] {
-  --md-hue: 232;
-  --md-primary-fg-color: #7b7be0;
-  --md-primary-bg-color: #0b0b14;
-  --md-accent-fg-color: #34d0e0;
-  --md-typeset-a-color: #9d9df0;
+  --mo-bg: #08070b;
+  --mo-paper: #0d0c11;
+  --mo-ink: #f3efe7;
+  --mo-muted: #a9a39a;
+  --mo-accent: #7fd6c8;
+  --mo-accent-soft: #45a1951f;
+  --mo-line: rgba(243, 239, 231, .10);
+  --md-hue: 260;
+  --md-default-bg-color: var(--mo-bg);
+  --md-default-fg-color: var(--mo-ink);
+  --md-default-fg-color--light: var(--mo-muted);
+  --md-primary-fg-color: #08070b;
+  --md-primary-bg-color: #f3efe7;
+  --md-primary-bg-color--light: #f3efe7;
+  --md-accent-fg-color: var(--mo-accent);
+  --md-typeset-a-color: var(--mo-accent);
 }
+
+.md-tabs__link { opacity: 1; }
+.md-typeset h1, .md-typeset h2 { font-weight: 700; letter-spacing: -.035em; color: var(--mo-ink); }
+.md-typeset a:not(.md-button):not(.headerlink) { text-decoration: underline; text-underline-offset: .15em; }
+.md-banner, .md-banner a { color: #fff; background: #08070b; }
+.md-banner a { text-decoration: underline; }
 
 /* ── Inherited fixes (kept) ─────────────────────────────────────── */
 nav.md-tabs .md-tabs__list li:first-child {
@@ -40,7 +109,7 @@ nav.md-tabs .md-tabs__list li:first-child {
 /* ── Card grids ─────────────────────────────────────────────────── */
 .md-typeset .grid.cards > ul > li,
 .md-typeset .grid > .card {
-  border: 1px solid var(--md-default-fg-color--lightest);
+  border: 1px solid var(--mo-line);
   border-radius: 0.4rem;
   transition: border-color 0.2s ease, transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -48,9 +117,9 @@ nav.md-tabs .md-tabs__list li:first-child {
 
 .md-typeset .grid.cards > ul > li:hover,
 .md-typeset .grid > .card:hover {
-  border-color: var(--md-accent-fg-color);
+  border-color: var(--mo-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px -12px var(--md-accent-fg-color);
+  box-shadow: 0 6px 20px -12px var(--mo-accent);
 }
 
 .md-typeset .grid.cards > ul > li > hr {
@@ -71,42 +140,6 @@ nav.md-tabs .md-tabs__list li:first-child {
   letter-spacing: -0.01em;
 }
 
-/* ── Tech logo strip on landing / overview ──────────────────────── */
-.tech-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  align-items: center;
-  justify-content: center;
-  margin: 1.5rem 0;
-}
-
-.tech-strip img {
-  height: 38px;
-  width: auto;
-  opacity: 0.85;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.tech-strip a:hover img {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.lighthouse-shot {
-  display: block;
-  max-width: 760px;
-  margin: 1.5rem auto;
-}
-
-.lighthouse-shot img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
-}
-
 .md-typeset ol.mo-timeline {
   display: flex;
   gap: 1rem;
@@ -114,7 +147,7 @@ nav.md-tabs .md-tabs__list li:first-child {
   margin: 2rem 0;
   padding: 2rem 0.5rem 0;
   overflow-x: auto;
-  background: linear-gradient(var(--md-default-fg-color--light), var(--md-default-fg-color--light)) 0 0.9rem / 100% 2px no-repeat local;
+  background: linear-gradient(var(--mo-muted), var(--mo-muted)) 0 0.9rem / 100% 2px no-repeat local;
 }
 
 .md-typeset ol.mo-timeline > .mo-ms {
@@ -133,12 +166,12 @@ nav.md-tabs .md-tabs__list li:first-child {
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 50%;
-  background: var(--md-default-fg-color--light);
+  background: var(--mo-muted);
 }
 
 .md-typeset .mo-ms .mo-date {
   display: block;
-  color: var(--md-default-fg-color--light);
+  color: var(--mo-muted);
   font-size: 0.7rem;
 }
 
@@ -147,17 +180,17 @@ nav.md-tabs .md-tabs__list li:first-child {
 }
 
 .md-typeset ol.mo-timeline > .mo-ms--now::before {
-  background: var(--md-accent-fg-color);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--md-accent-fg-color) 25%, transparent);
+  background: var(--mo-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mo-accent) 25%, transparent);
 }
 
 .md-typeset ol.mo-timeline > .mo-ms--next::before {
   background: transparent;
-  border: 2px dashed var(--md-default-fg-color--light);
+  border: 2px dashed var(--mo-muted);
 }
 
 .md-typeset .mo-ver {
-  color: var(--md-accent-fg-color);
+  color: var(--mo-accent);
   font-family: var(--md-code-font-family);
   font-size: 0.7rem;
 }
@@ -171,12 +204,12 @@ nav.md-tabs .md-tabs__list li:first-child {
 
 .md-typeset .mo-lane {
   padding: 0 1rem 0.5rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
+  border: 1px solid var(--mo-line);
   border-radius: 8px;
 }
 
 .md-typeset .mo-lane--now {
-  border-color: var(--md-accent-fg-color);
+  border-color: var(--mo-accent);
 }
 
 .md-typeset .mo-lane--later {
@@ -197,17 +230,17 @@ nav.md-tabs .md-tabs__list li:first-child {
   margin-top: 0.4rem;
   overflow: hidden;
   border-radius: 3px;
-  background: var(--md-default-fg-color--lightest);
+  background: var(--mo-line);
 }
 
 .md-typeset .mo-bar i {
   display: block;
   height: 100%;
-  background: var(--md-accent-fg-color);
+  background: var(--mo-accent);
 }
 
 .md-typeset .mo-item small {
-  color: var(--md-default-fg-color--light);
+  color: var(--mo-muted);
 }
 
 @media (max-width: 600px) {
@@ -217,7 +250,7 @@ nav.md-tabs .md-tabs__list li:first-child {
     padding: 0 0 0 1.25rem;
     overflow-x: visible;
     background: none;
-    border-left: 2px solid var(--md-default-fg-color--light);
+    border-left: 2px solid var(--mo-muted);
   }
 
   .md-typeset ol.mo-timeline > .mo-ms {
