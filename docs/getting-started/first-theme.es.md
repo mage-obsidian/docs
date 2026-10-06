@@ -106,12 +106,15 @@ Las importaciones entre módulos dentro del archivo usan `Vendor_Module::path`, 
 El servidor renderiza el primer fotograma de esta isla desde una plantilla de OBSIDIAN, y ese marcado debe coincidir con el componente; si no, se vería la bolsa hasta que Vue monte. Sobrescribe la plantilla en el hijo con el mismo cambio de icono:
 
 ```bash
+THEME_SRC=$(ls -d vendor/mage-obsidian/theme-default app/design/frontend/MageObsidian/default 2>/dev/null | head -1)
 mkdir -p app/design/frontend/Acme/child/Magento_Theme/templates/html/header
-cp app/design/frontend/MageObsidian/default/Magento_Theme/templates/html/header/cart-count.twig \
+cp "$THEME_SRC"/Magento_Theme/templates/html/header/cart-count.twig \
    app/design/frontend/Acme/child/Magento_Theme/templates/html/header/cart-count.twig
 sed -i "s/hero_icon('shopping-bag'/hero_icon('shopping-cart'/" \
    app/design/frontend/Acme/child/Magento_Theme/templates/html/header/cart-count.twig
 ```
+
+OBSIDIAN vive en `vendor/mage-obsidian/theme-default` en una tienda instalada con Composer, y en `app/design/frontend/MageObsidian/default` en una tienda donde es un checkout; el primer comando elige el que exista.
 
 ## 5. Regenera el contrato y compila
 

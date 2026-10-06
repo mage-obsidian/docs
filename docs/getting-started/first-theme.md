@@ -106,12 +106,15 @@ Cross-module imports inside the file use `Vendor_Module::path`, never a relative
 The server renders the first frame of this island from a template of OBSIDIAN, and that markup must match the component, or the bag icon would show until Vue mounts. Override the template in the child with the same icon change:
 
 ```bash
+THEME_SRC=$(ls -d vendor/mage-obsidian/theme-default app/design/frontend/MageObsidian/default 2>/dev/null | head -1)
 mkdir -p app/design/frontend/Acme/child/Magento_Theme/templates/html/header
-cp app/design/frontend/MageObsidian/default/Magento_Theme/templates/html/header/cart-count.twig \
+cp "$THEME_SRC"/Magento_Theme/templates/html/header/cart-count.twig \
    app/design/frontend/Acme/child/Magento_Theme/templates/html/header/cart-count.twig
 sed -i "s/hero_icon('shopping-bag'/hero_icon('shopping-cart'/" \
    app/design/frontend/Acme/child/Magento_Theme/templates/html/header/cart-count.twig
 ```
+
+OBSIDIAN lives in `vendor/mage-obsidian/theme-default` on a store installed with Composer, and in `app/design/frontend/MageObsidian/default` on a store where it is a checkout; the first command picks whichever exists.
 
 ## 5. Regenerate the contract and build
 
