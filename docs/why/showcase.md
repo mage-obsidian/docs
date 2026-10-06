@@ -19,10 +19,10 @@ Or take a quick tour — home, category, product page:
 <p>A quick tour of the demo store: home, category and product page.</p>
 </details>
 
-The demo scores **100/100/100/100 on Lighthouse** (Performance, Accessibility, Best Practices, SEO):
+The demo scores **{{ lighthouse_scores() }} on Lighthouse** (Performance, Accessibility, Best Practices, SEO):
 
-!!! tip "Lighthouse 100 on the demo store"
-    100 in Performance, Accessibility, Best Practices and SEO, measured on the live demo store, not on this documentation.
+!!! tip "Lighthouse on the demo store"
+    {{ lighthouse_note() }}
 
     [Run it yourself](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmage-obsidian-demo.jeanmarcos.dev%2F){ target=_blank rel=noopener }
 

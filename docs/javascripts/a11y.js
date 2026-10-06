@@ -40,6 +40,12 @@ const patch = () => {
     }
   });
 
+  document.querySelectorAll(".md-sidebar__scrollwrap").forEach((wrap) => {
+    if (wrap.scrollHeight > wrap.clientHeight && !wrap.querySelector(".md-nav__link")) {
+      wrap.setAttribute("tabindex", "0");
+    }
+  });
+
   const search = document.querySelector(".md-search");
   if (search) {
     search.setAttribute("role", "dialog");

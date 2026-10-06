@@ -34,7 +34,7 @@ The **{{ config.site_name }}** project emerges as a disruptive proposal to revol
     [Learn more about {{ config.extra.components_name }}](index.md).
 
 2. **{{ config.extra.theme_name }}:**  
-    The base theme is built entirely on the mentioned tools and is already functional. It does not inherit anything from traditional themes like **Blank** or **Luma**, enabling a completely new design aligned with modern practices and free from the historical constraints of Magento's frontend. It targets Magento Open Source today; Adobe Commerce and Mage-OS are technically compatible as of core 2.6.0 but not fully tested yet.  
+    The base theme is built entirely on the mentioned tools and is already functional. It does not inherit anything from traditional themes like **Blank** or **Luma**, enabling a completely new design aligned with modern practices and free from the historical constraints of Magento's frontend. It targets Magento Open Source today; Mage-OS 2.4.7 to 2.4.9 passed the compatibility matrix on 2026-10-06; Adobe Commerce 2.4.9 was walked once on 2026-10-06 and is not in the matrix.  
     [Learn more about {{ config.extra.theme_name }}](../guides/themes/obsidian.md) — or see it running in the [live demo]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
 
 One of the main strengths of **{{ config.extra.components_name }}** is that **it does not follow a PWA approach**. Instead, it leverages Magento's existing system of layouts, blocks, and templates, preserving its native architecture. This approach allows developers to take advantage of modern tools and current standards without compromising compatibility with existing modules and functionalities, offering a smoother and more efficient development experience.
@@ -85,8 +85,8 @@ Additionally, although the use of **NPM** packages has always been possible in M
 
 - **Exceptional performance:** Thanks to the underlying components, the theme is optimized to load only what is necessary, resulting in ultra-fast load times. This improves both user experience and performance metrics such as Google's Core Web Vitals.
 
-!!! tip "Lighthouse 100 on the demo store"
-    100 in Performance, Accessibility, Best Practices and SEO, measured on the live demo store, not on this documentation.
+!!! tip "Lighthouse on the demo store"
+    {{ lighthouse_note() }}
 
     [Run it yourself](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmage-obsidian-demo.jeanmarcos.dev%2F){ target=_blank rel=noopener }
 

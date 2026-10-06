@@ -3,6 +3,8 @@ description: "What differs when you install MageObsidian on Adobe Commerce 2.4.9
 ---
 # Adobe Commerce
 
+{{ verified('adobe-commerce') }}
+
 **{{ config.extra.components_name }}** installs and runs on **Adobe Commerce 2.4.9** with the
 same packages as Magento Open Source. This page covers what differs: the Composer keys, the
 packages that do not apply, and the problems you may meet on the way.

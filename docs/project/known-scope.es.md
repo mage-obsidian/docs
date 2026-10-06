@@ -1,5 +1,5 @@
 ---
-description: "Qué no cubre MageObsidian y por qué, con el registro de paridad con Luma leído el 2026-09-22."
+description: "Qué no cubre MageObsidian y por qué, con el registro de paridad con Luma leído el 2026-09-29."
 ---
 # Alcance conocido
 
@@ -7,7 +7,7 @@ Lo que MageObsidian no cubre, y por qué. Cada punto aquí es una decisión o un
 
 ## Paridad con Luma
 
-El registro de paridad se leyó el 2026-09-22 contra **Magento Open Source 2.4.9**. Lista 485 entradas: 317 cubiertas, 27 resueltas, 138 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento; los dos grupos siguientes son los que no lo están.
+El registro de paridad se leyó el 2026-09-29 contra **Magento Open Source 2.4.9**. Lista 486 entradas: 318 cubiertas, 27 resueltas, 138 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento; los dos grupos siguientes son los que no lo están.
 
 ### Bloqueadas
 
@@ -43,4 +43,4 @@ Ninguna pasarela de pago comercial ha sido verificada. El punto de extensión s�
 
 ## Adobe Commerce
 
-Adobe Commerce es detectado e inventariado por `mage-obsidian:frontend:doctor`, que informa qué familias del storefront exclusivas de Commerce tiene habilitadas una tienda. No está verificado: el inventario informa lo que está instalado y no afirma nada más. Consulta [Adobe Commerce](../getting-started/adobe-commerce.md).
+Adobe Commerce es detectado e inventariado por `mage-obsidian:frontend:doctor`, que informa qué familias del storefront exclusivas de Commerce tiene habilitadas una tienda. No está en la matriz de compatibilidad. El storefront se recorrió una vez sobre Adobe Commerce 2.4.9 el 2026-10-06; Adobe Commerce Cloud, las pasarelas de pago y las funciones exclusivas de Commerce no están verificadas. Consulta [Adobe Commerce](../getting-started/adobe-commerce.md).

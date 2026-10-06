@@ -7,6 +7,7 @@ CHECKS = {
     "voseo": "docs_checks.voseo",
     "redirects": "docs_checks.redirects",
     "links": "docs_checks.links",
+    "links_internal": "docs_checks.links_internal",
     "reference": "docs_checks.reference",
 }
 

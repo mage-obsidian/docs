@@ -50,8 +50,6 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to system preference
-extra_javascript:
-  - javascripts/a11y.js
 extra_css:
   - stylesheets/extra.css
 extra_javascript:

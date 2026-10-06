@@ -25,6 +25,32 @@ def render_compat_table(cells, lang):
     return "\n".join(rows)
 
 
+LIGHTHOUSE_NOTE = {
+    "en": "Performance {performance}, Accessibility {accessibility}, Best Practices {best_practices} and SEO {seo}, "
+          "measured on the live demo store, not on this documentation. "
+          "{tool} {version}, {form_factor}, {aggregate} of {runs} runs, {date}.",
+    "es": "Rendimiento {performance}, Accesibilidad {accessibility}, Buenas prácticas {best_practices} y SEO {seo}, "
+          "medido en la tienda demo en vivo, no en esta documentación. "
+          "{tool} {version}, {form_factor_label}, {aggregate_label} de {runs} ejecuciones, {date}.",
+}
+
+LIGHTHOUSE_TERMS = {
+    "es": {"form_factor": {"mobile": "móvil", "desktop": "escritorio"}, "aggregate": {"median": "mediana"}},
+}
+
+
+def render_lighthouse_scores(entry):
+    return "/".join(str(entry[key]) for key in ("performance", "accessibility", "best_practices", "seo"))
+
+
+def render_lighthouse_note(entry, lang):
+    values = dict(entry)
+    terms = LIGHTHOUSE_TERMS.get(lang, {})
+    values["form_factor_label"] = terms.get("form_factor", {}).get(entry["form_factor"], entry["form_factor"])
+    values["aggregate_label"] = terms.get("aggregate", {}).get(entry["aggregate"], entry["aggregate"])
+    return LIGHTHOUSE_NOTE[lang].format(**values)
+
+
 LANE_LABELS = {
     "en": {"now": "Now", "next": "Next", "later": "Later", "upcoming": "Next"},
     "es": {"now": "Ahora", "next": "Siguiente", "later": "Después", "upcoming": "Siguiente"},
@@ -71,6 +97,14 @@ def define_env(env):
     @env.macro
     def verified(key):
         return render_verified(env.variables["verifications"][key], lang())
+
+    @env.macro
+    def lighthouse_scores():
+        return render_lighthouse_scores(env.variables["lighthouse_demo"])
+
+    @env.macro
+    def lighthouse_note():
+        return render_lighthouse_note(env.variables["lighthouse_demo"], lang())
 
     @env.macro
     def compat_table():

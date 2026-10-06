@@ -75,8 +75,8 @@ Pasa `sources` para emitir un `<picture>` con fallbacks AVIF/WebP:
 
 El tema por defecto en la [demo en vivo](https://mage-obsidian-demo.jeanmarcos.dev/) obtiene un 100 perfecto en todas las categorías:
 
-!!! tip "Lighthouse 100 en la tienda demo"
-    100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO, medido en la tienda demo en vivo, no en esta documentación.
+!!! tip "Lighthouse en la tienda demo"
+    {{ lighthouse_note() }}
 
     [Pruébalo tú mismo](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmage-obsidian-demo.jeanmarcos.dev%2F){ target=_blank rel=noopener }
 

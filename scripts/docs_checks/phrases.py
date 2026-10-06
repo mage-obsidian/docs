@@ -14,6 +14,10 @@ BANNED = [
     "versionados de forma independiente",
     "cuando se alcance la paridad",
     "listo para probar",
+    "not fully tested yet",
+    "core 2.6.0",
+    "aún sin pruebas completas",
+    "desde el core 2.6.0",
 ]
 
 ALLOWED = {

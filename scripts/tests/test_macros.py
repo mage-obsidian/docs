@@ -30,6 +30,26 @@ def test_compat_table_marks_each_cell():
     assert "| Mage-OS 2.4.9 | ✅ Passed | 2026-10-06 |" in table
 
 
+LIGHTHOUSE = {"performance": 100, "accessibility": 98, "best_practices": 100, "seo": 100, "date": "2026-10-06",
+              "form_factor": "mobile", "tool": "Lighthouse", "version": "13.5.0", "runs": 3, "aggregate": "median"}
+
+
+def test_lighthouse_scores_are_joined_in_category_order():
+    assert docs_main.render_lighthouse_scores(LIGHTHOUSE) == "100/98/100/100"
+
+
+def test_lighthouse_note_states_tool_form_factor_runs_and_date():
+    note = docs_main.render_lighthouse_note(LIGHTHOUSE, "en")
+    assert "Accessibility 98" in note
+    assert "Lighthouse 13.5.0, mobile, median of 3 runs, 2026-10-06." in note
+
+
+def test_lighthouse_note_in_spanish():
+    note = docs_main.render_lighthouse_note(LIGHTHOUSE, "es")
+    assert "Accesibilidad 98" in note
+    assert "Lighthouse 13.5.0, móvil, mediana de 3 ejecuciones, 2026-10-06." in note
+
+
 class FakeEnv:
     def __init__(self, language):
         self.conf = {"theme": {"language": language}}

@@ -69,7 +69,7 @@ Magento 2 tiene más de una respuesta a "¿cómo debería construirse el fronten
 </tr>
 <tr markdown>
 <th scope="row" markdown>Rendimiento</th>
-<td markdown>Lighthouse 100/100/100/100 en la [demo en vivo]({{ config.extra.demo_url }})</td>
+<td markdown>Lighthouse {{ lighthouse_scores() }} en la [demo en vivo]({{ config.extra.demo_url }})</td>
 <td markdown>Excelente</td>
 <td markdown>Pobre sin mucho tuning</td>
 </tr>

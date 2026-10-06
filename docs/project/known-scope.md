@@ -1,5 +1,5 @@
 ---
-description: "What MageObsidian does not cover and why, with the Luma parity register read on 2026-09-22."
+description: "What MageObsidian does not cover and why, with the Luma parity register read on 2026-09-29."
 ---
 # Known scope
 
@@ -7,7 +7,7 @@ What MageObsidian does not cover, and why. Each item here is a decision or a mea
 
 ## Luma parity
 
-The parity register was read on 2026-09-22 against **Magento Open Source 2.4.9**. It lists 485 entries: 317 covered, 27 resolved, 138 out of scope and 3 blocked. A covered entry has a test that observed the behaviour; the two groups below are the ones that are not.
+The parity register was read on 2026-09-29 against **Magento Open Source 2.4.9**. It lists 486 entries: 318 covered, 27 resolved, 138 out of scope and 3 blocked. A covered entry has a test that observed the behaviour; the two groups below are the ones that are not.
 
 ### Blocked
 
@@ -43,4 +43,4 @@ No commercial payment gateway has been verified. The extension point is: a payme
 
 ## Adobe Commerce
 
-Adobe Commerce is detected and inventoried by `mage-obsidian:frontend:doctor`, which reports which Commerce-only storefront families a store has enabled. It is not verified: the inventory reports what is installed and claims nothing more. See [Adobe Commerce](../getting-started/adobe-commerce.md).
+Adobe Commerce is detected and inventoried by `mage-obsidian:frontend:doctor`, which reports which Commerce-only storefront families a store has enabled. It is not in the compatibility matrix. The storefront was walked once on Adobe Commerce 2.4.9 on 2026-10-06; Adobe Commerce Cloud, payment gateways and Commerce-only features are unverified. See [Adobe Commerce](../getting-started/adobe-commerce.md).

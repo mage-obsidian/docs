@@ -54,8 +54,8 @@ lanes:
       - progress: null
         measure_en: null
         measure_es: null
-        en: {title: "Adobe Commerce", text: "Detected and inventoried today; verification on the platform is still to be done."}
-        es: {title: "Adobe Commerce", text: "Hoy se detecta e inventaría; la verificación en la plataforma aún está pendiente."}
+        en: {title: "Adobe Commerce", text: "Walked once on Adobe Commerce 2.4.9 on 2026-10-06. Still to do: the compatibility matrix, Cloud, payment gateways and Commerce-only features."}
+        es: {title: "Adobe Commerce", text: "Recorrido una vez sobre Adobe Commerce 2.4.9 el 2026-10-06. Pendiente: la matriz de compatibilidad, Cloud, pasarelas de pago y funciones exclusivas de Commerce."}
       - progress: null
         measure_en: null
         measure_es: null

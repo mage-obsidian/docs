@@ -19,10 +19,10 @@ O date un recorrido rápido — home, categoría, página de producto:
 <p>Un recorrido rápido por la tienda demo: inicio, categoría y página de producto.</p>
 </details>
 
-La demo obtiene **100/100/100/100 en Lighthouse** (Rendimiento, Accesibilidad, Buenas prácticas, SEO):
+La demo obtiene **{{ lighthouse_scores() }} en Lighthouse** (Rendimiento, Accesibilidad, Buenas prácticas, SEO):
 
-!!! tip "Lighthouse 100 en la tienda demo"
-    100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO, medido en la tienda demo en vivo, no en esta documentación.
+!!! tip "Lighthouse en la tienda demo"
+    {{ lighthouse_note() }}
 
     [Pruébalo tú mismo](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmage-obsidian-demo.jeanmarcos.dev%2F){ target=_blank rel=noopener }
 

@@ -18,8 +18,8 @@ install:
   - {tab: composer, lines: ["composer require mage-obsidian/theme-default:^4.0", "bin/magento setup:upgrade"]}
   - {tab: pnpm, lines: ["cd vite && pnpm install --frozen-lockfile", "pnpm build:theme MageObsidian/default"]}
 tiles:
-  - {eyebrow: "Lighthouse", number: "100", text: "on the demo store, mobile", source: "demo · 2026-09"}
-  - {eyebrow: "Verified", number: "317", text: "Luma behaviours", source: "register · 2026-09-22"}
+  - {eyebrow: "Lighthouse", number: "100", text: "on the demo store, mobile", source: "Lighthouse 13.5.0 · 2026-10-06"}
+  - {eyebrow: "Verified", number: "318", text: "Luma behaviours", source: "register · 2026-09-29"}
   - {eyebrow: "Compatibility", wide: true, title: "Magento Open Source & Mage-OS", text: "Installed from Packagist on every release.", href: "getting-started/compatibility/"}
 paths:
   - {eyebrow: "01 · Evaluate", wide: true, title: "Why MageObsidian", text: "How it compares with Hyvä and Luma, and what is — and is not — verified yet.", href: "why/"}

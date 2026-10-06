@@ -32,7 +32,7 @@ El proyecto **{{ config.site_name }}** surge como una propuesta disruptiva para 
 
 1. **{{ config.extra.components_name }}:** Ya disponibles y Open Source, estas herramientas han sido creadas para implementar un enfoque completamente nuevo en la creación de temas para Magento. Estas herramientas permiten integrar tecnologías modernas como **Vite**, **TailwindCSS**, **Vue.js** y **ESM** (Módulos de JavaScript nativos), ofreciendo una experiencia de desarrollo más accesible, eficiente y amigable. [Más sobre {{ config.extra.components_name }}](index.md).
 
-2. **{{ config.extra.theme_name }}:** El tema base está construido por completo sobre las herramientas mencionadas y ya es funcional. No hereda nada de los temas tradicionales como **Blank** y **Luma**, lo que permite un diseño completamente nuevo, alineado con prácticas modernas y libre de las restricciones históricas del frontend de Magento. Hoy apunta a Magento Open Source; Adobe Commerce y Mage-OS son técnicamente compatibles desde el core 2.6.0 pero aún sin pruebas completas. [Más sobre {{ config.extra.theme_name }}](../guides/themes/obsidian.md) — o míralo funcionando en la [demo en vivo]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
+2. **{{ config.extra.theme_name }}:** El tema base está construido por completo sobre las herramientas mencionadas y ya es funcional. No hereda nada de los temas tradicionales como **Blank** y **Luma**, lo que permite un diseño completamente nuevo, alineado con prácticas modernas y libre de las restricciones históricas del frontend de Magento. Hoy apunta a Magento Open Source; Mage-OS 2.4.7 a 2.4.9 pasó la matriz de compatibilidad el 2026-10-06; Adobe Commerce 2.4.9 se recorrió una vez el 2026-10-06 y no está en la matriz. [Más sobre {{ config.extra.theme_name }}](../guides/themes/obsidian.md) — o míralo funcionando en la [demo en vivo]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
 
 Una de las principales fortalezas de **{{ config.extra.components_name }}** es que **no sigue el enfoque de una PWA**. En lugar de ello, se apoya en el sistema existente de Layouts, Bloques y Templates de Magento, preservando su arquitectura nativa. Este enfoque permite a los desarrolladores aprovechar herramientas modernas y estándares actuales sin necesidad de alterar la compatibilidad con módulos y funcionalidades existentes, ofreciendo una experiencia de desarrollo más fluida y eficiente.
 
@@ -82,8 +82,8 @@ Además, aunque el uso de paquetes de **NPM** siempre fue posible en Magento, **
 
 - **Rendimiento excepcional:** Gracias a los componentes subyacentes, el tema está optimizado para cargar solo lo necesario, lo que resulta en tiempos de carga ultrarrápidos. Esto mejora tanto la experiencia del usuario como las métricas de rendimiento, como las Core Web Vitals de Google.
 
-!!! tip "Lighthouse 100 en la tienda demo"
-    100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO, medido en la tienda demo en vivo, no en esta documentación.
+!!! tip "Lighthouse en la tienda demo"
+    {{ lighthouse_note() }}
 
     [Pruébalo tú mismo](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmage-obsidian-demo.jeanmarcos.dev%2F){ target=_blank rel=noopener }
 

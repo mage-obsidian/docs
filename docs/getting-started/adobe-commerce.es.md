@@ -3,6 +3,8 @@ description: "Qué cambia al instalar MageObsidian en Adobe Commerce 2.4.9: clav
 ---
 # Adobe Commerce
 
+{{ verified('adobe-commerce') }}
+
 **{{ config.extra.components_name }}** se instala y funciona sobre **Adobe Commerce 2.4.9** con
 los mismos paquetes que en Magento Open Source. Esta página cubre lo que cambia: las claves de
 Composer, los paquetes que no aplican y los problemas que te puedes encontrar en el camino.

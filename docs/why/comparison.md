@@ -69,7 +69,7 @@ Magento 2 has more than one answer to "how should my store's frontend be built?"
 </tr>
 <tr markdown>
 <th scope="row" markdown>Performance</th>
-<td markdown>Lighthouse 100/100/100/100 on the [live demo]({{ config.extra.demo_url }})</td>
+<td markdown>Lighthouse {{ lighthouse_scores() }} on the [live demo]({{ config.extra.demo_url }})</td>
 <td markdown>Excellent</td>
 <td markdown>Poor without heavy tuning</td>
 </tr>

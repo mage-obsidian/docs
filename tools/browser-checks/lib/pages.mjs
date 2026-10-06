@@ -5,7 +5,7 @@
 export const KEY_PAGES = [
   "", "es/", "getting-started/", "getting-started/installation/", "getting-started/compatibility/",
   "upgrade/3-to-4/", "why/comparison/", "guides/vue/islands/", "reference/twig/", "reference/cli/",
-  "project/roadmap/", "project/changelog/",
+  "project/roadmap/", "project/changelog/", "404.html", "es/404.html",
 ];
 export const LIGHTHOUSE_PAGES = ["", "getting-started/", "getting-started/installation/", "getting-started/compatibility/"];
 export const OVERFLOW_PAGES = ["", "why/comparison/", "reference/cli/", "reference/config-paths/", "project/roadmap/"];
