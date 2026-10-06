@@ -87,6 +87,7 @@
   --md-default-fg-color: var(--mo-ink);
   --md-default-fg-color--light: var(--mo-muted);
   --md-primary-fg-color: #17151d;
+  --md-accent-bg-color: #08070b;
   --md-primary-bg-color: #f3efe7;
   --md-primary-bg-color--light: #f3efe7;
   --md-accent-fg-color: var(--mo-accent);
