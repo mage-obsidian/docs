@@ -10,16 +10,16 @@ Dónde ha estado MageObsidian y hacia dónde va. Cada hito enlaza con su entrada
 
 ## Qué se ha verificado
 
-Medido el 2026-09-22 contra **Magento Open Source 2.4.9** con el
+Medido contra **Magento Open Source 2.4.9** con el
 arnés de verificación privado, sobre el par
-`theme-default` / `theme-base`:
+`theme-default` / `theme-base`. Cada fila lleva la fecha en que se midió:
 
-| Registro | Cifra |
-|---|---|
-| Entradas de paridad | 485 — 317 cubiertas, 138 fuera de alcance, 27 resueltas, 3 bloqueadas |
-| Layouts de página | 15 entradas, 13 cubiertas por una prueba ejecutada, 2 fuera de alcance |
-| Pruebas unitarias del motor de build | 321 |
-| Pruebas unitarias del arnés | 268 |
+| Registro | Cifra | Medido |
+|---|---|---|
+| Entradas de paridad | 486 — 318 cubiertas, 138 fuera de alcance, 27 resueltas, 3 bloqueadas | 2026-09-29 |
+| Layouts de página | 15 entradas, 13 cubiertas por una prueba ejecutada, 2 fuera de alcance | 2026-09-22 |
+| Pruebas unitarias del motor de build | 321 | 2026-09-22 |
+| Pruebas unitarias del arnés | 268 | 2026-09-22 |
 
 Una entrada "cubierta" significa que una prueba se ejecutó y observó el comportamiento en esa plataforma; una
 declaración en un tema nunca cuenta como cobertura por sí sola. Lo que estas cifras dejan fuera está en

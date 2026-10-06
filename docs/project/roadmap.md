@@ -10,16 +10,16 @@ Where MageObsidian has been, and where it goes next. Every milestone links to it
 
 ## What has been verified
 
-Measured on 2026-09-22 against **Magento Open Source 2.4.9** with the
+Measured against **Magento Open Source 2.4.9** with the
 private verification harness, on the
-`theme-default` / `theme-base` pair:
+`theme-default` / `theme-base` pair. Each row carries the date it was measured:
 
-| Register | Figure |
-|---|---|
-| Parity entries | 485 — 317 covered, 138 out of scope, 27 resolved, 3 blocked |
-| Page layouts | 15 entries, 13 covered by an executed test, 2 out of scope |
-| Build engine unit tests | 321 |
-| Harness unit tests | 268 |
+| Register | Figure | Measured |
+|---|---|---|
+| Parity entries | 486 — 318 covered, 138 out of scope, 27 resolved, 3 blocked | 2026-09-29 |
+| Page layouts | 15 entries, 13 covered by an executed test, 2 out of scope | 2026-09-22 |
+| Build engine unit tests | 321 | 2026-09-22 |
+| Harness unit tests | 268 | 2026-09-22 |
 
 A "covered" entry means a test ran and observed the behaviour on that platform; a
 declaration in a theme never counts as coverage on its own. What these figures leave out is on

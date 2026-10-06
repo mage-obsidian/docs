@@ -24,7 +24,7 @@ Nothing to do: `^4.0` already resolves to 4.0.1.
 
 ---
 
-## 4.0.0 — 2026-10-06
+## 4.0.0 — 2026-10-06 { #4-0-0 }
 
 ### Highlights
 
@@ -82,7 +82,7 @@ Last version of each package before 4.0, and the 4.0.0 release.
 
 ---
 
-## September 2026
+## September 2026 { #2026-09 }
 
 ### Navigation without blank frames
 
@@ -224,7 +224,7 @@ floor of the pnpm version it pins. Upgrading an install whose `vite/node_modules
 
 ---
 
-## August 2026
+## August 2026 { #2026-08 }
 
 ### Checkout served from the full-page cache
 
@@ -265,7 +265,7 @@ entirely missing. It now resolves the sentinel through Magento's own `LocaleReso
 
 ---
 
-## July 2026
+## July 2026 { #2026-07 }
 
 The month the storefront line moved to `3.x` (21 July) and then grew a reactive layer on top of it.
 
@@ -384,7 +384,7 @@ layout.
 
 ---
 
-## June 2026 — the 2.0.0 line
+## June 2026 — the 2.0.0 line { #2026-06 }
 
 The whole stack was cut together on 22 June: core engine, CLI, Vite harness, JS engine, the optional
 Twig engine, `module-storefront`, both themes, and the compatibility modules for catalog, search,

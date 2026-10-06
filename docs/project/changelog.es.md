@@ -24,7 +24,7 @@ No hay nada que hacer: `^4.0` ya resuelve a 4.0.1.
 
 ---
 
-## 4.0.0 — 2026-10-06
+## 4.0.0 — 2026-10-06 { #4-0-0 }
 
 ### Destacados
 
@@ -82,7 +82,7 @@ Nada.
 
 ---
 
-## Septiembre 2026
+## Septiembre 2026 { #2026-09 }
 
 ### Navegación sin frames en blanco
 
@@ -232,7 +232,7 @@ borra `vite/node_modules` una vez; si no, pnpm aborta sin terminal con
 
 ---
 
-## Agosto 2026
+## Agosto 2026 { #2026-08 }
 
 ### Checkout servido desde la Full Page Cache
 
@@ -276,7 +276,7 @@ un deploy impecable como enteramente ausente. Ahora resuelve el centinela a trav
 
 ---
 
-## Julio 2026
+## Julio 2026 { #2026-07 }
 
 El mes en que la línea del storefront pasó a `3.x` (21 de julio) y luego creció una capa reactiva
 encima.
@@ -400,7 +400,7 @@ layout reactivo de una sola página.
 
 ---
 
-## Junio 2026 — la línea 2.0.0
+## Junio 2026 — la línea 2.0.0 { #2026-06 }
 
 Todo el stack se etiquetó a la vez el 22 de junio: motor core, CLI, harness de Vite, motor JS, el motor
 Twig opcional, `module-storefront`, ambos temas y los módulos de compatibilidad para catálogo, búsqueda,
