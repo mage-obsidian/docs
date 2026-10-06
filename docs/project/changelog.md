@@ -9,6 +9,73 @@ recompose it from a dozen release feeds.
 Each entry names the packages and versions that carry it. For the commit-level history of a single
 package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
+---
+
+## Storefront 4.0.1 — 2026-10-06
+
+### Fixed
+
+- **theme-base** — nine templates failed with a fatal error on PHP 8.3 and 8.4, because the license header sat in a closed PHP block before `declare(strict_types=1)`.
+- **theme-base** — `root.phtml` read `$headAssets`, which Magento 2.4.7 never assigns, so every page returned HTTP 500 on 2.4.7.
+
+### Upgrade notes
+
+Nothing to do: `^4.0` already resolves to 4.0.1.
+
+---
+
+## 4.0.0 — 2026-10-06
+
+### Highlights
+
+- **Stable.** 4.0.0 is the first stable release of the monorepo era.
+- **Two release trains.** The framework and the storefront each release all their packages under one version.
+- **Monorepos.** The framework and the storefront now live in one repository each.
+
+### Upgrade notes
+
+See the [upgrade guide from 3.x to 4.0](../upgrade/3-to-4.md).
+
+### Deprecated
+
+Nothing.
+
+### Version map
+
+Last version of each package before 4.0, and the version that carries 4.0.
+
+| Package | Last before 4.0 | 4.0 |
+|---|---|---|
+| mage-obsidian/module-modern-frontend | 2.22.0 | 4.0.0 |
+| mage-obsidian/module-modern-frontend-cli | 2.9.0 | 4.0.0 |
+| mage-obsidian/module-modern-frontend-twig | 2.7.1 | 4.0.0 |
+| mage-obsidian/component-modern-frontend | 2.7.0 | 4.0.0 |
+| mage-obsidian (npm) | 3.2.0 | 4.0.0 |
+| mage-obsidian/module-catalog | 3.12.0 | 4.0.1 |
+| mage-obsidian/module-catalog-search | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-checkout | 3.12.1 | 4.0.1 |
+| mage-obsidian/module-customer | 2.4.1 | 4.0.1 |
+| mage-obsidian/module-downloadable | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-gift-message | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-instant-purchase | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-multishipping | 2.1.0 | 4.0.1 |
+| mage-obsidian/module-persistent | 2.1.0 | 4.0.1 |
+| mage-obsidian/module-product-alert | 2.1.0 | 4.0.1 |
+| mage-obsidian/module-review | 2.3.0 | 4.0.1 |
+| mage-obsidian/module-sales | 2.4.0 | 4.0.1 |
+| mage-obsidian/module-search | 1.3.0 | 4.0.1 |
+| mage-obsidian/module-send-friend | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-showcase | 1.5.0 | 4.0.1 |
+| mage-obsidian/module-storefront | 3.23.0 | 4.0.1 |
+| mage-obsidian/module-vault | 2.3.0 | 4.0.1 |
+| mage-obsidian/module-wishlist | 2.3.0 | 4.0.1 |
+| mage-obsidian/theme-base | 3.13.1 | 4.0.1 |
+| mage-obsidian/theme-default | 3.21.3 | 4.0.0 |
+
+---
+
+## Before 4.0
+
 !!! note "Where this starts"
     The whole stack was cut to `2.0.0` together on **22 June 2026**, and that is where this log
     begins. Anything older predates the current line.

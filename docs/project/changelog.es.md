@@ -9,6 +9,73 @@ puedas leer qué cambió sin tener que recomponerlo a partir de una docena de fe
 Cada entrada nombra los paquetes y versiones que la traen. Para el historial a nivel de commit de un
 paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsidian).
 
+---
+
+## Storefront 4.0.1 — 2026-10-06
+
+### Corregido
+
+- **theme-base** — nueve plantillas fallaban con un error fatal en PHP 8.3 y 8.4, porque la cabecera de licencia estaba en un bloque PHP cerrado antes de `declare(strict_types=1)`.
+- **theme-base** — `root.phtml` leía `$headAssets`, que Magento 2.4.7 nunca asigna, así que todas las páginas devolvían HTTP 500 en 2.4.7.
+
+### Notas de actualización
+
+No hay nada que hacer: `^4.0` ya resuelve a 4.0.1.
+
+---
+
+## 4.0.0 — 2026-10-06
+
+### Destacados
+
+- **Estable.** 4.0.0 es la primera versión estable de la era monorepo.
+- **Dos trenes de versiones.** El framework y el storefront publican cada uno todos sus paquetes bajo una misma versión.
+- **Monorepos.** El framework y el storefront viven ahora en un repositorio cada uno.
+
+### Notas de actualización
+
+Consulta la [guía de actualización de 3.x a 4.0](../upgrade/3-to-4.md).
+
+### Obsoleto
+
+Nada.
+
+### Mapa de versiones
+
+Última versión de cada paquete antes de 4.0 y la versión que trae 4.0.
+
+| Paquete | Última antes de 4.0 | 4.0 |
+|---|---|---|
+| mage-obsidian/module-modern-frontend | 2.22.0 | 4.0.0 |
+| mage-obsidian/module-modern-frontend-cli | 2.9.0 | 4.0.0 |
+| mage-obsidian/module-modern-frontend-twig | 2.7.1 | 4.0.0 |
+| mage-obsidian/component-modern-frontend | 2.7.0 | 4.0.0 |
+| mage-obsidian (npm) | 3.2.0 | 4.0.0 |
+| mage-obsidian/module-catalog | 3.12.0 | 4.0.1 |
+| mage-obsidian/module-catalog-search | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-checkout | 3.12.1 | 4.0.1 |
+| mage-obsidian/module-customer | 2.4.1 | 4.0.1 |
+| mage-obsidian/module-downloadable | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-gift-message | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-instant-purchase | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-multishipping | 2.1.0 | 4.0.1 |
+| mage-obsidian/module-persistent | 2.1.0 | 4.0.1 |
+| mage-obsidian/module-product-alert | 2.1.0 | 4.0.1 |
+| mage-obsidian/module-review | 2.3.0 | 4.0.1 |
+| mage-obsidian/module-sales | 2.4.0 | 4.0.1 |
+| mage-obsidian/module-search | 1.3.0 | 4.0.1 |
+| mage-obsidian/module-send-friend | 2.2.0 | 4.0.1 |
+| mage-obsidian/module-showcase | 1.5.0 | 4.0.1 |
+| mage-obsidian/module-storefront | 3.23.0 | 4.0.1 |
+| mage-obsidian/module-vault | 2.3.0 | 4.0.1 |
+| mage-obsidian/module-wishlist | 2.3.0 | 4.0.1 |
+| mage-obsidian/theme-base | 3.13.1 | 4.0.1 |
+| mage-obsidian/theme-default | 3.21.3 | 4.0.0 |
+
+---
+
+## Antes de 4.0
+
 !!! note "Dónde empieza esto"
     Todo el stack se etiquetó como `2.0.0` a la vez el **22 de junio de 2026**, y ahí empieza este
     registro. Lo anterior queda fuera de la línea actual.
