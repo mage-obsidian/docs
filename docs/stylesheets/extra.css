@@ -127,17 +127,18 @@ nav.md-tabs .md-tabs__list li:first-child {
 }
 
 .md-typeset .grid.cards .lg.middle {
-  color: var(--md-primary-fg-color);
+  color: var(--mo-accent);
 }
 
-/* ── Type refinements ───────────────────────────────────────────── */
-.md-typeset h1 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
+[data-md-color-scheme="slate"] .md-typeset .md-button {
+  color: var(--mo-accent);
+  border-color: var(--mo-accent);
 }
 
-.md-typeset h2 {
-  letter-spacing: -0.01em;
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
+  background-color: var(--mo-accent);
+  border-color: var(--mo-accent);
+  color: #08070b;
 }
 
 .md-typeset ol.mo-timeline {
