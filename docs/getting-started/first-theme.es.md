@@ -13,7 +13,8 @@ Los comandos se muestran como `bin/magento …` desde la raíz de Magento. En un
 ## 1. Genera el tema
 
 ```bash
-bin/magento mage-obsidian:generate:theme Acme/child --parent=MageObsidian/default --title="Child"
+bin/magento mage-obsidian:generate:theme Acme/child \
+  --parent=MageObsidian/default --title="Child"
 ```
 
 ```text
@@ -49,7 +50,8 @@ Upgrade completed successfully.
 Los temas se identifican por el id que les da la tabla `theme`, y ese id cambia de una tienda a otra. Lee los ids del hijo y de OBSIDIAN (en zento, con `zento mysql`):
 
 ```sql
-SELECT theme_id, theme_path FROM theme WHERE area = 'frontend' AND theme_path IN ('Acme/child', 'MageObsidian/default');
+SELECT theme_id, theme_path FROM theme
+WHERE area = 'frontend' AND theme_path IN ('Acme/child', 'MageObsidian/default');
 ```
 
 ```text
@@ -106,7 +108,8 @@ Las importaciones entre módulos dentro del archivo usan `Vendor_Module::path`, 
 El servidor renderiza el primer fotograma de esta isla desde una plantilla de OBSIDIAN, y ese marcado debe coincidir con el componente; si no, se vería la bolsa hasta que Vue monte. Sobrescribe la plantilla en el hijo con el mismo cambio de icono:
 
 ```bash
-THEME_SRC=$(ls -d vendor/mage-obsidian/theme-default app/design/frontend/MageObsidian/default 2>/dev/null | head -1)
+THEME_SRC=$(ls -d vendor/mage-obsidian/theme-default \
+  app/design/frontend/MageObsidian/default 2>/dev/null | head -1)
 mkdir -p app/design/frontend/Acme/child/Magento_Theme/templates/html/header
 cp "$THEME_SRC"/Magento_Theme/templates/html/header/cart-count.twig \
    app/design/frontend/Acme/child/Magento_Theme/templates/html/header/cart-count.twig
@@ -191,7 +194,9 @@ grep -o 'frontend/[A-Za-z-]*/[a-z-]*' home.html | sort | uniq -c
 También conserva todas las islas que renderiza OBSIDIAN: `MiniCart`, `AccountMenu` y `SearchAutocomplete` del encabezado están presentes, y la página monta nueve islas, el mismo número que con `MageObsidian/default`:
 
 ```bash
-for n in MiniCart AccountMenu SearchAutocomplete; do grep -c "$n" home.html; done
+for n in MiniCart AccountMenu SearchAutocomplete; do
+  grep -c "$n" home.html
+done
 grep -o 'data-mage-island data-component' home.html | wc -l
 ```
 
@@ -215,8 +220,10 @@ heroicons/24/outline/shopping-cart
 Descarga los archivos compilados y busca ambos cambios:
 
 ```bash
-curl -sk https://your-store.test/static/<version>/frontend/Acme/child/en_US/generated/css/style.css | grep -o -- '--color-accent:[^;]*' | head -1
-curl -sk https://your-store.test/static/<version>/frontend/Acme/child/en_US/generated/MageObsidian_Storefront/components/cart/CartCount.js | grep -o 'shopping-[a-z]*' | sort -u
+ASSETS='https://your-store.test/static/<version>/frontend/Acme/child/en_US/generated'
+curl -sk "$ASSETS/css/style.css" | grep -o -- '--color-accent:[^;]*' | head -1
+curl -sk "$ASSETS/MageObsidian_Storefront/components/cart/CartCount.js" \
+  | grep -o 'shopping-[a-z]*' | sort -u
 ```
 
 ```text
