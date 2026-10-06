@@ -5,7 +5,7 @@ repo_name: mage-obsidian/framework
 edit_uri: ""
 theme:
   logo: assets/logo.svg
-  favicon: assets/favicon.svg
+  favicon: assets/favicon.png
   language: en
   name: material
   custom_dir: overrides
