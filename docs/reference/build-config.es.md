@@ -13,6 +13,8 @@ El motor de build lee dos archivos de configuración. Un tema aporta `theme.conf
 
 Está en `web/theme.config.js` dentro del tema. El motor carga el archivo de cada tema de la cadena de herencia y los combina en profundidad, con el tema hijo por encima de sus padres. Esa combinación concatena los arrays, de modo que un tema hijo suma a la lista que declaró su padre.
 
+Las claves que tienen valor por defecto lo toman en el tema hijo **antes** de la combinación, así que omitir una no hereda el valor del padre. Por eso `includeCssSourceFromParentThemes`, `ignoredCssFromModules`, `exposeNpmPackages` y `vue.runtimeOnly` deben repetirse en el hijo siempre que el valor no sea el predeterminado: un `includeCssSourceFromParentThemes: false`, un `vue.runtimeOnly: true` o un `ignoredCssFromModules: "all"` del padre se pierde si el hijo lo omite. Las listas que declaró el padre se conservan. Solo `ignoredTailwindConfigFromModules` y `scanCmsContent`, que no tienen valor por defecto, se heredan cuando el hijo los omite.
+
 | Clave | Tipo | Valor por defecto | Efecto |
 |---|---|---|---|
 | `includeCssSourceFromParentThemes` | `boolean` | `true` | Importa el `theme.source.css` de cada tema ancestro, desde la raíz hacia abajo. Con `false`, solo se importa el `theme.source.css` del tema activo. |

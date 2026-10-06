@@ -13,6 +13,8 @@ The build engine reads two configuration files. A theme ships `theme.config.js` 
 
 Located at `web/theme.config.js` inside the theme. The engine loads the file of every theme in the inheritance chain and deep-merges them, with the child theme winning over its parents. Arrays are concatenated by that merge, so a child theme adds to the list its parent declared.
 
+The keys that have a default take it in the child theme **before** the merge, so omitting one does not inherit the parent's value. `includeCssSourceFromParentThemes`, `ignoredCssFromModules`, `exposeNpmPackages` and `vue.runtimeOnly` therefore need to be repeated in the child whenever the value is not the default: a parent's `includeCssSourceFromParentThemes: false`, `vue.runtimeOnly: true` or `ignoredCssFromModules: "all"` is lost if the child omits it. Lists declared by the parent are still kept. Only `ignoredTailwindConfigFromModules` and `scanCmsContent`, which have no default, are inherited when the child omits them.
+
 | Key | Type | Default | Effect |
 |---|---|---|---|
 | `includeCssSourceFromParentThemes` | `boolean` | `true` | Imports the `theme.source.css` of every ancestor theme, from the root down. With `false`, only the active theme's own `theme.source.css` is imported. |
