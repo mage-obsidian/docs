@@ -1,6 +1,8 @@
 {% raw %}
 # Helpers y Filtros de Twig
 
+Las funciones y filtros que se listan aquí forman parte de la superficie estable de 4.x (consulta [Versionado y soporte](../project/versioning.md)).
+
 El motor Twig expone el puente phtml de MageObsidian como **funciones** Twig, y los escapers conscientes del contexto de Magento como **filtros**. Reflejan los métodos que ya usas en `.phtml`.
 
 El bloque que renderiza se lee automáticamente del contexto de Twig, así que los renders anidados y recursivos cada uno apunta a su propio bloque —nunca le pasas `block` a estos helpers.

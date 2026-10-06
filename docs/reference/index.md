@@ -1,6 +1,6 @@
 # Reference
 
-Lookup pages for commands, configuration, the build contract and helpers.
+Lookup pages for commands, configuration, the build contract and helpers. What is listed in Reference is the stable surface of 4.x (see [Versioning & support](../project/versioning.md)).
 
 <div class="grid cards" markdown>
 

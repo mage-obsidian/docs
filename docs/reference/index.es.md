@@ -1,6 +1,6 @@
 # Referencia
 
-Páginas de consulta para comandos, configuración, el contrato del build y los helpers.
+Páginas de consulta para comandos, configuración, el contrato del build y los helpers. Lo que figura en Referencia es la superficie estable de 4.x (consulta [Versionado y soporte](../project/versioning.md)).
 
 <div class="grid cards" markdown>
 

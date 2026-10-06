@@ -1,6 +1,8 @@
 {% raw %}
 # Twig Helpers & Filters
 
+The functions and filters listed here are part of the stable surface of 4.x (see [Versioning & support](../project/versioning.md)).
+
 The Twig engine exposes the MageObsidian phtml bridge as Twig **functions**, and Magento's context-aware escapers as **filters**. They mirror the methods you already use in `.phtml`.
 
 The rendering block is read from the Twig context automatically, so nested and recursive renders each address their own block — you never pass `block` to these helpers.
