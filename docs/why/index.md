@@ -2,6 +2,8 @@
 
 > **Note:** This project is developed in my free time, which may result in slower progress than expected. If you'd like to support its development and accelerate progress, consider contributing financially. More details can be found in the [Project Support](../project/sponsor.md) section.
 
+## What it is
+
 The **{{ config.site_name }}** project emerges as a disruptive proposal to revolutionize the frontend development experience in Magento. For years, Magento's frontend has been constrained by tools and practices that, while useful in their time, have added unnecessary complexity to the ecosystem. Technologies such as Less, Knockout, and RequireJS have turned development into a challenging process that overwhelms even experienced developers.
 
 <div style="display: grid; justify-content: center; grid-template-columns: repeat(auto-fit, minmax(40px, 100px)); gap: 40px; justify-items: center; align-items: center; margin-top: 20px;">
@@ -38,9 +40,9 @@ On top of that native foundation, **{{ config.extra.components_name }}** layers 
 
 Additionally, although the use of **NPM** packages has always been possible in Magento, **{{ config.extra.components_name }}** makes it simpler and more straightforward. Developers can now elegantly leverage the vast ecosystem of tools and libraries available, aligning Magento's frontend with global web development best practices.
 
-In summary, while the base theme is still in progress, the tools developed by **{{ config.extra.components_name }}** are already available and provide a revolutionary solution for redefining frontend development in Magento. This approach combines flexibility, efficiency, and modernity, contributing significantly to the Magento ecosystem.
+Existing modules and functionality keep working, because the project builds on Magento's own layouts, blocks and templates instead of replacing them. That combination of flexibility, efficiency and modernity is what **{{ config.extra.components_name }}** contributes to the Magento ecosystem.
 
-## Key Features
+## Key features
 
 ### Components
 
@@ -92,7 +94,7 @@ In summary, while the base theme is still in progress, the tools developed by **
 
 - **Future-proof:** Developed with a focus on the future, the theme adapts easily to advances in frontend technology and the evolving needs of businesses.
 
-## Overview
+## How it fits together
 
 **{{ config.extra.components_name }}** is a modern, open-source toolkit designed to redefine the
 Magento frontend development experience. By addressing long-standing challenges and leveraging
@@ -105,56 +107,6 @@ incorporating cutting-edge technologies such as:
 - **Vite** for fast and optimized builds.
 - **TailwindCSS** for utility-first CSS design.
 - **Vue.js** for building reactive and modular UI components.
-- **ESM** (native JavaScript modules) for improved performance and compatibility.
-
-<div class="tech-strip" markdown>
-[![Magento](/assets/magento-logo.png)](https://magento.com){target=_blank rel=noopener}
-[![Vite](/assets/vite-logo.png)](https://vitejs.dev){target=_blank rel=noopener}
-[![Vue.js](/assets/vuejs-logo.png)](https://vuejs.org){target=_blank rel=noopener}
-[![TailwindCSS](/assets/tailwind-logo.png)](https://tailwindcss.com){target=_blank rel=noopener}
-[![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
-</div>
-
-Want to see it in action? Explore the OBSIDIAN storefront in the
-[**live demo**]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
-
----
-
-### Features
-
-<div class="grid cards" markdown>
-
--   :material-tools:{ .lg .middle } __Modern development workflow__
-
-    ---
-
-    Streamlines development by replacing legacy solutions like **Less**, **Knockout**, and
-    **RequireJS** with modern alternatives that are easier to maintain and extend.
-
--   :material-puzzle:{ .lg .middle } __Native Magento architecture__
-
-    ---
-
-    Unlike a PWA approach, it works directly with Magento's existing layouts, blocks, and
-    templates — taking advantage of native functionality while offering modern enhancements.
-
--   :material-npm:{ .lg .middle } __Simplified NPM integration__
-
-    ---
-
-    Makes it simpler and more intuitive to leverage the vast ecosystem of NPM tools and
-    libraries already available to Magento.
-
--   :material-source-branch:{ .lg .middle } __Open source & developer-centric__
-
-    ---
-
-    Built with the community in mind and fully open source, empowering developers to
-    contribute, adapt, and innovate.
-
-</div>
-
----
 
 ### Benefits
 
@@ -164,3 +116,7 @@ Want to see it in action? Explore the OBSIDIAN storefront in the
     - **Flexibility:** Create custom solutions while maintaining compatibility with Magento's core functionalities.
     - **Accessibility:** A simplified setup makes it easier for new developers to get started.
     - **Modern standards:** Leverage global best practices in web development for a seamless experience.
+
+## Is it stable?
+
+Yes: MageObsidian 4.0 is a stable release, and the [What's new in 4.0](whats-new-4.md) page lists what it brings. [Versioning & support](../project/versioning.md) explains the two release trains and what the 4.x contract covers.

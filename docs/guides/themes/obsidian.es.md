@@ -51,7 +51,7 @@ El tema se entrega como dos temas apilados para separar limpiamente el diseño d
 </div>
 
 La lógica de storefront — view models, neutralización del layout legacy e islas Vue compartidas —
-vive en el repositorio **[`mage-obsidian/module-storefront`]({{ config.extra.gh_storefront_url }})**,
+vive en el paquete **[`module-storefront`]({{ config.extra.gh_storefront_url }})** del monorepo storefront,
 que `theme-base` arrastra automáticamente.
 
 La herencia se declara con el `theme.xml` nativo de Magento:

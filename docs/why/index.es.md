@@ -2,7 +2,28 @@
 
 > **Nota:** Este proyecto es desarrollado en mi tiempo libre, lo que puede significar que el progreso sea más lento de lo esperado. Si deseas apoyar el desarrollo y acelerar su progreso, considera contribuir económicamente. Más detalles en la sección [Apoyo al Proyecto](../project/sponsor.md).
 
+## Qué es
+
 El proyecto **{{ config.site_name }}** surge como una propuesta disruptiva para revolucionar la experiencia del desarrollo frontend en Magento. Durante años, el frontend de Magento ha estado limitado por herramientas y prácticas que, aunque útiles en su momento, han añadido complejidad innecesaria al ecosistema. Tecnologías como Less, Knockout y RequireJS han transformado el desarrollo en un proceso desafiante que abruma incluso a los desarrolladores experimentados.
+
+<div style="display: grid; justify-content: center; grid-template-columns: repeat(auto-fit, minmax(40px, 100px)); gap: 40px; justify-items: center; align-items: center; margin-top: 20px;">
+  <a href="https://magento.com" target="_blank" rel="noopener noreferrer">
+     <img src="/assets/magento-logo.png" alt="Magento" style="max-width: 100%; height: auto;" />
+  </a>
+  <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
+     <img src="/assets/vite-logo.png" alt="Vite" style="max-width: 100%; height: auto;" />
+  </a>
+  <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">
+     <img src="/assets/vuejs-logo.png" alt="Vue.js" style="max-width: 100%; height: auto;" />
+  </a>
+  <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">
+     <img src="/assets/tailwind-logo.png" alt="TailwindCSS" style="max-width: 100%; height: auto;" />
+  </a>
+  <a href="https://twig.symfony.com" target="_blank" rel="noopener noreferrer">
+     <img src="/assets/twig-logo.png" alt="Twig" style="max-width: 100%; height: auto;" />
+  </a>
+</div>
+
 
 **{{ config.extra.components_name }}** busca simplificar y modernizar el desarrollo frontend en Magento mediante una alternativa innovadora y Open Source. Este proyecto introduce dos aspectos clave:
 
@@ -16,7 +37,7 @@ Sobre esa base nativa, **{{ config.extra.components_name }}** añade bloques de 
 
 Además, aunque el uso de paquetes de **NPM** siempre fue posible en Magento, **{{ config.extra.components_name }}** lo hace más sencillo y directo. Ahora, de manera elegante, se puede aprovechar el vasto ecosistema de herramientas y librerías disponibles, alineando el frontend de Magento con las mejores prácticas globales del desarrollo web.
 
-En resumen, mientras el tema base sigue en progreso, las herramientas desarrolladas por **{{ config.extra.components_name }}** ya están disponibles y ofrecen una solución revolucionaria para redefinir el desarrollo frontend en Magento. Este enfoque combina flexibilidad, eficiencia y modernidad, contribuyendo al ecosistema de Magento.
+Los módulos y la funcionalidad existentes siguen funcionando, porque el proyecto se apoya en los layouts, bloques y plantillas propios de Magento en lugar de reemplazarlos. Esa combinación de flexibilidad, eficiencia y modernidad es lo que **{{ config.extra.components_name }}** aporta al ecosistema de Magento.
 
 ## Características clave
 
@@ -70,7 +91,7 @@ En resumen, mientras el tema base sigue en progreso, las herramientas desarrolla
 
 - **Preparado para futuros estándares:** Desarrollado con un enfoque en el futuro, el tema se adapta fácilmente a los avances en tecnología frontend y las necesidades cambiantes de los negocios.
 
-## Resumen
+## Cómo encaja todo
 
 **{{ config.extra.components_name }}** es un kit de herramientas moderno y de código abierto
 diseñado para redefinir la experiencia de desarrollo frontend en Magento. Al abordar desafíos
@@ -85,55 +106,6 @@ desarrolladores, integrando tecnologías de vanguardia como:
 - **Vue.js** para construir componentes de interfaz de usuario reactivos y modulares.
 - **ESM** (módulos nativos de JavaScript) para un rendimiento y compatibilidad mejorados.
 
-<div class="tech-strip" markdown>
-[![Magento](/assets/magento-logo.png)](https://magento.com){target=_blank rel=noopener}
-[![Vite](/assets/vite-logo.png)](https://vitejs.dev){target=_blank rel=noopener}
-[![Vue.js](/assets/vuejs-logo.png)](https://vuejs.org){target=_blank rel=noopener}
-[![TailwindCSS](/assets/tailwind-logo.png)](https://tailwindcss.com){target=_blank rel=noopener}
-[![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
-</div>
-
-¿Quieres verlo en acción? Explora el storefront OBSIDIAN en la
-[**demo en vivo**]({{ config.extra.demo_url }}){target=_blank rel=noopener}.
-
----
-
-### Características
-
-<div class="grid cards" markdown>
-
--   :material-tools:{ .lg .middle } __Flujo de trabajo moderno__
-
-    ---
-
-    Optimiza el desarrollo reemplazando soluciones heredadas como **Less**, **Knockout** y
-    **RequireJS** con alternativas modernas más fáciles de mantener y extender.
-
--   :material-puzzle:{ .lg .middle } __Arquitectura nativa de Magento__
-
-    ---
-
-    A diferencia de un enfoque PWA, funciona directamente con los layouts, bloques y plantillas
-    existentes de Magento — aprovechando funcionalidades nativas mientras ofrece mejoras modernas.
-
--   :material-npm:{ .lg .middle } __Integración simplificada con NPM__
-
-    ---
-
-    Hace más simple e intuitivo aprovechar el vasto ecosistema de herramientas y bibliotecas
-    NPM ya disponibles para Magento.
-
--   :material-source-branch:{ .lg .middle } __Código abierto y centrado en el desarrollador__
-
-    ---
-
-    Construido pensando en la comunidad y completamente de código abierto, permitiendo a los
-    desarrolladores contribuir, adaptarse e innovar.
-
-</div>
-
----
-
 ### Beneficios
 
 !!! tip "Por qué los equipos eligen {{ config.extra.components_name }}"
@@ -142,3 +114,7 @@ desarrolladores, integrando tecnologías de vanguardia como:
     - **Flexibilidad:** Crea soluciones personalizadas manteniendo la compatibilidad con las funcionalidades principales de Magento.
     - **Accesibilidad:** Una configuración simplificada facilita que nuevos desarrolladores comiencen rápidamente.
     - **Estándares modernos:** Aprovecha las mejores prácticas globales en desarrollo web para una experiencia fluida.
+
+## ¿Es estable?
+
+Sí: MageObsidian 4.0 es una versión estable, y la página [Novedades de 4.0](whats-new-4.md) lista lo que trae. [Versiones y soporte](../project/versioning.md) explica los dos trenes de versiones y qué cubre el contrato de 4.x.

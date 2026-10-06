@@ -49,7 +49,7 @@ The theme ships as two stacked themes so design is cleanly separated from plumbi
 </div>
 
 The storefront logic — view models, legacy-layout neutralization, and shared Vue islands — lives in
-the **[`mage-obsidian/module-storefront`]({{ config.extra.gh_storefront_url }})** repository, pulled
+the **[`module-storefront` package]({{ config.extra.gh_storefront_url }})** of the storefront monorepo, pulled
 in automatically by `theme-base`.
 
 Inheritance is declared with Magento's native `theme.xml`:
