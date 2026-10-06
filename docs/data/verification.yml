@@ -15,6 +15,10 @@ verifications:
     platforms: ["Magento Open Source 2.4.7–2.4.9", "Mage-OS 2.4.7–2.4.9"]
     date: "2026-10-06"
     source: "zento-matrix-suite, theme-default ^4.0 from Packagist"
+  porting:
+    platforms: ["Adobe Commerce 2.4.9"]
+    date: "2026-10-06"
+    source: "Acme_Badge run on the zento-obsidian ee store"
 compatibility:
   release_label: "framework 4.0.0 · storefront 4.0.1"
   cells:
