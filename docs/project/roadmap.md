@@ -1,20 +1,14 @@
 # Roadmap
 
-Where the project stands and where it is going. This roadmap is intentionally high-level and may change — follow [GitHub Discussions](https://github.com/mage-obsidian/framework/discussions) for updates.
+Where MageObsidian has been, and where it goes next. Every milestone links to its changelog entry; what is planned carries no date until it is being built.
 
-## ✅ Available today
+{{ timeline() }}
 
-- **Core engine** — Vite build with HMR inside Magento, Tailwind CSS 4, native ESM, theme inheritance resolution, JS interceptors and per-theme precompilation.
-- **Vue 3 islands** — interactive components mounted lazily over server-rendered pages, with automatic `modulepreload` of the eager island graph.
-- **Twig engine (optional)** — write `.twig` templates alongside `.phtml`.
-- **CLI** — config contract generation, HMR management, module/theme inspection.
-- **Performance features** — opt-in critical CSS generation, JSON-LD structured data (Organization, WebSite, BreadcrumbList, Product).
-- **Storefront** — `module-storefront` plus compatibility modules for catalog, search, customer, sales, wishlist, reviews and more, paired with the OBSIDIAN theme. See it running on the [live demo]({{ config.extra.demo_url }}).
-- **Checkout, end to end** — a one-page checkout that carries a cart to a placed order: guest and signed-in, addresses, shipping method selection, totals, coupons, gift messages, multishipping, instant purchase and stored cards.
-- **Payment method extension point** — a payment method can render its own interface inside the checkout island, ask for its own fields, and hand the shopper over to a gateway and back. What is verified is the mechanism, exercised by a purpose-built probe method; no commercial gateway has been verified (see below).
-- **Translations** — `bin/magento mage-obsidian:i18n:collect` collects phrases from `.vue`, `.ts`, `.js` and `.twig` into each component's `i18n/<locale>.csv`; the default theme ships `en_US` and `es_ES`.
+## Now, next, later
 
-## 📊 What has been verified
+{{ roadmap_lanes() }}
+
+## What has been verified
 
 Measured on 2026-09-22 against **Magento Open Source 2.4.9** with the
 private verification harness, on the
@@ -28,31 +22,7 @@ private verification harness, on the
 | Harness unit tests | 268 |
 
 A "covered" entry means a test ran and observed the behaviour on that platform; a
-declaration in a theme never counts as coverage on its own.
+declaration in a theme never counts as coverage on its own. What these figures leave out is on
+[Known scope](known-scope.md).
 
-**What these figures do not say:**
-
-- **No commercial payment gateway has been verified.** The payment extension point is exercised
-  with a simulated method built for the harness. A real gateway needs its own verification.
-- **One platform, one version.** Everything above was observed on Magento Open Source 2.4.9.
-  Nothing here claims Adobe Commerce or another 2.4.x minor.
-- **Entries still open.** 3 blocked and 138 out-of-scope entries carry their reason in the
-  register; they are not silently counted as working.
-
-## 🚧 In progress
-
-- **Full Luma parity for the default theme** — closing the entries the register still lists as
-  blocked or uncovered, so a store can switch to MageObsidian without losing any stock
-  functionality.
-- **Adobe Commerce** — `mage-obsidian:frontend:doctor` now detects Adobe Commerce and
-  inventories which Commerce-only storefront families a store has enabled, and which of
-  them have a MageObsidian module installed. The inventory reports what is installed; it
-  does not claim that any of it has been verified on that platform. What was verified, and
-  how to install, is in [Adobe Commerce](../getting-started/adobe-commerce.md).
-
-## 🔜 Planned
-
-- **Showcase** of stores running MageObsidian in production — [tell us about yours](https://github.com/mage-obsidian/framework/discussions)!
-
-!!! note "A note on pace"
-    MageObsidian is developed in the maintainer's free time. If it saves you time, consider [supporting the project](sponsor.md) — it directly accelerates this roadmap.
+Nothing on this page is a delivery promise; the [versioning policy](versioning.md) is.

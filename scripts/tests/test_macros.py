@@ -50,3 +50,46 @@ def test_verified_macro_is_registered_apart_from_the_verifications_data():
     assert "verified" in env.macros
     assert "verified" not in env.variables
     assert "Verificado en Mage-OS 2.4.9" in env.macros["verified"]("matrix")
+
+
+def test_timeline_marks_now_and_next():
+    milestones = [
+        {"date": "2026-06-22", "version": "2.0.0", "link": "changelog.md#june-2026", "now": False,
+         "en": {"title": "The 2.0.0 cut", "text": "Islands"}, "es": {"title": "El corte 2.0.0", "text": "Islas"}},
+        {"date": "2026-10-06", "version": "4.0.0", "link": "changelog.md#400", "now": True,
+         "en": {"title": "4.0 stable", "text": "Stable"}, "es": {"title": "4.0 estable", "text": "Estable"}},
+        {"date": None, "version": None, "link": None, "now": False,
+         "en": {"title": "Wider compatibility", "text": "2.4.7"}, "es": {"title": "Más compatibilidad", "text": "2.4.7"}},
+    ]
+    html = docs_main.render_timeline(milestones, "es")
+    assert html.count('class="mo-ms') == 3
+    assert 'class="mo-ms mo-ms--now"' in html
+    assert 'class="mo-ms mo-ms--next"' in html
+    assert '<time datetime="2026-06-22">' in html
+    assert "El corte 2.0.0" in html and "The 2.0.0 cut" not in html
+
+
+def test_lanes_show_progress_only_when_measured():
+    lanes = [{"key": "now", "items": [
+        {"progress": 96, "measure_en": "317 covered · 3 blocked", "measure_es": "317 cubiertas · 3 bloqueadas",
+         "en": {"title": "Full Luma parity", "text": "x"}, "es": {"title": "Paridad completa con Luma", "text": "x"}},
+        {"progress": None, "measure_en": None, "measure_es": None,
+         "en": {"title": "Reference", "text": "y"}, "es": {"title": "Referencia", "text": "y"}},
+    ]}]
+    html = docs_main.render_lanes(lanes, "en")
+    assert html.count('role="progressbar"') == 1
+    assert 'aria-valuenow="96"' in html
+    assert "317 covered · 3 blocked" in html
+
+
+def test_timeline_and_lanes_macros_read_their_own_data_keys():
+    env = FakeEnv("en")
+    env.variables["milestones"] = [
+        {"date": None, "version": None, "link": None, "now": False,
+         "en": {"title": "Later", "text": "t"}, "es": {"title": "Después", "text": "t"}},
+    ]
+    env.variables["lanes"] = [{"key": "later", "items": []}]
+    docs_main.define_env(env)
+    assert "timeline" not in env.variables and "roadmap_lanes" not in env.variables
+    assert "mo-ms--next" in env.macros["timeline"]()
+    assert "mo-lane--later" in env.macros["roadmap_lanes"]()

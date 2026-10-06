@@ -106,3 +106,127 @@ nav.md-tabs .md-tabs__list li:first-child {
   border: 1px solid var(--md-default-fg-color--lightest);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 }
+
+.mo-timeline {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 2rem 0;
+  padding: 1.5rem 0 0;
+  overflow-x: auto;
+  border-top: 2px solid var(--md-default-fg-color--light);
+}
+
+.mo-ms {
+  position: relative;
+  flex: 0 0 11rem;
+  margin: 0;
+  padding-top: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.mo-ms::before {
+  content: "";
+  position: absolute;
+  top: -1.9rem;
+  left: 0;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--md-default-fg-color--light);
+}
+
+.mo-ms .mo-date {
+  display: block;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.7rem;
+}
+
+.mo-ms p {
+  margin: 0.25rem 0 0;
+}
+
+.mo-ms--now::before {
+  background: var(--md-accent-fg-color);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--md-accent-fg-color) 25%, transparent);
+}
+
+.mo-ms--next::before {
+  background: transparent;
+  border: 2px dashed var(--md-default-fg-color--light);
+}
+
+.mo-ver {
+  color: var(--md-accent-fg-color);
+  font-family: var(--md-code-font-family);
+  font-size: 0.7rem;
+}
+
+.mo-lanes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.mo-lane {
+  padding: 0 1rem 0.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+}
+
+.mo-lane--now {
+  border-color: var(--md-accent-fg-color);
+}
+
+.mo-lane--later {
+  border-style: dashed;
+}
+
+.mo-item {
+  margin: 0.75rem 0;
+  font-size: 0.8rem;
+}
+
+.mo-item p {
+  margin: 0.25rem 0;
+}
+
+.mo-bar {
+  height: 6px;
+  margin-top: 0.4rem;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--md-default-fg-color--lightest);
+}
+
+.mo-bar i {
+  display: block;
+  height: 100%;
+  background: var(--md-accent-fg-color);
+}
+
+.mo-item small {
+  color: var(--md-default-fg-color--light);
+}
+
+@media (max-width: 600px) {
+  .mo-timeline {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 0 0 1.25rem;
+    overflow-x: visible;
+    border-top: 0;
+    border-left: 2px solid var(--md-default-fg-color--light);
+  }
+
+  .mo-ms {
+    flex: 1 1 auto;
+    padding: 0 0 1.25rem;
+  }
+
+  .mo-ms::before {
+    top: 0.2rem;
+    left: -1.65rem;
+  }
+}

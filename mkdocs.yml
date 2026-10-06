@@ -58,6 +58,7 @@ plugins:
   - macros:
       include_yaml:
         - docs/data/verification.yml
+        - docs/data/roadmap.yml
   - social:
       cards_layout_options:
         background_color: "#5B5BD6"
