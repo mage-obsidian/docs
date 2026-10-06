@@ -32,11 +32,11 @@ Asegúrate de incluir los archivos mínimos necesarios para registrar un tema en
 
 #### Declarar la Herencia del Tema
 
-```mermaid
-flowchart LR
-  A["theme-default"] -->|"padre"| B["theme-base"]
-  B -->|"assets de módulos"| C["Módulos"]
-```
+<ol class="mo-flow">
+  <li><code>theme-default</code></li>
+  <li><span class="mo-flow__via">padre</span><code>theme-base</code></li>
+  <li><span class="mo-flow__via">assets de módulos</span>Módulos</li>
+</ol>
 
 Al configurar el archivo `theme.xml`, presta atención si deseas heredar de un tema compatible. Si declaras un tema no compatible como tema padre, **la herencia será ignorada durante los pasos de compilación** y el tema no funcionará como se espera.
 

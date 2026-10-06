@@ -4,14 +4,14 @@ Los interceptores permiten que un módulo cambie el comportamiento de las funcio
 
 El build sustituye el módulo objetivo por un envoltorio generado, de modo que todo el que importe el objetivo recibe la versión interceptada. El archivo objetivo en disco nunca se modifica.
 
-```mermaid
-flowchart TD
-  A["import"] --> B["Módulo virtual #92;0interceptor:#60;path#62;"]
-  B --> C["before"]
-  C --> D["around"]
-  D --> E["Función original"]
-  E --> F["after"]
-```
+<ol class="mo-flow">
+  <li><code>import</code></li>
+  <li>Módulo virtual <code>\0interceptor:&lt;path&gt;</code></li>
+  <li><code>before</code></li>
+  <li><code>around</code></li>
+  <li>Función original</li>
+  <li><code>after</code></li>
+</ol>
 
 ## Declarar un interceptor
 

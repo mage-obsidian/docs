@@ -107,13 +107,13 @@ modernizes the creation of Magento themes.
 
 This approach introduces a more accessible, efficient, and developer-friendly workflow.
 
-```mermaid
-flowchart TD
-  A["Module or theme"] --> B["etc/mage_obsidian_compatibility.xml"]
-  B --> C["frontend:config<br>--generate"]
-  C --> D["mage_obsidian_frontend_modules.json"]
-  D --> E["Vite build engine"]
-```
+<ol class="mo-flow">
+  <li>Module or theme</li>
+  <li><code>etc/mage_obsidian_compatibility.xml</code></li>
+  <li><code>frontend:config --generate</code></li>
+  <li><code>mage_obsidian_frontend_modules.json</code></li>
+  <li>Vite build engine</li>
+</ol>
 
 ### Benefits
 

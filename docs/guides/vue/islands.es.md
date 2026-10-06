@@ -105,12 +105,12 @@ De la indentación se encarga el framework: `renderVueComponent` elimina el whit
 
 ## Cómo Funciona
 
-```mermaid
-flowchart TD
-  A["Twig render_vue"] --> B["Marcador data-mage-island"]
-  B --> C["Bootstrap de página"]
-  C --> D["Montaje o hidratación"]
-```
+<ol class="mo-flow">
+  <li>Twig <code>render_vue</code></li>
+  <li>Marcador <code>data-mage-island</code></li>
+  <li>Bootstrap de página</li>
+  <li>Montaje o hidratación</li>
+</ol>
 
 ### 1. El marcador (lado servidor)
 

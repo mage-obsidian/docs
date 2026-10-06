@@ -105,12 +105,12 @@ Indentation is handled for you — `renderVueComponent` strips the whitespace be
 
 ## How It Works
 
-```mermaid
-flowchart TD
-  A["Twig render_vue"] --> B["data-mage-island marker"]
-  B --> C["Page bootstrap"]
-  C --> D["Mount or hydrate"]
-```
+<ol class="mo-flow">
+  <li>Twig <code>render_vue</code></li>
+  <li><code>data-mage-island</code> marker</li>
+  <li>Page bootstrap</li>
+  <li>Mount or hydrate</li>
+</ol>
 
 ### 1. The marker (server side)
 

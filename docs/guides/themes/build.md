@@ -30,11 +30,11 @@ Make sure to include the minimum required files to register a theme in Magento:
 
 #### Declaring Theme Inheritance
 
-```mermaid
-flowchart LR
-  A["theme-default"] -->|"parent"| B["theme-base"]
-  B -->|"module assets"| C["Modules"]
-```
+<ol class="mo-flow">
+  <li><code>theme-default</code></li>
+  <li><span class="mo-flow__via">parent</span><code>theme-base</code></li>
+  <li><span class="mo-flow__via">module assets</span>Modules</li>
+</ol>
 
 When configuring the `theme.xml` file, pay attention if you want to inherit from a compatible theme. Declaring a non-compatible theme as a parent will result in **inheritance being ignored during the compilation process**, and the theme will not work as expected.
 
