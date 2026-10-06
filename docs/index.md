@@ -1,76 +1,25 @@
-# Welcome to {{ config.site_name }}
-
-A modern, groundbreaking frontend stack for Magento. **{{ config.site_name }}** redefines
-frontend development by integrating **Vite**, **TailwindCSS**, and **Vue.js** on top of
-Magento's native layouts, blocks, and templates — for a faster, friendlier workflow.
-
-<div class="tech-strip" markdown>
-[![Magento](/assets/magento-logo.png)](https://magento.com){target=_blank rel=noopener}
-[![Vite](/assets/vite-logo.png)](https://vitejs.dev){target=_blank rel=noopener}
-[![Vue.js](/assets/vuejs-logo.png)](https://vuejs.org){target=_blank rel=noopener}
-[![TailwindCSS](/assets/tailwind-logo.png)](https://tailwindcss.com){target=_blank rel=noopener}
-[![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
-</div>
-
-[:material-open-in-new: Live demo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
-[:octicons-rocket-24: Get started](getting-started/requirements.md){ .md-button }
-
-[![Lighthouse report: 100 across Performance, Accessibility, Best Practices and SEO](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }
-
 ---
-
-## Where to next?
-
-<div class="grid cards" markdown>
-
--   :material-rocket-launch:{ .lg .middle } __Getting started__
-
-    ---
-
-    Set up your environment and get a theme running, from requirements to your first build.
-
-    [:octicons-arrow-right-24: Requirements](getting-started/requirements.md)
-
--   :material-package-variant-closed:{ .lg .middle } __Components__
-
-    ---
-
-    The toolkit that powers it all — modules, compatible themes, and how they fit together.
-
-    [:octicons-arrow-right-24: Overview](why/index.md)
-
--   :material-leaf:{ .lg .middle } __Twig Engine__
-
-    ---
-
-    Write templates in Twig alongside phtml, with helpers and filters built in.
-
-    [:octicons-arrow-right-24: Explore Twig](guides/twig.md)
-
--   :material-palette:{ .lg .middle } __Theme__
-
-    ---
-
-    Learn how the default theme is structured and how to build on top of it.
-
-    [:octicons-arrow-right-24: Theme overview](guides/themes/obsidian.md)
-
--   :material-heart:{ .lg .middle } __Contribute__
-
-    ---
-
-    {{ config.site_name }} is open source. Join in, report issues, and help it grow.
-
-    [:octicons-arrow-right-24: How to contribute](project/contributing.md)
-
--   :material-school:{ .lg .middle } __New here?__
-
-    ---
-
-    Start with the motivation and key features to see what makes {{ config.site_name }} different.
-
-    [:octicons-arrow-right-24: Introduction](why/index.md)
-
-</div>
-
-We hope you enjoy using **{{ config.site_name }}** as much as we enjoyed creating it!
+template: home.html
+title: MageObsidian — the modern frontend for Magento
+description: Vite, Tailwind CSS 4 and Vue islands on top of Magento's native layouts, blocks and templates. 4.0 is stable.
+hero:
+  pill: "Stable release · two release trains"
+  title: "The modern frontend for Magento,"
+  accent: "built on Magento."
+  lead: "Vite, Tailwind CSS 4 and Vue islands on top of native layouts, blocks and templates — with a stable contract for all of 4.x."
+  ctas:
+    - {label: "Get started", href: "getting-started/", primary: true}
+    - {label: "Upgrade from 3.x", href: "upgrade/3-to-4/"}
+    - {label: "Live demo", href: "https://mage-obsidian-demo.jeanmarcos.dev/", external: true}
+install:
+  - {tab: composer, lines: ["composer require mage-obsidian/theme-default:^4.0", "bin/magento setup:upgrade"]}
+  - {tab: pnpm, lines: ["cd vite && pnpm install --frozen-lockfile", "pnpm build:theme MageObsidian/default"]}
+tiles:
+  - {eyebrow: "Lighthouse", number: "100", text: "on the demo store, mobile", source: "demo · 2026-09"}
+  - {eyebrow: "Verified", number: "317", text: "Luma behaviours", source: "register · 2026-09-22"}
+  - {eyebrow: "Compatibility", wide: true, title: "Magento Open Source & Mage-OS", text: "Installed from Packagist on every release.", href: "getting-started/compatibility/"}
+paths:
+  - {eyebrow: "01 · Evaluate", wide: true, title: "Why MageObsidian", text: "How it compares with Hyvä and Luma, and what is — and is not — verified yet.", href: "why/"}
+  - {eyebrow: "02 · Build", title: "Your first theme", text: "A child of OBSIDIAN.", href: "getting-started/first-theme/"}
+  - {eyebrow: "03 · Upgrade", title: "From 3.x", text: "Raise the constraints, run one command.", href: "upgrade/3-to-4/"}
+---

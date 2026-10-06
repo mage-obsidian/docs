@@ -75,7 +75,10 @@ Pass `sources` to emit a `<picture>` with AVIF/WebP fallbacks:
 
 The default theme on the [live demo](https://mage-obsidian-demo.jeanmarcos.dev/) scores a perfect 100 across the board:
 
-[![Lighthouse report: 100 across Performance, Accessibility, Best Practices and SEO](/assets/lighthouse-100.png)](https://mage-obsidian-demo.jeanmarcos.dev/){ .lighthouse-shot target=_blank rel=noopener }
+!!! tip "Lighthouse 100 on the demo store"
+    100 in Performance, Accessibility, Best Practices and SEO, measured on the live demo store, not on this documentation.
+
+    [Run it yourself](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmage-obsidian-demo.jeanmarcos.dev%2F){ target=_blank rel=noopener }
 
 ## Next Steps
 

@@ -4,7 +4,11 @@ Hot Module Replacement (HMR) es una característica central de **MageObsidian** 
 
 Así se siente — los design tokens retematizan la página y un template `.vue` se hot-swapea mientras el componente conserva su estado (el panel de búsqueda nunca se cierra):
 
-<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/hmr-live-edit-v2.mp4"></video>
+<video controls muted playsinline preload="none" poster="/assets/hmr-live-edit-v2.poster.png" aria-label="Edición en vivo con HMR: los tokens de diseño cambian el tema de la página y una plantilla Vue se reemplaza en caliente mientras el componente conserva su estado" style="max-width:100%;border-radius:8px" src="/assets/hmr-live-edit-v2.mp4"></video>
+
+<details class="mo-video-note"><summary>Qué muestra el vídeo</summary>
+<p>Los tokens de diseño cambian el tema de la página y después una plantilla <code>.vue</code> se reemplaza en caliente mientras el componente conserva su estado: el panel de búsqueda nunca se cierra.</p>
+</details>
 
 ---
 

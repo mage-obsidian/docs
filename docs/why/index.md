@@ -8,19 +8,19 @@ The **{{ config.site_name }}** project emerges as a disruptive proposal to revol
 
 <div style="display: grid; justify-content: center; grid-template-columns: repeat(auto-fit, minmax(40px, 100px)); gap: 40px; justify-items: center; align-items: center; margin-top: 20px;">
   <a href="https://magento.com" target="_blank" rel="noopener noreferrer">
-     <img src="/assets/magento-logo.png" alt="Magento" style="max-width: 100%; height: auto;" />
+     <img src="/assets/magento-logo.png" alt="Magento" width="100" height="118" style="max-width: 100%; height: auto;" />
   </a>
   <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-     <img src="/assets/vite-logo.png" alt="Vite" style="max-width: 100%; height: auto;" />
+     <img src="/assets/vite-logo.png" alt="Vite" width="100" height="100" style="max-width: 100%; height: auto;" />
   </a>
   <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">
-     <img src="/assets/vuejs-logo.png" alt="Vue.js" style="max-width: 100%; height: auto;" />
+     <img src="/assets/vuejs-logo.png" alt="Vue.js" width="100" height="86" style="max-width: 100%; height: auto;" />
   </a>
   <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">
-     <img src="/assets/tailwind-logo.png" alt="TailwindCSS" style="max-width: 100%; height: auto;" />
+     <img src="/assets/tailwind-logo.png" alt="TailwindCSS" width="100" height="60" style="max-width: 100%; height: auto;" />
   </a>
   <a href="https://twig.symfony.com" target="_blank" rel="noopener noreferrer">
-     <img src="/assets/twig-logo.png" alt="Twig" style="max-width: 100%; height: auto;" />
+     <img src="/assets/twig-logo.png" alt="Twig" width="100" height="109" style="max-width: 100%; height: auto;" />
   </a>
 </div>
 
@@ -82,7 +82,10 @@ Additionally, although the use of **NPM** packages has always been possible in M
 
 - **Exceptional performance:** Thanks to the underlying components, the theme is optimized to load only what is necessary, resulting in ultra-fast load times. This improves both user experience and performance metrics such as Google's Core Web Vitals.
 
-[![Lighthouse report: 100 across Performance, Accessibility, Best Practices and SEO](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }
+!!! tip "Lighthouse 100 on the demo store"
+    100 in Performance, Accessibility, Best Practices and SEO, measured on the live demo store, not on this documentation.
+
+    [Run it yourself](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fmage-obsidian-demo.jeanmarcos.dev%2F){ target=_blank rel=noopener }
 
 - **Modern and customizable design:** Built with the latest standards, the theme allows complete customization to meet any business's needs. Its flexibility ensures developers can create unique experiences without compromising performance.
 
@@ -100,6 +103,14 @@ current web development best practices, {{ config.extra.components_name }} simpl
 modernizes the creation of Magento themes.
 
 This approach introduces a more accessible, efficient, and developer-friendly workflow.
+
+```mermaid
+flowchart LR
+  A["Module or theme"] --> B["etc/mage_obsidian_compatibility.xml"]
+  B --> C["frontend:config --generate"]
+  C --> D["mage_obsidian_frontend_modules.json"]
+  D --> E["Vite build engine"]
+```
 
 ### Benefits
 

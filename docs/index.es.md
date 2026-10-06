@@ -1,76 +1,25 @@
-# Bienvenido a {{ config.site_name }}
-
-Un stack de frontend moderno y disruptivo para Magento. **{{ config.site_name }}** redefine el
-desarrollo frontend integrando **Vite**, **TailwindCSS** y **Vue.js** sobre los layouts, bloques
-y plantillas nativos de Magento — para un flujo de trabajo más rápido y amigable.
-
-<div class="tech-strip" markdown>
-[![Magento](/assets/magento-logo.png)](https://magento.com){target=_blank rel=noopener}
-[![Vite](/assets/vite-logo.png)](https://vitejs.dev){target=_blank rel=noopener}
-[![Vue.js](/assets/vuejs-logo.png)](https://vuejs.org){target=_blank rel=noopener}
-[![TailwindCSS](/assets/tailwind-logo.png)](https://tailwindcss.com){target=_blank rel=noopener}
-[![Twig](/assets/twig-logo.png)](https://twig.symfony.com){target=_blank rel=noopener}
-</div>
-
-[:material-open-in-new: Demo en vivo]({{ config.extra.demo_url }}){ .md-button .md-button--primary target=_blank rel=noopener }
-[:octicons-rocket-24: Empezar](getting-started/requirements.md){ .md-button }
-
-[![Reporte de Lighthouse: 100 en Rendimiento, Accesibilidad, Buenas prácticas y SEO](/assets/lighthouse-100.png)]({{ config.extra.demo_url }}){ .lighthouse-shot target=_blank rel=noopener }
-
 ---
-
-## ¿Por dónde seguir?
-
-<div class="grid cards" markdown>
-
--   :material-rocket-launch:{ .lg .middle } __Primeros pasos__
-
-    ---
-
-    Configura tu entorno y pon un tema en marcha, desde los requisitos hasta tu primer build.
-
-    [:octicons-arrow-right-24: Requerimientos](getting-started/requirements.md)
-
--   :material-package-variant-closed:{ .lg .middle } __Componentes__
-
-    ---
-
-    El conjunto de herramientas que lo impulsa todo: módulos, temas compatibles y cómo encajan.
-
-    [:octicons-arrow-right-24: Resumen](why/index.md)
-
--   :material-leaf:{ .lg .middle } __Motor Twig__
-
-    ---
-
-    Escribe plantillas en Twig junto a phtml, con helpers y filtros incluidos.
-
-    [:octicons-arrow-right-24: Explorar Twig](guides/twig.md)
-
--   :material-palette:{ .lg .middle } __Tema__
-
-    ---
-
-    Conoce cómo se estructura el tema por defecto y cómo construir sobre él.
-
-    [:octicons-arrow-right-24: Resumen del tema](guides/themes/obsidian.md)
-
--   :material-heart:{ .lg .middle } __Contribuir__
-
-    ---
-
-    {{ config.site_name }} es open source. Súmate, reporta problemas y ayúdalo a crecer.
-
-    [:octicons-arrow-right-24: Cómo contribuir](project/contributing.md)
-
--   :material-school:{ .lg .middle } __¿Primera vez?__
-
-    ---
-
-    Empieza por la motivación y las características clave para ver qué hace diferente a {{ config.site_name }}.
-
-    [:octicons-arrow-right-24: Introducción](why/index.md)
-
-</div>
-
-¡Esperamos que disfrutes usar **{{ config.site_name }}** tanto como nosotros hemos disfrutado creándolo!
+template: home.html
+title: MageObsidian — el frontend moderno para Magento
+description: Vite, Tailwind CSS 4 e islas Vue sobre los layouts, bloques y plantillas nativos de Magento. La 4.0 es estable.
+hero:
+  pill: "Versión estable · dos trenes de versiones"
+  title: "El frontend moderno para Magento,"
+  accent: "construido sobre Magento."
+  lead: "Vite, Tailwind CSS 4 e islas Vue sobre layouts, bloques y plantillas nativos — con un contrato estable para toda la 4.x."
+  ctas:
+    - {label: "Primeros pasos", href: "getting-started/", primary: true}
+    - {label: "Actualizar desde 3.x", href: "upgrade/3-to-4/"}
+    - {label: "Demo en vivo", href: "https://mage-obsidian-demo.jeanmarcos.dev/", external: true}
+install:
+  - {tab: composer, lines: ["composer require mage-obsidian/theme-default:^4.0", "bin/magento setup:upgrade"]}
+  - {tab: pnpm, lines: ["cd vite && pnpm install --frozen-lockfile", "pnpm build:theme MageObsidian/default"]}
+tiles:
+  - {eyebrow: "Lighthouse", number: "100", text: "en la tienda demo, móvil", source: "demo · 2026-09"}
+  - {eyebrow: "Verificados", number: "317", text: "comportamientos de Luma", source: "registro · 2026-09-22"}
+  - {eyebrow: "Compatibilidad", wide: true, title: "Magento Open Source y Mage-OS", text: "Se instala desde Packagist en cada versión.", href: "getting-started/compatibility/"}
+paths:
+  - {eyebrow: "01 · Evaluar", wide: true, title: "Por qué MageObsidian", text: "Cómo se compara con Hyvä y Luma, y qué está —y qué no— verificado todavía.", href: "why/"}
+  - {eyebrow: "02 · Construir", title: "Tu primer tema", text: "Un hijo de OBSIDIAN.", href: "getting-started/first-theme/"}
+  - {eyebrow: "03 · Actualizar", title: "Desde 3.x", text: "Sube las restricciones, ejecuta un comando.", href: "upgrade/3-to-4/"}
+---

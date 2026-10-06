@@ -6,9 +6,16 @@ The `.phtml` bridge method [`renderVueComponent`](../modules/phtml.md#2-renderin
 
 Here it is on a real product page over a throttled connection: the server-rendered HTML paints first — readable before a single byte of Vue executes — then the islands hydrate as their chunks arrive:
 
-<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/islands-hydration.mp4"></video>
+<video controls muted playsinline preload="none" poster="/assets/islands-hydration.poster.png" aria-label="A product page loading over a throttled connection: server-rendered HTML paints first, then Vue islands hydrate as their chunks arrive" style="max-width:100%;border-radius:8px" src="/assets/islands-hydration.mp4"></video>
+
+<details class="mo-video-note"><summary>What the video shows</summary>
+<p>A product page over a throttled connection: the server-rendered HTML paints first and is readable before any Vue runs, then the islands hydrate as their chunks arrive.</p>
+</details>
 
 ---
+
+!!! stable "Stable since 4.0"
+    Vue islands are stable from 4.0. See [Versioning & support](../../project/versioning.md) for what the 4.x guarantee covers.
 
 ## Why Islands
 
@@ -97,6 +104,13 @@ Indentation is handled for you — `renderVueComponent` strips the whitespace be
 ---
 
 ## How It Works
+
+```mermaid
+flowchart LR
+  A["Twig render_vue"] --> B["data-mage-island marker"]
+  B --> C["Page bootstrap"]
+  C --> D["Mount or hydrate"]
+```
 
 ### 1. The marker (server side)
 

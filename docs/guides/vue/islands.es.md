@@ -6,9 +6,16 @@ El método puente de `.phtml` [`renderVueComponent`](../modules/phtml.md#2-rende
 
 Así se ve en una página de producto real sobre una conexión limitada: el HTML renderizado en el servidor pinta primero —legible antes de que se ejecute un solo byte de Vue— y luego las islas se hidratan a medida que llegan sus chunks:
 
-<video autoplay loop muted playsinline style="max-width:100%;border-radius:8px" src="/assets/islands-hydration.mp4"></video>
+<video controls muted playsinline preload="none" poster="/assets/islands-hydration.poster.png" aria-label="Una página de producto con la conexión limitada: el HTML renderizado en el servidor se pinta primero y luego las islas Vue se hidratan a medida que llegan sus chunks" style="max-width:100%;border-radius:8px" src="/assets/islands-hydration.mp4"></video>
+
+<details class="mo-video-note"><summary>Qué muestra el vídeo</summary>
+<p>Una página de producto con la conexión limitada: el HTML renderizado en el servidor se pinta primero y se lee antes de que se ejecute Vue; después las islas se hidratan a medida que llegan sus chunks.</p>
+</details>
 
 ---
+
+!!! stable "Estable desde 4.0"
+    Las islas Vue son estables desde la 4.0. Consulta [Versiones y soporte](../../project/versioning.md) para saber qué cubre la garantía de la 4.x.
 
 ## Por Qué Islas
 
@@ -97,6 +104,13 @@ De la indentación se encarga el framework: `renderVueComponent` elimina el whit
 ---
 
 ## Cómo Funciona
+
+```mermaid
+flowchart LR
+  A["Twig render_vue"] --> B["Marcador data-mage-island"]
+  B --> C["Bootstrap de página"]
+  C --> D["Montaje o hidratación"]
+```
 
 ### 1. El marcador (lado servidor)
 

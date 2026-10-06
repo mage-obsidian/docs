@@ -4,6 +4,15 @@ Los interceptores permiten que un módulo cambie el comportamiento de las funcio
 
 El build sustituye el módulo objetivo por un envoltorio generado, de modo que todo el que importe el objetivo recibe la versión interceptada. El archivo objetivo en disco nunca se modifica.
 
+```mermaid
+flowchart LR
+  A["import"] --> B["Módulo virtual #92;0interceptor:#60;path#62;"]
+  B --> C["before"]
+  C --> D["around"]
+  D --> E["Función original"]
+  E --> F["after"]
+```
+
 ## Declarar un interceptor
 
 Una declaración tiene dos partes: una **entrada de configuración** que indica qué interceptar y un **módulo interceptor** que contiene los hooks.
