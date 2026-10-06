@@ -88,8 +88,8 @@ These are the `core_config_data` paths the MageObsidian frontend reads. Edit the
 | `mage_obsidian/speculation/enabled` | Enable Speculative Loading | `1` | Store View |
 | `mage_obsidian/speculation/mode` | Mode | `prefetch` | Store View |
 | `mage_obsidian/speculation/eagerness` | Eagerness | `moderate` | Store View |
-| `mage_obsidian/speculation/exclude_paths` | Exclude URL Patterns | `customer, checkout, wishlist, logout, auth, search, download, redirect, rewrite, stores, productalert` | Store View |
+| `mage_obsidian/speculation/exclude_paths` | Exclude URL Patterns | `customer`<br>`checkout`<br>`wishlist`<br>`logout`<br>`auth`<br>`search`<br>`download`<br>`redirect`<br>`rewrite`<br>`stores`<br>`productalert`<br>*One token per line.* | Store View |
 | `mage_obsidian/speculation/exclude_extensions` | Exclude File Extensions | `pdf,zip` | Store View |
-| `mage_obsidian/speculation/exclude_selectors` | Exclude Selectors | `.no-prefetch` | Store View |
+| `mage_obsidian/speculation/exclude_selectors` | Exclude Selectors | `.no-prefetch`<br>*One token per line.* | Store View |
 | `mage_obsidian/navigation/retain` | Hold the Previous Page Until the Next Is Ready | `1` | Store View |
 
