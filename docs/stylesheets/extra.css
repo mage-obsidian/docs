@@ -613,6 +613,13 @@ a[target="_blank"]:has(> img, > svg, > picture)::after {
   background: var(--mo-zebra);
 }
 
+.md-typeset table:not([class]) tbody tr:hover,
+.mo-table-scroll tbody tr:hover,
+.mo-table-scroll tbody tr:hover th[scope="row"] {
+  background-color: color-mix(in srgb, var(--md-accent-fg-color) 10%, var(--md-default-bg-color));
+  box-shadow: none;
+}
+
 .md-typeset table:not([class]) td:first-child code {
   white-space: nowrap;
 }
