@@ -113,9 +113,10 @@ Qué revisar cuando un interceptor no parece aplicarse:
 
 ## Límites
 
-- **Las funciones interceptadas pasan a ser asíncronas.** El envoltorio generado ejecuta la cadena con `await`, así que llamar a una función interceptada devuelve una `Promise` aunque la original sea síncrona. Quien la llame debe usar `await`.
+- **Toda función exportada por un objetivo interceptado pasa a ser asíncrona, incluso las que ningún hook toca.** El envoltorio generado ejecuta la cadena con `await`, así que la llamada devuelve una `Promise` aunque la original sea síncrona. Quien la llame debe usar `await`.
+- **Un objetivo que exporta una clase o un constructor no se puede interceptar.** El proxy lo reemplaza por una función, así que `new` falla. Mueve la función que quieres interceptar a su propio módulo.
 - **Solo se pueden interceptar funciones exportadas.** Si la exportación del objetivo no es una función, el motor avisa y omite ese hook. Las demás exportaciones pasan sin tocar.
 - **Todo lo que empiece por `before`, `around` o `after` se lee como un hook.** No exportes funciones auxiliares desde un módulo interceptor con esos prefijos. Las demás exportaciones se ignoran.
-- **Ambos archivos deben poder cargarse en Node durante el build.** El motor importa el objetivo y el módulo interceptor para leer sus exportaciones, así que el código de nivel superior que necesite el navegador (`window`, `document`) puede hacer fallar la importación, y entonces el interceptor se omite.
+- **El objetivo y el módulo interceptor solo pueden usar imports que Node resuelva por sí mismo.** El motor importa ambos durante el build para leer sus exportaciones. Un módulo que importe `Vendor_Module::path`, un componente `.vue` o un paquete que no se encuentra desde su carpeta se omite, y solo se registra una línea en la consola. El código de nivel superior que necesite el navegador (`window`, `document`) también puede hacer fallar la importación.
 - **Las exportaciones se leen una sola vez.** El envoltorio cubre las exportaciones que el objetivo tiene al iniciar el build; la interceptación no sigue a funciones que el objetivo añada o reemplace en tiempo de ejecución.
 - **Los hooks son por función, no por punto de llamada.** Todo el que importe el objetivo se ve afectado, sin forma de excluir a un solo llamador.

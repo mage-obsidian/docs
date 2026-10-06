@@ -113,9 +113,10 @@ Things to check when an interceptor does not seem to apply:
 
 ## Limits
 
-- **Intercepted functions become asynchronous.** The generated wrapper runs the chain with `await`, so a call to an intercepted function returns a `Promise` even if the original is synchronous. Callers must `await` it.
+- **Every exported function of an intercepted target becomes asynchronous, including the ones no hook touches.** The generated wrapper runs the chain with `await`, so a call returns a `Promise` even if the original is synchronous. Callers must `await` it.
+- **A target that exports a class or constructor cannot be intercepted.** The proxy replaces it with a function, so `new` fails. Move the function you want to intercept into its own module.
 - **Only exported functions can be intercepted.** If the target export is not a function, the engine warns and skips that hook. Other exports are passed through untouched.
 - **Anything that starts with `before`, `around` or `after` is read as a hook.** Do not export helpers from an interceptor module with those prefixes. Other exports are ignored.
-- **Both files must load in Node at build time.** The engine imports the target and the interceptor module to read their exports, so top-level code that needs the browser (`window`, `document`) can make the import fail, and the interceptor is then skipped.
+- **The target and the interceptor module can only use imports that Node resolves on its own.** The engine imports both at build time to read their exports. A module that imports `Vendor_Module::path`, a `.vue` component, or a package not found from its folder is skipped, and only one console line is logged. Top-level code that needs the browser (`window`, `document`) can also make the import fail.
 - **Exports are read once.** The wrapper covers the exports the target has at build start; interception does not follow functions that the target adds or replaces at runtime.
 - **Hooks are per function, not per call site.** Every importer of the target is affected, with no way to opt a single caller out.
