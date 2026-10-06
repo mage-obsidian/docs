@@ -14,7 +14,6 @@ theme:
   font: false
   features:
     - content.code.annotate
-    - content.code.select
     - content.code.copy
     - content.tabs.link
     - content.tooltips

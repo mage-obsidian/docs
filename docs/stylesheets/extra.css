@@ -52,8 +52,9 @@
   --mo-accent: #2f6e66;
   --mo-accent-soft: #e3f0ee;
   --mo-line: #e3ddd2;
-  --mo-banner-bg: #1d4a44;
-  --mo-banner-fg: #ffffff;
+  --mo-banner-bg: #14121a;
+  --mo-banner-fg: #d8d3cb;
+  --mo-zebra: #f3efe7;
   --md-default-bg-color: var(--mo-paper);
   --md-default-fg-color: var(--mo-ink);
   --md-default-fg-color--light: var(--mo-muted);
@@ -78,8 +79,9 @@
   --mo-accent: #7fd6c8;
   --mo-accent-soft: #45a1951f;
   --mo-line: rgba(243, 239, 231, .10);
-  --mo-banner-bg: #12403a;
-  --mo-banner-fg: #e8f7f4;
+  --mo-banner-bg: #17151d;
+  --mo-banner-fg: #d8d3cb;
+  --mo-zebra: #17151d;
   --md-hue: 260;
   --md-default-bg-color: var(--mo-bg);
   --md-default-fg-color: var(--mo-ink);
@@ -89,6 +91,10 @@
   --md-primary-bg-color--light: #f3efe7;
   --md-accent-fg-color: var(--mo-accent);
   --md-typeset-a-color: var(--mo-accent);
+}
+
+@media screen and (min-width: 100em) {
+  html { font-size: 125%; }
 }
 
 .md-tabs__item { height: 2rem; }
@@ -306,11 +312,11 @@ nav.md-tabs .md-tabs__list li:first-child {
   --mo-danger: #f08a7e;
 }
 
-.md-banner { background: var(--mo-banner-bg); }
+.md-banner { background: var(--mo-banner-bg); border-bottom: 1px solid rgba(243, 239, 231, .08); }
 .md-banner .mo-announce,
 .md-banner .mo-announce:hover,
-.md-banner .mo-announce:focus { display: block; padding: .15rem 0; color: var(--mo-banner-fg); font-size: .7rem; line-height: 1.4; text-decoration: underline; text-underline-offset: .15em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.md-banner .mo-announce strong { color: var(--mo-banner-fg); }
+.md-banner .mo-announce:focus { display: block; padding: .15rem 0; color: var(--mo-banner-fg); font-size: .65rem; line-height: 1.4; text-decoration: underline; text-decoration-color: rgba(216, 211, 203, .35); text-underline-offset: .2em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.md-banner .mo-announce strong { color: #7fd6c8; }
 
 @media (max-width: 76.1875em) {
   .md-header { border-bottom: 1px solid var(--mo-line); }
@@ -320,7 +326,7 @@ nav.md-tabs .md-tabs__list li:first-child {
   .md-main__inner:has(.mo-notfound) .md-sidebar--primary { display: none; }
   .md-tabs { border-bottom: 1px solid var(--mo-line); }
 }
-.md-banner__inner { margin-top: .25rem; margin-bottom: .25rem; }
+.md-banner__inner { margin-top: .1rem; margin-bottom: .1rem; }
 .mo-announce__short { display: none; }
 
 @media screen and (max-width: 37.4375em) {
@@ -520,7 +526,21 @@ nav.md-tabs .md-tabs__list li:first-child {
   overflow-x: auto;
 }
 
+.mo-table-scroll .md-typeset__scrollwrap {
+  margin-inline: 0;
+}
+
+.mo-table-scroll .md-typeset__table {
+  padding-inline: 0;
+}
+
+.md-typeset .mo-table-scroll table th,
+.md-typeset .mo-table-scroll table td {
+  vertical-align: middle;
+}
+
 .mo-table-scroll th[scope="row"] {
+  border-top: 0.05rem solid var(--md-typeset-table-color);
   position: sticky;
   left: 0;
   background: var(--md-default-bg-color);
@@ -561,6 +581,67 @@ nav.md-tabs .md-tabs__list li:first-child {
 
 a[target="_blank"]::after {
   content: " ↗";
+}
+
+a[target="_blank"]:has(> img, > svg, > picture)::after {
+  content: none;
+}
+
+.md-typeset pre > code {
+  padding-top: 0.87em;
+  padding-bottom: 0.67em;
+}
+
+.md-typeset table:not([class]) tbody tr:nth-child(even),
+.mo-table-scroll tbody tr:nth-child(even),
+.mo-table-scroll tbody tr:nth-child(even) th[scope="row"] {
+  background: var(--mo-zebra);
+}
+
+.md-typeset table:not([class]) td:first-child code {
+  white-space: nowrap;
+}
+
+.md-typeset .language-bash.highlight:has(+ .language-text.highlight) > pre {
+  margin-bottom: 0;
+}
+
+.md-typeset .language-bash.highlight:has(+ .language-text.highlight) > pre > code {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.md-typeset .language-bash.highlight + .language-text.highlight > pre {
+  margin-top: 0;
+}
+
+.md-typeset .language-bash.highlight + .language-text.highlight > pre > code {
+  border: 1px solid var(--md-code-bg-color);
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: transparent;
+  color: var(--mo-muted);
+  padding-top: 0.67em;
+}
+
+.md-typeset .language-bash.highlight + .language-text.highlight > pre > code::before {
+  content: "Output";
+  display: block;
+  margin-bottom: 0.3em;
+  font-family: var(--md-text-font-family);
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.md-typeset:lang(es) .language-bash.highlight + .language-text.highlight > pre > code::before {
+  content: "Salida";
+}
+
+.md-typeset .language-bash.highlight + .language-text.highlight .md-code__nav {
+  display: none;
 }
 
 .md-typeset .mo-toc-mobile {
