@@ -135,6 +135,12 @@ nav.md-tabs .md-tabs__list li:first-child {
   border-color: var(--mo-accent);
 }
 
+[data-md-color-scheme="slate"] .md-typeset .md-button:is(:hover, :focus) {
+  background-color: var(--mo-accent);
+  border-color: var(--mo-accent);
+  color: #08070b;
+}
+
 [data-md-color-scheme="slate"] .md-typeset .md-button--primary {
   background-color: var(--mo-accent);
   border-color: var(--mo-accent);
