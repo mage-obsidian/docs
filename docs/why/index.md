@@ -40,8 +40,6 @@ On top of that native foundation, **{{ config.extra.components_name }}** layers 
 
 Additionally, although the use of **NPM** packages has always been possible in Magento, **{{ config.extra.components_name }}** makes it simpler and more straightforward. Developers can now elegantly leverage the vast ecosystem of tools and libraries available, aligning Magento's frontend with global web development best practices.
 
-Existing modules and functionality keep working, because the project builds on Magento's own layouts, blocks and templates instead of replacing them. That combination of flexibility, efficiency and modernity is what **{{ config.extra.components_name }}** contributes to the Magento ecosystem.
-
 ## Key features
 
 ### Components
@@ -101,12 +99,7 @@ Magento frontend development experience. By addressing long-standing challenges 
 current web development best practices, {{ config.extra.components_name }} simplifies and
 modernizes the creation of Magento themes.
 
-This approach introduces a more accessible, efficient, and developer-friendly workflow,
-incorporating cutting-edge technologies such as:
-
-- **Vite** for fast and optimized builds.
-- **TailwindCSS** for utility-first CSS design.
-- **Vue.js** for building reactive and modular UI components.
+This approach introduces a more accessible, efficient, and developer-friendly workflow.
 
 ### Benefits
 

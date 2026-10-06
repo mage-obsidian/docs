@@ -37,8 +37,6 @@ Sobre esa base nativa, **{{ config.extra.components_name }}** añade bloques de 
 
 Además, aunque el uso de paquetes de **NPM** siempre fue posible en Magento, **{{ config.extra.components_name }}** lo hace más sencillo y directo. Ahora, de manera elegante, se puede aprovechar el vasto ecosistema de herramientas y librerías disponibles, alineando el frontend de Magento con las mejores prácticas globales del desarrollo web.
 
-Los módulos y la funcionalidad existentes siguen funcionando, porque el proyecto se apoya en los layouts, bloques y plantillas propios de Magento en lugar de reemplazarlos. Esa combinación de flexibilidad, eficiencia y modernidad es lo que **{{ config.extra.components_name }}** aporta al ecosistema de Magento.
-
 ## Características clave
 
 ### Componentes
@@ -98,13 +96,7 @@ diseñado para redefinir la experiencia de desarrollo frontend en Magento. Al ab
 históricos y aprovechar las mejores prácticas actuales de desarrollo web,
 {{ config.extra.components_name }} simplifica y moderniza la creación de temas para Magento.
 
-Este enfoque introduce un flujo de trabajo más accesible, eficiente y amigable para los
-desarrolladores, integrando tecnologías de vanguardia como:
-
-- **Vite** para compilaciones rápidas y optimizadas.
-- **TailwindCSS** para diseño CSS basado en utilidades.
-- **Vue.js** para construir componentes de interfaz de usuario reactivos y modulares.
-- **ESM** (módulos nativos de JavaScript) para un rendimiento y compatibilidad mejorados.
+Este enfoque introduce un flujo de trabajo más accesible, eficiente y amigable para los desarrolladores.
 
 ### Beneficios
 
