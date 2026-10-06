@@ -26,11 +26,16 @@
     var send = XMLHttpRequest.prototype.send;
     XMLHttpRequest.prototype.open = function (method, url) {
       this.moAfterLoad = /\/search_index\.json$/.test(String(url));
+      this.moSitemap = /\/sitemap\.xml$/.test(String(url));
       return open.apply(this, arguments);
     };
     XMLHttpRequest.prototype.send = function () {
       var request = this;
       var args = arguments;
+      if (request.moSitemap) {
+        setTimeout(function () { request.dispatchEvent(new ProgressEvent("error")); });
+        return;
+      }
       if (!request.moAfterLoad) return send.apply(request, args);
       afterLoad.then(function () { send.apply(request, args); });
     };
