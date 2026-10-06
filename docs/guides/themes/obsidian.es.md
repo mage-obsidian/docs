@@ -317,7 +317,7 @@ Crea un tema en `app/design/frontend/Vendor/Custom/` y hereda de `theme-base` (l
 
     ```javascript
     export default {
-        includeParentThemes: false,
+        includeCssSourceFromParentThemes: true,
         ignoredCssFromModules: [],
         exposeNpmPackages: [
             { package: 'pinia', exposePath: 'pinia' },

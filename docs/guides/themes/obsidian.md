@@ -311,7 +311,7 @@ slate) or `default` (keep OBSIDIAN and tweak):
 
     ```javascript
     export default {
-        includeParentThemes: false,
+        includeCssSourceFromParentThemes: true,
         ignoredCssFromModules: [],
         exposeNpmPackages: [
             { package: 'pinia', exposePath: 'pinia' },
