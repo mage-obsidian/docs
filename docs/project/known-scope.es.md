@@ -7,17 +7,16 @@ Lo que MageObsidian no cubre, y por qué. Cada punto aquí es una decisión o un
 
 ## Paridad con Luma
 
-El registro de paridad se leyó el 2026-10-07 contra **Magento Open Source 2.4.9**. Lista 522 entradas: 247 cubiertas, 71 parciales, 27 sin cubrir, 34 resueltas, 140 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento, y todos los bloques que el core aporta a esa pantalla están contemplados. Una entrada parcial tiene la prueba, pero a uno o más de esos bloques le falta su equivalente; los cuatro grupos siguientes son los que no están cubiertos.
+El registro de paridad se leyó el 2026-10-07 contra **Magento Open Source 2.4.9**. Lista 526 entradas: 250 cubiertas, 68 parciales, 27 sin cubrir, 36 resueltas, 142 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento, y todos los bloques que el core aporta a esa pantalla están contemplados. Una entrada parcial tiene la prueba, pero a uno o más de esos bloques le falta su equivalente; los cuatro grupos siguientes son los que no están cubiertos.
 
-Hasta el 2026-10-06 el registro solo comparaba pantallas, así que una pantalla que MageObsidian volvía a declarar contaba como cubierta aunque faltara un bloque que otro módulo del core le agregaba. Ahora también compara los 832 bloques que el core declara en esas pantallas. Las 71 entradas parciales salen de esa comparación, y antes se contaban todas como cubiertas.
+Hasta el 2026-10-06 el registro solo comparaba pantallas, así que una pantalla que MageObsidian volvía a declarar contaba como cubierta aunque faltara un bloque que otro módulo del core le agregaba. Ahora también compara los 832 bloques que el core declara en esas pantallas. Las 71 entradas parciales que encontró al principio salían de esa comparación, y antes se contaban todas como cubiertas; quedan 68.
 
 ### Parciales
 
-108 bloques en 71 pantallas no tienen equivalente. Cada uno figura en el registro con lo que pierde el cliente. Por área:
+105 bloques en 68 pantallas no tienen equivalente. Cada uno figura en el registro con lo que pierde el cliente. Por área:
 
 | Área | Qué falta |
 |---|---|
-| Bloquea una acción cuando un ajuste de la tienda está activo | Con reCAPTCHA activado para cupones, no se puede aplicar un cupón desde el carrito. Con reCAPTCHA activado para la lista de deseos, no se puede compartir la lista. Con los términos y condiciones activados, la revisión del checkout multidirección no muestra los acuerdos para aceptar. El core sigue validando los tres en el servidor. |
 | Carrito | No se muestran los avisos de monto mínimo de pedido, de cantidad reducida ni de cambio de precio, y estos no deshabilitan el checkout. Un carrito con un producto de precio mínimo anunciado (MAP) muestra su total. Las tarjetas de cross-sell no permiten agregar a la lista de deseos ni a comparar. |
 | Cuenta y sesión | En el teléfono no hay enlace de Iniciar sesión ni de Mi cuenta en la cabecera ni en el menú lateral. "Recordarme" se pierde en el inicio de sesión por defecto. Un inicio de sesión o un registro iniciado desde el checkout pierde el contexto del checkout. No hay enlace de Crear una cuenta en la cabecera ni oferta de cuenta en la página de éxito. A un cliente con las cookies desactivadas no se le avisa. El dominio de cookies y el ajuste Secure no se publican al navegador, así que la cookie `form_key` los ignora. |
 | Catálogo y búsqueda | Videos de producto, mensajes de precios por cantidad, aviso de incrementos de cantidad, imagen de categoría, swatches en las tarjetas del listado, barra lateral de comparación, productos vistos recientemente, sugerencias de búsqueda y términos relacionados, y enlaces para saltar la galería. Las vistas de producto y los términos de búsqueda ya no se registran para los reportes del admin. |
@@ -28,9 +27,11 @@ Hasta el 2026-10-06 el registro solo comparaba pantallas, así que una pantalla 
 
 ### Hallazgos de la auditoría funcional
 
-La comparación de pantallas y bloques no puede ver un ajuste de la tienda que Magento respeta dentro de un bloque que sí existe, ni un comportamiento de script sin equivalente. Una auditoría funcional de esos casos dio al registro un origen propio: cada entrada nombra el ajuste, la plantilla o el script del core que define el comportamiento y el valor que lo dispara, y solo se resuelve con una prueba que fije ese valor. Añadió 36 entradas: 7 resueltas, 27 abiertas y 2 fuera de alcance.
+La comparación de pantallas y bloques no puede ver un ajuste de la tienda que Magento respeta dentro de un bloque que sí existe, ni un comportamiento de script sin equivalente. Una auditoría funcional de esos casos dio al registro un origen propio: cada entrada nombra el ajuste, la plantilla o el script del core que define el comportamiento y el valor que lo dispara, y solo se resuelve con una prueba que fije ese valor. Añadió 36 entradas, y el inventario de los formularios con reCAPTCHA añadió 4 más: 9 resueltas, 27 abiertas y 4 fuera de alcance.
 
-Resueltas: el limitador «todos» ya no rompe la página de categoría; el código postal es opcional en los países que la tienda declara y el teléfono sigue su ajuste; el prefijo, el segundo nombre, el sufijo, la fecha de nacimiento, el género, la identificación fiscal, la empresa, el fax y el número de IVA siguen su configuración en los formularios de la cuenta y en el checkout, igual que el número de líneas de calle; la longitud mínima y las clases de caracteres de la contraseña se anuncian, se exigen y se miden; el cheque, la transferencia y el pago contra entrega muestran las instrucciones del comerciante; una orden de compra pide su número y lo registra; y un cliente identificado puede facturar a una dirección guardada.
+Resueltas: el limitador «todos» ya no rompe la página de categoría; el código postal es opcional en los países que la tienda declara y el teléfono sigue su ajuste; el prefijo, el segundo nombre, el sufijo, la fecha de nacimiento, el género, la identificación fiscal, la empresa, el fax y el número de IVA siguen su configuración en los formularios de la cuenta y en el checkout, igual que el número de líneas de calle; la longitud mínima y las clases de caracteres de la contraseña se anuncian, se exigen y se miden; el cheque, la transferencia y el pago contra entrega muestran las instrucciones del comerciante; una orden de compra pide su número y lo registra; un cliente identificado puede facturar a una dirección guardada; y el captcha de imagen que espera a los intentos fallidos ya aparece en el inicio de sesión en segundo plano cuando falla el tercero.
+
+Se inventariaron los formularios que protegen los módulos de reCAPTCHA contra 2.4.9. El cupón del carrito, compartir la lista de deseos, la reseña, enviar a un amigo, el registro, el restablecimiento de contraseña, la información de la cuenta, el contacto, el boletín y confirmar el pedido muestran cada uno el desafío y aceptan la respuesta, y la revisión del checkout multidirección muestra ahora también los términos y condiciones. Dos ajustes no tienen un formulario del storefront que proteger y quedan fuera de alcance: PayPal Payflow Pro, que el checkout no ofrece, y el reenvío de la confirmación, que el core protege solo en su operación REST y GraphQL.
 
 Abiertas, por área:
 
@@ -41,7 +42,7 @@ Abiertas, por área:
 | Checkout | La recogida en tienda de MSI no tiene interfaz aunque sus módulos están habilitados. |
 | Catálogo y búsqueda | El conteo de productos en la navegación por capas, el máximo de destinatarios de «enviar a un amigo», la longitud máxima de la búsqueda avanzada, la comparación que salta el renderizador de precio (lo que puede revelar un precio mínimo anunciado) y falla al añadir un configurable a la bolsa, la disponibilidad y «solo quedan» en la página de producto, y el precio de un descargable que no sigue a los enlaces elegidos. |
 | Reseñas | El formulario ofrecido a invitados cuando la tienda no lo permite, la falta de paginación y la falta de valoración en las tarjetas. |
-| Sesión | El captcha tras intentos fallidos no puede aparecer en el inicio de sesión en segundo plano, y a un visitante reconocido le falta «¿No eres tú?». |
+| Sesión | Con reCAPTCHA activado en el formulario de inicio de sesión, el inicio en segundo plano no envía el token y el core lo rechaza, así que nadie puede iniciar sesión hasta que lo envíe. A un visitante reconocido le falta «¿No eres tú?». |
 | Cromo de página | Los enlaces al boletín, la lista de deseos, las reseñas y el contacto siguen visibles con la función desactivada, el logo, el mensaje de bienvenida y el copyright configurados en el admin no se muestran, y los textos fijos del pie no son traducibles. |
 | Widgets | Solo el widget de lista de productos está portado, y los contenedores que reciben widgets desde el admin no existen. |
 
@@ -57,7 +58,7 @@ Tres entradas están bloqueadas. Ninguna es una función faltante que nadie haya
 
 ### Fuera de alcance
 
-140 entradas están fuera de alcance, cada una con su motivo en el registro. Por familia:
+142 entradas están fuera de alcance, cada una con su motivo en el registro. Por familia:
 
 | Entradas | Familia | Motivo |
 |---|---|---|
@@ -72,6 +73,7 @@ Tres entradas están bloqueadas. Ninguna es una función faltante que nadie haya
 | 2 | Flujos de pago fuera del sitio | Llegar a ellos necesita un método de pago que coloque el pedido y envíe al comprador fuera del sitio. |
 | 2 | Productos declinados | Un checkout vendido por separado y una biblioteca de componentes de copiar y pegar: decisiones tomadas, no brechas abiertas. |
 | 2 | Comportamientos declinados | La vista de lista del catálogo, que el tema descarta a propósito, y la traducción en línea, una herramienta de desarrollo. |
+| 2 | Ajustes sin formulario en el storefront | reCAPTCHA para PayPal Payflow Pro, que el checkout no ofrece, y para el reenvío de la confirmación, que el core protege solo mediante su API. |
 | 7 | Reemplazos individuales | La ruta de la galería de producto, el layout de página del checkout del core, un handle del carrito que la plataforma no enruta, un handle que ningún controlador del core carga, una plantilla de descripción de categoría de Page Builder, el endpoint del listado de reseñas, y la primera búsqueda no cacheable, que es comportamiento del core. |
 
 ## Pasarelas de pago

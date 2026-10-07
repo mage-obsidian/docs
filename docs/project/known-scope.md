@@ -7,17 +7,16 @@ What MageObsidian does not cover, and why. Each item here is a decision or a mea
 
 ## Luma parity
 
-The parity register was read on 2026-10-07 against **Magento Open Source 2.4.9**. It lists 522 entries: 247 covered, 71 partial, 27 uncovered, 34 resolved, 140 out of scope and 3 blocked. A covered entry has a test that observed the behaviour, and every block the core contributes to that screen is accounted for. A partial entry has the test, but one or more of those blocks has no counterpart; the four groups below are the ones that are not covered.
+The parity register was read on 2026-10-07 against **Magento Open Source 2.4.9**. It lists 526 entries: 250 covered, 68 partial, 27 uncovered, 36 resolved, 142 out of scope and 3 blocked. A covered entry has a test that observed the behaviour, and every block the core contributes to that screen is accounted for. A partial entry has the test, but one or more of those blocks has no counterpart; the four groups below are the ones that are not covered.
 
-Until 2026-10-06 the register compared screens only, so a screen MageObsidian re-declared counted as covered even when a block another core module added to it was gone. It now also compares the 832 blocks the core declares on those screens. The 71 partial entries come from that comparison, and they were all counted as covered before.
+Until 2026-10-06 the register compared screens only, so a screen MageObsidian re-declared counted as covered even when a block another core module added to it was gone. It now also compares the 832 blocks the core declares on those screens. The 71 partial entries it first found came from that comparison, and they were all counted as covered before; 68 remain.
 
 ### Partial
 
-108 blocks on 71 screens have no counterpart. Each one is listed in the register with what the shopper loses. By area:
+105 blocks on 68 screens have no counterpart. Each one is listed in the register with what the shopper loses. By area:
 
 | Area | What is missing |
 |---|---|
-| Blocks an action when a store setting is on | With reCAPTCHA enabled for coupons, a coupon cannot be applied from the cart. With reCAPTCHA enabled for the wish list, a wish list cannot be shared. With terms and conditions enabled, the multi-address review shows no agreements to accept. The core still validates all three on the server. |
 | Cart | Minimum order amount, reduced-quantity and price-change notices are not shown, and checkout is not disabled by them. A cart with a minimum-advertised-price item shows its total. Cross-sell cards have no add to wish list or compare. |
 | Account and session | On a phone there is no Sign In or My Account link in the header or the menu drawer. Remember Me is lost on the default sign-in. A sign-in or registration started from checkout loses the checkout context. There is no Create an Account link in the header and no account offer on the success page. A shopper with cookies disabled is not told so. The cookie domain and Secure setting are not published to the browser, so the `form_key` cookie ignores them. |
 | Catalog and search | Product videos, tier-price messages, quantity-increment hints, the category image, swatches on listing cards, the compare sidebar, recently viewed products, search suggestions and related terms, and skip links around the gallery. Product views and search terms are no longer recorded for the admin reports. |
@@ -28,9 +27,11 @@ Until 2026-10-06 the register compared screens only, so a screen MageObsidian re
 
 ### Found by the functional audit
 
-The screen and block comparison cannot see a store setting that Magento honours inside a block that exists, or a script behaviour with no counterpart. A functional audit of those cases gave the register an origin of its own: each entry names the core setting, template or script that defines the behaviour and the value that triggers it, and it can only be resolved by a test that sets that value. It added 36 entries: 7 resolved, 27 open and 2 out of scope.
+The screen and block comparison cannot see a store setting that Magento honours inside a block that exists, or a script behaviour with no counterpart. A functional audit of those cases gave the register an origin of its own: each entry names the core setting, template or script that defines the behaviour and the value that triggers it, and it can only be resolved by a test that sets that value. It added 36 entries, and the inventory of the reCAPTCHA forms added 4 more: 9 resolved, 27 open and 4 out of scope.
 
-Resolved: the "All" page-size limiter no longer breaks the category page; the postal code is optional in the countries the store declares, and the telephone follows its setting; the prefix, middle name, suffix, birth date, gender, tax id, company, fax and VAT number follow their settings in the account forms and the checkout, as does the number of street lines; the configured password length and character classes are announced, enforced and measured; cheque, bank transfer and cash on delivery show the merchant's instructions; a purchase order asks for its number and records it; and a signed-in customer can bill a saved address.
+Resolved: the "All" page-size limiter no longer breaks the category page; the postal code is optional in the countries the store declares, and the telephone follows its setting; the prefix, middle name, suffix, birth date, gender, tax id, company, fax and VAT number follow their settings in the account forms and the checkout, as does the number of street lines; the configured password length and character classes are announced, enforced and measured; cheque, bank transfer and cash on delivery show the merchant's instructions; a purchase order asks for its number and records it; a signed-in customer can bill a saved address; and the image captcha that waits for failed attempts now appears in the background sign-in once the third one fails.
+
+The forms the reCAPTCHA modules protect were inventoried against 2.4.9. The coupon in the cart, the wish list share, the review, send to a friend, registration, password reset, account information, contact, the newsletter and placing an order each render the challenge and accept the answer, with the multi-address review now showing the terms and conditions as well. Two settings have no storefront form to protect and are out of scope: PayPal Payflow Pro, which the checkout does not offer, and resending the confirmation, which core guards only on its REST and GraphQL operation.
 
 Open, by area:
 
@@ -41,7 +42,7 @@ Open, by area:
 | Checkout | In-store pickup from MSI has no interface although its modules are enabled. |
 | Catalog and search | The product count in layered navigation, the recipient limit of send to a friend, the length limit of the advanced search, the comparison skipping the price renderer (which can reveal a minimum advertised price) and failing to add a configurable to the bag, availability and "only X left" on the product page, and the price of a downloadable following its chosen links. |
 | Reviews | The form offered to guests when the store does not allow them, no pagination, and no rating on the cards. |
-| Session | The captcha after failed attempts cannot appear in the background sign-in, and "Not you?" is missing from a recognised visitor. |
+| Session | With reCAPTCHA enabled for the sign-in form, the background sign-in sends no token and the core refuses it, so no one can sign in until it does. "Not you?" is missing from a recognised visitor. |
 | Page chrome | Links to the newsletter, wish list, reviews and contact page stay visible when the feature is off, the logo, welcome message and copyright configured in the admin are not shown, and the fixed texts of the footer are not translatable. |
 | Widgets | Only the product list widget is ported, and the containers that receive widgets from the admin do not exist. |
 
@@ -57,7 +58,7 @@ Three entries are blocked. None is a missing feature nobody has looked at; each 
 
 ### Out of scope
 
-140 entries are out of scope, each with its reason in the register. By family:
+142 entries are out of scope, each with its reason in the register. By family:
 
 | Entries | Family | Reason |
 |---|---|---|
@@ -72,6 +73,7 @@ Three entries are blocked. None is a missing feature nobody has looked at; each 
 | 2 | Off-site payment flows | Reaching them needs a payment method that places the order and sends the shopper off-site. |
 | 2 | Declined products | A separately sold checkout and a copy-and-paste component library: decisions taken, not gaps left open. |
 | 2 | Declined behaviours | The catalog list view, which the theme drops on purpose, and inline translation, a development tool. |
+| 2 | Settings with no storefront form | reCAPTCHA for PayPal Payflow Pro, which the checkout does not offer, and for resending the confirmation, which core guards only through its API. |
 | 7 | Single replacements | Product gallery route, the core checkout page layout, a cart handle the platform does not route, a handle no core controller loads, a Page Builder category description template, the review list endpoint, and the first uncacheable search, which is core behaviour. |
 
 ## Payment gateways
