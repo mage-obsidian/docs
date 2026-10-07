@@ -1,5 +1,5 @@
 ---
-description: "Qué no cubre MageObsidian y por qué, con el registro de paridad con Luma leído el 2026-10-06."
+description: "Qué no cubre MageObsidian y por qué, con el registro de paridad con Luma leído el 2026-10-07."
 ---
 # Alcance conocido
 
@@ -7,7 +7,7 @@ Lo que MageObsidian no cubre, y por qué. Cada punto aquí es una decisión o un
 
 ## Paridad con Luma
 
-El registro de paridad se leyó el 2026-10-06 contra **Magento Open Source 2.4.9**. Lista 486 entradas: 247 cubiertas, 71 parciales, 27 resueltas, 138 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento, y todos los bloques que el core aporta a esa pantalla están contemplados. Una entrada parcial tiene la prueba, pero a uno o más de esos bloques le falta su equivalente; los tres grupos siguientes son los que no están cubiertos.
+El registro de paridad se leyó el 2026-10-07 contra **Magento Open Source 2.4.9**. Lista 522 entradas: 247 cubiertas, 71 parciales, 27 sin cubrir, 34 resueltas, 140 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento, y todos los bloques que el core aporta a esa pantalla están contemplados. Una entrada parcial tiene la prueba, pero a uno o más de esos bloques le falta su equivalente; los cuatro grupos siguientes son los que no están cubiertos.
 
 Hasta el 2026-10-06 el registro solo comparaba pantallas, así que una pantalla que MageObsidian volvía a declarar contaba como cubierta aunque faltara un bloque que otro módulo del core le agregaba. Ahora también compara los 832 bloques que el core declara en esas pantallas. Las 71 entradas parciales salen de esa comparación, y antes se contaban todas como cubiertas.
 
@@ -26,6 +26,25 @@ Hasta el 2026-10-06 el registro solo comparaba pantallas, así que una pantalla 
 | Marketing y feeds | Seguimiento de conversiones de Google Ads, tanto con gtag como con la etiqueta antigua (Google Analytics 4 sí está portado). Enlaces RSS en el head, el footer, las categorías, la lista de deseos y los pedidos. |
 | Plataforma | Hashes de Subresource Integrity en los scripts del checkout (requisito 6.4.3 de PCI DSS 4.0). Un selector entre grupos de tiendas. La página para darse de baja de las alertas de stock. La invalidación de datos del cliente entre websites que comparten origen. |
 
+### Hallazgos de la auditoría funcional
+
+La comparación de pantallas y bloques no puede ver un ajuste de la tienda que Magento respeta dentro de un bloque que sí existe, ni un comportamiento de script sin equivalente. Una auditoría funcional de esos casos dio al registro un origen propio: cada entrada nombra el ajuste, la plantilla o el script del core que define el comportamiento y el valor que lo dispara, y solo se resuelve con una prueba que fije ese valor. Añadió 36 entradas: 7 resueltas, 27 abiertas y 2 fuera de alcance.
+
+Resueltas: el limitador «todos» ya no rompe la página de categoría; el código postal es opcional en los países que la tienda declara y el teléfono sigue su ajuste; el prefijo, el segundo nombre, el sufijo, la fecha de nacimiento, el género, la identificación fiscal, la empresa, el fax y el número de IVA siguen su configuración en los formularios de la cuenta y en el checkout, igual que el número de líneas de calle; la longitud mínima y las clases de caracteres de la contraseña se anuncian, se exigen y se miden; el cheque, la transferencia y el pago contra entrega muestran las instrucciones del comerciante; una orden de compra pide su número y lo registra; y un cliente identificado puede facturar a una dirección guardada.
+
+Abiertas, por área:
+
+| Área | Qué configura la tienda y el storefront ignora |
+|---|---|
+| Carrito y bolsa | La redirección al carrito tras añadir, el interruptor de visualización de la bolsa lateral y su máximo de líneas, y la paginación del carrito. |
+| Impuestos | Líneas del carrito que mezclan un precio sin impuestos con un total con impuestos, el resumen completo de impuestos y ocultar un impuesto en cero, tarifas de envío y precio de un configurable con un solo importe cuando se configuran ambos, y el Fixed Product Tax en el carrito. |
+| Checkout | La recogida en tienda de MSI no tiene interfaz aunque sus módulos están habilitados. |
+| Catálogo y búsqueda | El conteo de productos en la navegación por capas, el máximo de destinatarios de «enviar a un amigo», la longitud máxima de la búsqueda avanzada, la comparación que salta el renderizador de precio (lo que puede revelar un precio mínimo anunciado) y falla al añadir un configurable a la bolsa, la disponibilidad y «solo quedan» en la página de producto, y el precio de un descargable que no sigue a los enlaces elegidos. |
+| Reseñas | El formulario ofrecido a invitados cuando la tienda no lo permite, la falta de paginación y la falta de valoración en las tarjetas. |
+| Sesión | El captcha tras intentos fallidos no puede aparecer en el inicio de sesión en segundo plano, y a un visitante reconocido le falta «¿No eres tú?». |
+| Cromo de página | Los enlaces al boletín, la lista de deseos, las reseñas y el contacto siguen visibles con la función desactivada, el logo, el mensaje de bienvenida y el copyright configurados en el admin no se muestran, y los textos fijos del pie no son traducibles. |
+| Widgets | Solo el widget de lista de productos está portado, y los contenedores que reciben widgets desde el admin no existen. |
+
 ### Bloqueadas
 
 Tres entradas están bloqueadas. Ninguna es una función faltante que nadie haya mirado; cada una espera una decisión.
@@ -38,7 +57,7 @@ Tres entradas están bloqueadas. Ninguna es una función faltante que nadie haya
 
 ### Fuera de alcance
 
-138 entradas están fuera de alcance, cada una con su motivo en el registro. Por familia:
+140 entradas están fuera de alcance, cada una con su motivo en el registro. Por familia:
 
 | Entradas | Familia | Motivo |
 |---|---|---|
@@ -52,6 +71,7 @@ Tres entradas están bloqueadas. Ninguna es una función faltante que nadie haya
 | 3 | Herramientas Swagger | Herramientas de desarrollo servidas solo fuera del modo producción, con su propio JavaScript heredado. |
 | 2 | Flujos de pago fuera del sitio | Llegar a ellos necesita un método de pago que coloque el pedido y envíe al comprador fuera del sitio. |
 | 2 | Productos declinados | Un checkout vendido por separado y una biblioteca de componentes de copiar y pegar: decisiones tomadas, no brechas abiertas. |
+| 2 | Comportamientos declinados | La vista de lista del catálogo, que el tema descarta a propósito, y la traducción en línea, una herramienta de desarrollo. |
 | 7 | Reemplazos individuales | La ruta de la galería de producto, el layout de página del checkout del core, un handle del carrito que la plataforma no enruta, un handle que ningún controlador del core carga, una plantilla de descripción de categoría de Page Builder, el endpoint del listado de reseñas, y la primera búsqueda no cacheable, que es comportamiento del core. |
 
 ## Pasarelas de pago
