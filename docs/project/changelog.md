@@ -14,6 +14,22 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Framework 4.0.2 — 2026-10-07
+
+### Changed
+
+- **component-modern-frontend** — the Vite harness requires engine `^4.0.1` and Vue `^3.5.42`. Builds now get the two engine fixes from 4.0.1: a child theme inherits its parents' `theme.config.js` values, and the ancestor CSS sources stop at `includeCssSourceFromParentThemes: false`.
+
+### Security
+
+- **component-modern-frontend** — the harness lockfile resolves `@vue/server-renderer` 3.5.43, `source-map-js` 1.2.2 and `brace-expansion` 2.1.7, which close the advisories open against the harness.
+
+### Upgrade notes
+
+Run `composer update 'mage-obsidian/*'`, then `pnpm install` in `vite/`. `mage-obsidian` 4.0.2 on npm carries the same engine code as 4.0.1; only its development tooling changed.
+
+---
+
 ## Framework 4.0.1 — 2026-10-06
 
 ### Fixed

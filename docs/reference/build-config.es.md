@@ -13,7 +13,7 @@ El motor de build lee dos archivos de configuración. Un tema aporta `theme.conf
 
 Está en `web/theme.config.js` dentro del tema. El motor carga el archivo de cada tema de la cadena de herencia y los combina en profundidad, con el tema hijo por encima de sus padres. Esa combinación concatena los arrays, de modo que un tema hijo suma a la lista que declaró su padre.
 
-Desde el motor 4.0.1 (`mage-obsidian` en npm), los valores por defecto se aplican **después** de la combinación, así que un tema hijo que omite una clave hereda el valor de su padre: un `vue.runtimeOnly: true` o un `ignoredCssFromModules: "all"` del padre pasa al hijo. Hasta 4.0.0 los valores por defecto se aplicaban al hijo antes de la combinación, y esas claves había que repetirlas en el hijo. El harness de Vite de framework 4.0.1 todavía instala el motor 3.2, así que un build tiene este comportamiento cuando el harness pase a requerir el motor 4.0.1.
+Desde el motor 4.0.1 (`mage-obsidian` en npm), los valores por defecto se aplican **después** de la combinación, así que un tema hijo que omite una clave hereda el valor de su padre: un `vue.runtimeOnly: true` o un `ignoredCssFromModules: "all"` del padre pasa al hijo. Hasta 4.0.0 los valores por defecto se aplicaban al hijo antes de la combinación, y esas claves había que repetirlas en el hijo. El harness de Vite instala el motor 4.0.1 desde framework 4.0.2.
 
 `includeCssSourceFromParentThemes` es la excepción: describe la relación del propio tema con sus padres, así que nunca se hereda y vale `true` por defecto en cada tema.
 

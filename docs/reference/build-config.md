@@ -13,7 +13,7 @@ The build engine reads two configuration files. A theme ships `theme.config.js` 
 
 Located at `web/theme.config.js` inside the theme. The engine loads the file of every theme in the inheritance chain and deep-merges them, with the child theme winning over its parents. Arrays are concatenated by that merge, so a child theme adds to the list its parent declared.
 
-Since engine 4.0.1 (`mage-obsidian` on npm), defaults are applied **after** the merge, so a child theme that omits a key inherits its parent's value: a parent's `vue.runtimeOnly: true` or `ignoredCssFromModules: "all"` carries over to the child. Up to 4.0.0 the defaults were applied to the child before the merge, and those keys had to be repeated in the child. The Vite harness of framework 4.0.1 still installs engine 3.2, so a build gets this behaviour once the harness requires engine 4.0.1.
+Since engine 4.0.1 (`mage-obsidian` on npm), defaults are applied **after** the merge, so a child theme that omits a key inherits its parent's value: a parent's `vue.runtimeOnly: true` or `ignoredCssFromModules: "all"` carries over to the child. Up to 4.0.0 the defaults were applied to the child before the merge, and those keys had to be repeated in the child. The Vite harness installs engine 4.0.1 from framework 4.0.2 on.
 
 `includeCssSourceFromParentThemes` is the exception: it describes the theme's own relation to its parents, so it is never inherited and defaults to `true` in every theme.
 
