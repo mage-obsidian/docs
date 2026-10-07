@@ -1,0 +1,75 @@
+milestones:
+  - date: "2026-06-22"
+    version: "2.0.0"
+    link: "../changelog/#2026-06"
+    now: false
+    en: {title: "The 2.0.0 cut", text: "The whole stack was cut to 2.0.0 together: Vue islands, critical CSS, the optional Twig engine and the developer workflow."}
+    es: {title: "El corte 2.0.0", text: "Todo el stack se cortó junto en 2.0.0: islas Vue, critical CSS, el motor Twig opcional y el flujo de desarrollo."}
+  - date: "2026-07-21"
+    version: "3.0.0"
+    link: "../changelog/#2026-07"
+    now: false
+    en: {title: "Storefront 3.x", text: "The storefront line: a one-page checkout layout, a typed event bus with optimistic UI, and islands that hydrate over server-rendered markup."}
+    es: {title: "Storefront 3.x", text: "La línea del storefront: un layout de checkout de una página, un bus de eventos tipado con UI optimista e islas que se hidratan sobre el marcado renderizado en servidor."}
+  - date: "2026-08-01"
+    version: null
+    link: "../changelog/#2026-08"
+    now: false
+    en: {title: "Cacheable checkout", text: "August 2026: the checkout page is served from the full-page cache and its private data is filled in afterwards."}
+    es: {title: "Checkout cacheable", text: "Agosto de 2026: la página del checkout se sirve desde la caché de página completa y sus datos privados se completan después."}
+  - date: "2026-09-22"
+    version: null
+    link: "../changelog/#2026-09"
+    now: false
+    en: {title: "Verified parity", text: "The parity register was measured against Magento Open Source 2.4.9, entry by entry, with a test behind every covered one."}
+    es: {title: "Paridad verificada", text: "El registro de paridad se midió contra Magento Open Source 2.4.9, entrada por entrada, con una prueba detrás de cada entrada cubierta."}
+  - date: "2026-10-06"
+    version: "4.0.0"
+    link: "../changelog/#4-0-0"
+    now: true
+    en: {title: "4.0 stable", text: "The first stable release, with the framework and the storefront each released under one version. Storefront 4.0.1 followed the same day as a hotfix."}
+    es: {title: "4.0 estable", text: "La primera versión estable, con el framework y el storefront publicados cada uno bajo una sola versión. Storefront 4.0.1 siguió el mismo día como hotfix."}
+  - date: null
+    version: null
+    link: null
+    now: false
+    en: {title: "Wider compatibility", text: "More platforms and versions verified by the same matrix run, once they are measured."}
+    es: {title: "Más compatibilidad", text: "Más plataformas y versiones verificadas por la misma ejecución de la matriz, una vez que se midan."}
+
+lanes:
+  - key: now
+    items:
+      - progress: 100
+        measure_en: "6 of 6 platforms verified (2026-10-06)"
+        measure_es: "6 de 6 plataformas verificadas (2026-10-06)"
+        en: {title: "Compatibility table", text: "Magento Open Source and Mage-OS 2.4.7 to 2.4.9, installed from Packagist and checked by the matrix run."}
+        es: {title: "Tabla de compatibilidad", text: "Magento Open Source y Mage-OS 2.4.7 a 2.4.9, instalados desde Packagist y comprobados por la ejecución de la matriz."}
+      - progress: 77
+        measure_en: "247 of 321 covered, 71 partial, 3 blocked; out-of-scope and resolved entries excluded (register, 2026-10-06)"
+        measure_es: "247 de 321 cubiertas, 71 parciales, 3 bloqueadas; sin contar fuera de alcance ni resueltas (registro, 2026-10-06)"
+        en: {title: "Full Luma parity", text: "Closing the entries the register still lists as partial or blocked, so a store can switch without losing stock functionality."}
+        es: {title: "Paridad completa con Luma", text: "Cerrar las entradas que el registro aún lista como parciales o bloqueadas, para que una tienda pueda cambiar sin perder funcionalidad nativa."}
+  - key: next
+    items:
+      - progress: null
+        measure_en: null
+        measure_es: null
+        en: {title: "Adobe Commerce", text: "Walked once on Adobe Commerce 2.4.9 on 2026-10-06. Still to do: the compatibility matrix, Cloud, payment gateways and Commerce-only features."}
+        es: {title: "Adobe Commerce", text: "Recorrido una vez sobre Adobe Commerce 2.4.9 el 2026-10-06. Pendiente: la matriz de compatibilidad, Cloud, pasarelas de pago y funciones exclusivas de Commerce."}
+      - progress: null
+        measure_en: null
+        measure_es: null
+        en: {title: "A commercial payment gateway", text: "Verifying a real gateway through the payment extension point, which today is exercised only by a purpose-built probe."}
+        es: {title: "Una pasarela de pago comercial", text: "Verificar una pasarela real a través del punto de extensión de pagos, que hoy solo se ejercita con una sonda construida para ello."}
+  - key: later
+    items:
+      - progress: null
+        measure_en: null
+        measure_es: null
+        en: {title: "Showcase", text: "A page of stores running MageObsidian in production."}
+        es: {title: "Showcase", text: "Una página de tiendas que ejecutan MageObsidian en producción."}
+      - progress: null
+        measure_en: null
+        measure_es: null
+        en: {title: "Reference generated from source", text: "API and configuration reference generated from the code instead of written by hand."}
+        es: {title: "Referencia generada desde el código", text: "Referencia de API y configuración generada desde el código en lugar de escrita a mano."}
