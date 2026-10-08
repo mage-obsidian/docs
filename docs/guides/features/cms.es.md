@@ -214,6 +214,33 @@ Cuando el contenido es del servidor, la plantilla master guarda una directiva en
 
 ---
 
+## Widgets desde el admin
+
+Todo widget que el core ofrece a un editor para el catálogo, los informes y las ventas se renderiza con el marcado propio del tema, sin RequireJS ni Knockout. Una instancia de widget guarda la plantilla con la que se colocó, así que el cambio a la plantilla del tema ocurre al renderizar y una instancia que ya está en una página sigue funcionando. Un comerciante que eligió una plantilla propia la conserva.
+
+| Widget | Qué renderiza |
+|---|---|
+| Lista de productos | La tarjeta del listado, con muestras cuando la tienda las muestra. |
+| Productos nuevos | La tarjeta del listado en una cuadrícula; la plantilla de lista se renderiza como la cuadrícula, y las tres plantillas de barra lateral como una lista compacta de nombres, imágenes o ambos. |
+| Vistos recientemente, comparados recientemente | Una sección que permanece oculta hasta que el comprador tiene historial. Los ids viven en el almacenamiento local del navegador; las tarjetas llegan con una sola petición a `/mageobsidian-catalog/recent/cards`, que renderiza la misma tarjeta sin estilos en línea. |
+| Pedidos y devoluciones | La misma isla de la página de consulta de invitado, visible solo para un visitante que no ha iniciado sesión. |
+| Enlace a página CMS, bloque CMS, enlace a categoría, enlace a producto | Las plantillas de servidor del propio core, que no llevan script. |
+
+Las listas de vistos y comparados siguen `catalog/recently_products/*`:
+
+- **Alcance.** Los ids se guardan bajo la tienda, el grupo de tiendas o el sitio web que indica el alcance, y una lista solo ofrece lo visto bajo el actual.
+- **Vigencia.** Un producto más antiguo que la vigencia configurada para esa lista queda fuera.
+- **Sincronización.** Con la sincronización activada, cada producto visto o comparado también se envía a `catalog/product/frontend_action_synchronize`, y la lista suma lo que recuerdan las secciones `recently_viewed_product` y `recently_compared_product`, de modo que el comprador conserva el historial en otro navegador.
+- **Cantidad.** El widget pide al endpoint como máximo las tarjetas de su ajuste *Número de productos a mostrar*.
+
+El producto que se está viendo nunca aparece en su propia lista de vistos. Un producto se registra como comparado cuando se añade a la comparación, y sigue en la lista después de quitarlo.
+
+### Dónde puede colocarlos un editor
+
+`content.aside` y `content.bottom` los declara `theme-base` dentro de `content`, con los nombres y las etiquetas que les da el core, así que un widget colocado en cualquiera de los dos aparece en toda página que tenga un área de contenido principal. Las barras laterales usan `sidebar.additional`, que declaran también los layouts de dos columnas además del de tres: bajo los filtros de una categoría o de una búsqueda van la lista de comparación, la lista de deseos (cuando `wishlist/general/show_in_sidebar` está activo) y los artículos del último pedido de un cliente con sesión. Cada una es una isla que lee su sección de customer data y se hidrata cuando se desplaza a la vista, y ninguna dibuja una caja vacía.
+
+---
+
 ## Tailwind escrito en el CMS
 
 El scanner de Tailwind lee archivos. El contenido CMS vive en una base de datos, así que una clase escrita en el admin es invisible para el build. MageObsidian lo cierra en dos pasos.

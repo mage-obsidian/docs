@@ -214,6 +214,33 @@ When the content is the server's, the master template stores a directive instead
 
 ---
 
+## Widgets from the admin
+
+Every widget the core offers an editor for the catalog, the reports and the sales renders with the theme's own markup, with no RequireJS and no Knockout. A widget instance stores the template it was placed with, so the swap to the theme's template happens at render and an instance already on a page keeps working. A merchant who picked a template of their own keeps it.
+
+| Widget | What it renders |
+|---|---|
+| Product list | The listing card, with swatches when the store shows them. |
+| New products | The listing card in a grid; the list template renders as the grid, and the three sidebar templates as a compact list of names, images or both. |
+| Recently viewed, recently compared | A section that stays hidden until the shopper has a history. The ids live in the browser's local storage; the cards come from one request to `/mageobsidian-catalog/recent/cards`, which renders the same card without inline styles. |
+| Orders and returns | The same island as the guest lookup page, shown only to a visitor who is not signed in. |
+| CMS page link, CMS block, category link, product link | The core's own server templates, which carry no script. |
+
+The recently viewed and compared lists follow `catalog/recently_products/*`:
+
+- **Scope.** The ids are stored under the store, store group or website the scope names, and a list only offers what was seen under the current one.
+- **Lifetime.** A product older than the lifetime configured for that list is left out.
+- **Synchronisation.** With synchronisation on, each product seen or compared is also posted to `catalog/product/frontend_action_synchronize`, and the list adds what the `recently_viewed_product` and `recently_compared_product` sections remember, so a shopper keeps the history in another browser.
+- **Number.** The widget asks the endpoint for no more cards than its *Number of Products to display* setting.
+
+The product being viewed never appears in its own recently viewed list. A product is recorded as compared when it is added to the comparison, and stays listed after it is taken off.
+
+### Where an editor can place them
+
+`content.aside` and `content.bottom` are declared by `theme-base` inside `content`, with the names and labels the core gives them, so a widget placed in either appears on every page that has a main content area. The sidebars use `sidebar.additional`, which the two-column page layouts declare as well as the three-column one: under the filters of a category or a search sit the comparison list, the wish list (when `wishlist/general/show_in_sidebar` is on) and the last order's items for a signed-in customer. Each is an island that reads its customer-data section and hydrates when it is scrolled into view, and none draws an empty box.
+
+---
+
 ## Tailwind written in the CMS
 
 Tailwind's scanner reads files. CMS content lives in a database, so a class written in the admin is invisible to a build. MageObsidian closes that in two steps.
