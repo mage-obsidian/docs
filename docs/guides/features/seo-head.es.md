@@ -277,6 +277,34 @@ Antes de encender cualquiera de los dos flags, lo correcto casi siempre es **sac
 
 ---
 
+## Descubrimiento de RSS
+
+Con RSS activo (*Tiendas › Configuración › Servicios › Feeds RSS*), el escaparate anuncia los feeds activos, cada uno solo mientras su propio feed está activo:
+
+- un `<link rel="alternate" type="application/rss+xml">` por feed activo en el head de todas las páginas (`head_rss`);
+- un enlace RSS en el pie hacia la lista de feeds (`rss-link`);
+- un enlace de suscripción en una categoría de primer nivel con *Feed de categorías* activo (`rss.link`);
+- un enlace de suscripción en la lista de deseos con *Wishlist* activo (`wishlist.rss.link`);
+- un enlace «Subscribe to Order Status» en un pedido y en sus facturas, envíos y notas de crédito, para un cliente y para un invitado, con *Estado del pedido* activo (`sales.order.info.buttons.rss`).
+
+Con RSS desactivado no se muestra ninguno. El enlace del pedido va firmado con la misma clave que usa Magento y el feed pide las credenciales del cliente, igual que en Luma.
+
+---
+
+## Google Ads
+
+Google Ads se porta junto a Google Analytics 4 y sigue sus dos reglas: la librería espera la primera interacción del comprador y no se carga nada mientras la restricción de cookies esté activa y el visitante no las haya aceptado.
+
+| Ajuste | Ruta |
+|---|---|
+| Activar Google Ads | `google/gtag/adwords/active` |
+| ID de conversión | `google/gtag/adwords/conversion_id` |
+| Etiqueta de conversión | `google/gtag/adwords/conversion_label` |
+
+Con un identificador, todas las páginas llevan la etiqueta. En la página de éxito del pedido, con etiqueta también, la compra se registra sin esperar, con el valor, la moneda y el número del pedido. Una tienda que aún usa la etiqueta heredada de conversión (*Google AdWords*, `google/adwords/*`) la recibe en la página de éxito con los valores configurados. Ambas se declaran en el layout de la página y se sirven bajo la política de seguridad de contenido que la página envía.
+
+---
+
 ## Superficies nativas que el tema conserva
 
 Bajo un tema MageObsidian, el gestor de módulos del framework declara «salida deshabilitada» para todo módulo `Magento_*`, y ese gestor está cableado en las fuentes de archivos de layout **y** de page layout del core. El efecto no es «el tema no aporta nada a esa pantalla»: el archivo de layout del core desaparece por completo. Una ruta del core que ningún módulo MageObsidian re-declare responde `200` con un cuerpo vacío, o con el cromo del tema y nada dentro, sin que ningún log lo diga.

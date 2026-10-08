@@ -277,6 +277,34 @@ Before turning either flag on, the right move is almost always to **take the scr
 
 ---
 
+## RSS discovery
+
+With RSS on (*Stores › Configuration › Services › RSS Feeds*), the storefront announces the feeds that are active, each one only while its own feed is on:
+
+- a `<link rel="alternate" type="application/rss+xml">` per active feed in the head of every page (`head_rss`);
+- an RSS link in the footer to the list of feeds (`rss-link`);
+- a subscribe link on a top-level category when *Category Feed* is on (`rss.link`);
+- a subscribe link on the wish list when *Wish List* is on (`wishlist.rss.link`);
+- a "Subscribe to Order Status" link on an order and on its invoices, shipments and credit memos, for a customer and for a guest, when *Order Status* is on (`sales.order.info.buttons.rss`).
+
+With RSS off none of them renders. The order link is signed with the same key Magento uses, and the feed asks for the customer's credentials as it does in Luma.
+
+---
+
+## Google Ads
+
+Google Ads is ported next to Google Analytics 4 and follows the same two rules: the library waits for the shopper's first interaction, and nothing loads while cookie restriction is on and the visitor has not accepted cookies.
+
+| Setting | Path |
+|---|---|
+| Enable Google Ads | `google/gtag/adwords/active` |
+| Conversion ID | `google/gtag/adwords/conversion_id` |
+| Conversion Label | `google/gtag/adwords/conversion_label` |
+
+With an identifier every page carries the tag. On the order success page, with a label too, the purchase is reported without waiting, with the order value, currency and number. A store that still uses the legacy conversion tag (*Google AdWords*, `google/adwords/*`) gets it on the success page with the values it configured. Both are declared in the page layout and served under the content security policy the page sends.
+
+---
+
 ## Native surfaces the theme keeps
 
 Under a MageObsidian theme the framework's module manager reports every `Magento_*` module as "output disabled", and that manager is wired into the core's layout **and** page-layout file sources. The effect is not "the theme adds nothing to that screen": the core's layout file is dropped altogether. A core route that no MageObsidian module re-declares answers `200` with an empty body, or with the theme chrome and nothing inside, and no log says so.
