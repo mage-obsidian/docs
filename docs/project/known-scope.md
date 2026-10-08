@@ -7,18 +7,18 @@ What MageObsidian does not cover, and why. Each item here is a decision or a mea
 
 ## Luma parity
 
-The parity register was read on 2026-10-07 against **Magento Open Source 2.4.9**. It lists 529 entries: 265 covered, 53 partial, 7 uncovered, 59 resolved, 142 out of scope and 3 blocked. A covered entry has a test that observed the behaviour, and every block the core contributes to that screen is accounted for. A partial entry has the test, but one or more of those blocks has no counterpart; the four groups below are the ones that are not covered.
+The parity register was read on 2026-10-07 against **Magento Open Source 2.4.9**. It lists 529 entries: 272 covered, 46 partial, 7 uncovered, 59 resolved, 142 out of scope and 3 blocked. A covered entry has a test that observed the behaviour, and every block the core contributes to that screen is accounted for. A partial entry has the test, but one or more of those blocks has no counterpart; the four groups below are the ones that are not covered.
 
-Until 2026-10-06 the register compared screens only, so a screen MageObsidian re-declared counted as covered even when a block another core module added to it was gone. It now also compares the 832 blocks the core declares on those screens. The 71 partial entries it first found came from that comparison, and they were all counted as covered before; 53 remain.
+Until 2026-10-06 the register compared screens only, so a screen MageObsidian re-declared counted as covered even when a block another core module added to it was gone. It now also compares the 832 blocks the core declares on those screens. The 71 partial entries it first found came from that comparison, and they were all counted as covered before; 46 remain.
 
 ### Partial
 
-79 blocks on 53 screens have no counterpart. Each one is listed in the register with what the shopper loses. By area:
+69 blocks on 46 screens have no counterpart. Each one is listed in the register with what the shopper loses. By area:
 
 | Area | What is missing |
 |---|---|
 | Account and session | There is no account offer on the success page for a guest who just paid. |
-| Catalog and search | The category image, swatches on listing cards, the compare sidebar, recently viewed products, and search suggestions and related terms. Product views and search terms are no longer recorded for the admin reports. |
+| Catalog and search | The compare sidebar and recently viewed products. |
 | Orders and emails | Bundle selections and downloadable link titles in the order, invoice and credit memo emails, and Fixed Product Tax in their totals. Comments on orders, invoices, shipments and credit memos. Reorder and Print Order on the document pages, the Track your order link, the Recently Ordered sidebar, the order status on printed documents, and the print and downloadable-products links on the success page. Item options in the multi-address steps. |
 | Wish list | Updating quantities, item comments, editing a saved item's options, showing which variant was saved, review summaries, and the sidebar. |
 | Marketing and feeds | Google Ads conversion tracking, both the gtag and the legacy tag (Google Analytics 4 is ported). RSS links in the head, the footer, category pages, the wish list and order pages. |

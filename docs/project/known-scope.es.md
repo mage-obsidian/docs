@@ -7,18 +7,18 @@ Lo que MageObsidian no cubre, y por qué. Cada punto aquí es una decisión o un
 
 ## Paridad con Luma
 
-El registro de paridad se leyó el 2026-10-07 contra **Magento Open Source 2.4.9**. Lista 529 entradas: 265 cubiertas, 53 parciales, 7 sin cubrir, 59 resueltas, 142 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento, y todos los bloques que el core aporta a esa pantalla están contemplados. Una entrada parcial tiene la prueba, pero a uno o más de esos bloques le falta su equivalente; los cuatro grupos siguientes son los que no están cubiertos.
+El registro de paridad se leyó el 2026-10-07 contra **Magento Open Source 2.4.9**. Lista 529 entradas: 272 cubiertas, 46 parciales, 7 sin cubrir, 59 resueltas, 142 fuera de alcance y 3 bloqueadas. Una entrada cubierta tiene una prueba que observó el comportamiento, y todos los bloques que el core aporta a esa pantalla están contemplados. Una entrada parcial tiene la prueba, pero a uno o más de esos bloques le falta su equivalente; los cuatro grupos siguientes son los que no están cubiertos.
 
-Hasta el 2026-10-06 el registro solo comparaba pantallas, así que una pantalla que MageObsidian volvía a declarar contaba como cubierta aunque faltara un bloque que otro módulo del core le agregaba. Ahora también compara los 832 bloques que el core declara en esas pantallas. Las 71 entradas parciales que encontró al principio salían de esa comparación, y antes se contaban todas como cubiertas; quedan 53.
+Hasta el 2026-10-06 el registro solo comparaba pantallas, así que una pantalla que MageObsidian volvía a declarar contaba como cubierta aunque faltara un bloque que otro módulo del core le agregaba. Ahora también compara los 832 bloques que el core declara en esas pantallas. Las 71 entradas parciales que encontró al principio salían de esa comparación, y antes se contaban todas como cubiertas; quedan 46.
 
 ### Parciales
 
-79 bloques en 53 pantallas no tienen equivalente. Cada uno figura en el registro con lo que pierde el cliente. Por área:
+69 bloques en 46 pantallas no tienen equivalente. Cada uno figura en el registro con lo que pierde el cliente. Por área:
 
 | Área | Qué falta |
 |---|---|
 | Cuenta y sesión | La página de éxito no ofrece crear una cuenta a un invitado que acaba de pagar. |
-| Catálogo y búsqueda | Imagen de categoría, swatches en las tarjetas del listado, barra lateral de comparación, productos vistos recientemente, y sugerencias de búsqueda y términos relacionados. Las vistas de producto y los términos de búsqueda ya no se registran para los reportes del admin. |
+| Catálogo y búsqueda | La barra lateral de comparación y los productos vistos recientemente. |
 | Pedidos y emails | Las selecciones de los bundles y los títulos de los enlaces descargables en los emails de pedido, factura y nota de crédito, y el Fixed Product Tax en sus totales. Los comentarios de pedidos, facturas, envíos y notas de crédito. Volver a pedir e Imprimir pedido en las páginas de documentos, el enlace Rastrear pedido, la barra lateral de Pedidos recientes, el estado en los documentos impresos, y los enlaces de impresión y de productos descargables en la página de éxito. Las opciones de los ítems en los pasos del checkout multidirección. |
 | Lista de deseos | Actualizar cantidades, comentarios por ítem, editar las opciones de un ítem guardado, ver qué variante se guardó, los resúmenes de reseñas y la barra lateral. |
 | Marketing y feeds | Seguimiento de conversiones de Google Ads, tanto con gtag como con la etiqueta antigua (Google Analytics 4 sí está portado). Enlaces RSS en el head, el footer, las categorías, la lista de deseos y los pedidos. |
