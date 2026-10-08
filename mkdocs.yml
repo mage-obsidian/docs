@@ -109,6 +109,7 @@ plugins:
             Module configuration: Configuración del módulo
             JavaScript & imports: JavaScript e imports
             JS interceptors: Interceptores JS
+            In-store pickup: Recogida en tienda
             Templates (.phtml): Plantillas (.phtml)
             Vue & interactivity: Vue e interactividad
             Vue components: Componentes Vue
@@ -223,6 +224,7 @@ nav:
       - JavaScript & imports: guides/modules/javascript.md
       - JS interceptors: guides/modules/interceptors.md
       - Templates (.phtml): guides/modules/phtml.md
+      - In-store pickup: guides/modules/in-store-pickup.md
     - Vue & interactivity:
       - guides/vue/index.md
       - Vue components: guides/vue/components.md

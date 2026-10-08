@@ -10,5 +10,6 @@ Haz que un módulo de Magento funcione con el nuevo frontend y conecta su CSS, J
 - **[JavaScript e imports](javascript.md)** — ubicación de scripts, imports `Vendor_Module::` y tooling.
 - **[Interceptores JS](interceptors.md)** — modifica el JavaScript de otro módulo sin editarlo.
 - **[Plantillas (.phtml)](phtml.md)** — carga scripts y renderiza componentes Vue desde plantillas.
+- **[Recogida en tienda](in-store-pickup.md)** — el paquete opcional de recogida y los renderizadores de transportista del checkout.
 
 </div>

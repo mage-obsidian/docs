@@ -32,6 +32,12 @@ Como el build de Vite corre *dentro* de `setup:static-content:deploy`, la máqui
 >
 > (Ajusta la versión al pin `packageManager` vigente en `vite/package.json`.)
 
+## Subresource Integrity en las páginas de pago
+
+El build de Vite escribe un hash `sha384` por cada chunk en el manifiesto de la compilación. En las páginas que Magento lista en `SriEnabledActions` (el checkout, la confirmación del pedido y el paso de facturación del checkout multidirección), `ViteResolver` añade `integrity` y `crossorigin` a los scripts de módulo y a los `modulepreload`. Los chunks que se cargan con un `import()` dinámico no pueden llevar el atributo, así que se declaran en la sección `integrity` del import map. Un comerciante sujeto al requisito 6.4.3 de PCI DSS 4.0 puede demostrar que cada script que el navegador ejecuta en esas páginas es el que se desplegó, y un archivo modificado después del deploy es rechazado por el navegador.
+
+El deploy también lo comprueba: tras `setup:static-content:deploy`, el verificador de la salida de Vite compara los hashes del manifiesto con los archivos desplegados y avisa si alguno difiere; con `MAGE_OBSIDIAN_STRICT_DEPLOY=1` hace fallar el deploy. Las demás páginas se sirven sin los atributos y no dependen de ellos.
+
 ## Beneficios
 
 - **Salida optimizada** — assets minificados, con tree-shaking y hash, listos para producción.
