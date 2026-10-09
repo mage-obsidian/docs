@@ -14,13 +14,14 @@ least one entirely blank frame, even though the documents had already been prefe
 
 ## Holding the previous page
 
-The storefront keeps the previous page on screen until the next one has parsed its main content:
+The storefront keeps the previous page on screen until the next one has parsed its content, footer included:
 
-- A tiny inline script in the `<head>` adds `<link rel="expect" href="#obsidian-main-end"
+- A tiny inline script in the `<head>` adds `<link rel="expect" href="#obsidian-page-end"
   blocking="render">`. The browser does not render the new document until that element exists.
-- The element is an empty, hidden `<div id="obsidian-main-end">`: the last child of the
-  `main.content` container, so it arrives after the breadcrumb, the title and the listing, and
-  before the footer.
+- The element is an empty, hidden `<div id="obsidian-page-end">`: the last child of the
+  `page.bottom.container` container, so it arrives after the breadcrumb, the title, the listing and
+  the footer. A marker placed before the footer let the browser paint a short page, such as an empty
+  cart, with its footer still missing.
 - The script only does this when the shopper **arrives from another page of the same store**
   (`navigation.activation.from` is set). A first visit, an arrival from a search engine and a reload
   paint progressively as before, so first-load metrics and Lighthouse are unchanged.
@@ -44,9 +45,9 @@ under a strict policy.
 It ships **on**. Turning it off brings back progressive rendering between pages; nothing else
 depends on it.
 
-!!! note "A layout without `main.content`"
+!!! note "A layout without `page.bottom.container`"
 
-    The marker lives in the `main.content` container. A page layout that removes that container has
+    The marker lives in the `page.bottom.container` container. A page layout that removes that container has
     no marker, and the browser releases rendering when it has parsed the whole document: the page
     still appears, only later. Browsers without `rel="expect"` or without the Navigation API ignore
     the hold and render progressively.

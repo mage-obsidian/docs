@@ -16,13 +16,15 @@ precargados.
 
 ## Retener la página anterior
 
-El escaparate mantiene la página anterior en pantalla hasta que la siguiente analizó su contenido
-principal:
+El escaparate mantiene la página anterior en pantalla hasta que la siguiente analizó su contenido,
+pie incluido:
 
-- Un guion inline mínimo en el `<head>` añade `<link rel="expect" href="#obsidian-main-end"
+- Un guion inline mínimo en el `<head>` añade `<link rel="expect" href="#obsidian-page-end"
   blocking="render">`. El navegador no muestra el documento nuevo hasta que ese elemento existe.
-- El elemento es un `<div id="obsidian-main-end">` vacío y oculto: el último hijo del contenedor
-  `main.content`, así que llega después de la miga de pan, el título y el listado, y antes del pie.
+- El elemento es un `<div id="obsidian-page-end">` vacío y oculto: el último hijo del contenedor
+  `page.bottom.container`, así que llega después de la miga de pan, el título, el listado y el pie.
+  Un marcador antes del pie dejaba que el navegador pintara una página corta, como un carrito
+  vacío, con el pie todavía ausente.
 - El guion solo lo hace cuando el comprador **llega desde otra página de la misma tienda**
   (`navigation.activation.from` tiene valor). Una primera visita, una llegada desde un buscador y una
   recarga pintan de forma progresiva como antes, así que las métricas de primera carga y Lighthouse
@@ -47,9 +49,9 @@ funciona con una política estricta.
 Viene **activado**. Desactivarlo devuelve la pintura progresiva entre páginas; nada más depende de
 ello.
 
-!!! note "Un layout sin `main.content`"
+!!! note "Un layout sin `page.bottom.container`"
 
-    El marcador vive en el contenedor `main.content`. Un page layout que elimina ese contenedor no
+    El marcador vive en el contenedor `page.bottom.container`. Un page layout que elimina ese contenedor no
     tiene marcador, y el navegador libera la pintura cuando terminó de analizar todo el documento:
     la página aparece igual, solo que más tarde. Los navegadores sin `rel="expect"` o sin la
     Navigation API ignoran la retención y pintan de forma progresiva.
