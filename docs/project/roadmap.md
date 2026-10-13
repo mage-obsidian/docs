@@ -19,7 +19,11 @@ the end-to-end rows name their platform. Each row carries the date it was measur
 
 | Register | Figure | Measured |
 |---|---|---|
-| Parity register | 529 entries in total: 318 covered, 67 resolved, 2 blocked and 142 out of scope | 2026-10-12 |
+| Luma screens and handles | 457: all 322 that apply are done (312 covered by a test, 10 resolved); 135 out of scope | 2026-10-12 |
+| Store settings Luma honours (functional audit) | 43: 39 resolved, 4 out of scope | 2026-10-12 |
+| Gaps against other frontends (competitive audit) | 14: 10 resolved, 2 out of scope, 2 blocked by decision | 2026-10-12 |
+| Security audit | 9: 4 covered, 5 resolved | 2026-10-12 |
+| Performance audit | 6: 2 covered, 3 resolved, 1 out of scope | 2026-10-12 |
 | Page layouts | 15 entries, 13 covered by an executed test, 2 out of scope | 2026-09-22 |
 | End-to-end suite, Magento Open Source 2.4.9 | 682 passed, every failure with a known cause | 2026-10-13 |
 | End-to-end suite, Mage-OS 3.1.0 | 672 passed, every failure with a known cause | 2026-10-13 |
@@ -27,7 +31,7 @@ the end-to-end rows name their platform. Each row carries the date it was measur
 | Build engine unit tests | 403 | 2026-10-13 |
 | Harness unit tests | 383 | 2026-10-13 |
 
-The parity register lists every Luma screen and behaviour, and every gap an audit found. Each entry is in one of four states:
+The first five rows are the parity register, 529 entries in all, split by where each entry came from. Each entry is in one of four states:
 
 - **Covered** — a test ran and observed the behaviour on that platform. A declaration in a theme never counts as coverage on its own.
 - **Resolved** — a gap an audit found (functional, competitive, security or performance) that has since been closed.

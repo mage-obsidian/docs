@@ -33,8 +33,8 @@ milestones:
     version: "4.1.0"
     link: "../changelog/#framework-410-2026-10-13"
     now: true
-    en: {title: "4.1 on three platforms", text: "Subresource Integrity on payment pages, forms that follow the store configuration, in-store pickup and Luma's guest checkout. The full verification suite now runs on Open Source, Mage-OS and Adobe Commerce."}
-    es: {title: "4.1 en tres plataformas", text: "Subresource Integrity en las páginas de pago, formularios que siguen la configuración de la tienda, retiro en tienda y el checkout de invitado de Luma. La suite de verificación completa ya corre sobre Open Source, Mage-OS y Adobe Commerce."}
+    en: {title: "4.1: Luma parity complete", text: "Every Luma screen the parity register tracks is covered by a test or resolved, with none left open. Also Subresource Integrity on payment pages, forms that follow the store configuration and in-store pickup, and the full verification suite running on Open Source, Mage-OS and Adobe Commerce."}
+    es: {title: "4.1: paridad con Luma completa", text: "Cada pantalla de Luma que sigue el registro de paridad está cubierta por una prueba o resuelta, sin ninguna abierta. Además, Subresource Integrity en las páginas de pago, formularios que siguen la configuración de la tienda, retiro en tienda y la suite de verificación completa corriendo sobre Open Source, Mage-OS y Adobe Commerce."}
   - date: null
     version: null
     link: null
@@ -50,11 +50,6 @@ lanes:
         measure_es: "6 de 6 plataformas verificadas (2026-10-06)"
         en: {title: "Compatibility table", text: "Magento Open Source and Mage-OS 2.4.7 to 2.4.9, installed from Packagist and checked by the matrix run."}
         es: {title: "Tabla de compatibilidad", text: "Magento Open Source y Mage-OS 2.4.7 a 2.4.9, instalados desde Packagist y comprobados por la ejecución de la matriz."}
-      - progress: 99
-        measure_en: "318 of 320 covered, 2 blocked; out-of-scope and resolved entries excluded (register, 2026-10-12)"
-        measure_es: "318 de 320 cubiertas, 2 bloqueadas; sin contar fuera de alcance ni resueltas (registro, 2026-10-12)"
-        en: {title: "Full Luma parity", text: "Closing the entries the register still lists as partial or blocked, so a store can switch without losing stock functionality."}
-        es: {title: "Paridad completa con Luma", text: "Cerrar las entradas que el registro aún lista como parciales o bloqueadas, para que una tienda pueda cambiar sin perder funcionalidad nativa."}
   - key: next
     items:
       - progress: null
@@ -69,6 +64,11 @@ lanes:
         es: {title: "Una pasarela de pago comercial", text: "Verificar una pasarela real a través del punto de extensión de pagos, que hoy solo se ejercita con una sonda construida para ello."}
   - key: later
     items:
+      - progress: null
+        measure_en: null
+        measure_es: null
+        en: {title: "Two Page Builder extras", text: "Provider-hosted video backgrounds and server-rendered Page Builder content types. They come from the comparison with other frontends, not from Luma, and stay blocked by decision until there is a way to do them well."}
+        es: {title: "Dos extras de Page Builder", text: "Fondos de video alojados en un proveedor y content types de Page Builder renderizados en el servidor. Vienen de la comparación con otros frontends, no de Luma, y siguen bloqueados por decisión hasta que haya una forma buena de hacerlos."}
       - progress: null
         measure_en: null
         measure_es: null

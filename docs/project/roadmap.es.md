@@ -19,7 +19,11 @@ las filas de extremo a extremo nombran su plataforma. Cada fila lleva la fecha e
 
 | Registro | Cifra | Medido |
 |---|---|---|
-| Registro de paridad | 529 entradas en total: 318 cubiertas, 67 resueltas, 2 bloqueadas y 142 fuera de alcance | 2026-10-12 |
+| Pantallas y handles de Luma | 457: las 322 que aplican están hechas (312 cubiertas por una prueba, 10 resueltas); 135 fuera de alcance | 2026-10-12 |
+| Ajustes de tienda que Luma respeta (auditoría funcional) | 43: 39 resueltas, 4 fuera de alcance | 2026-10-12 |
+| Brechas frente a otros frontends (auditoría competitiva) | 14: 10 resueltas, 2 fuera de alcance, 2 bloqueadas por decisión | 2026-10-12 |
+| Auditoría de seguridad | 9: 4 cubiertas, 5 resueltas | 2026-10-12 |
+| Auditoría de rendimiento | 6: 2 cubiertas, 3 resueltas, 1 fuera de alcance | 2026-10-12 |
 | Layouts de página | 15 entradas, 13 cubiertas por una prueba ejecutada, 2 fuera de alcance | 2026-09-22 |
 | Suite de extremo a extremo, Magento Open Source 2.4.9 | 682 aprobadas, cada fallo con causa conocida | 2026-10-13 |
 | Suite de extremo a extremo, Mage-OS 3.1.0 | 672 aprobadas, cada fallo con causa conocida | 2026-10-13 |
@@ -27,7 +31,7 @@ las filas de extremo a extremo nombran su plataforma. Cada fila lleva la fecha e
 | Pruebas unitarias del motor de build | 403 | 2026-10-13 |
 | Pruebas unitarias del arnés | 383 | 2026-10-13 |
 
-El registro de paridad lista cada pantalla y comportamiento de Luma, y cada brecha que encontró una auditoría. Cada entrada está en uno de cuatro estados:
+Las cinco primeras filas son el registro de paridad, 529 entradas en total, separadas según de dónde salió cada una. Cada entrada está en uno de cuatro estados:
 
 - **Cubierta** — una prueba se ejecutó y observó el comportamiento en esa plataforma. Una declaración en un tema nunca cuenta como cobertura por sí sola.
 - **Resuelta** — una brecha que encontró una auditoría (funcional, competitiva, de seguridad o de rendimiento) y que ya se cerró.
