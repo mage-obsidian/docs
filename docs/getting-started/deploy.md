@@ -38,6 +38,8 @@ The Vite build writes a `sha384` hash for every chunk into the build manifest. O
 
 The deploy checks it too: after `setup:static-content:deploy`, the Vite output verifier compares the hashes in the manifest with the deployed files and warns when one differs; with `MAGE_OBSIDIAN_STRICT_DEPLOY=1` it fails the deploy instead. Other pages are served without the attributes and do not depend on them.
 
+This needs framework 4.1.1, whose harness installs engine 4.1.0: an older engine writes no hashes, and the pages are then served without the attributes.
+
 ## Benefits
 
 - **Optimized output** — minified, tree-shaken, hashed assets ready for production.
