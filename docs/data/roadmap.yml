@@ -26,9 +26,15 @@ milestones:
   - date: "2026-10-06"
     version: "4.0.0"
     link: "../changelog/#4-0-0"
-    now: true
+    now: false
     en: {title: "4.0 stable", text: "The first stable release, with the framework and the storefront each released under one version. Storefront 4.0.1 followed the same day as a hotfix."}
     es: {title: "4.0 estable", text: "La primera versión estable, con el framework y el storefront publicados cada uno bajo una sola versión. Storefront 4.0.1 siguió el mismo día como hotfix."}
+  - date: "2026-10-13"
+    version: "4.1.0"
+    link: "../changelog/#framework-410-2026-10-13"
+    now: true
+    en: {title: "4.1 on three platforms", text: "Subresource Integrity on payment pages, forms that follow the store configuration, in-store pickup and Luma's guest checkout. The full verification suite now runs on Open Source, Mage-OS and Adobe Commerce."}
+    es: {title: "4.1 en tres plataformas", text: "Subresource Integrity en las páginas de pago, formularios que siguen la configuración de la tienda, retiro en tienda y el checkout de invitado de Luma. La suite de verificación completa ya corre sobre Open Source, Mage-OS y Adobe Commerce."}
   - date: null
     version: null
     link: null
@@ -44,9 +50,9 @@ lanes:
         measure_es: "6 de 6 plataformas verificadas (2026-10-06)"
         en: {title: "Compatibility table", text: "Magento Open Source and Mage-OS 2.4.7 to 2.4.9, installed from Packagist and checked by the matrix run."}
         es: {title: "Tabla de compatibilidad", text: "Magento Open Source y Mage-OS 2.4.7 a 2.4.9, instalados desde Packagist y comprobados por la ejecución de la matriz."}
-      - progress: 77
-        measure_en: "247 of 321 covered, 71 partial, 3 blocked; out-of-scope and resolved entries excluded (register, 2026-10-06)"
-        measure_es: "247 de 321 cubiertas, 71 parciales, 3 bloqueadas; sin contar fuera de alcance ni resueltas (registro, 2026-10-06)"
+      - progress: 99
+        measure_en: "318 of 320 covered, 2 blocked; out-of-scope and resolved entries excluded (register, 2026-10-12)"
+        measure_es: "318 de 320 cubiertas, 2 bloqueadas; sin contar fuera de alcance ni resueltas (registro, 2026-10-12)"
         en: {title: "Full Luma parity", text: "Closing the entries the register still lists as partial or blocked, so a store can switch without losing stock functionality."}
         es: {title: "Paridad completa con Luma", text: "Cerrar las entradas que el registro aún lista como parciales o bloqueadas, para que una tienda pueda cambiar sin perder funcionalidad nativa."}
   - key: next
@@ -54,8 +60,8 @@ lanes:
       - progress: null
         measure_en: null
         measure_es: null
-        en: {title: "Adobe Commerce", text: "Walked once on Adobe Commerce 2.4.9 on 2026-10-06. Still to do: the compatibility matrix, Cloud, payment gateways and Commerce-only features."}
-        es: {title: "Adobe Commerce", text: "Recorrido una vez sobre Adobe Commerce 2.4.9 el 2026-10-06. Pendiente: la matriz de compatibilidad, Cloud, pasarelas de pago y funciones exclusivas de Commerce."}
+        en: {title: "Adobe Commerce", text: "The full verification suite runs on Adobe Commerce 2.4.9: 659 tests passed on 2026-10-13, and every failure has a known cause. Still to do: the compatibility matrix, Cloud, payment gateways and Commerce-only features."}
+        es: {title: "Adobe Commerce", text: "La suite de verificación completa corre sobre Adobe Commerce 2.4.9: 659 pruebas aprobadas el 2026-10-13, y cada fallo tiene una causa conocida. Pendiente: la matriz de compatibilidad, Cloud, pasarelas de pago y funciones exclusivas de Commerce."}
       - progress: null
         measure_en: null
         measure_es: null
