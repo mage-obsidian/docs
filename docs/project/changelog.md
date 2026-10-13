@@ -14,6 +14,72 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Framework 4.1.1 — 2026-10-13
+
+### Changed
+
+- **component-modern-frontend** — the Vite harness requires engine `^4.1.0`, so builds get the engine changes of 4.1.0 below.
+
+### Upgrade notes
+
+Install 4.1.1, not 4.1.0 alone. The scripts that `module-modern-frontend` 4.1.0 ships import runtime modules that only exist from engine 4.1.0 on, and the 4.1.0 harness still installs engine 4.0.1, so a theme build with it fails on the import.
+
+Engine 4.1.0 was published on 2026-10-13 at 13:38 UTC. Until 2026-10-14 at 13:38 UTC, pnpm 11 refuses it under `minimumReleaseAge`. Either wait, or exempt that one version for the install:
+
+```bash
+pnpm_config_minimum_release_age_exclude='["mage-obsidian@4.1.0"]' pnpm install --frozen-lockfile
+```
+
+---
+
+## Framework 4.1.0 — 2026-10-13
+
+### Added
+
+- **js-package-utils** (`mage-obsidian` on npm) — the build writes a `sha384` `integrity` hash for every chunk into the Vite manifest.
+- **module-modern-frontend** — on the checkout, the order confirmation and the billing step of multi-address checkout, module scripts, `modulepreload` links and the import map carry `integrity` and `crossorigin`. See [Subresource Integrity on payment pages](../getting-started/deploy.md#subresource-integrity-on-payment-pages).
+- **module-modern-frontend** — `setup:static-content:deploy` checks every published script against its manifest hash and warns about the ones that differ, since browsers would refuse to run them on payment pages; with `MAGE_OBSIDIAN_STRICT_DEPLOY=1` it fails the deploy.
+- **js-package-utils** — cookies written by the storefront runtime use the path, domain, lifetime and `Secure` flag the store publishes, instead of fixed values.
+
+### Fixed
+
+- **js-package-utils**, **module-modern-frontend** — cached private sections are scoped to the website, store view and currency that produced them. A cache produced by another scope, or stored before scoping existed, is dropped instead of shown.
+- **js-package-utils** — clearing a cookie also clears its host-only variant, and the session marker cookie stays host-only.
+- **module-modern-frontend**, **module-modern-frontend-twig** — where the page's `style-src` allows inline styles, the `style` Twig tag and the critical CSS are delivered from a nonced script that adopts them as a stylesheet.
+- **module-modern-frontend-twig** — the `number` filter returns a non-numeric value unchanged instead of formatting it.
+- **js-package-utils** — a theme without `web/theme.config.js` builds as if it had an empty one and inherits its parents' values. Until 4.0.2 the build stopped with `Cannot read properties of null (reading 'ignoredCssFromModules')`.
+
+### Upgrade notes
+
+Superseded by 4.1.1; see above.
+
+---
+
+## Storefront 4.1.0 and theme-default 4.1.0 — 2026-10-13
+
+The storefront packages require framework `^4.1`, and `theme-default` requires storefront `^4.1`. Upgrade them together.
+
+### Added
+
+- **Store configuration followed** — configured customer attributes, address fields and password policy in the account and checkout forms; tax display settings for cart, checkout and product prices; mini cart display limits and the redirect to the cart; layered navigation counts, search length, send-to-friend recipients and other catalog limits; links to features the store disabled are hidden.
+- **Checkout and cart** — saved billing addresses, offline payment instructions and the purchase order number, cart validation and line messages, a paged cart, cross-sells that add to the bag, wish list and compare, a carrier renderer extension point, and print, downloads and an account offer on the success page.
+- **In-store pickup** — new package `module-inventory-in-store-pickup`: a delivery method selector and a pickup location finder over the MSI pickup endpoints. See [In-store pickup](../guides/modules/in-store-pickup.md).
+- **CAPTCHA and reCAPTCHA** — the login CAPTCHA once failed attempts require it, and reCAPTCHA on the cart coupon form and the wish list share form.
+- **Catalog** — configurable swatches on listing cards, with the complete variant priced and added from the card; the category image; tier prices, quantity increments and stock on the product page; a click-to-load facade for provider videos; search suggestions; product views and search terms recorded from cached pages; new, recently viewed and recently compared product widgets.
+- **Account and sales** — saved wish list options, ratings, notes and quantity updates; comments, status, print, reorder and tracking on order documents; bundle, downloadable and fixed tax lines in order emails; the recently ordered sidebar and the orders and returns widget.
+- **Storefront chrome** — store group switcher, configured logo, welcome message and copyright; compare and wish list sidebars; account entry points in the mobile menu; Google Ads tags and conversion reporting; RSS feed discovery and links; stock alert unsubscribe from the email link; full-bleed Page Builder rows; the persistent cart greeting with "not you?".
+- **Security** — the storefront's own scripts carry Subresource Integrity on payment pages, with framework 4.1.
+
+### Fixed
+
+- **Checkout** — a guest whose email already has an account is offered to sign in and can still continue as a guest, as on Luma. It was blocked before.
+- **Wish list** — sharing sends the wish list being viewed instead of the default one.
+- **Catalog** — product cards in a row share one height, with their actions aligned at the bottom.
+- **Header** — the main bar stays pinned at the top while scrolling.
+- **Cached pages** — the site config publishes the store view and currency, so cached sections from another store view or currency are not shown.
+
+---
+
 ## Framework 4.0.2 — 2026-10-07
 
 ### Changed

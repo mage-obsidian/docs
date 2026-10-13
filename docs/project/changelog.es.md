@@ -14,6 +14,72 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
+## Framework 4.1.1 — 2026-10-13
+
+### Cambiado
+
+- **component-modern-frontend** — el harness de Vite requiere el motor `^4.1.0`, así que los builds reciben los cambios del motor 4.1.0 descritos abajo.
+
+### Notas de actualización
+
+Instala 4.1.1, no 4.1.0 sola. Los scripts que trae `module-modern-frontend` 4.1.0 importan módulos del runtime que solo existen desde el motor 4.1.0, y el harness de 4.1.0 todavía instala el motor 4.0.1, así que un build del tema con él falla en el import.
+
+El motor 4.1.0 se publicó el 2026-10-13 a las 13:38 UTC. Hasta el 2026-10-14 a las 13:38 UTC, pnpm 11 lo rechaza por `minimumReleaseAge`. Espera, o exime esa versión concreta durante la instalación:
+
+```bash
+pnpm_config_minimum_release_age_exclude='["mage-obsidian@4.1.0"]' pnpm install --frozen-lockfile
+```
+
+---
+
+## Framework 4.1.0 — 2026-10-13
+
+### Añadido
+
+- **js-package-utils** (`mage-obsidian` en npm) — el build escribe un hash `sha384` en `integrity` para cada chunk del manifest de Vite.
+- **module-modern-frontend** — en el checkout, la confirmación del pedido y el paso de facturación del checkout con varias direcciones, los scripts de módulo, los enlaces `modulepreload` y el import map llevan `integrity` y `crossorigin`. Consulta [Subresource Integrity en las páginas de pago](../getting-started/deploy.md#subresource-integrity-en-las-paginas-de-pago).
+- **module-modern-frontend** — `setup:static-content:deploy` compara cada script publicado con su hash del manifest y avisa de los que difieren, porque los navegadores se negarían a ejecutarlos en las páginas de pago; con `MAGE_OBSIDIAN_STRICT_DEPLOY=1` hace fallar el deploy.
+- **js-package-utils** — las cookies que escribe el runtime del escaparate usan la ruta, el dominio, la duración y la marca `Secure` que publica la tienda, en lugar de valores fijos.
+
+### Corregido
+
+- **js-package-utils**, **module-modern-frontend** — las secciones privadas en caché quedan ligadas al sitio web, la vista de tienda y la moneda que las produjeron. Una caché de otro ámbito, o guardada antes de que existiera esa separación, se descarta en vez de mostrarse.
+- **js-package-utils** — borrar una cookie también borra su variante de solo host, y la cookie que marca la sesión sigue siendo de solo host.
+- **module-modern-frontend**, **module-modern-frontend-twig** — cuando el `style-src` de la página permite estilos inline, la etiqueta Twig `style` y el CSS crítico se entregan desde un script con nonce que los adopta como hoja de estilos.
+- **module-modern-frontend-twig** — el filtro `number` devuelve sin cambios un valor que no es numérico, en vez de formatearlo.
+- **js-package-utils** — un tema sin `web/theme.config.js` se construye como si tuviera uno vacío y hereda los valores de sus padres. Hasta 4.0.2 el build se detenía con `Cannot read properties of null (reading 'ignoredCssFromModules')`.
+
+### Notas de actualización
+
+Reemplazada por 4.1.1; consulta la entrada anterior.
+
+---
+
+## Storefront 4.1.0 y theme-default 4.1.0 — 2026-10-13
+
+Los paquetes de la storefront requieren el framework `^4.1`, y `theme-default` requiere la storefront `^4.1`. Actualízalos juntos.
+
+### Añadido
+
+- **Configuración de la tienda respetada** — los atributos de cliente, los campos de dirección y la política de contraseñas configurados, en los formularios de cuenta y de checkout; la configuración de visualización de impuestos en los precios del carrito, del checkout y del producto; los límites del mini carrito y la redirección al carrito; los contadores de la navegación por capas, la longitud de búsqueda, los destinatarios de «enviar a un amigo» y otros límites del catálogo; se ocultan los enlaces a funciones que la tienda desactivó.
+- **Checkout y carrito** — direcciones de facturación guardadas, instrucciones de pago offline y número de orden de compra, mensajes de validación del carrito y de sus líneas, carrito paginado, ventas cruzadas que se añaden a la bolsa, a la lista de deseos y a la comparación, un punto de extensión para renderizar transportistas, e impresión, descargas y la oferta de cuenta en la página de éxito.
+- **Retiro en tienda** — paquete nuevo `module-inventory-in-store-pickup`: un selector del método de entrega y un buscador de puntos de retiro sobre los endpoints de retiro de MSI. Consulta [Retiro en tienda](../guides/modules/in-store-pickup.md).
+- **CAPTCHA y reCAPTCHA** — el CAPTCHA de inicio de sesión cuando los intentos fallidos lo exigen, y reCAPTCHA en el formulario de cupón del carrito y en el de compartir la lista de deseos.
+- **Catálogo** — muestras de configurables en las tarjetas del listado, con la variante completa con precio y añadida desde la tarjeta; la imagen de la categoría; precios por cantidad, incrementos de cantidad y stock en la página de producto; una fachada que carga los videos de proveedores al hacer clic; sugerencias de búsqueda; visitas a productos y términos de búsqueda registrados desde páginas en caché; widgets de productos nuevos, vistos y comparados recientemente.
+- **Cuenta y ventas** — opciones, valoraciones, notas y cambios de cantidad guardados en la lista de deseos; comentarios, estado, impresión, volver a pedir y seguimiento en los documentos del pedido; líneas de bundle, descargables e impuestos fijos en los correos del pedido; la barra lateral de pedidos recientes y el widget de pedidos y devoluciones.
+- **Estructura del escaparate** — selector de grupo de tiendas, logo configurado, mensaje de bienvenida y copyright; barras laterales de comparación y lista de deseos; accesos a la cuenta en el menú móvil; etiquetas de Google Ads y registro de conversiones; descubrimiento y enlaces de feeds RSS; baja de las alertas de stock desde el enlace del correo; filas de Page Builder a todo el ancho; el saludo del carrito persistente con «¿no eres tú?».
+- **Seguridad** — los scripts propios del escaparate llevan Subresource Integrity en las páginas de pago, con el framework 4.1.
+
+### Corregido
+
+- **Checkout** — a un invitado cuyo email ya tiene cuenta se le ofrece iniciar sesión y puede seguir como invitado, como en Luma. Antes se bloqueaba.
+- **Lista de deseos** — al compartir se envía la lista que se está viendo, no la predeterminada.
+- **Catálogo** — las tarjetas de producto de una misma fila tienen la misma altura, con sus acciones alineadas abajo.
+- **Cabecera** — la barra principal queda fija arriba al hacer scroll.
+- **Páginas en caché** — la configuración del sitio publica la vista de tienda y la moneda, así que no se muestran secciones en caché de otra vista de tienda o moneda.
+
+---
+
 ## Framework 4.0.2 — 2026-10-07
 
 ### Cambiado
