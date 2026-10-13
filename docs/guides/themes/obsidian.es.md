@@ -16,7 +16,7 @@ tema compatible, consulta [Temas Compatibles](build.md).
 
     - ✅ **Magento Open Source 2.4.7+** — soportado hoy.
     - ✅ **Mage-OS 2.4.7 a 2.4.9** — pasó la matriz de compatibilidad el 2026-10-06.
-    - 🧪 **Adobe Commerce 2.4.9** — recorrido una vez el 2026-10-06 y fuera de la matriz; Cloud, pasarelas de pago y funciones exclusivas de Commerce no están verificadas.
+    - 🧪 **Adobe Commerce 2.4.9** — la suite de extremo a extremo completa corre sobre él (659 pruebas aprobadas el 2026-10-13, cada fallo con causa conocida), pero está fuera de la matriz de compatibilidad; Cloud, pasarelas de pago y funciones exclusivas de Commerce no están verificadas.
 
 ---
 

@@ -17,6 +17,11 @@ a guest checkout through to a placed order, sign-up, the customer account, sign-
 sign-in. No console, network or server log errors appeared, and the order was recorded with
 the right totals.
 
+Since 2026-10-13 the full end-to-end verification suite also runs on Adobe Commerce 2.4.9, the
+same one that runs on Magento Open Source and Mage-OS: 659 tests passed, and every failure has a
+known cause. Two come from how that environment is set up and are registered as such; one is the
+MSI bug described under [Troubleshooting](#troubleshooting).
+
 What that does **not** cover:
 
 - **Commerce-only storefront features** — gift cards, store credit, reward points, gift
@@ -176,3 +181,10 @@ pnpm_config_minimum_release_age_exclude='["mage-obsidian@3.1.0"]' pnpm --prefix 
 **A guest is sent to sign in instead of reaching checkout.** The cart holds a downloadable
 product and `catalog/downloadable/disable_guest_checkout` is on, which is Magento's default.
 This is native behaviour; set that option to **No** to let guests buy downloadable products.
+
+**Related, up-sell and cross-sell products stop being salable after an order or a stock save.**
+`magento/module-inventory-grouped-product-indexer` 1.2.7, the version Adobe Commerce 2.4.9
+resolves, reads every product link as if it were a grouped product's child. Each partial
+inventory reindex then deletes the linked products from the stock index, and they disappear
+from the cart, the checkout and the order emails. This is a platform bug, not a MageObsidian
+one; Adobe's patch ACP2E-4741 fixes it. Re-apply the patch after every `composer install`.

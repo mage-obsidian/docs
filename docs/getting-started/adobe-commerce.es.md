@@ -17,6 +17,12 @@ carrito, un checkout de invitado hasta confirmar el pedido, registro, la cuenta 
 cierre de sesión e inicio de sesión. No apareció ningún error de consola, de red ni en los logs
 del servidor, y el pedido quedó registrado con los totales correctos.
 
+Desde el 2026-10-13, la suite de verificación de extremo a extremo completa también corre sobre
+Adobe Commerce 2.4.9, la misma que corre sobre Magento Open Source y Mage-OS: 659 pruebas
+aprobadas, y cada fallo tiene una causa conocida. Dos vienen de cómo está montado ese entorno y
+están registrados como tales; uno es el bug de MSI que se describe en
+[Solución de problemas](#solucion-de-problemas).
+
 Lo que eso **no** cubre:
 
 - **Las funciones de storefront exclusivas de Commerce** (gift cards, store credit, puntos de
@@ -179,3 +185,11 @@ pnpm_config_minimum_release_age_exclude='["mage-obsidian@3.1.0"]' pnpm --prefix 
 producto descargable y `catalog/downloadable/disable_guest_checkout` está activo, que es el
 valor por defecto de Magento. Es el comportamiento nativo; pon esa opción en **No** para que los
 invitados puedan comprar productos descargables.
+
+**Los productos relacionados, de up-sell y de cross-sell dejan de estar a la venta después de un
+pedido o de guardar stock.** `magento/module-inventory-grouped-product-indexer` 1.2.7, la versión
+que resuelve Adobe Commerce 2.4.9, lee cada enlace entre productos como si fuera un hijo de un
+producto agrupado. Cada reindexado parcial del inventario borra entonces los productos enlazados
+del índice de stock, y desaparecen del carrito, del checkout y de los correos del pedido. Es un
+bug de la plataforma, no de MageObsidian; lo corrige el parche ACP2E-4741 de Adobe. Vuelve a
+aplicar el parche después de cada `composer install`.

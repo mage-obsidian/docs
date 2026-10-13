@@ -54,4 +54,4 @@ No commercial payment gateway has been verified. The extension point is: a payme
 
 ## Adobe Commerce
 
-Adobe Commerce is detected and inventoried by `mage-obsidian:frontend:doctor`, which reports which Commerce-only storefront families a store has enabled. It is not in the compatibility matrix. The storefront was walked once on Adobe Commerce 2.4.9 on 2026-10-06; Adobe Commerce Cloud, payment gateways and Commerce-only features are unverified. See [Adobe Commerce](../getting-started/adobe-commerce.md).
+Adobe Commerce is detected and inventoried by `mage-obsidian:frontend:doctor`, which reports which Commerce-only storefront families a store has enabled. It is not in the compatibility matrix. The full end-to-end verification suite runs on Adobe Commerce 2.4.9 (659 tests passed on 2026-10-13, every failure with a known cause); Adobe Commerce Cloud, payment gateways and Commerce-only features are unverified. See [Adobe Commerce](../getting-started/adobe-commerce.md).

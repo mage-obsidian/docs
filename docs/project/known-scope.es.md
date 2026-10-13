@@ -54,4 +54,4 @@ Ninguna pasarela de pago comercial ha sido verificada. El punto de extensión s�
 
 ## Adobe Commerce
 
-Adobe Commerce es detectado e inventariado por `mage-obsidian:frontend:doctor`, que informa qué familias del storefront exclusivas de Commerce tiene habilitadas una tienda. No está en la matriz de compatibilidad. El storefront se recorrió una vez sobre Adobe Commerce 2.4.9 el 2026-10-06; Adobe Commerce Cloud, las pasarelas de pago y las funciones exclusivas de Commerce no están verificadas. Consulta [Adobe Commerce](../getting-started/adobe-commerce.md).
+Adobe Commerce es detectado e inventariado por `mage-obsidian:frontend:doctor`, que informa qué familias del storefront exclusivas de Commerce tiene habilitadas una tienda. No está en la matriz de compatibilidad. La suite de verificación de extremo a extremo completa corre sobre Adobe Commerce 2.4.9 (659 pruebas aprobadas el 2026-10-13, cada fallo con causa conocida); Adobe Commerce Cloud, las pasarelas de pago y las funciones exclusivas de Commerce no están verificadas. Consulta [Adobe Commerce](../getting-started/adobe-commerce.md).
