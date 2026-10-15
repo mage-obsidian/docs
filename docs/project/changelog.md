@@ -14,6 +14,55 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Framework 4.1.2 — 2026-10-15
+
+### Fixed
+
+- **module-modern-frontend** — a cached block keeps only the Content Security Policy hashes of the inline styles and scripts it rendered itself, its children's included. Magento's block cache stored every hash collected in the request up to that block and restored them on every hit, so on a listing with layered navigation the `style-src` list grew with each filter combination visited, until the response header outgrew the web server's buffer and the page answered 502.
+
+### Upgrade notes
+
+The fix replaces `Magento\Csp\Model\BlockCache` through a preference. If another module also prefers that class, only one of the two applies.
+
+Blocks cached before the upgrade still carry the hashes they accumulated. Clean the block cache once after deploying:
+
+```bash
+bin/magento cache:clean block_html
+```
+
+---
+
+## Storefront 4.2.0 and theme-default 4.2.0 — 2026-10-15
+
+`theme-default` 4.2.0 requires storefront `^4.2`: its product page relies on styles that ship in `module-storefront` 4.2.0. Upgrade them together.
+
+### Added
+
+- **Compare and wish list buttons** (`module-storefront`) — they show progress while the request runs: a ring around the round buttons on product cards, and a spinner in place of the icon on wider buttons. Under reduced motion the indicator stays still.
+- **Product page** (`theme-default`) — wish list and compare are two buttons side by side under add to cart, and read "Remove from Wish List" and "Remove from Compare" once the product is in the list. The price alert, stock alert and email to a friend links stand in a list of their own.
+- **Compare page** (`theme-default`) — each product shows its image with a remove button over it, then add to cart or choose options, and the wish list as an icon.
+
+### Fixed
+
+- **Listings** (`module-storefront`) — on cards that a filter, sort or page change swaps in, the compare and wish list buttons show whether the product is already in the list. Before, they looked unpressed, and pressing one removed the product.
+- **Catalog** (`module-catalog`) — the round compare button of a compared product fills with the accent color and keeps its icon visible.
+- **Forms** (`module-storefront`) — selects draw their own chevron with room from the border, so the selected text no longer runs into it.
+- **Wish list** (`theme-default`, `module-wishlist`) — remove and edit sit over the image as icons, quantity and add to cart share one row that wraps on narrow cards, and the note field is compact.
+- **Header** (`theme-default`) — the pinned bar blurs the page scrolling under it again. Since 4.1.0 the content showed through it sharply, because the name the header carries for page transitions kept the blur from reaching the page; the header now carries it only while a transition runs.
+- **Search** (`theme-default`) — the related search terms no longer sit between two rules.
+
+### Upgrade notes
+
+Regenerate the critical CSS after upgrading. The inlined copy keeps the header rule from 4.1.0, and with it the header stays without blur until it is regenerated:
+
+```bash
+bin/magento mage-obsidian:frontend:critical-css --handle=catalog_category_view
+```
+
+Repeat it for every handle you generate critical CSS for; see [Generating the critical CSS](../guides/features/performance.md#generating-the-critical-css).
+
+---
+
 ## Framework 4.1.1 — 2026-10-13
 
 ### Changed

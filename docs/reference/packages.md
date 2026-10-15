@@ -8,7 +8,7 @@ Everything MageObsidian publishes, with its registry, release train and role. Th
 
 ## Framework
 
-The framework train is at 4.1.1. All five packages carry the same version.
+The framework train is at 4.1.2. All five packages carry the same version.
 
 | Package | Registry | Train | Required / optional | Source |
 |---|---|---|---|---|
@@ -20,7 +20,7 @@ The framework train is at 4.1.1. All five packages carry the same version.
 
 ## Storefront
 
-The storefront train is at 4.1.0. All twenty packages carry the same version. `theme-base` is pulled in by `theme-default`; the modules that `theme-base` requires come with it.
+The storefront train is at 4.2.0. All twenty packages carry the same version. `theme-base` is pulled in by `theme-default`; the modules that `theme-base` requires come with it.
 
 | Package | Registry | Train | Required / optional | Source |
 |---|---|---|---|---|
@@ -51,7 +51,7 @@ Versioned on their own.
 
 | Package | Registry | Train | Required / optional | Source |
 |---|---|---|---|---|
-| `mage-obsidian/theme-default` (4.1.0) | Packagist | Own versioning | Required for the OBSIDIAN skin; optional if you write your own theme | [`theme-default`]({{ config.extra.gh_theme_default_url }}) |
+| `mage-obsidian/theme-default` (4.2.0) | Packagist | Own versioning | Required for the OBSIDIAN skin; optional if you write your own theme | [`theme-default`]({{ config.extra.gh_theme_default_url }}) |
 | `mage-obsidian/module-inventory-stock-visualizer` (2.0.0) | Private repository, not on Packagist | Own versioning | Optional | Private repository |
 
 `module-showcase` is the feature switchboard of the demo store. Install it from its repository, not with `composer require`. `module-inventory-stock-visualizer` adapts a panel of the MSI fork `jeanmarcos/inventory` and does not apply to Adobe Commerce.

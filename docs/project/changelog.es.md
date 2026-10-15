@@ -14,6 +14,55 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
+## Framework 4.1.2 — 2026-10-15
+
+### Corregido
+
+- **module-modern-frontend** — un bloque en caché guarda solo los hashes de Content Security Policy de los estilos y scripts inline que renderizó él mismo, incluidos los de sus hijos. La caché de bloques de Magento guardaba todos los hashes recogidos en la petición hasta ese bloque y los restauraba en cada acierto, así que en un listado con navegación por capas la lista de `style-src` crecía con cada combinación de filtros visitada, hasta que la cabecera de la respuesta superaba el buffer del servidor web y la página respondía 502.
+
+### Notas de actualización
+
+La corrección reemplaza `Magento\Csp\Model\BlockCache` mediante una preference. Si otro módulo también declara una preference para esa clase, solo se aplica una de las dos.
+
+Los bloques cacheados antes de actualizar conservan los hashes que acumularon. Limpia la caché de bloques una vez después del deploy:
+
+```bash
+bin/magento cache:clean block_html
+```
+
+---
+
+## Storefront 4.2.0 y theme-default 4.2.0 — 2026-10-15
+
+`theme-default` 4.2.0 requiere storefront `^4.2`: su página de producto depende de estilos que trae `module-storefront` 4.2.0. Actualízalos juntos.
+
+### Añadido
+
+- **Botones de comparar y de lista de deseos** (`module-storefront`) — muestran el progreso mientras corre la petición: un anillo alrededor de los botones redondos de las tarjetas y un indicador en lugar del icono en los botones anchos. Con movimiento reducido, el indicador queda quieto.
+- **Página de producto** (`theme-default`) — lista de deseos y comparar son dos botones lado a lado bajo agregar al carrito, y dicen "Quitar de la lista de deseos" y "Quitar de comparar" cuando el producto ya está en la lista. Los enlaces de alerta de precio, alerta de stock y enviar a un amigo forman una lista aparte.
+- **Página de comparar** (`theme-default`) — cada producto muestra su imagen con un botón para quitarlo encima, luego agregar al carrito o elegir opciones, y la lista de deseos como icono.
+
+### Corregido
+
+- **Listados** (`module-storefront`) — en las tarjetas que un filtro, un orden o un cambio de página traen, los botones de comparar y de lista de deseos indican si el producto ya está en la lista. Antes aparecían sin marcar, y al pulsarlos se quitaba el producto.
+- **Catálogo** (`module-catalog`) — el botón redondo de comparar de un producto comparado se rellena con el color de acento y mantiene visible su icono.
+- **Formularios** (`module-storefront`) — los selects dibujan su propia flecha con espacio respecto del borde, y el texto seleccionado ya no choca con ella.
+- **Lista de deseos** (`theme-default`, `module-wishlist`) — quitar y editar van sobre la imagen como iconos, cantidad y agregar al carrito comparten una fila que se ajusta en tarjetas estrechas, y el campo de nota es compacto.
+- **Cabecera** (`theme-default`) — la barra fija vuelve a desenfocar la página que se desplaza por debajo. Desde 4.1.0 el contenido se veía nítido a través de ella, porque el nombre que la cabecera lleva para las transiciones entre páginas impedía que el desenfoque alcanzara la página; ahora lo lleva solo mientras corre una transición.
+- **Búsqueda** (`theme-default`) — los términos de búsqueda relacionados ya no quedan entre dos líneas.
+
+### Notas de actualización
+
+Regenera el critical CSS después de actualizar. La copia inline conserva la regla de cabecera de 4.1.0, y con ella la cabecera sigue sin desenfoque hasta que se regenera:
+
+```bash
+bin/magento mage-obsidian:frontend:critical-css --handle=catalog_category_view
+```
+
+Repítelo para cada handle para el que generas critical CSS; consulta [Generar el critical CSS](../guides/features/performance.md#generar-el-critical-css).
+
+---
+
 ## Framework 4.1.1 — 2026-10-13
 
 ### Cambiado
