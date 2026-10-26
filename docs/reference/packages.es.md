@@ -8,7 +8,7 @@ Todo lo que publica MageObsidian, con su registro, su tren de versiones y su fun
 
 ## Framework
 
-El tren del framework está en 4.1.2. Los cinco paquetes llevan la misma versión.
+El tren del framework está en 4.1.3. Los cinco paquetes llevan la misma versión.
 
 | Paquete | Registro | Tren | Obligatorio / opcional | Fuente |
 |---|---|---|---|---|
@@ -20,7 +20,7 @@ El tren del framework está en 4.1.2. Los cinco paquetes llevan la misma versió
 
 ## Storefront
 
-El tren del storefront está en 4.2.0. Los veinte paquetes llevan la misma versión. `theme-default` incorpora `theme-base`; los módulos que `theme-base` requiere llegan con él.
+El tren del storefront está en 4.2.1. Los veinte paquetes llevan la misma versión. `theme-default` incorpora `theme-base`; los módulos que `theme-base` requiere llegan con él.
 
 | Paquete | Registro | Tren | Obligatorio / opcional | Fuente |
 |---|---|---|---|---|

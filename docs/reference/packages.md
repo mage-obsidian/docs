@@ -8,7 +8,7 @@ Everything MageObsidian publishes, with its registry, release train and role. Th
 
 ## Framework
 
-The framework train is at 4.1.2. All five packages carry the same version.
+The framework train is at 4.1.3. All five packages carry the same version.
 
 | Package | Registry | Train | Required / optional | Source |
 |---|---|---|---|---|
@@ -20,7 +20,7 @@ The framework train is at 4.1.2. All five packages carry the same version.
 
 ## Storefront
 
-The storefront train is at 4.2.0. All twenty packages carry the same version. `theme-base` is pulled in by `theme-default`; the modules that `theme-base` requires come with it.
+The storefront train is at 4.2.1. All twenty packages carry the same version. `theme-base` is pulled in by `theme-default`; the modules that `theme-base` requires come with it.
 
 | Package | Registry | Train | Required / optional | Source |
 |---|---|---|---|---|

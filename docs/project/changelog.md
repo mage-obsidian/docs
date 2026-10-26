@@ -14,6 +14,39 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Framework 4.1.3 and storefront 4.2.1 — 2026-10-25
+
+In a store whose store views use different themes, MageObsidian now acts only in the store views whose theme is a MageObsidian theme. A store view on any other theme gets Magento's own behaviour, as if MageObsidian were not installed. Store views on a MageObsidian theme do not change.
+
+### Changed
+
+- **module-modern-frontend** — the strict Content Security Policy, where an inline script or style runs only with a nonce or a hash, is applied while the request runs and only under a MageObsidian theme. `config.xml` no longer sets `csp/policies/storefront/scripts/inline` or `csp/policies/storefront/styles/inline`. The checkout and the multi-address billing step keep inline styles, as before, unless the store configured those pages itself.
+
+### Fixed
+
+- **Widgets** (`module-catalog`, `module-sales`) — under another theme, the product list, new products, recently viewed, recently compared and orders and returns widgets keep Magento's templates. They used to switch to templates only a MageObsidian theme has, and rendered empty.
+- **CMS content** (`module-storefront`) — under another theme, pages and blocks are no longer wrapped in `div.cms-content`, and Page Builder content leaves the filter as Magento wrote it: no styles handed over for hashing, no image dimensions added, no behaviour scripts. That includes the emails those store views send.
+- **Head metadata** (`module-storefront`) — under another theme, the meta description is not derived, `robots` is not extended and no social metadata is added.
+- **Showcase** (`module-showcase`) — a demo profile a visitor brings from another store view of the same domain changes nothing under another theme: no configuration override, no cache variation, no telemetry.
+
+### Upgrade notes
+
+Only a store with a store view on a theme that is not a MageObsidian theme sees a difference. In those store views, after the next `cache:flush`:
+
+- widgets, CMS content and the `<head>` render as Magento renders them;
+- the Content Security Policy is the one Magento and the store's own configuration produce. To keep those store views as strict as before, set `csp/policies/storefront/scripts/inline` and `csp/policies/storefront/styles/inline` to `0` for their website. `config:set` rejects these paths, because `Magento_Csp` does not declare them in `system.xml`; write them in the `system` section of `app/etc/env.php` or `app/etc/config.php` instead.
+
+A store view counts as a MageObsidian store view when its theme is in the contract. A theme that inherits from `MageObsidian/default` has to ship its own [`etc/mage_obsidian_compatibility.xml`](../reference/contract.md#etcmage_obsidian_compatibilityxml); inheriting is not enough. To check:
+
+```bash
+bin/magento mage-obsidian:frontend:config --show --themes
+bin/magento mage-obsidian:frontend:doctor
+```
+
+The first lists the themes in the contract. In the second, a *Contract drift* warning means the contract is older than the enabled themes; `bin/magento mage-obsidian:frontend:config --generate` regenerates it, and so does every static content deploy.
+
+---
+
 ## Framework 4.1.2 — 2026-10-15
 
 ### Fixed
