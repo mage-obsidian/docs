@@ -14,6 +14,18 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Framework 4.1.4 — 2026-10-25
+
+### Fixed
+
+- **module-modern-frontend** — on Magento Open Source 2.4.7 without patches, every storefront page rendered with an empty body: no header, content or footer. Since 4.1.0 the framework asked Magento for its list of payment pages through a class that `magento/module-csp` only ships from a later 2.4.7 patch on, and the page failed to build without it. The framework now reads that list from Magento when Magento has it, as before, and otherwise uses its own: the checkout, the order confirmation and the multi-address billing step. Scripts on those pages keep their subresource integrity hashes in both cases.
+
+### Upgrade notes
+
+Nothing changes on Magento 2.4.8 or later, on Mage-OS, or on a patched 2.4.7. On a 2.4.7 store, run `bin/magento setup:di:compile` after updating, as for any framework release.
+
+---
+
 ## Framework 4.1.3 and storefront 4.2.1 — 2026-10-25
 
 In a store whose store views use different themes, MageObsidian now acts only in the store views whose theme is a MageObsidian theme. A store view on any other theme gets Magento's own behaviour, as if MageObsidian were not installed. Store views on a MageObsidian theme do not change.

@@ -8,7 +8,7 @@ Everything MageObsidian publishes, with its registry, release train and role. Th
 
 ## Framework
 
-The framework train is at 4.1.3. All five packages carry the same version.
+The framework train is at 4.1.4. All five packages carry the same version.
 
 | Package | Registry | Train | Required / optional | Source |
 |---|---|---|---|---|
