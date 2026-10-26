@@ -23,6 +23,9 @@ de abajo, y debe renderizar el storefront con sus islas Vue.
 El storefront 4.0.0 falló en PHP 8.3 y 8.4 y en Magento 2.4.7. El storefront 4.0.1 lo corrigió, por
 lo que la versión mínima del storefront es 4.0.1; Composer la elige con `^4.0`.
 
+Las versiones 4.1.0 a 4.1.3 del framework dejaban vacío el body de todas las páginas del storefront
+en Magento Open Source 2.4.7 sin parches. La 4.1.4 lo corrigió; Composer la elige con `^4.1`.
+
 Los paquetes declaran un piso (`magento/framework >=103.0.7`, Magento 2.4.7) y ningún techo, así que
 Composer no te detendrá en un Magento más nuevo: consulta esta tabla antes de actualizar Magento.
 

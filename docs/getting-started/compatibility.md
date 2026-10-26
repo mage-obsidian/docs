@@ -22,6 +22,9 @@ and must render the storefront with its Vue islands.
 Storefront 4.0.0 failed on PHP 8.3 and 8.4 and on Magento 2.4.7. Storefront 4.0.1 fixed it, so the
 minimum storefront release is 4.0.1; Composer picks it with `^4.0`.
 
+Framework 4.1.0 to 4.1.3 rendered every storefront page with an empty body on Magento Open Source
+2.4.7 without patches. Framework 4.1.4 fixed it; Composer picks it with `^4.1`.
+
 The packages declare a floor (`magento/framework >=103.0.7`, Magento 2.4.7) and no ceiling, so
 Composer will not stop you on a newer Magento: check this table before upgrading Magento.
 
