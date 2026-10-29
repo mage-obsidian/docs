@@ -25,6 +25,15 @@ Tu apoyo financiero puede ayudarme a dedicar más tiempo al desarrollo del proye
 
 Si prefieres contribuir con código, documentación o pruebas, consulta la sección [Cómo Contribuir](contributing.md) para conocer los pasos y las mejores prácticas.
 
+## Quienes nos apoyan
+
+Empresas que respaldan a {{ config.site_name }} con sus productos y servicios.
+
+[![Sansec](../assets/supporters/sansec-black.svg#only-light){ width="180" }](https://sansec.io/)
+[![Sansec](../assets/supporters/sansec-white.svg#only-dark){ width="180" }](https://sansec.io/)
+
+**[Sansec](https://sansec.io/)** apoya a {{ config.site_name }} con una licencia de [eComscan](https://sansec.io/ecomscan), que se usa para auditar la [demo en vivo]({{ config.extra.demo_url }}) en busca de malware y vulnerabilidades.
+
 ---
 
 **¡Gracias por tu apoyo!** Cada contribución, ya sea económica o técnica, ayudan a que **{{ config.extra.components_name }}** y **{{ config.extra.theme_name }}** avancen y beneficie a toda la comunidad de Magento.

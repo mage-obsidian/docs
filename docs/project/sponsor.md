@@ -27,6 +27,15 @@ Your support will be acknowledged in the release notes and on a future thank-you
 
 If you prefer to contribute with code, documentation, or testing, check out the [How to Contribute](contributing.md) section for steps and best practices.
 
+## Supporters
+
+Companies that back {{ config.site_name }} with their products and services.
+
+[![Sansec](../assets/supporters/sansec-black.svg#only-light){ width="180" }](https://sansec.io/)
+[![Sansec](../assets/supporters/sansec-white.svg#only-dark){ width="180" }](https://sansec.io/)
+
+**[Sansec](https://sansec.io/)** supports {{ config.site_name }} with an [eComscan](https://sansec.io/ecomscan) license, used to audit the [live demo]({{ config.extra.demo_url }}) for malware and vulnerabilities.
+
 ---
 
 **Thank you for your support!** Every contribution, whether financial or technical, helps **{{ config.extra.components_name }}** and **{{ config.extra.theme_name }}** move forward and benefit the entire Magento community.
