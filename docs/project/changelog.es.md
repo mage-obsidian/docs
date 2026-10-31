@@ -14,6 +14,38 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
+## Próxima versión del framework y del storefront — sin publicar
+
+**Bajo un tema MageObsidian, la política de seguridad de contenido del storefront pasa a enforce, con la política recomendada de MageObsidian encima: un script en línea escrito a mano, un atributo `on*=` en el marcado o un `eval` dejan de ejecutarse. Revisa el storefront en staging antes de actualizar. Para conservar el comportamiento anterior, un módulo desactiva la política recomendada por DI: `MageObsidian\ModernFrontend\Service\Csp\RecommendedPolicy`, con el argumento `enabled` en `false`.**
+
+### Añadido
+
+- **module-modern-frontend**: una [política recomendada](../guides/features/content-security-policy.es.md#la-politica-recomendada), activa por defecto: modo enforce, sin `'unsafe-eval'`, sin `'unsafe-inline'` en `script-src`, `style-src` ni `default-src`, y con `base-uri 'self'` y `object-src 'none'`. Se aplica sobre la política final, incluido lo que añaden los módulos durante el render, y sigue en report-only mientras el servidor de desarrollo de Vite está activo. Ningún ajuste del panel la desactiva.
+- **module-modern-frontend**: en una respuesta que la caché de página puede guardar, los scripts en línea se autorizan por el sha256 de su contenido en lugar de un nonce. Con Varnish o Fastly, una página cacheada ya no comparte un mismo nonce con todos los visitantes. Los módulos de terceros que emiten sus scripts con `SecureHtmlRenderer` quedan cubiertos sin cambios.
+- **module-modern-frontend**: la caché de página integrada de Magento guarda, con cada entrada, las autorizaciones que la página recogió al renderizarse, y las restituye en cada acierto. Una página servida desde ella ya no bloquea sus propios scripts.
+- **js-package-utils**: `mage-obsidian/runtime/pageConfig.ts`, con `readPageConfig()`, para leer la configuración que el servidor entrega al runtime.
+
+### Cambiado
+
+- **module-modern-frontend**: la configuración del runtime (traducciones, datos de secciones, flags de UX, base de iconos, pre-pintado, prefetch de secciones) viaja en bloques de datos `<script type="application/json" data-mage-obsidian-config="…">` en lugar de scripts en línea que fijan `window.__MAGE_OBSIDIAN_*__`. El navegador no los ejecuta, así que la política no tiene nada que autorizar. El esquema del contrato pasa a 1.2.0.
+- **module-modern-frontend**: el checkout y el paso de facturación multidirección dejan de permitir estilos en línea. Los estilos que el storefront emite allí se autorizan por hash. Un módulo que necesite la excepción declara la página por DI; ninguna configuración de la tienda permite estilos en línea en una página que el código no declaró.
+- **module-storefront**: el botón para mostrar la contraseña lee sus iconos con `readPageConfig()`.
+
+### Corregido
+
+- **module-modern-frontend**: una página servida desde la caché de página integrada de Magento salía con la política por defecto de la plataforma (report-only, con `'unsafe-inline'`) en lugar de la de MageObsidian. En un acierto de la caché Magento no carga ningún tema, así que el detector de tema respondía "no es un tema MageObsidian". Ahora, cuando todavía no se cargó ningún tema en el storefront, el detector usa el tema configurado para la store view. La política estricta de inline de 4.1.3 tenía el mismo hueco.
+
+### Notas de actualización
+
+- Actualiza el framework y el storefront juntos, y recompila todos los temas. La versión del storefront necesita el motor de esta versión del framework. Un motor anterior en `vite/` hace fallar la compilación con *Schema version mismatch*, a propósito: un tema compilado con él renderizaría páginas sin traducciones ni datos de secciones.
+- Después de desplegar, ejecuta `bin/magento cache:clean full_page block_html` y purga Varnish o Fastly. Las páginas y bloques cacheados antes de actualizar llevan un nonce en su HTML. Con la caché de página integrada, las entradas guardadas antes de actualizar se renderizan de nuevo solas.
+- Haz un pedido de prueba con cada medio de pago que usa la tienda. Un medio de pago que inyecta su propio elemento `<style>` queda bloqueado; la sección de [páginas de pago](../guides/features/content-security-policy.es.md#paginas-de-pago) explica las opciones.
+- El código que lee `window.__MAGE_OBSIDIAN_*__` sigue encontrándolos una vez que el runtime arrancó. El código que corre antes lee el bloque de datos con `readPageConfig()`.
+- Una tienda que había puesto report-only a propósito pasa a enforce con esta versión. Desactivar la política recomendada por DI devuelve el modo que pide su configuración.
+- Para volver atrás, vuelve a la versión anterior y ejecuta `bin/magento cache:clean full_page`.
+
+---
+
 ## Framework 4.1.4 — 2026-10-25
 
 ### Corregido

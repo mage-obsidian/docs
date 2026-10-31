@@ -14,6 +14,38 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Next framework and storefront release — unreleased
+
+**Under a MageObsidian theme the storefront's Content Security Policy now enforces, with MageObsidian's recommended policy on top: a hand-written inline script, an `on*=` attribute in markup or an `eval` stops running. Check the storefront in staging before upgrading. To keep the previous behaviour, a module turns the recommended policy off through DI: `MageObsidian\ModernFrontend\Service\Csp\RecommendedPolicy`, argument `enabled` set to `false`.**
+
+### Added
+
+- **module-modern-frontend** — a [recommended policy](../guides/features/content-security-policy.md#the-recommended-policy), on by default: enforce mode, no `'unsafe-eval'`, no `'unsafe-inline'` in `script-src`, `style-src` or `default-src`, and `base-uri 'self'` and `object-src 'none'`. It applies on top of the final policy, including what modules add while the page renders, and stays in report-only while the Vite dev server is on. No admin setting turns it off.
+- **module-modern-frontend** — on a response the full-page cache may store, inline scripts are authorized by the sha256 of their content instead of a nonce. Under Varnish or Fastly, a cached page no longer shares one nonce with every visitor. Third-party modules that emit their scripts through `SecureHtmlRenderer` are covered without changes.
+- **module-modern-frontend** — Magento's built-in page cache stores, with each entry, the authorizations the page collected while it rendered, and puts them back on every hit. A page served from it no longer blocks its own scripts.
+- **js-package-utils** — `mage-obsidian/runtime/pageConfig.ts`, with `readPageConfig()`, to read the configuration the server hands to the runtime.
+
+### Changed
+
+- **module-modern-frontend** — the runtime configuration (translations, section data, UX flags, icon base, pre-paint, section prefetch) travels as `<script type="application/json" data-mage-obsidian-config="…">` data blocks instead of inline scripts that set `window.__MAGE_OBSIDIAN_*__`. The browser does not execute them, so the policy has nothing to authorize. The contract schema moves to 1.2.0.
+- **module-modern-frontend** — the checkout and the multi-address billing step no longer allow inline styles. The styles the storefront emits there are authorized by hash. A module that needs the exception declares the page through DI; no store configuration allows inline styles on a page the code did not declare.
+- **module-storefront** — the password visibility toggle reads its icons with `readPageConfig()`.
+
+### Fixed
+
+- **module-modern-frontend** — a page served from Magento's built-in page cache went out with the platform's default policy (report-only, with `'unsafe-inline'`) instead of MageObsidian's. On a cache hit Magento loads no theme, so the theme detector answered "not a MageObsidian theme". When no theme has been loaded yet on the storefront, the detector now uses the theme configured for the store view. The strict inline policy of 4.1.3 had the same gap.
+
+### Upgrade notes
+
+- Update the framework and the storefront together, and rebuild every theme. The storefront release needs the engine of this framework release. An engine older than this release in `vite/` fails the build with *Schema version mismatch*, on purpose: a theme built by it would render pages without translations or section data.
+- After deploying, run `bin/magento cache:clean full_page block_html`, and purge Varnish or Fastly. Pages and blocks cached before the upgrade carry a nonce in their HTML. Under the built-in page cache, entries stored before the upgrade are rendered again on their own.
+- Place a test order with every payment method the store runs. A payment method that injects its own `<style>` element is blocked; the [payment pages](../guides/features/content-security-policy.md#payment-pages) section explains the options.
+- Code that reads `window.__MAGE_OBSIDIAN_*__` keeps finding them once the runtime has started. Code that runs before it reads the data block with `readPageConfig()`.
+- A store that had set report-only on purpose gets enforce with this release. Turning the recommended policy off through DI brings back the mode its configuration asks for.
+- To roll back, go back to the previous release and run `bin/magento cache:clean full_page`.
+
+---
+
 ## Framework 4.1.4 — 2026-10-25
 
 ### Fixed
