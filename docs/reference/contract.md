@@ -50,11 +50,13 @@ The file is validated against an XSD that ships with `MageObsidian_ModernFronten
 
 `bin/magento mage-obsidian:frontend:config --generate` writes this file, together with a `.php` copy of its first four keys, and validates it against a JSON schema before writing. The build engine resolves it relative to the Vite working directory, at `../app/etc/mage_obsidian_frontend_modules.json`.
 
-Current schema version: **`1.1.0`** (`ConfigInterface::SCHEMA_VERSION`).
+Current schema version: **`1.2.0`** (`ConfigInterface::SCHEMA_VERSION`).
+
+`1.2.0` adds no key. It marks a framework that delivers the runtime configuration as JSON data blocks instead of inline script. An engine that predates it would build a storefront without translations or section data, so it stops the build with the mismatch message below instead.
 
 | Key | Type | Content |
 |---|---|---|
-| `schema_version` | string | The version of the file shape, `1.1.0`. |
+| `schema_version` | string | The version of the file shape, `1.2.0`. |
 | `mode` | string | The Magento mode: `developer`, `default` or `production`. The engine treats everything except `production` as development. |
 | `modules` | object | One entry per compatible module, keyed by module name. Each entry has `src`, the module path, and optionally `universal`. |
 | `themes` | object | One entry per compatible theme, keyed by theme code. Each entry has `src`, the theme path, and `parent`, the parent theme code or `null`. |
@@ -74,7 +76,7 @@ Paths in `modules` and `themes` are stored relative to the Magento root and made
 
 ```json title="app/etc/mage_obsidian_frontend_modules.json (abridged)"
 {
-    "schema_version": "1.1.0",
+    "schema_version": "1.2.0",
     "mode": "production",
     "modules": {
         "MageObsidian_ModernFrontend": { "src": "vendor/mage-obsidian/module-modern-frontend/src" }
@@ -100,7 +102,7 @@ When the build starts, the engine reads the file and refuses to continue if any 
 | Check | Failure |
 |---|---|
 | The file is a JSON object. | `Contract is not a JSON object.` |
-| `schema_version` is one the engine understands. This engine accepts `1.0.0` and `1.1.0`. | `Schema version mismatch: this build engine supports "1.0.0", "1.1.0" but the contract is "…".` |
+| `schema_version` is one the engine understands. This engine accepts `1.0.0`, `1.1.0` and `1.2.0`. | `Schema version mismatch: this build engine supports "1.0.0", "1.1.0", "1.2.0" but the contract is "…".` |
 | Every top-level key in the table above is present. | `Missing required key "…".` |
 | Theme inheritance ends: no theme is its own ancestor. | `Theme inheritance is cyclic: A -> B -> A.` |
 

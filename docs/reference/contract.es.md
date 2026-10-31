@@ -50,11 +50,13 @@ El archivo se valida contra un XSD que viene con `MageObsidian_ModernFrontend` e
 
 `bin/magento mage-obsidian:frontend:config --generate` escribe este archivo, junto con una copia `.php` de sus cuatro primeras claves, y lo valida contra un esquema JSON antes de escribirlo. El motor de build lo resuelve relativo al directorio de trabajo de Vite, en `../app/etc/mage_obsidian_frontend_modules.json`.
 
-Versión actual del esquema: **`1.1.0`** (`ConfigInterface::SCHEMA_VERSION`).
+Versión actual del esquema: **`1.2.0`** (`ConfigInterface::SCHEMA_VERSION`).
+
+`1.2.0` no agrega claves. Marca un framework que entrega la configuración del runtime en bloques de datos JSON en lugar de script en línea. Un motor anterior armaría una tienda sin traducciones ni datos de secciones, así que detiene la compilación con el mensaje de incompatibilidad de abajo.
 
 | Clave | Tipo | Contenido |
 |---|---|---|
-| `schema_version` | string | La versión de la forma del archivo, `1.1.0`. |
+| `schema_version` | string | La versión de la forma del archivo, `1.2.0`. |
 | `mode` | string | El modo de Magento: `developer`, `default` o `production`. El motor trata todo lo que no sea `production` como desarrollo. |
 | `modules` | objeto | Una entrada por módulo compatible, indexada por nombre de módulo. Cada entrada tiene `src`, la ruta del módulo, y opcionalmente `universal`. |
 | `themes` | objeto | Una entrada por tema compatible, indexada por código de tema. Cada entrada tiene `src`, la ruta del tema, y `parent`, el código del tema padre o `null`. |
@@ -74,7 +76,7 @@ Las rutas de `modules` y `themes` se guardan relativas a la raíz de Magento y e
 
 ```json title="app/etc/mage_obsidian_frontend_modules.json (abreviado)"
 {
-    "schema_version": "1.1.0",
+    "schema_version": "1.2.0",
     "mode": "production",
     "modules": {
         "MageObsidian_ModernFrontend": { "src": "vendor/mage-obsidian/module-modern-frontend/src" }
@@ -100,7 +102,7 @@ Cuando el build arranca, el motor lee el archivo y se niega a continuar si falla
 | Comprobación | Fallo |
 |---|---|
 | El archivo es un objeto JSON. | `Contract is not a JSON object.` |
-| `schema_version` es una que el motor entiende. Este motor acepta `1.0.0` y `1.1.0`. | `Schema version mismatch: this build engine supports "1.0.0", "1.1.0" but the contract is "…".` |
+| `schema_version` es una que el motor entiende. Este motor acepta `1.0.0`, `1.1.0` y `1.2.0`. | `Schema version mismatch: this build engine supports "1.0.0", "1.1.0", "1.2.0" but the contract is "…".` |
 | Está presente cada clave de primer nivel de la tabla de arriba. | `Missing required key "…".` |
 | La herencia de temas termina: ningún tema es ancestro de sí mismo. | `Theme inheritance is cyclic: A -> B -> A.` |
 

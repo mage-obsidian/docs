@@ -14,13 +14,15 @@ Stores → Configuration → MageObsidian → Storefront → Optimistic UI
 
 `mage_obsidian/storefront/optimistic_ui`, por defecto **Yes**, con alcance por website y por store view. Apagado, cantidad y eliminación esperan al servidor antes de tocar la pantalla — las animaciones siguen corriendo, sólo que cuando llega la respuesta.
 
-El flag llega al navegador como `window.__MAGE_OBSIDIAN_UX__`, emitido en línea a través de `SecureHtmlRenderer` para que lleve el nonce de CSP, y se lee así:
+El flag llega al navegador en un bloque de datos JSON, `<script type="application/json" data-mage-obsidian-config="ux">`. El navegador no lo ejecuta, así que la política de seguridad de contenido no tiene nada que autorizar. Se lee así:
 
 ```ts
 import { readUxRuntimeConfig } from 'mage-obsidian/runtime/uxConfig.ts';
 
 const ux = readUxRuntimeConfig(); // { optimistic, summaryCountsQty }
 ```
+
+El código que todavía lee `window.__MAGE_OBSIDIAN_UX__` sigue funcionando: el runtime publica el global al arrancar.
 
 **Agregar al carrito es optimista sin importar el flag.** Que el badge suba es el acuse de recibo del clic, y no hay estado que corromper: el contador se proyecta hacia adelante y la recarga obligatoria de secciones lo reemplaza con el número del servidor un instante después.
 

@@ -14,13 +14,15 @@ Stores → Configuration → MageObsidian → Storefront → Optimistic UI
 
 `mage_obsidian/storefront/optimistic_ui`, default **Yes**, scoped per website and store view. Turned off, quantity and removal wait for the server before touching the screen — the animations still play, just when the response lands.
 
-The flag reaches the browser as `window.__MAGE_OBSIDIAN_UX__`, emitted inline through `SecureHtmlRenderer` so it carries the CSP nonce, and is read with:
+The flag reaches the browser in a JSON data block, `<script type="application/json" data-mage-obsidian-config="ux">`. The browser does not execute it, so the Content Security Policy has nothing to authorize. It is read with:
 
 ```ts
 import { readUxRuntimeConfig } from 'mage-obsidian/runtime/uxConfig.ts';
 
 const ux = readUxRuntimeConfig(); // { optimistic, summaryCountsQty }
 ```
+
+Code that still reads `window.__MAGE_OBSIDIAN_UX__` keeps working: the runtime publishes the global when it boots.
 
 **Adding to cart is optimistic regardless of the flag.** The badge going up is the acknowledgement of the click, and there is no state to corrupt: the count is projected forward and the mandatory section reload replaces it with the server's number a moment later.
 
