@@ -125,6 +125,7 @@ plugins:
             Images: Imágenes
             CMS content: Contenido CMS
             Performance & critical CSS: Rendimiento y CSS crítico
+            Content Security Policy: Política de seguridad de contenido
             Vite build: Build con Vite
             HMR: HMR
             Reference: Referencia
@@ -241,6 +242,7 @@ nav:
       - Images: guides/features/images.md
       - CMS content: guides/features/cms.md
       - Performance & critical CSS: guides/features/performance.md
+      - Content Security Policy: guides/features/content-security-policy.md
       - Vite build: guides/features/vite-build.md
       - HMR: guides/features/hmr.md
   - Reference:

@@ -9,6 +9,7 @@ The capabilities that ship with the framework and how to use them.
 - **[Images](images.md)** — responsive, optimized images.
 - **[CMS content](cms.md)** — make Tailwind and islands work in CMS content.
 - **[Performance & critical CSS](performance.md)** — keep pages fast and generate critical CSS.
+- **[Content Security Policy](content-security-policy.md)** — how inline code stays authorized on cached pages.
 - **[Vite build](vite-build.md)** — how the production build is produced.
 - **[HMR](hmr.md)** — hot module replacement in development.
 

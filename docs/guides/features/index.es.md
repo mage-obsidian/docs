@@ -9,6 +9,7 @@ Las capacidades que incluye el framework y cómo usarlas.
 - **[Imágenes](images.md)** — imágenes responsivas y optimizadas.
 - **[Contenido CMS](cms.md)** — haz que Tailwind y las islas funcionen en el contenido CMS.
 - **[Rendimiento y CSS crítico](performance.md)** — mantén las páginas rápidas y genera CSS crítico.
+- **[Política de seguridad de contenido](content-security-policy.md)** — cómo el código en línea sigue autorizado en las páginas cacheadas.
 - **[Build con Vite](vite-build.md)** — cómo se produce el build de producción.
 - **[HMR](hmr.md)** — reemplazo de módulos en caliente durante el desarrollo.
 
