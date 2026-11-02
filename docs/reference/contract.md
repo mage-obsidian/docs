@@ -52,7 +52,7 @@ The file is validated against an XSD that ships with `MageObsidian_ModernFronten
 
 Current schema version: **`1.2.0`** (`ConfigInterface::SCHEMA_VERSION`).
 
-`1.2.0` adds no key. It marks a framework that delivers the runtime configuration as JSON data blocks instead of inline script. An engine that predates it would build a storefront without translations or section data, so it stops the build with the mismatch message below instead.
+`1.2.0` adds no key. It marks a framework that delivers the runtime configuration as JSON data blocks instead of inline script: framework 4.3.0 and later write it, and engine 4.2.0 and later read it. An engine that predates it would build a storefront without translations or section data, so it stops the build with the mismatch message below instead.
 
 | Key | Type | Content |
 |---|---|---|

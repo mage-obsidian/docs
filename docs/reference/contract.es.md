@@ -52,7 +52,7 @@ El archivo se valida contra un XSD que viene con `MageObsidian_ModernFrontend` e
 
 Versión actual del esquema: **`1.2.0`** (`ConfigInterface::SCHEMA_VERSION`).
 
-`1.2.0` no agrega claves. Marca un framework que entrega la configuración del runtime en bloques de datos JSON en lugar de script en línea. Un motor anterior armaría una tienda sin traducciones ni datos de secciones, así que detiene la compilación con el mensaje de incompatibilidad de abajo.
+`1.2.0` no agrega claves. Marca un framework que entrega la configuración del runtime en bloques de datos JSON en lugar de script en línea: lo escriben el framework 4.3.0 y posteriores, y lo leen el motor 4.2.0 y posteriores. Un motor anterior armaría una tienda sin traducciones ni datos de secciones, así que detiene la compilación con el mensaje de incompatibilidad de abajo.
 
 | Clave | Tipo | Contenido |
 |---|---|---|
