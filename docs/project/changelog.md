@@ -14,7 +14,7 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
-## Next framework and storefront release — unreleased
+## Framework 4.3.0 and storefront 4.3.0 — 2026-11-02
 
 **Under a MageObsidian theme the storefront's Content Security Policy now enforces, with MageObsidian's recommended policy on top: a hand-written inline script, an `on*=` attribute in markup or an `eval` stops running. Check the storefront in staging before upgrading. To keep the previous behaviour, a module turns the recommended policy off through DI: `MageObsidian\ModernFrontend\Service\Csp\RecommendedPolicy`, argument `enabled` set to `false`.**
 
@@ -23,7 +23,6 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 - **module-modern-frontend** — a [recommended policy](../guides/features/content-security-policy.md#the-recommended-policy), on by default: enforce mode, no `'unsafe-eval'`, no `'unsafe-inline'` in `script-src`, `style-src` or `default-src`, and `base-uri 'self'` and `object-src 'none'`. It applies on top of the final policy, including what modules add while the page renders, and stays in report-only while the Vite dev server is on. No admin setting turns it off.
 - **module-modern-frontend** — on a response the full-page cache may store, inline scripts are authorized by the sha256 of their content instead of a nonce. Under Varnish or Fastly, a cached page no longer shares one nonce with every visitor. Third-party modules that emit their scripts through `SecureHtmlRenderer` are covered without changes.
 - **module-modern-frontend** — Magento's built-in page cache stores, with each entry, the authorizations the page collected while it rendered, and puts them back on every hit. A page served from it no longer blocks its own scripts.
-- **js-package-utils** — `mage-obsidian/runtime/pageConfig.ts`, with `readPageConfig()`, to read the configuration the server hands to the runtime.
 
 ### Changed
 
@@ -37,12 +36,27 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ### Upgrade notes
 
-- Update the framework and the storefront together, and rebuild every theme. The storefront release needs the engine of this framework release. An engine older than this release in `vite/` fails the build with *Schema version mismatch*, on purpose: a theme built by it would render pages without translations or section data.
+- Update the framework and the storefront together, and rebuild every theme. Composer enforces it: `module-modern-frontend` 4.3 conflicts with `module-storefront` and `component-modern-frontend` releases before 4.3. The 4.3 harness installs engine 4.2.0, the first that reads contract 1.2.0. An older engine in `vite/` fails the build with *Schema version mismatch*, on purpose: a theme built by it would render pages without translations or section data.
 - After deploying, run `bin/magento cache:clean full_page block_html`, and purge Varnish or Fastly. Pages and blocks cached before the upgrade carry a nonce in their HTML. Under the built-in page cache, entries stored before the upgrade are rendered again on their own.
 - Place a test order with every payment method the store runs. A payment method that injects its own `<style>` element is blocked; the [payment pages](../guides/features/content-security-policy.md#payment-pages) section explains the options.
 - Code that reads `window.__MAGE_OBSIDIAN_*__` keeps finding them once the runtime has started. Code that runs before it reads the data block with `readPageConfig()`.
 - A store that had set report-only on purpose gets enforce with this release. Turning the recommended policy off through DI brings back the mode its configuration asks for.
 - To roll back, go back to the previous release and run `bin/magento cache:clean full_page`.
+
+---
+
+## Framework 4.2.0 — 2026-11-02
+
+Engine only. It prepares the runtime for the data blocks of 4.3.0 and changes nothing on a store that stays on this release.
+
+### Added
+
+- **js-package-utils** — `mage-obsidian/runtime/pageConfig.ts`, with `readPageConfig()`, to read the configuration the server hands to the runtime. It reads the `data-mage-obsidian-config` data block and, on a server from before the data blocks, falls back to `window.__MAGE_OBSIDIAN_*__`.
+- **js-package-utils** — the build engine accepts contract 1.2.0.
+
+### Upgrade notes
+
+Nothing to do. The PHP packages are the 4.1.4 ones apart from their version.
 
 ---
 

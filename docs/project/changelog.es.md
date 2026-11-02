@@ -14,7 +14,7 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
-## Próxima versión del framework y del storefront — sin publicar
+## Framework 4.3.0 y storefront 4.3.0 — 2026-11-02
 
 **Bajo un tema MageObsidian, la política de seguridad de contenido del storefront pasa a enforce, con la política recomendada de MageObsidian encima: un script en línea escrito a mano, un atributo `on*=` en el marcado o un `eval` dejan de ejecutarse. Revisa el storefront en staging antes de actualizar. Para conservar el comportamiento anterior, un módulo desactiva la política recomendada por DI: `MageObsidian\ModernFrontend\Service\Csp\RecommendedPolicy`, con el argumento `enabled` en `false`.**
 
@@ -23,7 +23,6 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 - **module-modern-frontend**: una [política recomendada](../guides/features/content-security-policy.es.md#la-politica-recomendada), activa por defecto: modo enforce, sin `'unsafe-eval'`, sin `'unsafe-inline'` en `script-src`, `style-src` ni `default-src`, y con `base-uri 'self'` y `object-src 'none'`. Se aplica sobre la política final, incluido lo que añaden los módulos durante el render, y sigue en report-only mientras el servidor de desarrollo de Vite está activo. Ningún ajuste del panel la desactiva.
 - **module-modern-frontend**: en una respuesta que la caché de página puede guardar, los scripts en línea se autorizan por el sha256 de su contenido en lugar de un nonce. Con Varnish o Fastly, una página cacheada ya no comparte un mismo nonce con todos los visitantes. Los módulos de terceros que emiten sus scripts con `SecureHtmlRenderer` quedan cubiertos sin cambios.
 - **module-modern-frontend**: la caché de página integrada de Magento guarda, con cada entrada, las autorizaciones que la página recogió al renderizarse, y las restituye en cada acierto. Una página servida desde ella ya no bloquea sus propios scripts.
-- **js-package-utils**: `mage-obsidian/runtime/pageConfig.ts`, con `readPageConfig()`, para leer la configuración que el servidor entrega al runtime.
 
 ### Cambiado
 
@@ -37,12 +36,27 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ### Notas de actualización
 
-- Actualiza el framework y el storefront juntos, y recompila todos los temas. La versión del storefront necesita el motor de esta versión del framework. Un motor anterior en `vite/` hace fallar la compilación con *Schema version mismatch*, a propósito: un tema compilado con él renderizaría páginas sin traducciones ni datos de secciones.
+- Actualiza el framework y el storefront juntos, y recompila todos los temas. Composer lo exige: `module-modern-frontend` 4.3 entra en conflicto con las versiones de `module-storefront` y `component-modern-frontend` anteriores a 4.3. El harness de 4.3 instala el motor 4.2.0, el primero que lee el contrato 1.2.0. Un motor anterior en `vite/` hace fallar la compilación con *Schema version mismatch*, a propósito: un tema compilado con él renderizaría páginas sin traducciones ni datos de secciones.
 - Después de desplegar, ejecuta `bin/magento cache:clean full_page block_html` y purga Varnish o Fastly. Las páginas y bloques cacheados antes de actualizar llevan un nonce en su HTML. Con la caché de página integrada, las entradas guardadas antes de actualizar se renderizan de nuevo solas.
 - Haz un pedido de prueba con cada medio de pago que usa la tienda. Un medio de pago que inyecta su propio elemento `<style>` queda bloqueado; la sección de [páginas de pago](../guides/features/content-security-policy.es.md#paginas-de-pago) explica las opciones.
 - El código que lee `window.__MAGE_OBSIDIAN_*__` sigue encontrándolos una vez que el runtime arrancó. El código que corre antes lee el bloque de datos con `readPageConfig()`.
 - Una tienda que había puesto report-only a propósito pasa a enforce con esta versión. Desactivar la política recomendada por DI devuelve el modo que pide su configuración.
 - Para volver atrás, vuelve a la versión anterior y ejecuta `bin/magento cache:clean full_page`.
+
+---
+
+## Framework 4.2.0 — 2026-11-02
+
+Solo el motor. Prepara el runtime para los bloques de datos de 4.3.0 y no cambia nada en una tienda que se quede en esta versión.
+
+### Añadido
+
+- **js-package-utils**: `mage-obsidian/runtime/pageConfig.ts`, con `readPageConfig()`, para leer la configuración que el servidor entrega al runtime. Lee el bloque de datos `data-mage-obsidian-config` y, en un servidor de antes de los bloques, vuelve a `window.__MAGE_OBSIDIAN_*__`.
+- **js-package-utils**: el motor de compilación acepta el contrato 1.2.0.
+
+### Notas de actualización
+
+No hay nada que hacer. Los paquetes PHP son los de 4.1.4, salvo el número de versión.
 
 ---
 
