@@ -14,6 +14,23 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
+## Storefront 4.3.1 — 2026-11-09
+
+Correcciones de seguridad. El framework y theme-default no cambian, y no hace falta recompilar los temas.
+
+### Corregido
+
+- **module-checkout**, **module-wishlist**: la caché de página podía guardar las páginas que editan un ítem del carrito (`checkout/cart/configure`) y uno de la wish list (`wishlist/index/configure`). Muestran las opciones, el texto y la cantidad que eligió un cliente, así que a un segundo visitante que pidiera la misma URL se le podían servir. Las dos páginas dejan de ser cacheables, sea cual sea la configuración de Varnish o Fastly.
+- **module-send-friend**: el formulario "Enviar a un amigo" era cacheable, y rellena el remitente con el nombre y el email del cliente con sesión iniciada. Deja de ser cacheable, como en el layout del propio Magento.
+- **module-search**, **module-checkout**, **module-customer**, **module-catalog**: cinco parámetros de la petición respondían con un error 500, sin iniciar sesión, cuando llegaban como array, por ejemplo `?obsidian_fragment[]=1`: `obsidian_fragment` y `obsidian_data` en los listados, `obsidian_shell` en el checkout, `referer` en las páginas de inicio de sesión y de creación de cuenta, e `ids` en el endpoint de productos vistos recientemente. Un array se trata ahora como si el parámetro no estuviera.
+
+### Notas de actualización
+
+- Ejecuta `composer update mage-obsidian/*` y `bin/magento cache:flush`.
+- Purga de Varnish o Fastly las páginas de edición de ítems del carrito y de la wish list y las de "Enviar a un amigo" que ya tenga guardadas: una copia guardada antes de actualizar se sirve hasta que expira.
+
+---
+
 ## Framework 4.3.0 y storefront 4.3.0 — 2026-11-02
 
 **Bajo un tema MageObsidian, la política de seguridad de contenido del storefront pasa a enforce, con la política recomendada de MageObsidian encima: un script en línea escrito a mano, un atributo `on*=` en el marcado o un `eval` dejan de ejecutarse. Revisa el storefront en staging antes de actualizar. Para conservar el comportamiento anterior, un módulo desactiva la política recomendada por DI: `MageObsidian\ModernFrontend\Service\Csp\RecommendedPolicy`, con el argumento `enabled` en `false`.**

@@ -14,6 +14,23 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Storefront 4.3.1 — 2026-11-09
+
+Security fixes. The framework and theme-default do not change, and no theme rebuild is needed.
+
+### Fixed
+
+- **module-checkout**, **module-wishlist** — the full-page cache could store the pages that edit a cart item (`checkout/cart/configure`) and a wish list item (`wishlist/index/configure`). They show the options, text and quantity one customer chose, so a second visitor asking for the same URL could be served them. Both pages are now uncacheable, whatever the Varnish or Fastly configuration.
+- **module-send-friend** — the "Email to a Friend" form was cacheable, and it fills the sender with the signed-in customer's name and email. It is now uncacheable, as in Magento's own layout.
+- **module-search**, **module-checkout**, **module-customer**, **module-catalog** — five request parameters answered with a 500 error, without signing in, when they arrived as an array, for example `?obsidian_fragment[]=1`: `obsidian_fragment` and `obsidian_data` on listings, `obsidian_shell` on the checkout, `referer` on the sign-in and account creation pages, and `ids` on the recently viewed products endpoint. An array is now treated as if the parameter were absent.
+
+### Upgrade notes
+
+- Run `composer update mage-obsidian/*` and `bin/magento cache:flush`.
+- Purge from Varnish or Fastly the cart and wish list edit pages and the "Email to a Friend" pages it already holds: a copy stored before the upgrade is served until it expires.
+
+---
+
 ## Framework 4.3.0 and storefront 4.3.0 — 2026-11-02
 
 **Under a MageObsidian theme the storefront's Content Security Policy now enforces, with MageObsidian's recommended policy on top: a hand-written inline script, an `on*=` attribute in markup or an `eval` stops running. Check the storefront in staging before upgrading. To keep the previous behaviour, a module turns the recommended policy off through DI: `MageObsidian\ModernFrontend\Service\Csp\RecommendedPolicy`, argument `enabled` set to `false`.**
