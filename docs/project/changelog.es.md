@@ -14,6 +14,20 @@ paquete concreto, consulta sus releases en [GitHub](https://github.com/mage-obsi
 
 ---
 
+## Storefront 4.3.2 — 2026-11-10
+
+Una corrección del checkout. El framework y theme-default no cambian, y no hace falta recompilar los temas.
+
+### Corregido
+
+- **module-checkout**: con los términos y condiciones activados (`checkout/options/enable_agreements`), un acuerdo manual aparecía en el checkout de una página como texto, sin su casilla, y **Place order** seguía habilitado. El servidor sigue exigiendo cada acuerdo manual, así que rechazaba todos los pedidos con "The order wasn't placed. First, agree to the terms and conditions, then try placing your order again." y el cliente no tenía cómo aceptarlos. Magento lee el modo del acuerdo de la base de datos como texto, y el checkout lo comparaba con un número. La casilla vuelve, y **Place order** la espera. El checkout de varias direcciones no estaba afectado.
+
+### Notas de actualización
+
+- Ejecuta `composer update mage-obsidian/*` y `bin/magento cache:flush`: la configuración del checkout forma parte de la página cacheada.
+
+---
+
 ## Storefront 4.3.1 — 2026-11-09
 
 Correcciones de seguridad. El framework y theme-default no cambian, y no hace falta recompilar los temas.

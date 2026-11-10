@@ -14,6 +14,20 @@ package, see its releases on [GitHub](https://github.com/mage-obsidian).
 
 ---
 
+## Storefront 4.3.2 — 2026-11-10
+
+A checkout fix. The framework and theme-default do not change, and no theme rebuild is needed.
+
+### Fixed
+
+- **module-checkout** — with terms and conditions enabled (`checkout/options/enable_agreements`), a manual agreement showed on the one-page checkout as plain text, without its checkbox, and **Place order** stayed enabled. The server still requires every manual agreement, so each order was refused with "The order wasn't placed. First, agree to the terms and conditions, then try placing your order again." and the customer had no way to accept them. Magento reads the agreement mode from the database as text, and the checkout compared it with a number. The checkbox is back, and **Place order** waits for it. The multi-address checkout was not affected.
+
+### Upgrade notes
+
+- Run `composer update mage-obsidian/*` and `bin/magento cache:flush`: the checkout's configuration is part of the cached page.
+
+---
+
 ## Storefront 4.3.1 — 2026-11-09
 
 Security fixes. The framework and theme-default do not change, and no theme rebuild is needed.
